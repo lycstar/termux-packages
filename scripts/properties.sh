@@ -462,9 +462,9 @@ TERMUX__REPOS_HOST_ORG_URL="https://github.com/$TERMUX__REPOS_HOST_ORG_NAME"
 # - https://developer.android.com/build/configure-app-module#set-application-id
 # - https://github.com/termux/termux-packages/wiki/Termux-file-system-layout#termux-private-app-data-directory
 #
-# Default value: `com.termux`
+# Default value: `cc.lycstar.sparrow`
 ##
-TERMUX_APP__PACKAGE_NAME="com.termux"
+TERMUX_APP__PACKAGE_NAME="cc.lycstar.sparrow"
 TERMUX_APP_PACKAGE="$TERMUX_APP__PACKAGE_NAME" # Deprecated alternative variable for `TERMUX_APP__PACKAGE_NAME`
 
 __termux_build_props__add_variables_validator_actions "TERMUX_APP__PACKAGE_NAME" "app_package_name"
@@ -483,7 +483,7 @@ __termux_build_props__add_variables_validator_actions "TERMUX_APP__PACKAGE_NAME"
 # sure a safe path is set if running `clean.sh` in Termux docker or
 # host OS build environment.
 #
-# Default value: `/data/data/com.termux`
+# Default value: `/data/data/cc.lycstar.sparrow`
 ##
 TERMUX_APP__DATA_DIR="/data/data/$TERMUX_APP__PACKAGE_NAME"
 __termux_build_props__add_variables_validator_actions "TERMUX_APP__DATA_DIR" "safe_absolute_path"
@@ -1846,9 +1846,9 @@ TERMUX_APP__REPO_URL="$TERMUX__REPOS_HOST_ORG_URL/$TERMUX_APP__REPO_NAME"
 # - https://developer.android.com/build/configure-app-module#set-namespace
 # - https://github.com/termux/termux-app/tree/master/app/src/main/java/com/termux
 #
-# Default value: `com.termux`
+# Default value: `cc.lycstar.sparrow`
 ##
-TERMUX_APP__NAMESPACE="com.termux"
+TERMUX_APP__NAMESPACE="cc.lycstar.sparrow"
 
 __termux_build_props__add_variables_validator_actions "TERMUX_APP__NAMESPACE" "app_package_name"
 
