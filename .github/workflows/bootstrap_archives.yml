@@ -62,10 +62,10 @@ jobs:
             base="${R2_PUBLIC_URL%/}"
             # 私有源镜像(按 sha256 寻址): 与 APT 同桶的另一前缀
             mirror_url="${base%/*}/termux-mirror"
+            # bootstrap 只含 termux-main 的包; 删掉 x11/root 条目, 否则
+            # command-not-found 的 generate-db.js 会去请求不存在的源而 404
             jq --arg main "$base/apt/termux-main" \
-              --arg root "$base/apt/termux-root" \
-              --arg x11 "$base/apt/termux-x11" \
-              '.packages.url = $main | .["root-packages"].url = $root | .["x11-packages"].url = $x11' \
+              '.packages.url = $main | del(.["root-packages"]) | del(.["x11-packages"])' \
               repo.json > repo.json.tmp
             mv repo.json.tmp repo.json
           fi
