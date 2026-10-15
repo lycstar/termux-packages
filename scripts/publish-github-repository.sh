@@ -48,6 +48,7 @@ termux-apt-repo "$work_dir/debs" "$work_dir/repository" stable main
 
 # 4) Filename 重写为官方下载 URL, 压缩变体同步再生
 python3 - "$work_dir/repository" "$RELEASE_BASE" <<'PY'
+import lzma
 import re
 import sys
 from pathlib import Path
