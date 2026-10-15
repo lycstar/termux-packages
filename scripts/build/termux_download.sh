@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+# Resolve from this file so the helper works both sourced and standalone.
+. "$(dirname "${BASH_SOURCE[0]}")/termux_source_mirrors.sh"
+
 termux_download() {
 	if [[ $# != 2 ]] && [[ $# != 3 ]]; then
 		echo "termux_download(): Invalid arguments - expected <URL> <DESTINATION> [<CHECKSUM>]" 1>&2
@@ -34,58 +37,83 @@ termux_download() {
 		[[ "$EXISTING_CHECKSUM" == "$CHECKSUM" ]] && return
 	fi
 
-	local TMPFILE
-	local -a CURL_OPTIONS=(
-		--fail               # Consider 4xx and 5xx responses as failures
-		--retry 5            # Retry up to 5 times on transient failures
-		--retry-connrefused  # Also retry on refused connections
-		--retry-all-errors   # TLS resets (curl 35) are otherwise not retried
-		--retry-delay 5      # Wait 5 seconds between retries
-		--connect-timeout 30 # Wait at most 30 seconds for a connection to be established
-		--retry-max-time 120 # Stop retrying if it's still failing after 120 seconds
-		--speed-limit 1000   # Expect at least 1000 Bytes per second
-		--speed-time 60      # Fail if the minimum speed isn't met for at least 60 seconds
-		--location           # Follow redirects
-	)
-	TMPFILE=$(mktemp "$TERMUX_PKG_TMPDIR/download.${TERMUX_PKG_NAME-unnamed}.XXXXXXXXX")
-	if [[ "${TERMUX_QUIET_BUILD-}" == "true" ]]; then
-		CURL_OPTIONS+=(--no-progress-meter) # Don't print out transfer statistics
+	local cache_file="" actual_checksum candidate tmpfile
+	local -a candidates=() mirrors=()
+	if [[ "$CHECKSUM" =~ ^[[:xdigit:]]{64}$ ]]; then
+		if [[ -n "${TERMUX_SOURCE_CACHE_DIR:-}" ]]; then
+			cache_file="$TERMUX_SOURCE_CACHE_DIR/$CHECKSUM"
+			if [[ -f "$cache_file" ]]; then
+				actual_checksum=$(sha256sum "$cache_file" | cut -d' ' -f1)
+				if [[ "$actual_checksum" == "$CHECKSUM" ]]; then
+					echo "Using verified source cache for $URL"
+					cp "$cache_file" "$DESTINATION" || return 1
+					return 0
+				fi
+				echo "Ignoring corrupt source cache: $cache_file" >&2
+			fi
+		fi
+		while IFS= read -r candidate; do
+			[[ -n "$candidate" ]] && mirrors+=("$candidate")
+		done < <(termux_source_mirrors "$URL" "$CHECKSUM")
 	fi
 
-	echo "Downloading ${URL}"
-	if ! curl "${CURL_OPTIONS[@]}" --output "$TMPFILE" "$URL"; then
-		local error=1
-		local retry=2
-		local delay=60
-		local try
-		for (( try=1; try <= retry; try++ )); do
-			echo "Retrying #${try} download ${URL} in ${delay}"
-			sleep "${delay}"
-			if curl "${CURL_OPTIONS[@]}" --output "$TMPFILE" "$URL"; then
-				error=0
-				break
+	# These hosts repeatedly time out in CI. Try independent mirrors first.
+	candidates=("$URL")
+	if [[ -n "${mirrors[0]:-}" ]]; then
+		case "$URL" in
+			https://pkgconfig.freedesktop.org/*|https://xorg.freedesktop.org/*)
+				candidates=("${mirrors[@]}" "$URL") ;;
+			*) candidates=("$URL" "${mirrors[@]}") ;;
+		esac
+	fi
+	local -a curl_options=(
+		--fail --location
+		--retry 2 --retry-connrefused --retry-delay 2
+		--connect-timeout 20 --retry-max-time 60
+		--speed-limit 1000 --speed-time 60
+	)
+	[[ "${TERMUX_QUIET_BUILD:-}" == true ]] && curl_options+=(--no-progress-meter)
+	tmpfile=$(mktemp "$TERMUX_PKG_TMPDIR/download.${TERMUX_PKG_NAME-unnamed}.XXXXXXXXX") || return 1
+	local seen=$'\n'
+	for candidate in "${candidates[@]}"; do
+		# Keep duplicate aliases from multiplying retry time.
+		[[ "$seen" == *$'\n'"$candidate"$'\n'* ]] && continue
+		seen+="$candidate"$'\n'
+		echo "Downloading $candidate"
+		if ! curl "${curl_options[@]}" --output "$tmpfile" "$candidate"; then
+			echo "Source unavailable; trying next location: $candidate" >&2
+			continue
+		fi
+		actual_checksum=$(sha256sum "$tmpfile" | cut -d' ' -f1)
+		if [[ -n "$CHECKSUM" && "$CHECKSUM" != SKIP_CHECKSUM && "$CHECKSUM" != "$actual_checksum" ]]; then
+			printf 'Wrong checksum for %s\nExpected: %s\nActual:   %s\n' \
+				"$candidate" "$CHECKSUM" "$actual_checksum" >&2
+			continue
+		fi
+		if [[ -z "$CHECKSUM" ]]; then
+			printf 'WARNING: No checksum check for %s:\nActual: %s\n' "$candidate" "$actual_checksum"
+		fi
+		# Only verified archives enter the shared cache. A failed build can still
+		# save successful downloads, without caching partial or untrusted files.
+		if [[ -n "$cache_file" ]]; then
+			local cache_tmp
+			if mkdir -p "$TERMUX_SOURCE_CACHE_DIR" && cache_tmp=$(mktemp "$TERMUX_SOURCE_CACHE_DIR/.download.XXXXXXXXX"); then
+				if cp "$tmpfile" "$cache_tmp"; then
+					mv "$cache_tmp" "$cache_file" || rm -f "$cache_tmp"
+				else
+					rm -f "$cache_tmp"
+				fi
 			fi
-		done
-		if [[ "${error}" != 0 ]]; then
-			echo "Failed to download $URL" 1>&2
+		fi
+		if ! mv "$tmpfile" "$DESTINATION"; then
+			rm -f "$tmpfile"
 			return 1
 		fi
-	fi
-
-	local ACTUAL_CHECKSUM
-	ACTUAL_CHECKSUM=$(sha256sum "$TMPFILE" | cut -d' ' -f1)
-	if [[ -z "$CHECKSUM" ]]; then
-		printf "WARNING: No checksum check for %s:\nActual: %s\n" \
-			"$URL" "$ACTUAL_CHECKSUM"
-	elif [[ "$CHECKSUM" == "SKIP_CHECKSUM" ]]; then
-		:
-	elif [[ "$CHECKSUM" != "$ACTUAL_CHECKSUM" ]]; then
-		printf "Wrong checksum for %s\nExpected: %s\nActual:   %s\n" \
-			"$URL" "$CHECKSUM" "$ACTUAL_CHECKSUM" 1>&2
-		return 1
-	fi
-	mv "$TMPFILE" "$DESTINATION"
-	return 0
+		return 0
+	done
+	rm -f "$tmpfile"
+	echo "Failed to download $URL from all source locations" >&2
+	return 1
 }
 
 # Make script standalone executable as well as sourceable

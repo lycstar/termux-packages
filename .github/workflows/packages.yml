@@ -49,6 +49,19 @@ jobs:
       with:
         fetch-depth: 1000
 
+    - name: Check source downloader
+      run: |
+        bash -n scripts/build/termux_download.sh scripts/build/termux_source_mirrors.sh scripts/build-bootstraps.sh
+        python3 -m unittest discover -s scripts/tests -p 'test_source_download.py' -v
+
+    - name: Restore verified source cache
+      uses: actions/cache/restore@v4
+      with:
+        path: .source-cache
+        key: source-archives-v1-${{ github.run_id }}-${{ github.run_attempt }}
+        restore-keys: |
+          source-archives-v1-
+
     - name: Configure package repository URL
       env:
         R2_PUBLIC_URL: ${{ vars.R2_PUBLIC_URL }}
@@ -326,6 +339,8 @@ jobs:
 
     - name: Build packages
       if: ${{ steps.build-info.outputs.skip-building != 'true' }}
+      env:
+        TERMUX_DOCKER_EXEC_EXTRA_ARGS: --env TERMUX_SOURCE_CACHE_DIR=/home/builder/termux-packages/.source-cache
       run: |
         declare -a packages=()
         for repo_path in $(jq --raw-output 'del(.pkg_format) | keys | .[]' repo.json); do
@@ -342,6 +357,13 @@ jobs:
           # be empty; -i/-I would require its metadata and detached GPG signatures.
           ./scripts/run-docker.sh -d ./build-package.sh -C -a "${{ matrix.target_arch }}" "${packages[@]}"
         fi
+
+    - name: Save verified source cache even after build failure
+      if: ${{ always() && !cancelled() }}
+      uses: actions/cache/save@v4
+      with:
+        path: .source-cache
+        key: source-archives-v1-${{ github.run_id }}-${{ github.run_attempt }}
 
     - name: Generate build artifacts
       if: always()

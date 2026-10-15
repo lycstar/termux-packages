@@ -25,6 +25,19 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v7
 
+      - name: Check source downloader
+        run: |
+          bash -n scripts/build/termux_download.sh scripts/build/termux_source_mirrors.sh scripts/build-bootstraps.sh
+          python3 -m unittest discover -s scripts/tests -p 'test_source_download.py' -v
+
+      - name: Restore verified source cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .source-cache
+          key: source-archives-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            source-archives-v1-
+
       - name: Configure package repository URL
         env:
           R2_PUBLIC_URL: ${{ vars.R2_PUBLIC_URL }}
@@ -56,9 +69,17 @@ jobs:
       - name: Build bootstrap archives from fork packages
         env:
           ARCHITECTURES: ${{ inputs.architectures }}
+          TERMUX_DOCKER_EXEC_EXTRA_ARGS: --env TERMUX_SOURCE_CACHE_DIR=/home/builder/termux-packages/.source-cache
         run: |
           args=(--architectures "$ARCHITECTURES")
           ./scripts/run-docker.sh ./scripts/build-bootstraps.sh "${args[@]}"
+
+      - name: Save verified source cache even after build failure
+        if: ${{ always() && !cancelled() }}
+        uses: actions/cache/save@v4
+        with:
+          path: .source-cache
+          key: source-archives-v1-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Store bootstrap archives
         uses: actions/upload-artifact@v7

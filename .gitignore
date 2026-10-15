@@ -43,3 +43,6 @@ scripts/apt-packages-list-*.txt
 
 # Generated on GitHub Actions CI when building kernel modules
 /scripts/*.ko.zst
+
+# Verified source archive cache shared by CI workflows.
+/.source-cache/
