@@ -42,39 +42,25 @@ compgen -G "$work_dir/debs/*.deb" > /dev/null || {
 find "$work_dir/debs" -name '*.deb' -print0 |
 	xargs -0 -n 40 gh release upload "$POOL_TAG" -R "$GH_REPO" --clobber
 
-# 2) 取 GitHub 官方资产名->下载 URL 映射(规避其资产名规范化规则)
-gh api "repos/${GH_REPO}/releases/tags/${POOL_TAG}" \
-	--jq '.assets[] | .name + "\t" + .browser_download_url' \
-	> "$work_dir/asset_urls.tsv"
-
-# 3) 重建元数据
+# 2) 重建元数据(本地文件名已规范化为点, 与 GitHub 资产名确定性一致)
 termux-apt-repo "$work_dir/debs" "$work_dir/repository" stable main
 
 # 4) Filename 重写为官方下载 URL, 压缩变体同步再生
-python3 - "$work_dir/repository" "$work_dir/asset_urls.tsv" <<'PY'
-import lzma
+python3 - "$work_dir/repository" "$RELEASE_BASE" <<'PY'
 import re
 import sys
 from pathlib import Path
 
 repo = Path(sys.argv[1])
-urlmap = {}
-for line in Path(sys.argv[2]).read_text().splitlines():
-    name, _, url = line.partition('\t')
-    if name and url:
-        urlmap[name] = url
-
+base = sys.argv[2].rstrip('/')
 for packages in repo.rglob('Packages'):
-    def repl(m):
-        name = m.group(2)
-        url = urlmap.get(name) or urlmap.get(name.replace(':', '.')) \
-            or urlmap.get(name.replace(':', '%3A'))
-        if url is None:
-            raise SystemExit(f'ERROR: no release asset for {name}')
-        return m.group(1) + url
-    text = re.sub(r'(?m)^(Filename: ).*/([^/]+)$', repl, packages.read_text())
-    packages.write_text(text)
-    payload = text.encode()
+    rewritten = re.sub(
+        r'(?m)^(Filename: ).*/([^/]+)$',
+        lambda m: m.group(1) + base + '/' + m.group(2),
+        packages.read_text(),
+    )
+    packages.write_text(rewritten)
+    payload = rewritten.encode()
     sibling = packages.with_suffix('.xz')
     if sibling.exists():
         sibling.write_bytes(lzma.compress(payload))
