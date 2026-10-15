@@ -3,14 +3,14 @@ TERMUX_PKG_DESCRIPTION="Documentation system for on-line information and printed
 TERMUX_PKG_LICENSE="GPL-3.0"
 TERMUX_PKG_MAINTAINER="@termux"
 TERMUX_PKG_VERSION="7.3"
-_DEBIAN_REVISION="-1"
+_DEBIAN_REVISION="-2"
 TERMUX_PKG_SRCURL=(
 	https://mirrors.kernel.org/gnu/texinfo/texinfo-${TERMUX_PKG_VERSION}.tar.xz
-	https://salsa.debian.org/tex-team/texinfo/-/archive/debian/${TERMUX_PKG_VERSION}${_DEBIAN_REVISION}/texinfo-debian-${TERMUX_PKG_VERSION}${_DEBIAN_REVISION}.tar.gz
+	https://deb.debian.org/debian/pool/main/t/texinfo/texinfo_${TERMUX_PKG_VERSION}${_DEBIAN_REVISION}.debian.tar.xz
 )
 TERMUX_PKG_SHA256=(
 	51f74eb0f51cfa9873b85264dfdd5d46e8957ec95b88f0fb762f63d9e164c72e
-	9d2eab3f012d06452f16253ae050b90bce9c1bac165703b84382a703253218bc
+	fc05b6fb96a5c00cf9e0f21a3292ce2f5d1b0f47f6ac53e49420eea944c91e61
 )
 TERMUX_PKG_AUTO_UPDATE=true
 # gawk is used by texindex:
@@ -50,10 +50,10 @@ termux_pkg_auto_update() {
 		"$(dirname "${TERMUX_PKG_SRCURL[0]}")/texinfo-${latest_version}.tar.xz" \
 		-o "${tmpdir}/texinfo-${latest_version}.tar.xz"
 	curl -sLC- \
-		"https://salsa.debian.org/tex-team/texinfo/-/archive/debian/${latest_version}${debian_revision}/texinfo-debian-${latest_version}${debian_revision}.tar.gz" \
-		-o "${tmpdir}/texinfo-debian-${latest_version}${debian_revision}.tar.gz"
+		"https://deb.debian.org/debian/pool/main/t/texinfo/texinfo_${latest_version}${debian_revision}.debian.tar.xz" \
+		-o "${tmpdir}/texinfo_${latest_version}${debian_revision}.debian.tar.xz"
 	local texinfo_txz_sha256=$(sha256sum "${tmpdir}/texinfo-${latest_version}.tar.xz" | sed -e "s| .*$||")
-	local texinfo_debian_txz_sha256=$(sha256sum "${tmpdir}/texinfo-debian-${latest_version}${debian_revision}.tar.gz" | sed -e "s| .*$||")
+	local texinfo_debian_txz_sha256=$(sha256sum "${tmpdir}/texinfo_${latest_version}${debian_revision}.debian.tar.xz" | sed -e "s| .*$||")
 	if [[ -z "${texinfo_txz_sha256}" || -z "${texinfo_debian_txz_sha256}" ]]; then
 		cat <<- EOL >&2
 		WARN: Auto update failure!
@@ -77,11 +77,6 @@ termux_pkg_auto_update() {
 	rm -fr "${tmpdir}"
 
 	termux_pkg_upgrade_version "${latest_version}"
-}
-
-termux_step_post_get_source() {
-	mv "${TERMUX_PKG_SRCDIR}/texinfo-debian-${TERMUX_PKG_VERSION}${_DEBIAN_REVISION}/debian" \
-		"${TERMUX_PKG_SRCDIR}/"
 }
 
 termux_step_post_make_install() {
