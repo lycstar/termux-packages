@@ -47,6 +47,13 @@ Run `Packages` with the manual input `git openjdk-17` for the initial package
 set. The bootstrap workflow defaults to `aarch64` and does not add optional
 packages.
 
+The package workflow builds dependencies from source without `-i`/`-I`. R2 is
+the publishing destination, not a prerequisite for building: the first build
+works with an empty bucket and does not fetch main/root/x11 repository metadata
+or GPG signatures from it. Upstream source archives and build tools still need
+to be downloaded. Reading old `.deb` objects via the S3 API during publishing is
+separate from downloading prebuilt dependencies during compilation.
+
 Set all three variables before starting either build: `R2_PUBLIC_URL` is embedded
 in the bootstrap's APT sources. Changing it later requires rebuilding bootstrap
 and the `apt` package. Without R2 configuration, workflows only save Actions
