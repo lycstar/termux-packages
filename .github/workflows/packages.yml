@@ -52,7 +52,13 @@ jobs:
     - name: Configure package repository URL
       env:
         R2_PUBLIC_URL: ${{ vars.R2_PUBLIC_URL }}
+        R2_ENDPOINT: ${{ vars.R2_ENDPOINT }}
+        R2_BUCKET: ${{ vars.R2_BUCKET }}
       run: |
+        if [[ -n "$R2_ENDPOINT$R2_BUCKET" && -z "$R2_PUBLIC_URL" ]]; then
+          echo "::error::Set R2_PUBLIC_URL before building packages for R2."
+          exit 1
+        fi
         if [[ -n "$R2_PUBLIC_URL" ]]; then
           base="${R2_PUBLIC_URL%/}"
           jq --arg main "$base/apt/termux-main" \
@@ -386,6 +392,7 @@ jobs:
     concurrency:
       group: sparrow-r2-publish
       cancel-in-progress: false
+      queue: max
     permissions:
       contents: read
     runs-on: ubuntu-26.04
@@ -421,7 +428,7 @@ jobs:
         R2_APT_PREFIX: apt/termux-main
       run: |
         if [[ -z "$AWS_ACCESS_KEY_ID" || -z "$AWS_SECRET_ACCESS_KEY" ]]; then
-          echo "R2 credentials are not configured; leaving the build artifact available without publishing."
+          echo "::warning::R2 credentials are not configured; packages were saved only as Actions artifacts."
           exit 0
         fi
         mkdir -p new-debs
@@ -431,6 +438,7 @@ jobs:
         python3 -m venv "$RUNNER_TEMP/termux-apt-repo-venv"
         "$RUNNER_TEMP/termux-apt-repo-venv/bin/pip" install --disable-pip-version-check termux-apt-repo==0.5
         export PATH="$RUNNER_TEMP/termux-apt-repo-venv/bin:$PATH"
+        python3 -m unittest discover -s scripts/tests -p 'test_r2_repository.py' -v
         ./scripts/publish-r2-repository.sh new-debs/debs
 
   test-buildorder-random:

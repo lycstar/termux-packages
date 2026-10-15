@@ -39,6 +39,7 @@ termux_download() {
 		--fail               # Consider 4xx and 5xx responses as failures
 		--retry 5            # Retry up to 5 times on transient failures
 		--retry-connrefused  # Also retry on refused connections
+		--retry-all-errors   # TLS resets (curl 35) are otherwise not retried
 		--retry-delay 5      # Wait 5 seconds between retries
 		--connect-timeout 30 # Wait at most 30 seconds for a connection to be established
 		--retry-max-time 120 # Stop retrying if it's still failing after 120 seconds

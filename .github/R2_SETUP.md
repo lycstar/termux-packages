@@ -36,6 +36,7 @@ apt/termux-main/
   dists/stable/main/binary-aarch64/Packages
   dists/stable/main/binary-aarch64/Packages.xz
   dists/stable/main/binary-aarch64/*.deb
+  dists/stable/main/binary-all/*.deb
   dists/stable/Release
 
 bootstrap/aarch64/bootstrap-aarch64.zip
@@ -45,3 +46,18 @@ bootstrap/aarch64/bootstrap-aarch64.zip.sha256
 Run `Packages` with the manual input `git openjdk-17` for the initial package
 set. The bootstrap workflow defaults to `aarch64` and does not add optional
 packages.
+
+Set all three variables before starting either build: `R2_PUBLIC_URL` is embedded
+in the bootstrap's APT sources. Changing it later requires rebuilding bootstrap
+and the `apt` package. Without R2 configuration, workflows only save Actions
+artifacts; these use the placeholder URL and are not ready for installation.
+Missing credentials produce a warning and leave artifacts available for download.
+These workflows do not create GitHub Releases.
+
+Package publishing jobs queue behind one shared lock. Each job downloads old
+`.deb` files, merges new files, and regenerates the complete indexes, including
+`Architecture: all` entries in the aarch64 index. Package objects are uploaded
+first, indexes next, and `Release` last. Old versions are retained, including
+when the same package is rebuilt; no remote objects are deleted. If a custom
+domain uses Cloudflare caching, bypass caching for APT metadata (`Packages*`,
+`Contents*`, and `Release`) to avoid serving stale indexes.

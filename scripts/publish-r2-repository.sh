@@ -21,6 +21,7 @@ mkdir -p "$work_dir/remote" "$work_dir/debs" "$work_dir/repository"
 
 remote_uri="s3://${R2_BUCKET}/${R2_APT_PREFIX}"
 aws s3 sync "$remote_uri" "$work_dir/remote" \
+	--exclude '*' --include '*.deb' \
 	--endpoint-url "$R2_ENDPOINT" --region auto
 
 # The published repository is the durable package store. Rebuild metadata from
@@ -34,8 +35,18 @@ compgen -G "$work_dir/debs/*.deb" > /dev/null || {
 }
 
 termux-apt-repo "$work_dir/debs" "$work_dir/repository" stable main
+python3 "$(dirname "$0")/finalize-r2-repository.py" "$work_dir/repository"
 
+# Publish package objects before the indexes that reference them. Retain old
+# versions so clients holding an older index can still download those files.
 aws s3 sync "$work_dir/repository" "$remote_uri" \
-	--endpoint-url "$R2_ENDPOINT" --region auto --delete
+	--exclude '*' --include '*.deb' \
+	--endpoint-url "$R2_ENDPOINT" --region auto
+aws s3 sync "$work_dir/repository" "$remote_uri" \
+	--exclude '*.deb' --exclude 'dists/stable/Release' \
+	--endpoint-url "$R2_ENDPOINT" --region auto
+aws s3 cp "$work_dir/repository/dists/stable/Release" "$remote_uri/dists/stable/Release" \
+	--endpoint-url "$R2_ENDPOINT" --region auto \
+	--cache-control 'no-cache, max-age=0, must-revalidate'
 
 echo "Published cumulative APT repository to $remote_uri"
