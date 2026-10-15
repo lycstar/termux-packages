@@ -41,10 +41,13 @@ jobs:
       # actions/cache restores files owned by the runner uid, but the build
       # container writes as uid 1000 (builder) — without this, .source-cache
       # mkdir fails with Permission denied and the cache is never populated.
-      - name: Prepare source cache for the builder container
+      - name: Prepare workspace for the builder container
         run: |
-          mkdir -p .source-cache
-          sudo chmod 1777 .source-cache
+          mkdir -p .source-cache output
+          # checkout 目录属于 runner 用户, 容器内 builder 直接写仓库根会
+          # Permission denied(zip 落地/.source-cache mktemp 均栽在这里)
+          sudo chmod -R a+rwX .
+          ./scripts/run-docker.sh sh -c 'id; ls -ld /home/builder/termux-packages /home/builder/termux-packages/.source-cache'
 
       - name: Configure package repository URL
         id: configure
