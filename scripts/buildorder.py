@@ -349,6 +349,39 @@ def generate_full_buildorder(pkgs_map):
 
     return build_order
 
+def _ensure_dependencies_first(order, pkgs_map):
+    """Stable topological correction of a target build order.
+
+    recursive_dependencies() is a DFS with per-node dedup, which can emit a
+    dependency AFTER a dependent when the dependency is reachable through
+    several paths (seen with pulseaudio/libsndfile in the openjdk-17
+    closure: pulseaudio was emitted before libsndfile, so the build failed
+    with 'Dependency sndfile not found'). Re-emit with a memoised DFS so
+    every dependency strictly precedes its dependents while keeping the
+    original order as tiebreak.
+    """
+    order = list(order)  # recursive_dependencies 返回惰性生成器, 先物化
+    placed = set()
+    visiting = set()
+    by_name = {pkg.name: pkg for pkg in order}
+    result = []
+
+    def visit(pkg):
+        if pkg.name in placed or pkg.name in visiting:
+            return
+        visiting.add(pkg.name)
+        for dependency_name in sorted(pkg.deps):
+            dep_pkg = by_name.get(dependency_name)
+            if dep_pkg is not None:
+                visit(dep_pkg)
+        visiting.discard(pkg.name)
+        placed.add(pkg.name)
+        result.append(pkg)
+
+    for pkg in order:
+        visit(pkg)
+    return result
+
 def generate_target_buildorder(target_path, pkgs_map, fast_build_mode):
     "Generate a build order for building the dependencies of the specified package."
     if target_path.endswith('/'):
@@ -361,7 +394,7 @@ def generate_target_buildorder(target_path, pkgs_map, fast_build_mode):
     # Do not depend on any sub package
     if fast_build_mode:
         package.deps.difference_update([subpkg.name for subpkg in package.subpkgs])
-    return package.recursive_dependencies(pkgs_map)
+    return _ensure_dependencies_first(package.recursive_dependencies(pkgs_map), pkgs_map)
 
 def main():
     "Generate the build order either for all packages or a specific one."
