@@ -19,7 +19,8 @@ on:
     inputs:
       packages:
         description: "A space-separated names of packages selected for rebuilding"
-        required: true
+        required: false
+        default: "git openjdk-17"
       free-space:
         description: "Free space even if not building large package (useful when building a large number of packages)"
         type: boolean
@@ -40,13 +41,29 @@ jobs:
     runs-on: ubuntu-26.04
     strategy:
       matrix:
-        target_arch: [aarch64, arm, i686, x86_64]
+        target_arch: [aarch64]
       fail-fast: false
     steps:
     - name: Clone repository
       uses: actions/checkout@v7
       with:
         fetch-depth: 1000
+
+    - name: Configure package repository URL
+      env:
+        R2_PUBLIC_URL: ${{ vars.R2_PUBLIC_URL }}
+      run: |
+        if [[ -n "$R2_PUBLIC_URL" ]]; then
+          base="${R2_PUBLIC_URL%/}"
+          jq --arg main "$base/apt/termux-main" \
+            --arg root "$base/apt/termux-root" \
+            --arg x11 "$base/apt/termux-x11" \
+            '.packages.url = $main | .["root-packages"].url = $root | .["x11-packages"].url = $x11' \
+            repo.json > repo.json.tmp
+          mv repo.json.tmp repo.json
+        else
+          echo "R2_PUBLIC_URL is not configured; using the repository URL placeholder."
+        fi
 
     - name: Gather build summary
       id: build-info
@@ -331,15 +348,13 @@ jobs:
             && rm ./built_${repo}_subpackages.txt
           test -f ./deleted_${repo}_packages.txt && mv ./deleted_${repo}_packages.txt ./debs/
 
-          # Move only debs from built_packages into debs/ folder before
-          # creating an archive.
-          if [ -f "./debs/built_${repo}_packages.txt" ] && [ -d "output" ]; then
-            while read -r pkg; do
-              # Match both $pkg.deb and $pkg-static.deb.
-              find output \( -name "$pkg_*.deb" -o -name "$pkg-static_*.deb" \) -type f -print0 | xargs -0r mv -t debs/
-            done < <(cat "./debs/built_${repo}_packages.txt")
-          fi
         done
+
+        # Keep every package produced by this run, including dependencies that
+        # were built locally because they were not already in the custom repo.
+        if [ -d "output" ]; then
+          find output -type f -name "*.deb" -print0 | xargs -0r mv -t debs/
+        fi
 
         # Files containing certain symbols (e.g. ":") will cause failure in actions/upload-artifact.
         # Archiving *.deb files in a tarball to avoid issues with uploading.
@@ -364,6 +379,57 @@ jobs:
       if: always()
       run: |
         sudo dmesg | grep apparmor
+
+  publish-r2:
+    if: github.event_name != 'pull_request' && vars.R2_ENDPOINT != '' && vars.R2_BUCKET != ''
+    needs: build
+    permissions:
+      contents: read
+    runs-on: ubuntu-26.04
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@v7
+    - name: Configure package repository URL
+      env:
+        R2_PUBLIC_URL: ${{ vars.R2_PUBLIC_URL }}
+      run: |
+        if [[ -n "$R2_PUBLIC_URL" ]]; then
+          base="${R2_PUBLIC_URL%/}"
+          jq --arg main "$base/apt/termux-main" \
+            --arg root "$base/apt/termux-root" \
+            --arg x11 "$base/apt/termux-x11" \
+            '.packages.url = $main | .["root-packages"].url = $root | .["x11-packages"].url = $x11' \
+            repo.json > repo.json.tmp
+          mv repo.json.tmp repo.json
+        fi
+    - name: Get aarch64 package artifacts
+      uses: actions/download-artifact@v8
+      with:
+        pattern: debs-aarch64-*
+        path: artifacts
+        merge-multiple: true
+    - name: Generate and publish cumulative APT repository
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: auto
+        R2_ACCOUNT_ID: ${{ vars.R2_ACCOUNT_ID }}
+        R2_ENDPOINT: ${{ vars.R2_ENDPOINT }}
+        R2_BUCKET: ${{ vars.R2_BUCKET }}
+        R2_APT_PREFIX: apt/termux-main
+      run: |
+        if [[ -z "$AWS_ACCESS_KEY_ID" || -z "$AWS_SECRET_ACCESS_KEY" ]]; then
+          echo "R2 credentials are not configured; leaving the build artifact available without publishing."
+          exit 0
+        fi
+        mkdir -p new-debs
+        while IFS= read -r -d '' archive; do
+          tar -xf "$archive" -C new-debs
+        done < <(find artifacts -type f -name '*.tar' -print0)
+        python3 -m venv "$RUNNER_TEMP/termux-apt-repo-venv"
+        "$RUNNER_TEMP/termux-apt-repo-venv/bin/pip" install --disable-pip-version-check termux-apt-repo==0.5
+        export PATH="$RUNNER_TEMP/termux-apt-repo-venv/bin:$PATH"
+        ./scripts/publish-r2-repository.sh new-debs/debs
 
   test-buildorder-random:
     permissions:

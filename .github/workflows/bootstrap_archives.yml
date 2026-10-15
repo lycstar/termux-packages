@@ -7,12 +7,7 @@ on:
         description: Comma-separated architectures to build
         type: string
         required: true
-        default: aarch64,arm,i686,x86_64
-      additional-packages:
-        description: Optional comma-separated packages to add to the bootstrap
-        type: string
-        required: false
-        default: ""
+        default: aarch64
 
 permissions: {}
 
@@ -29,6 +24,20 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v7
 
+      - name: Configure package repository URL
+        env:
+          R2_PUBLIC_URL: ${{ vars.R2_PUBLIC_URL }}
+        run: |
+          if [[ -n "$R2_PUBLIC_URL" ]]; then
+            base="${R2_PUBLIC_URL%/}"
+            jq --arg main "$base/apt/termux-main" \
+              --arg root "$base/apt/termux-root" \
+              --arg x11 "$base/apt/termux-x11" \
+              '.packages.url = $main | .["root-packages"].url = $root | .["x11-packages"].url = $x11' \
+              repo.json > repo.json.tmp
+            mv repo.json.tmp repo.json
+          fi
+
       - name: Enable zram
         uses: ./.github/actions/zram
         with:
@@ -40,12 +49,8 @@ jobs:
       - name: Build bootstrap archives from fork packages
         env:
           ARCHITECTURES: ${{ inputs.architectures }}
-          ADDITIONAL_PACKAGES: ${{ inputs['additional-packages'] }}
         run: |
           args=(--architectures "$ARCHITECTURES")
-          if [[ -n "$ADDITIONAL_PACKAGES" ]]; then
-            args+=(--add "$ADDITIONAL_PACKAGES")
-          fi
           ./scripts/run-docker.sh ./scripts/build-bootstraps.sh "${args[@]}"
 
       - name: Store bootstrap archives
@@ -54,3 +59,26 @@ jobs:
           name: bootstrap-archives-${{ github.run_id }}
           path: bootstrap-*.zip
           if-no-files-found: error
+
+      - name: Publish bootstrap to R2
+        if: vars.R2_ENDPOINT != '' && vars.R2_BUCKET != ''
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+          R2_ENDPOINT: ${{ vars.R2_ENDPOINT }}
+          R2_BUCKET: ${{ vars.R2_BUCKET }}
+        run: |
+          if [[ -z "$AWS_ACCESS_KEY_ID" || -z "$AWS_SECRET_ACCESS_KEY" ]]; then
+            echo "R2 credentials are not configured; leaving bootstrap as an Actions artifact."
+            exit 0
+          fi
+          for archive in bootstrap-*.zip; do
+            arch="${archive#bootstrap-}"
+            arch="${arch%.zip}"
+            sha256sum "$archive" > "$archive.sha256"
+            aws s3 cp "$archive" "s3://${R2_BUCKET}/bootstrap/$arch/$archive" \
+              --endpoint-url "$R2_ENDPOINT" --region auto
+            aws s3 cp "$archive.sha256" "s3://${R2_BUCKET}/bootstrap/$arch/$archive.sha256" \
+              --endpoint-url "$R2_ENDPOINT" --region auto
+          done
