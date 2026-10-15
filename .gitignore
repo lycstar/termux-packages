@@ -46,3 +46,4 @@ scripts/apt-packages-list-*.txt
 
 # Verified source archive cache shared by CI workflows.
 /.source-cache/
+__pycache__/
