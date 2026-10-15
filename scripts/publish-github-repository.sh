@@ -40,6 +40,7 @@ python3 - "$work_dir/repository" "$RELEASE_BASE" <<'PY'
 import lzma
 import re
 import sys
+from urllib.parse import quote
 from pathlib import Path
 
 repo = Path(sys.argv[1])
@@ -48,7 +49,8 @@ for packages in repo.rglob('Packages'):
     text = packages.read_text()
     rewritten = re.sub(
         r'(?m)^(Filename: ).*/([^/]+)$',
-        lambda m: m.group(1) + base + '/' + m.group(2),
+        # 版本纪元冒号(1:2.3)必须百分号编码, 否则 GitHub 下载路由 404
+        lambda m: m.group(1) + base + '/' + quote(m.group(2)),
         text,
     )
     packages.write_text(rewritten)
