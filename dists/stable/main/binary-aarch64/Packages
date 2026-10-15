@@ -6,12 +6,12 @@ Version: 1:2026.09.25
 Homepage: https://curl.se/docs/caextract.html
 Depends: ca-certificates (= 1:2026.09.25)
 Description: Common CA certificates (java keystore format)
-Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ca-certificates-java_1:2026.09.25_all.deb
-Size: 96196
-MD5Sum: ad99a66785b6227b80c568409a3c0273
-SHA1: 2fc2c566c3f1d483b074dc8140c70e506e5dfa88
-SHA256: 9c378ca9bcf65dbb3bc0456b6a13596d0ece9d689a870ea401cd11b76fd3e8c4
-SHA512: 6b758bbcaa556dc678140f7f512562347bef287660064da33c7c1234dae6d31e2693c5d17cfce0692aa8d1f0fe86aa281370b5209fbe4ff0fae8757d3811a26a
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ca-certificates-java_1.2026.09.25_all.deb
+Size: 96188
+MD5Sum: de9ff28eb0d7427d3bab55253c178265
+SHA1: c54e5a34e28e4a153d17e53dbf743237e2903586
+SHA256: d942f83f14b242c0d8b47c72a6b6db88c945f36882a2a6b27cfc9db61b4ddae2
+SHA512: 9d2d556fd5adcc5cd4ce5d5032fba2c5c23e042d41856955434b26d4da223b9d49ee725b3a88614cdfed53c1d716e186f4cc42768a639021de11040d93a08f88
 
 Package: ca-certificates
 Architecture: all
@@ -20,10 +20,10 @@ Maintainer: @termux
 Version: 1:2026.09.25
 Homepage: https://curl.se/docs/caextract.html
 Description: Common CA certificates
-Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ca-certificates_1:2026.09.25_all.deb
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ca-certificates_1.2026.09.25_all.deb
 Size: 105416
-MD5Sum: 61a36ed1aa0b737efabb1acafd7c1279
-SHA1: 1dcbc17e512b4ec7d60f7d57d34a714eb7733a77
-SHA256: 13962706747a88ffeef7646f8897bca8834e6f7788554b8b2758623351cd9bb4
-SHA512: bf50b29ffd29bbf454e36e7d814254d60aebacf86c93d20fc7b105f70b0010fefe16e61f43e2b7f9a399e6190f89f4d32cc8401e670f7c2417bded1d24ac2801
+MD5Sum: 5ea3d6d7886e2053767b341d24454df2
+SHA1: 10833af69e50a36090150e54127a31a13b95c300
+SHA256: caecd06fdc41825f297312522e0b7ea61d6f624544958f3e737f49988cb4c67a
+SHA512: 7e9d1e68cf9bc6e8b64fbeb46e6f649eb5be9ae20f6030bc78b82be64751fdf529e791d9c8e291acf8f743371937278c3106dcc40e54e403b7002a881ff8f6d8
 
