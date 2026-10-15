@@ -107,6 +107,9 @@ jobs:
           seed keyutil-0.4.0.jar 18f1d2c82839d84949b1ad015343c509e81ef678c24db6112acc6c0761314610 \
             "https://github.com/use-sparingly/keyutil/releases/download/0.4.0/keyutil-0.4.0.jar" \
             "https://gh-proxy.com/https://github.com/use-sparingly/keyutil/releases/download/0.4.0/keyutil-0.4.0.jar"
+          seed tcl8.6.16-src.tar.gz 91cb8fa61771c63c262efb553059b7c7ad6757afa5857af6265e4b0bdc2a14a5 \
+            "https://downloads.sourceforge.net/project/tcl/Tcl/8.6.16/tcl8.6.16-src.tar.gz" \
+            "https://distfiles.macports.org/tcl/tcl8.6.16-src.tar.gz"
 
       - name: Enable zram
         uses: ./.github/actions/zram
