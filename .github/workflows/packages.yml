@@ -62,6 +62,14 @@ jobs:
         restore-keys: |
           source-archives-v1-
 
+    # actions/cache restores files owned by the runner uid, but the build
+    # container writes as uid 1000 (builder) — without this, .source-cache
+    # mkdir fails with Permission denied and the cache is never populated.
+    - name: Prepare source cache for the builder container
+      run: |
+        mkdir -p .source-cache
+        sudo chown -R 1000:1000 .source-cache
+
     - name: Configure package repository URL
       env:
         R2_PUBLIC_URL: ${{ vars.R2_PUBLIC_URL }}

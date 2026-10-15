@@ -18,6 +18,15 @@ termux_source_mirrors() {
 	done
 
 	case "$url" in
+		# GitHub release assets intermittently serve HTTP 500 from CI. The
+		# proxies forward the original URL verbatim and the downloader still
+		# verifies every candidate against the recipe checksum.
+		https://github.com/*/releases/download/*)
+			printf '%s\n' \
+				"https://gh-proxy.com/$url" \
+				"https://ghfast.top/$url" \
+				"https://ghproxy.net/$url"
+			;;
 		https://pkgconfig.freedesktop.org/releases/*)
 			printf '%s\n' "https://distfiles.macports.org/pkgconfig/$filename"
 			if [[ "$filename" == pkg-config-*.tar.gz ]]; then
