@@ -30,7 +30,8 @@ find "$new_debs_dir" -type f -name '*.deb' -exec cp -f {} "$work_dir/debs/" \;
 # GitHub 资产名不含冒号(上传时静默规范化为点), 本地同步改名以精确对齐已有资产
 for f in "$work_dir"/debs/*:*; do
 	[[ -f "$f" ]] || continue
-	mv -f "$f" "${f//:/./}"
+	newname=$(basename "$f" | tr ':' '.')
+	mv -f "$f" "$(dirname "$f")/$newname"
 done
 compgen -G "$work_dir/debs/*.deb" > /dev/null || {
 	echo "No .deb files found in the pool or current build." >&2
