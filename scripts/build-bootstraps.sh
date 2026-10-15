@@ -430,11 +430,11 @@ main() {
 		# Core utilities.
 		PACKAGES+=("bash") # Used by `termux-bootstrap-second-stage.sh`
 		PACKAGES+=("libbz2") # Also produces the essential bzip2 subpackage.
-		if ! ${BOOTSTRAP_ANDROID10_COMPATIBLE}; then
-			PACKAGES+=("command-not-found")
-		else
+		if ${BOOTSTRAP_ANDROID10_COMPATIBLE}; then
 			PACKAGES+=("proot")
 		fi
+		# command-not-found 移出 bootstrap: 它要下载仓库的 Contents-<arch>.gz
+		# 生成数据库, 而自建源不发布 Contents 索引(404 直接炸整个构建)
 		PACKAGES+=("coreutils")
 		PACKAGES+=("dash")
 		PACKAGES+=("diffutils")

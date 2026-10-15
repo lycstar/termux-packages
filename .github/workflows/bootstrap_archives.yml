@@ -44,7 +44,7 @@ jobs:
       - name: Prepare source cache for the builder container
         run: |
           mkdir -p .source-cache
-          sudo chown -R 1000:1000 .source-cache
+          sudo chmod 1777 .source-cache
 
       - name: Configure package repository URL
         env:
