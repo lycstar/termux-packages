@@ -2,7 +2,8 @@
 set -euo pipefail
 
 # GitHub 双出口之二: deb 累积进滚动 Release(pool), 元数据(dists/)发布到
-# gh-pages。Filename 以绝对 URL 指向 release 资产, apt 原生支持。
+# gh-pages。Filename 以 GitHub 官方 browser_download_url 指向 release 资产
+# (GitHub 会对资产名做规范化, 如版本纪元冒号->点, 因此 URL 以实测表为准)。
 # 需要: GH_TOKEN(github.token, contents:write), GH_REPO; termux-apt-repo 在 PATH。
 
 if [[ $# -ne 1 ]]; then
@@ -14,7 +15,6 @@ fi
 : "${GH_TOKEN:?GH_TOKEN is required}"
 : "${POOL_TAG:=pool}"
 : "${PAGES_BRANCH:=gh-pages}"
-RELEASE_BASE="https://github.com/${GH_REPO}/releases/download/${POOL_TAG}"
 
 new_debs_dir="$(realpath "$1")"
 [[ -d "$new_debs_dir" ]] || { echo "Package directory not found: $new_debs_dir" >&2; exit 1; }
@@ -32,29 +32,43 @@ compgen -G "$work_dir/debs/*.deb" > /dev/null || {
 	exit 1
 }
 
-# 1) 重建元数据(与 R2 管线同款生成器)
+# 1) deb 先上传(--clobber 幂等), 使池与资产一致
+find "$work_dir/debs" -name '*.deb' -print0 |
+	xargs -0 -n 40 gh release upload "$POOL_TAG" -R "$GH_REPO" --clobber
+
+# 2) 取 GitHub 官方资产名->下载 URL 映射(规避其资产名规范化规则)
+gh api "repos/${GH_REPO}/releases/tags/${POOL_TAG}" \
+	--jq '.assets[] | .name + "\t" + .browser_download_url' \
+	> "$work_dir/asset_urls.tsv"
+
+# 3) 重建元数据
 termux-apt-repo "$work_dir/debs" "$work_dir/repository" stable main
 
-# 2) Filename 重写为 release 资产绝对 URL, 压缩变体同步再生
-python3 - "$work_dir/repository" "$RELEASE_BASE" <<'PY'
+# 4) Filename 重写为官方下载 URL, 压缩变体同步再生
+python3 - "$work_dir/repository" "$work_dir/asset_urls.tsv" <<'PY'
 import lzma
 import re
 import sys
-from urllib.parse import quote
 from pathlib import Path
 
 repo = Path(sys.argv[1])
-base = sys.argv[2].rstrip('/')
+urlmap = {}
+for line in Path(sys.argv[2]).read_text().splitlines():
+    name, _, url = line.partition('\t')
+    if name and url:
+        urlmap[name] = url
+
 for packages in repo.rglob('Packages'):
-    text = packages.read_text()
-    rewritten = re.sub(
-        r'(?m)^(Filename: ).*/([^/]+)$',
-        # 版本纪元冒号(1:2.3)必须百分号编码, 否则 GitHub 下载路由 404
-        lambda m: m.group(1) + base + '/' + quote(m.group(2)),
-        text,
-    )
-    packages.write_text(rewritten)
-    payload = rewritten.encode()
+    def repl(m):
+        name = m.group(2)
+        url = urlmap.get(name) or urlmap.get(name.replace(':', '.')) \
+            or urlmap.get(name.replace(':', '%3A'))
+        if url is None:
+            raise SystemExit(f'ERROR: no release asset for {name}')
+        return m.group(1) + url
+    text = re.sub(r'(?m)^(Filename: ).*/([^/]+)$', repl, packages.read_text())
+    packages.write_text(text)
+    payload = text.encode()
     sibling = packages.with_suffix('.xz')
     if sibling.exists():
         sibling.write_bytes(lzma.compress(payload))
@@ -64,14 +78,10 @@ for packages in repo.rglob('Packages'):
         gz.write_bytes(gzip.compress(payload))
 PY
 
-# 3) finalize: binary-all 归并 + Release 校验清单(基于重写后的最终文件)
+# 5) finalize: binary-all 归并 + Release 校验清单(基于重写后的最终文件)
 python3 "$(dirname "$0")/finalize-r2-repository.py" "$work_dir/repository"
 
-# 4) deb 上传进滚动池(--clobber 幂等, 同名覆盖)
-find "$work_dir/debs" -name '*.deb' -print0 |
-	xargs -0 -n 40 gh release upload "$POOL_TAG" -R "$GH_REPO" --clobber
-
-# 5) 元数据推到 gh-pages
+# 6) 元数据推到 gh-pages
 git clone --depth 1 --branch "$PAGES_BRANCH" \
 	"https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" \
 	"$work_dir/pages" 2>/dev/null || {
@@ -86,4 +96,4 @@ git -C "$work_dir/pages" -c user.name=sparrow-ci -c user.email=ci@lycstar.cc \
 	commit -m "apt metadata $(date -u '+%Y-%m-%dT%H:%M:%SZ')" || echo "metadata unchanged"
 git -C "$work_dir/pages" push origin "HEAD:$PAGES_BRANCH"
 
-echo "Published cumulative APT repository to GitHub (${RELEASE_BASE}, Pages: dists/)"
+echo "Published cumulative APT repository to GitHub (pool release + gh-pages dists/)"
