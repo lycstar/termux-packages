@@ -37,6 +37,20 @@ compgen -G "$work_dir/debs/*.deb" > /dev/null || {
 termux-apt-repo "$work_dir/debs" "$work_dir/repository" stable main
 python3 "$(dirname "$0")/finalize-r2-repository.py" "$work_dir/repository"
 
+# command-not-found's generate-db.js fetches dists/stable/Contents-<arch>.gz
+# (no component, gzip) while termux-apt-repo writes
+# dists/stable/main/Contents-<arch>[.xz]. Publish translated copies; they are
+# unreferenced by the Release file, so apt clients ignore them.
+for contents in "$work_dir"/repository/dists/stable/main/Contents-*; do
+	[[ -f "$contents" ]] || continue
+	arch="${contents##*/Contents-}"
+	arch="${arch%.xz}"
+	case "$contents" in
+		*.xz) xz -dc "$contents" ;;
+		*)    cat "$contents" ;;
+	esac | gzip -n > "$work_dir/repository/dists/stable/Contents-${arch}.gz"
+done
+
 # Publish package objects before the indexes that reference them. Retain old
 # versions so clients holding an older index can still download those files.
 aws s3 sync "$work_dir/repository" "$remote_uri" \
