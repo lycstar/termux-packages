@@ -27,6 +27,11 @@ mkdir -p "$work_dir/debs" "$work_dir/repository"
 gh release download "$POOL_TAG" -R "$GH_REPO" -D "$work_dir/debs" -p '*.deb' 2>/dev/null \
 	|| echo "Pool release has no assets yet; starting fresh."
 find "$new_debs_dir" -type f -name '*.deb' -exec cp -f {} "$work_dir/debs/" \;
+# GitHub 资产名不含冒号(上传时静默规范化为点), 本地同步改名以精确对齐已有资产
+for f in "$work_dir"/debs/*:*; do
+	[[ -f "$f" ]] || continue
+	mv -f "$f" "${f//:/./}"
+done
 compgen -G "$work_dir/debs/*.deb" > /dev/null || {
 	echo "No .deb files found in the pool or current build." >&2
 	exit 1
