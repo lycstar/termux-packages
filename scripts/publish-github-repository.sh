@@ -15,6 +15,7 @@ fi
 : "${GH_TOKEN:?GH_TOKEN is required}"
 : "${POOL_TAG:=pool}"
 : "${PAGES_BRANCH:=gh-pages}"
+RELEASE_BASE="https://github.com/${GH_REPO}/releases/download/${POOL_TAG}"
 
 new_debs_dir="$(realpath "$1")"
 [[ -d "$new_debs_dir" ]] || { echo "Package directory not found: $new_debs_dir" >&2; exit 1; }
