@@ -84,11 +84,12 @@ jobs:
           # 上游源(docbook.org 等)对 CI 间歇抽风; 首次从公共镜像取得后
           # 按 sha256 播种进 R2, termux_download 之后会自动回退到这里。
           seed() {
-            local name="$1" url="$2" sha="$3" tmp code
+            local name="$1" sha="$2"; shift 2
+            local src tmp code
             code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 -L "$MIRROR_URL/sha256/$sha") || true
             [[ "$code" == 200 ]] && { echo "mirror already has $name"; return 0; }
             tmp=$(mktemp)
-            for src in "$url" "https://distfiles.macports.org/$name"; do
+            for src in "$@"; do
               curl -sL --max-time 120 -o "$tmp" "$src" || continue
               [[ "$(sha256sum "$tmp" | cut -d' ' -f1)" == "$sha" ]] || continue
               aws s3 cp "$tmp" "s3://${R2_BUCKET}/termux-mirror/sha256/$sha" \
@@ -100,8 +101,12 @@ jobs:
             rm -f "$tmp"
             echo "::warning::could not seed $name"
           }
-          seed docbkx412.zip "https://archive.docbook.org/xml/4.1.2/docbkx412.zip" \
-            30f0644064e0ea71751438251940b1431f46acada814a062870f486c772e7772
+          seed docbkx412.zip 30f0644064e0ea71751438251940b1431f46acada814a062870f486c772e7772 \
+            "https://archive.docbook.org/xml/4.1.2/docbkx412.zip" \
+            "https://distfiles.macports.org/docbook-xml/docbkx412.zip"
+          seed keyutil-0.4.0.jar 18f1d2c82839d84949b1ad015343c509e81ef678c24db6112acc6c0761314610 \
+            "https://github.com/use-sparingly/keyutil/releases/download/0.4.0/keyutil-0.4.0.jar" \
+            "https://gh-proxy.com/https://github.com/use-sparingly/keyutil/releases/download/0.4.0/keyutil-0.4.0.jar"
 
       - name: Enable zram
         uses: ./.github/actions/zram
