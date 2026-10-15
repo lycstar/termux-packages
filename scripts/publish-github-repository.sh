@@ -52,13 +52,14 @@ for packages in repo.rglob('Packages'):
         text,
     )
     packages.write_text(rewritten)
+    payload = rewritten.encode()
     sibling = packages.with_suffix('.xz')
     if sibling.exists():
-        sibling.write_bytes(lzma.compress(rewritten))
+        sibling.write_bytes(lzma.compress(payload))
     gz = packages.with_suffix('.gz')
     if gz.exists():
         import gzip
-        gz.write_bytes(gzip.compress(rewritten))
+        gz.write_bytes(gzip.compress(payload))
 PY
 
 # 3) finalize: binary-all 归并 + Release 校验清单(基于重写后的最终文件)
