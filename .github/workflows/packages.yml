@@ -421,15 +421,15 @@ jobs:
       run: |
         sudo dmesg | grep apparmor
 
-  publish-r2:
-    if: github.event_name != 'pull_request' && vars.R2_ENDPOINT != '' && vars.R2_BUCKET != ''
+  publish:
+    if: github.event_name != 'pull_request'
     needs: build
     concurrency:
-      group: sparrow-r2-publish
+      group: sparrow-publish
       cancel-in-progress: false
       queue: max
     permissions:
-      contents: read
+      contents: write
     runs-on: ubuntu-26.04
     steps:
     - name: Clone repository
@@ -493,6 +493,7 @@ jobs:
         path: artifacts
         merge-multiple: true
     - name: Generate and publish cumulative APT repository
+      if: vars.R2_ENDPOINT != '' && vars.R2_BUCKET != ''
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
@@ -514,6 +515,12 @@ jobs:
         export PATH="$RUNNER_TEMP/termux-apt-repo-venv/bin:$PATH"
         python3 -m unittest discover -s scripts/tests -p 'test_r2_repository.py' -v
         ./scripts/publish-r2-repository.sh new-debs/debs
+
+    - name: Publish cumulative APT repository to GitHub
+      env:
+        GH_TOKEN: ${{ github.token }}
+        GH_REPO: ${{ github.repository }}
+      run: ./scripts/publish-github-repository.sh new-debs/debs
 
   test-buildorder-random:
     permissions:
