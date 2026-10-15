@@ -71,17 +71,20 @@ jobs:
         sudo chmod 1777 .source-cache
 
     - name: Configure package repository URL
+      id: configure
       env:
         R2_PUBLIC_URL: ${{ vars.R2_PUBLIC_URL }}
         R2_ENDPOINT: ${{ vars.R2_ENDPOINT }}
         R2_BUCKET: ${{ vars.R2_BUCKET }}
       run: |
+        mirror_url=""
         if [[ -n "$R2_ENDPOINT$R2_BUCKET" && -z "$R2_PUBLIC_URL" ]]; then
           echo "::error::Set R2_PUBLIC_URL before building packages for R2."
           exit 1
         fi
         if [[ -n "$R2_PUBLIC_URL" ]]; then
           base="${R2_PUBLIC_URL%/}"
+          mirror_url="${base%/*}/termux-mirror"
           jq --arg main "$base/apt/termux-main" \
             --arg root "$base/apt/termux-root" \
             --arg x11 "$base/apt/termux-x11" \
@@ -348,7 +351,7 @@ jobs:
     - name: Build packages
       if: ${{ steps.build-info.outputs.skip-building != 'true' }}
       env:
-        TERMUX_DOCKER_EXEC_EXTRA_ARGS: --env TERMUX_SOURCE_CACHE_DIR=/home/builder/termux-packages/.source-cache
+        TERMUX_DOCKER_EXEC_EXTRA_ARGS: --env TERMUX_SOURCE_CACHE_DIR=/home/builder/termux-packages/.source-cache --env TERMUX_SOURCE_MIRRORS=${{ steps.configure.outputs.mirror-url }}
       run: |
         declare -a packages=()
         for repo_path in $(jq --raw-output 'del(.pkg_format) | keys | .[]' repo.json); do
@@ -444,6 +447,7 @@ jobs:
             repo.json > repo.json.tmp
           mv repo.json.tmp repo.json
         fi
+        echo "mirror-url=$mirror_url" >> "$GITHUB_OUTPUT"
     - name: Get aarch64 package artifacts
       uses: actions/download-artifact@v8
       with:

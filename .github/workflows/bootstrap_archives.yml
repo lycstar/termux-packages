@@ -47,17 +47,21 @@ jobs:
           sudo chmod 1777 .source-cache
 
       - name: Configure package repository URL
+        id: configure
         env:
           R2_PUBLIC_URL: ${{ vars.R2_PUBLIC_URL }}
           R2_ENDPOINT: ${{ vars.R2_ENDPOINT }}
           R2_BUCKET: ${{ vars.R2_BUCKET }}
         run: |
+          mirror_url=""
           if [[ -n "$R2_ENDPOINT$R2_BUCKET" && -z "$R2_PUBLIC_URL" ]]; then
             echo "::error::Set R2_PUBLIC_URL before building bootstrap for R2."
             exit 1
           fi
           if [[ -n "$R2_PUBLIC_URL" ]]; then
             base="${R2_PUBLIC_URL%/}"
+            # 私有源镜像(按 sha256 寻址): 与 APT 同桶的另一前缀
+            mirror_url="${base%/*}/termux-mirror"
             jq --arg main "$base/apt/termux-main" \
               --arg root "$base/apt/termux-root" \
               --arg x11 "$base/apt/termux-x11" \
@@ -65,6 +69,39 @@ jobs:
               repo.json > repo.json.tmp
             mv repo.json.tmp repo.json
           fi
+          echo "mirror-url=$mirror_url" >> "$GITHUB_OUTPUT"
+
+      - name: Seed private source mirror
+        if: ${{ steps.configure.outputs.mirror-url != '' }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+          R2_ENDPOINT: ${{ vars.R2_ENDPOINT }}
+          R2_BUCKET: ${{ vars.R2_BUCKET }}
+          MIRROR_URL: ${{ steps.configure.outputs.mirror-url }}
+        run: |
+          # 上游源(docbook.org 等)对 CI 间歇抽风; 首次从公共镜像取得后
+          # 按 sha256 播种进 R2, termux_download 之后会自动回退到这里。
+          seed() {
+            local name="$1" url="$2" sha="$3" tmp code
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 -L "$MIRROR_URL/sha256/$sha") || true
+            [[ "$code" == 200 ]] && { echo "mirror already has $name"; return 0; }
+            tmp=$(mktemp)
+            for src in "$url" "https://distfiles.macports.org/$name"; do
+              curl -sL --max-time 120 -o "$tmp" "$src" || continue
+              [[ "$(sha256sum "$tmp" | cut -d' ' -f1)" == "$sha" ]] || continue
+              aws s3 cp "$tmp" "s3://${R2_BUCKET}/termux-mirror/sha256/$sha" \
+                --endpoint-url "$R2_ENDPOINT" --region auto
+              echo "seeded $name ($sha)"
+              rm -f "$tmp"
+              return 0
+            done
+            rm -f "$tmp"
+            echo "::warning::could not seed $name"
+          }
+          seed docbkx412.zip "https://archive.docbook.org/xml/4.1.2/docbkx412.zip" \
+            30f0644064e0ea71751438251940b1431f46acada814a062870f486c772e7772
 
       - name: Enable zram
         uses: ./.github/actions/zram
@@ -77,7 +114,9 @@ jobs:
       - name: Build bootstrap archives from fork packages
         env:
           ARCHITECTURES: ${{ inputs.architectures }}
-          TERMUX_DOCKER_EXEC_EXTRA_ARGS: --env TERMUX_SOURCE_CACHE_DIR=/home/builder/termux-packages/.source-cache
+          TERMUX_DOCKER_EXEC_EXTRA_ARGS: >-
+            --env TERMUX_SOURCE_CACHE_DIR=/home/builder/termux-packages/.source-cache
+            --env TERMUX_SOURCE_MIRRORS=${{ steps.configure.outputs.mirror-url }}
         run: |
           args=(--architectures "$ARCHITECTURES")
           ./scripts/run-docker.sh ./scripts/build-bootstraps.sh "${args[@]}"
