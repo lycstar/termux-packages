@@ -383,6 +383,9 @@ jobs:
   publish-r2:
     if: github.event_name != 'pull_request' && vars.R2_ENDPOINT != '' && vars.R2_BUCKET != ''
     needs: build
+    concurrency:
+      group: sparrow-r2-publish
+      cancel-in-progress: false
     permissions:
       contents: read
     runs-on: ubuntu-26.04
@@ -413,7 +416,6 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: auto
-        R2_ACCOUNT_ID: ${{ vars.R2_ACCOUNT_ID }}
         R2_ENDPOINT: ${{ vars.R2_ENDPOINT }}
         R2_BUCKET: ${{ vars.R2_BUCKET }}
         R2_APT_PREFIX: apt/termux-main
