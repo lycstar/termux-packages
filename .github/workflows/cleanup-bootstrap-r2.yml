@@ -1,0 +1,22 @@
+name: One-time cleanup of bootstrap mirror artifacts
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-slim
+    steps:
+      - name: Delete bootstrap objects from R2
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+          R2_ENDPOINT: ${{ vars.R2_ENDPOINT }}
+          R2_BUCKET: ${{ vars.R2_BUCKET }}
+        run: |
+          test -n "$AWS_ACCESS_KEY_ID" -a -n "$AWS_SECRET_ACCESS_KEY"
+          aws s3 rm "s3://${R2_BUCKET}/bootstrap" \
+            --recursive --endpoint-url "$R2_ENDPOINT" --region auto
