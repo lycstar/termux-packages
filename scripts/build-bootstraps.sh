@@ -492,6 +492,7 @@ main() {
 		# 自家源(GitHub Pages, [trusted=yes])内置于 bootstrap, 开箱即用。
 		if [ -d "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/etc/apt" ]; then
 			rm -f "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/etc/apt/sources.list"
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/etc/apt/sources.list.d"
 			find "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/etc/apt/sources.list.d" -type f -delete 2>/dev/null || true
 			echo 'deb [trusted=yes] https://lycstar.github.io/termux-packages stable main' \
 				> "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/etc/apt/sources.list.d/sparrow.list"
