@@ -2,8 +2,8 @@
 set -euo pipefail
 
 # GitHub 双出口之二: deb 累积进滚动 Release(pool), 元数据(dists/)发布到
-# gh-pages。Filename 以 GitHub 官方 browser_download_url 指向 release 资产
-# (GitHub 会对资产名做规范化, 如版本纪元冒号->点, 因此 URL 以实测表为准)。
+# Release 提供平铺索引。Filename 必须
+# 是相对文件名，与 Packages/Release 一起位于同一个 Release 下载目录。
 # 需要: GH_TOKEN(github.token, contents:write), GH_REPO; termux-apt-repo 在 PATH。
 
 if [[ $# -ne 1 ]]; then
@@ -14,7 +14,6 @@ fi
 : "${GH_REPO:?GH_REPO is required}"
 : "${GH_TOKEN:?GH_TOKEN is required}"
 : "${POOL_TAG:=pool}"
-: "${PAGES_BRANCH:=gh-pages}"
 RELEASE_BASE="https://github.com/${GH_REPO}/releases/download/${POOL_TAG}"
 
 new_debs_dir="$(realpath "$1")"
@@ -46,48 +45,13 @@ find "$work_dir/debs" -name '*.deb' -print0 |
 # 2) 重建元数据(本地文件名已规范化为点, 与 GitHub 资产名确定性一致)
 termux-apt-repo "$work_dir/debs" "$work_dir/repository" stable main
 
-# 4) Filename 重写为官方下载 URL, 压缩变体同步再生
-python3 - "$work_dir/repository" "$RELEASE_BASE" <<'PY'
-import lzma
-import re
-import sys
-from pathlib import Path
-
-repo = Path(sys.argv[1])
-base = sys.argv[2].rstrip('/')
-for packages in repo.rglob('Packages'):
-    rewritten = re.sub(
-        r'(?m)^(Filename: ).*/([^/]+)$',
-        lambda m: m.group(1) + base + '/' + m.group(2),
-        packages.read_text(),
-    )
-    packages.write_text(rewritten)
-    payload = rewritten.encode()
-    sibling = packages.with_suffix('.xz')
-    if sibling.exists():
-        sibling.write_bytes(lzma.compress(payload))
-    gz = packages.with_suffix('.gz')
-    if gz.exists():
-        import gzip
-        gz.write_bytes(gzip.compress(payload))
-PY
-
 # 5) finalize: binary-all 归并 + Release 校验清单(基于重写后的最终文件)
 python3 "$(dirname "$0")/finalize-r2-repository.py" "$work_dir/repository"
 
-# 6) 元数据推到 gh-pages
-git clone --depth 1 --branch "$PAGES_BRANCH" \
-	"https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" \
-	"$work_dir/pages" 2>/dev/null || {
-	git init -b "$PAGES_BRANCH" "$work_dir/pages"
-	git -C "$work_dir/pages" remote add origin \
-		"https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git"
-}
-mkdir -p "$work_dir/pages/dists"
-cp -a "$work_dir/repository/dists/." "$work_dir/pages/dists/"
-git -C "$work_dir/pages" add -A
-git -C "$work_dir/pages" -c user.name=sparrow-ci -c user.email=ci@lycstar.cc \
-	commit -m "apt metadata $(date -u '+%Y-%m-%dT%H:%M:%SZ')" || echo "metadata unchanged"
-git -C "$work_dir/pages" push origin "HEAD:$PAGES_BRANCH"
+# 6) 平铺索引和 deb 同处 Release 下载目录，apt 不支持 Filename 跨主机 URL。
+python3 "$(dirname "$0")/generate-flat-repository.py" "$work_dir/repository" "$work_dir/flat"
+gh release upload "$POOL_TAG" -R "$GH_REPO" --clobber \
+    "$work_dir/flat/Packages" "$work_dir/flat/Packages.gz" \
+    "$work_dir/flat/Packages.xz" "$work_dir/flat/Release"
 
-echo "Published cumulative APT repository to GitHub (pool release + gh-pages dists/)"
+echo "APT source: deb [trusted=yes] $RELEASE_BASE ./"

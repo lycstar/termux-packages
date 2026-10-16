@@ -1,0 +1,40 @@
+name: Repair APT index without rebuilding packages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sparrow-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          ref: gh-pages
+          path: current-index
+      - name: Validate existing assets and regenerate flat metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh api "repos/$GH_REPO/releases/tags/pool" > "$RUNNER_TEMP/pool-assets.json"
+          if jq -e '.assets[] | select(.name == "Packages")' "$RUNNER_TEMP/pool-assets.json" > /dev/null; then
+            gh release download pool --pattern Packages --dir current-index --clobber
+          fi
+          python3 scripts/generate-flat-repository.py current-index flat "$RUNNER_TEMP/pool-assets.json"
+      - name: Publish metadata beside existing deb assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh release upload pool --clobber flat/Packages flat/Packages.gz flat/Packages.xz flat/Release
+      - name: Verify with real APT and download a package
+        env:
+          GH_REPO: ${{ github.repository }}
+        run: bash scripts/check-flat-apt.sh "https://github.com/$GH_REPO/releases/download/pool"
