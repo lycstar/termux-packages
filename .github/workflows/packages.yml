@@ -524,6 +524,11 @@ jobs:
         GH_TOKEN: ${{ github.token }}
         GH_REPO: ${{ github.repository }}
       run: |
+        # deb 解压(原在 R2 步骤内, 本步骤独立成行)
+        mkdir -p new-debs
+        while IFS= read -r -d '' archive; do
+          tar -xf "$archive" -C new-debs
+        done < <(find artifacts -type f -name '*.tar' -print0)
         # 与 R2 步骤各自独立 shell: venv 不共享, 缺了就自建
         VENV="$RUNNER_TEMP/termux-apt-repo-venv"
         if [ ! -x "$VENV/bin/termux-apt-repo" ]; then
