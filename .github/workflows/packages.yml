@@ -85,6 +85,7 @@ jobs:
           base="${R2_PUBLIC_URL%/}"
           mirror_url="${base%/*}/termux-mirror"
         fi
+        echo "mirror-url=$mirror_url" >> "$GITHUB_OUTPUT"
         echo "Using signed upstream APT repositories for build dependencies."
 
     - name: Gather build summary
@@ -339,6 +340,26 @@ jobs:
         size /var
         size /var/lib
         size /var/
+
+    - name: Seed required source mirror entries
+      if: ${{ steps.build-info.outputs.skip-building != 'true' && steps.configure.outputs.mirror-url != '' }}
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: auto
+        R2_ENDPOINT: ${{ vars.R2_ENDPOINT }}
+        R2_BUCKET: ${{ vars.R2_BUCKET }}
+        MIRROR_URL: ${{ steps.configure.outputs.mirror-url }}
+      run: |
+        sha=87ca18392c10822a133b738118505f7d04e0b31ba1122bf5d32911311cb2dc7e
+        if [[ "$(curl -sS -o /dev/null -w '%{http_code}' "$MIRROR_URL/sha256/$sha")" != 200 ]]; then
+          tmp="$(mktemp)"
+          curl --fail --location --retry 3 --output "$tmp" \
+            "https://github.com/lycstar/termux-packages/releases/download/pool/apt-2.8.1.tar.bz2"
+          echo "$sha  $tmp" | sha256sum -c -
+          aws s3 cp "$tmp" "s3://${R2_BUCKET}/termux-mirror/sha256/$sha" \
+            --endpoint-url "$R2_ENDPOINT" --region auto
+        fi
 
     - name: Build packages
       if: ${{ steps.build-info.outputs.skip-building != 'true' }}
