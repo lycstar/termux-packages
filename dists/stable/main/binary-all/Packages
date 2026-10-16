@@ -7,11 +7,11 @@ Homepage: https://curl.se/docs/caextract.html
 Depends: ca-certificates (= 1:2026.09.25)
 Description: Common CA certificates (java keystore format)
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ca-certificates-java_1.2026.09.25_all.deb
-Size: 96188
-MD5Sum: de9ff28eb0d7427d3bab55253c178265
-SHA1: c54e5a34e28e4a153d17e53dbf743237e2903586
-SHA256: d942f83f14b242c0d8b47c72a6b6db88c945f36882a2a6b27cfc9db61b4ddae2
-SHA512: 9d2d556fd5adcc5cd4ce5d5032fba2c5c23e042d41856955434b26d4da223b9d49ee725b3a88614cdfed53c1d716e186f4cc42768a639021de11040d93a08f88
+Size: 96172
+MD5Sum: 3c5582d59b7f41949e6f6715baf6e3dc
+SHA1: 8c326a7a291ec07271c802e91b7b52006d3beb64
+SHA256: 5862614140d471430ac67b74a21076395aebc8c91fd04e36218f8d24e865c32b
+SHA512: 338af092ea50d73bca8d5a14a47975317406b7184b9407dc579821259b0a25c29d681861ec847a523ce2ef870ee92dbb8fcfe7c234320f20fd8db8a389892d5e
 
 Package: ca-certificates
 Architecture: all
@@ -21,9 +21,9 @@ Version: 1:2026.09.25
 Homepage: https://curl.se/docs/caextract.html
 Description: Common CA certificates
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ca-certificates_1.2026.09.25_all.deb
-Size: 105416
-MD5Sum: 5ea3d6d7886e2053767b341d24454df2
-SHA1: 10833af69e50a36090150e54127a31a13b95c300
-SHA256: caecd06fdc41825f297312522e0b7ea61d6f624544958f3e737f49988cb4c67a
-SHA512: 7e9d1e68cf9bc6e8b64fbeb46e6f649eb5be9ae20f6030bc78b82be64751fdf529e791d9c8e291acf8f743371937278c3106dcc40e54e403b7002a881ff8f6d8
+Size: 105424
+MD5Sum: 6f410648405e0dcdfedd1caa9eeaa7bc
+SHA1: 03c08bfcde48dd4818c8511b48f0da1f35a40159
+SHA256: bcd394026cdc88c314f9e9aff99a6d3b8eca32e88dac2c4c02fefa4c18374909
+SHA512: 2d2d3fd8f3c8a57757772c685376cce03162c29e4e71f8dd50f95b59fe7dc7520f5698709fbdb7484df7779b3bfc33be3450020c6c76c7b29562a3137af671db
 
