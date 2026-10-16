@@ -316,11 +316,12 @@ jobs:
             exit 0
           fi
           for archive in output/bootstrap-*.zip; do
-            arch="${archive#output/bootstrap-}"
+            name="$(basename "$archive")"
+            arch="${name#bootstrap-}"
             arch="${arch%.zip}"
-            sha256sum "$archive" > "$archive.sha256"
-            aws s3 cp "$archive" "s3://${R2_BUCKET}/bootstrap/$arch/$archive" \
+            sha256sum "$archive" > "${name}.sha256"
+            aws s3 cp "$archive" "s3://${R2_BUCKET}/bootstrap/$arch/$name" \
               --endpoint-url "$R2_ENDPOINT" --region auto
-            aws s3 cp "$archive.sha256" "s3://${R2_BUCKET}/bootstrap/$arch/$archive.sha256" \
+            aws s3 cp "${name}.sha256" "s3://${R2_BUCKET}/bootstrap/$arch/${name}.sha256" \
               --endpoint-url "$R2_ENDPOINT" --region auto
           done
