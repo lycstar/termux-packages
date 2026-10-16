@@ -5,6 +5,7 @@ Requires termux-apt-repo==0.5, ar, tar, and xz.
 """
 
 import hashlib
+import gzip
 import io
 import json
 import lzma
@@ -17,6 +18,31 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[2]
+
+
+class FinalizeIndexTests(unittest.TestCase):
+    def test_contents_is_published_at_distribution_root_as_gzip(self):
+        with tempfile.TemporaryDirectory(prefix="sparrow-finalize-") as temp:
+            repository = Path(temp) / "dists/stable/main"
+            repository.mkdir(parents=True)
+            (repository / "Contents-aarch64").write_text("usr/bin/demo demo\n")
+            (repository / "Contents-aarch64.xz").write_bytes(b"stale")
+            release = repository.parent / "Release"
+            release.write_text(
+                "Codename: termux\nArchitectures: aarch64\nMD5Sum:\n"
+            )
+            subprocess.run(
+                ["python3", str(ROOT / "scripts/finalize-r2-repository.py"), temp],
+                check=True,
+            )
+            root_contents = repository.parent / "Contents-aarch64"
+            root_gzip = repository.parent / "Contents-aarch64.gz"
+            self.assertEqual(root_contents.read_text(), "usr/bin/demo demo\n")
+            with gzip.open(root_gzip, "rt") as compressed:
+                self.assertEqual(compressed.read(), root_contents.read_text())
+            self.assertFalse((repository / "Contents-aarch64").exists())
+            self.assertFalse((repository / "Contents-aarch64.xz").exists())
+            self.assertIn("Contents-aarch64.gz", release.read_text())
 
 
 class PublishingTests(unittest.TestCase):

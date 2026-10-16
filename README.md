@@ -17,6 +17,24 @@
 This project contains scripts and patches to build packages for the [Termux](https://github.com/termux/termux-app)
 Android application.
 
+## Sparrow bootstrap builds
+
+The bootstrap workflow follows Termux's published flow: it downloads the selected
+packages and their declared dependencies from the cumulative Sparrow APT repository
+and extracts only that dependency closure. It does not collect every `.deb` left by
+a source build, so build-only subpackages cannot enter the runtime bootstrap.
+
+For the same build locally, run:
+
+```sh
+./scripts/generate-bootstraps.sh --architectures aarch64 \
+  --repository https://packages.example/apt/termux-main
+```
+
+The package workflow keeps `repo.json` limited to directories present in this
+fork. The root and X11 repositories are not advertised until their package
+trees exist, so command-not-found does not probe URLs that cannot be published.
+
 Quick how-to about Termux package management is available at [Package Management](https://github.com/termux/termux-packages/wiki/Package-Management). It also has info on how to fix **`repository is under maintenance or down`** errors when running `apt` or `pkg` commands.
 
 ## Contributing

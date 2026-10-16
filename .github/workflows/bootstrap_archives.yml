@@ -8,11 +8,6 @@ on:
         type: string
         required: true
         default: aarch64
-      source_run_id:
-        description: Existing bootstrap run to publish without rebuilding (leave empty to build)
-        type: string
-        required: false
-        default: ''
 
 permissions: {}
 
@@ -23,9 +18,8 @@ concurrency:
 
 jobs:
   build:
-    if: ${{ inputs.source_run_id == '' }}
     permissions:
-      contents: read
+      contents: write
     runs-on: ubuntu-26.04
     steps:
       - name: Check out repository
@@ -33,329 +27,75 @@ jobs:
 
       - name: Check source downloader
         run: |
-          bash -n scripts/build/termux_download.sh scripts/build/termux_source_mirrors.sh scripts/build-bootstraps.sh
-          python3 -m unittest discover -s scripts/tests -p 'test_source_download.py' -v
-
-      - name: Restore verified source cache
-        uses: actions/cache/restore@v4
-        with:
-          path: output/.source-cache
-          key: source-archives-v1-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: |
-            source-archives-v1-
-
-      # actions/cache restores files owned by the runner uid, but the build
-      # container writes as uid 1000 (builder) — without this, .source-cache
-      # mkdir fails with Permission denied and the cache is never populated.
-      - name: Prepare workspace for the builder container
-        run: |
-          # 产物目录: AppArmor 只允许容器写 output/**, 缓存和 zip 都放这里
-          mkdir -p output/.source-cache
+          bash -n scripts/generate-bootstraps.sh
 
       - name: Configure package repository URL
         id: configure
         env:
           R2_PUBLIC_URL: ${{ vars.R2_PUBLIC_URL }}
-          R2_ENDPOINT: ${{ vars.R2_ENDPOINT }}
-          R2_BUCKET: ${{ vars.R2_BUCKET }}
         run: |
-          mirror_url=""
-          if [[ -n "$R2_ENDPOINT$R2_BUCKET" && -z "$R2_PUBLIC_URL" ]]; then
-            echo "::error::Set R2_PUBLIC_URL before building bootstrap for R2."
+          if [[ -z "$R2_PUBLIC_URL" ]]; then
+            echo "::error::Set R2_PUBLIC_URL before generating the bootstrap."
             exit 1
           fi
-          if [[ -n "$R2_PUBLIC_URL" ]]; then
-            base="${R2_PUBLIC_URL%/}"
-            # 私有源镜像(按 sha256 寻址): 与 APT 同桶的另一前缀
-            mirror_url="${base%/*}/termux-mirror"
-            # bootstrap 只含 termux-main 的包; 删掉 x11/root 条目, 否则
-            # command-not-found 的 generate-db.js 会去请求不存在的源而 404
-            jq --arg main "$base/apt/termux-main" \
-              '.packages.url = $main | del(.["root-packages"]) | del(.["x11-packages"])' \
-              repo.json > repo.json.tmp
-            mv repo.json.tmp repo.json
-          fi
-          echo "mirror-url=$mirror_url" >> "$GITHUB_OUTPUT"
+          echo "repository=${R2_PUBLIC_URL%/}/apt/termux-main" >> "$GITHUB_OUTPUT"
 
-      - name: Seed private source mirror
-        if: ${{ steps.configure.outputs.mirror-url != '' }}
+      - name: Generate bootstrap archives from the published package repository
+        id: generate
+        env:
+          ARCHITECTURES: ${{ inputs.architectures }}
+          REPOSITORY: ${{ steps.configure.outputs.repository }}
+        run: |
+          for arch in ${ARCHITECTURES//,/ }; do
+            curl --fail --location --silent --show-error --max-time 30 \
+              --output /dev/null \
+              "$REPOSITORY/dists/stable/main/binary-${arch}/Packages" \
+              || { echo "::error::Sparrow APT index is missing for ${arch}: $REPOSITORY"; exit 1; }
+          done
+          ./scripts/generate-bootstraps.sh \
+            --architectures "$ARCHITECTURES" \
+            --repository "$REPOSITORY"
+
+      - name: Store bootstrap archives
+        uses: actions/upload-artifact@v7
+        with:
+          name: bootstrap-archives-${{ github.run_id }}
+          path: bootstrap-*.zip
+          if-no-files-found: error
+
+      - name: Publish bootstrap to R2
+        if: vars.R2_ENDPOINT != '' && vars.R2_BUCKET != ''
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: auto
           R2_ENDPOINT: ${{ vars.R2_ENDPOINT }}
           R2_BUCKET: ${{ vars.R2_BUCKET }}
-          MIRROR_URL: ${{ steps.configure.outputs.mirror-url }}
         run: |
-          # 上游源(docbook.org 等)对 CI 间歇抽风; 首次从公共镜像取得后
-          # 按 sha256 播种进 R2, termux_download 之后会自动回退到这里。
-          seed() {
-            local name="$1" sha="$2"; shift 2
-            local src tmp code
-            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 -L "$MIRROR_URL/sha256/$sha") || true
-            [[ "$code" == 200 ]] && { echo "mirror already has $name"; return 0; }
-            tmp=$(mktemp)
-            for src in "$@"; do
-              curl -sL --max-time 120 -o "$tmp" "$src" || continue
-              [[ "$(sha256sum "$tmp" | cut -d' ' -f1)" == "$sha" ]] || continue
-              aws s3 cp "$tmp" "s3://${R2_BUCKET}/termux-mirror/sha256/$sha" \
-                --endpoint-url "$R2_ENDPOINT" --region auto
-              echo "seeded $name ($sha)"
-              rm -f "$tmp"
-              return 0
-            done
-            rm -f "$tmp"
-            echo "::warning::could not seed $name"
-          }
-          seed docbkx412.zip 30f0644064e0ea71751438251940b1431f46acada814a062870f486c772e7772 \
-            "https://archive.docbook.org/xml/4.1.2/docbkx412.zip" \
-            "https://distfiles.macports.org/docbook-xml/docbkx412.zip"
-          seed keyutil-0.4.0.jar 18f1d2c82839d84949b1ad015343c509e81ef678c24db6112acc6c0761314610 \
-            "https://github.com/use-sparingly/keyutil/releases/download/0.4.0/keyutil-0.4.0.jar" \
-            "https://gh-proxy.com/https://github.com/use-sparingly/keyutil/releases/download/0.4.0/keyutil-0.4.0.jar"
-          seed tcl8.6.16-src.tar.gz 91cb8fa61771c63c262efb553059b7c7ad6757afa5857af6265e4b0bdc2a14a5 \
-            "https://downloads.sourceforge.net/project/tcl/Tcl/8.6.16/tcl8.6.16-src.tar.gz" \
-            "https://distfiles.macports.org/tcl/tcl8.6.16-src.tar.gz"
-          seed apt-2.8.1.tar.bz2 87ca18392c10822a133b738118505f7d04e0b31ba1122bf5d32911311cb2dc7e \
-            "https://salsa.debian.org/apt-team/apt/-/archive/2.8.1/apt-2.8.1.tar.bz2" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/apt-2.8.1.tar.bz2"
-          seed pcre2-10.49.tar.bz2 53c156e1ba416a20da8e65395daa132da0d80e76910424caca3fcdae7831d384 \
-            "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.49/pcre2-10.49.tar.bz2" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/pcre2-10.49.tar.bz2"
-          seed android-ndk-r30-linux.zip 753611f410d002cfcd3f3dc2ef49aad532089d3180b436c060a90bf0fcb64df2 \
-            "https://dl.google.com/android/repository/android-ndk-r30-linux.zip" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/android-ndk-r30-linux.zip"
-          seed gmp-6.3.0.tar.xz a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898 \
-            "https://mirrors.kernel.org/gnu/gmp/gmp-6.3.0.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/gmp-6.3.0.tar.xz"
-          seed libiconv-1.19.tar.gz 88dd96a8c0464eca144fc791ae60cd31cd8ee78321e67397e25fc095c4a19aa6 \
-            "https://mirrors.kernel.org/gnu/libiconv/libiconv-1.19.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/libiconv-1.19.tar.gz"
-          seed zlib-1.3.2.tar.xz d7a0654783a4da529d1bb793b7ad9c3318020af77667bcae35f95d0e42a792f3 \
-            "https://github.com/madler/zlib/releases/download/v1.3.2/zlib-1.3.2.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/zlib-1.3.2.tar.xz"
-          seed coreutils-9.12.tar.xz a480198559733e9b3da999e90543ac6f888a2caa544d8d664c5a1f17e528e210 \
-            "https://mirrors.kernel.org/gnu/coreutils/coreutils-9.12.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/coreutils-9.12.tar.xz"
-          seed gdbm-1.26.tar.gz 6a24504a14de4a744103dcb936be976df6fbe88ccff26065e54c1c47946f4a5e \
-            "https://mirrors.kernel.org/gnu/gdbm/gdbm-1.26.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/gdbm-1.26.tar.gz"
-          seed bzip2-1.0.8.tar.xz 47fd74b2ff83effad0ddf62074e6fad1f6b4a77a96e121ab421c20a216371a1f \
-            "https://fossies.org/linux/misc/bzip2-1.0.8.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/bzip2-1.0.8.tar.xz"
-          seed libffi-3.8.0.tar.gz 7da3e2d9a171eb0a038f592ecad3ff2bb2550f3496d87b3b29ad0cf4430c0db4 \
-            "https://github.com/libffi/libffi/releases/download/v3.8.0/libffi-3.8.0.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/libffi-3.8.0.tar.gz"
-          seed xz-5.8.4.tar.xz 4ce24038fd4221e0d13bc1a2de7a4db56e90b92b3bf75321f6c14be73f65de4b \
-            "https://github.com/tukaani-project/xz/releases/download/v5.8.4/xz-5.8.4.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/xz-5.8.4.tar.xz"
-          seed tcl8.6.16-src.tar.gz 91cb8fa61771c63c262efb553059b7c7ad6757afa5857af6265e4b0bdc2a14a5 \
-            "https://downloads.sourceforge.net/project/tcl/Tcl/8.6.16/tcl8.6.16-src.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/tcl8.6.16-src.tar.gz"
-          seed v1.2.0.tar.gz 816c96e8e8f193b40151dad7e8ff37b1221d019dbcb9c35cd3fadbfe6477dfec \
-            "https://github.com/google/brotli/archive/refs/tags/v1.2.0.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/v1.2.0.tar.gz"
-          seed freetype-2.15.0.tar.xz 93cd47eb719c325107f2d3cf087d06299e944c3b48a40b55537302304dea1dd5 \
-            "https://downloads.sourceforge.net/freetype/freetype-2.15.0.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/freetype-2.15.0.tar.xz"
-          seed dejavu-fonts-ttf-2.37.tar.bz2 fa9ca4d13871dd122f61258a80d01751d603b4d3ee14095d65453b4e846e17d7 \
-            "https://downloads.sourceforge.net/project/dejavu/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/dejavu-fonts-ttf-2.37.tar.bz2"
-          seed fontconfig-2.18.3.tar.gz 9ae01e1d53acdef56010c5451cd34aa41d325b2faccd8606448d8fa01b2496b3 \
-            "https://gitlab.freedesktop.org/fontconfig/fontconfig/-/archive/2.18.3/fontconfig-2.18.3.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/fontconfig-2.18.3.tar.gz"
-          seed xorgproto-2026.1.tar.xz f9bfe4a9ed8c8ab9d2a3b0d49797f046052dadd06b7a8b45dbffaffb137e8290 \
-            "https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2026.1.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/xorgproto-2026.1.tar.xz"
-          seed libXdmcp-1.1.5.tar.xz d8a5222828c3adab70adf69a5583f1d32eb5ece04304f7f8392b6a353aa2228c \
-            "https://xorg.freedesktop.org/archive/individual/lib/libXdmcp-1.1.5.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/libXdmcp-1.1.5.tar.xz"
-          seed xtrans-1.6.0.tar.xz faafea166bf2451a173d9d593352940ec6404145c5d1da5c213423ce4d359e92 \
-            "https://xorg.freedesktop.org/releases/individual/lib/xtrans-1.6.0.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/xtrans-1.6.0.tar.xz"
-          seed libX11-1.8.13.tar.xz 69606f485c2c07c14ef64f75b7bb326d48587af33795d9ab3e607c0b5f94f11c \
-            "https://xorg.freedesktop.org/releases/individual/lib/libX11-1.8.13.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/libX11-1.8.13.tar.xz"
-          seed libXft-2.3.9.tar.xz 60a25b78945ed6932635b3bb1899a517d31df7456e69867ffba27f89ff3976f5 \
-            "https://xorg.freedesktop.org/releases/individual/lib/libXft-2.3.9.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/libXft-2.3.9.tar.xz"
-          seed libXext-1.3.7.tar.xz 6c643c7035cdacf67afd68f25d01b90ef889d546c9fcd7c0adf7c2cf91e3a32d \
-            "https://xorg.freedesktop.org/releases/individual/lib/libXext-1.3.7.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/libXext-1.3.7.tar.xz"
-          seed tk8.6.14-src.tar.gz 8ffdb720f47a6ca6107eac2dd877e30b0ef7fac14f3a84ebbd0b3612cee41a94 \
-            "https://downloads.sourceforge.net/sourceforge/tcl/tk8.6.14-src.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/tk8.6.14-src.tar.gz"
-          seed v1.5.7.tar.gz 37d7284556b20954e56e1ca85b80226768902e2edabd3b649e9e72c0c9012ee3 \
-            "https://github.com/facebook/zstd/archive/refs/tags/v1.5.7.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/v1.5.7.tar.gz"
-          seed Python-3.14.6.tar.xz 143b1dddefaec3bd2e21e3b839b34a2b7fb9842272883c576420d605e9f30c63 \
-            "https://www.python.org/ftp/python/3.14.6/Python-3.14.6.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/Python-3.14.6.tar.xz"
-          seed libgcrypt-1.12.4.tar.bz2 d77f68f48879510e79a2f65977ccc68981781ea0923e5bdffac2a193ea3d660e \
-            "https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.12.4.tar.bz2" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/libgcrypt-1.12.4.tar.bz2"
-          seed diffutils-3.12.tar.xz 7c8b7f9fc8609141fdea9cece85249d308624391ff61dedaf528fcb337727dfd \
-            "https://mirrors.kernel.org/gnu/diffutils/diffutils-3.12.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/diffutils-3.12.tar.xz"
-          seed libmd-1.3.0.tar.xz fc0f1eb6b6766470326f2c014693809190e67dba84274a6fbae9d4912d066706 \
-            "https://archive.hadrons.org/software/libmd/libmd-1.3.0.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/libmd-1.3.0.tar.xz"
-          seed make-4.4.1.tar.gz dd16fb1d67bfab79a72f5e8390735c49e3e8e70b4945a15ab1f81ddb78658fb3 \
-            "https://mirrors.kernel.org/gnu/make/make-4.4.1.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/make-4.4.1.tar.gz"
-          seed v0.4.tar.gz 579dd000d084e2647d7b907d3c4ef2c46c8cda703e371ed1df32f4dd0366e25d \
-            "https://github.com/termux/libandroid-utimes/archive/refs/tags/v0.4.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/v0.4.tar.gz"
-          seed acl-2.4.0.tar.gz 73c853c3d44e1f693e5a96a986f1bd19d3d0dac2c7d453e796177774bc4e5f6a \
-            "https://download.savannah.gnu.org/releases/acl/acl-2.4.0.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/acl-2.4.0.tar.gz"
-          seed findutils-4.11.0.tar.xz bfd19cb06cc71f3352d567e90284d8cdac02ac89774bbeadf0b533b0c11432fd \
-            "https://mirrors.kernel.org/gnu/findutils/findutils-4.11.0.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/findutils-4.11.0.tar.xz"
-          seed libassuan-3.0.2.tar.bz2 d2931cdad266e633510f9970e1a2f346055e351bb19f9b78912475b8074c36f6 \
-            "https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-3.0.2.tar.bz2" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/libassuan-3.0.2.tar.bz2"
-          seed libunistring-1.4.2.tar.xz 5b46e74377ed7409c5b75e7a96f95377b095623b689d8522620927964a41499c \
-            "https://mirrors.kernel.org/gnu/libunistring/libunistring-1.4.2.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/libunistring-1.4.2.tar.xz"
-          seed libidn2-2.3.8.tar.gz f557911bf6171621e1f72ff35f5b1825bb35b52ed45325dcdee931e5d3c0787a \
-            "https://mirrors.kernel.org/gnu/libidn/libidn2-2.3.8.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/libidn2-2.3.8.tar.gz"
-          seed libtasn1-4.21.0.tar.gz 1d8a444a223cc5464240777346e125de51d8e6abf0b8bac742ac84609167dc87 \
-            "https://mirrors.kernel.org/gnu/libtasn1/libtasn1-4.21.0.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/libtasn1-4.21.0.tar.gz"
-          seed release-2.1.13-stable.tar.gz 1a0885e17dc78afbaeddf13cf849f9238bbc24acdc178464a0d1934d7c5ffbd5 \
-            "https://github.com/libevent/libevent/archive/refs/tags/release-2.1.13-stable.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/release-2.1.13-stable.tar.gz"
-          seed nghttp2-1.70.0.tar.xz e05cb1388eaca3830aded4ccf20044b6e1ac1a61411dcca11b0437c4285c8bc2 \
-            "https://github.com/nghttp2/nghttp2/releases/download/v1.70.0/nghttp2-1.70.0.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/nghttp2-1.70.0.tar.xz"
-          seed swig-4.5.1.tar.gz 7fec50b27deddab5455a9633780b6341eddfb96215a7619e93a76eb27178f653 \
-            "https://downloads.sourceforge.net/swig/swig-4.5.1.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/swig-4.5.1.tar.gz"
-          seed unbound-1.26.1.tar.gz 35a6dc0e425a9282c3426d9a3043144011bf0534aed4b73ab62c52aee0af1503 \
-            "https://nlnetlabs.nl/downloads/unbound/unbound-1.26.1.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/unbound-1.26.1.tar.gz"
-          seed nghttp3-1.18.0.tar.xz aad782c23d3f01bd4bb52c8bac7a553b631ef8115fd1612703df6183449fef19 \
-            "https://github.com/ngtcp2/nghttp3/releases/download/v1.18.0/nghttp3-1.18.0.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/nghttp3-1.18.0.tar.xz"
-          seed libssh2-1.11.1.tar.gz d9ec76cbe34db98eec3539fe2c899d26b0c837cb3eb466a56b0f109cabf658f7 \
-            "https://www.libssh2.org/download/libssh2-1.11.1.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/libssh2-1.11.1.tar.gz"
-          seed psmisc-23.7.tar.xz 58c55d9c1402474065adae669511c191de374b0871eec781239ab400b907c327 \
-            "https://fossies.org/linux/misc/psmisc-23.7.tar.xz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/psmisc-23.7.tar.xz"
-          seed v0.8.1.tar.gz bdfd0c9f1c544a779be0a73393580f75303818775f3396c6b93adc7d5ba6116e \
-            "https://github.com/termux/TermuxAm/archive/refs/tags/v0.8.1.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/v0.8.1.tar.gz"
-          seed 1.5.0.tar.gz 5175023c7fd675492451a72d06b75c772f257685b69fe117227bae5a5e6f5494 \
-            "https://github.com/termux/termux-am-socket/archive/refs/tags/1.5.0.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/1.5.0.tar.gz"
-          seed v0.4.0.tar.gz af6299f341292ca98d1748a06e342fe29fbc9eb485a7c1ba5c9f91ba72b4f44a \
-            "https://github.com/termux/termux-core-package/archive/refs/tags/v0.4.0.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/v0.4.0.tar.gz"
-          seed v1.45.0.tar.gz 1ae29b1b875d95cc626dae323b45a2ace759969862d96094b2fa6d13bffe20d2 \
-            "https://github.com/termux/termux-tools/archive/refs/tags/v1.45.0.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/v1.45.0.tar.gz"
-          seed libksba-1.8.1.tar.bz2 c2f84393011827219ae117131dba8e7684c2bed0961eed11b0642c2acba440b5 \
-            "https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.8.1.tar.bz2" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/libksba-1.8.1.tar.bz2"
-          seed npth-1.8.tar.bz2 8bd24b4f23a3065d6e5b26e98aba9ce783ea4fd781069c1b35d149694e90ca3e \
-            "https://www.gnupg.org/ftp/gcrypt/npth/npth-1.8.tar.bz2" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/npth-1.8.tar.bz2"
-          seed libusb-1.0.30.tar.bz2 fea36f34f9156400209595e300840767ab1a385ede1dc7ee893015aea9c6dbaf \
-            "https://github.com/libusb/libusb/releases/download/v1.0.30/libusb-1.0.30.tar.bz2" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/libusb-1.0.30.tar.bz2"
-          seed pinentry-1.3.3.tar.bz2 c2970f16d6afb66ecddfca767d743936c86239bff936eed7fd7597a678414b63 \
-            "https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.3.3.tar.bz2" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/pinentry-1.3.3.tar.bz2"
-          seed v1.10.0.tar.gz 537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b \
-            "https://github.com/lz4/lz4/archive/refs/tags/v1.10.0.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/v1.10.0.tar.gz"
-          seed v0.8.4.tar.gz 5738270935e7c3d38a79b3adf7c9692566ce7895a25f67de43ad52ab504acd32 \
-            "https://github.com/Cyan4973/xxHash/archive/refs/tags/v0.8.4.tar.gz" \
-            "https://github.com/lycstar/termux-packages/releases/download/pool/v0.8.4.tar.gz"
-
-      - name: Enable zram
-        uses: ./.github/actions/zram
-        with:
-          algorithm: zstd
-          size: 16G
-          priority: 100
-          device_name: /dev/zram0
-
-      - name: Build bootstrap archives from fork packages
-        env:
-          ARCHITECTURES: ${{ inputs.architectures }}
-          TERMUX_DOCKER_EXEC_EXTRA_ARGS: >-
-            --env TERMUX_SOURCE_CACHE_DIR=/home/builder/termux-packages/output/.source-cache
-            --env TERMUX_SOURCE_MIRRORS=${{ steps.configure.outputs.mirror-url }}
-        run: |
-          args=(--architectures "$ARCHITECTURES")
-          ./scripts/run-docker.sh ./scripts/build-bootstraps.sh "${args[@]}"
-
-      - name: Save verified source cache even after build failure
-        if: ${{ always() && !cancelled() }}
-        uses: actions/cache/save@v4
-        with:
-          path: output/.source-cache
-          key: source-archives-v1-${{ github.run_id }}-${{ github.run_attempt }}
-
-      - name: Store bootstrap archives
-        uses: actions/upload-artifact@v7
-        with:
-          name: bootstrap-archives-${{ github.run_id }}
-          path: output/bootstrap-*.zip
-          if-no-files-found: error
-
-  publish:
-    needs: build
-    if: ${{ !cancelled() && (needs.build.result == 'success' || (needs.build.result == 'skipped' && inputs.source_run_id != '')) }}
-    permissions:
-      actions: read
-      contents: write
-    runs-on: ubuntu-26.04
-    steps:
-      - name: Download bootstrap archives
-        uses: actions/download-artifact@v8
-        with:
-          name: bootstrap-archives-${{ inputs.source_run_id || github.run_id }}
-          run-id: ${{ inputs.source_run_id || github.run_id }}
-          path: output
-          github-token: ${{ github.token }}
-
-      - name: Verify archives and generate checksums
-        working-directory: output
-        shell: bash
-        run: |
-          set -euo pipefail
-          shopt -s nullglob
-          archives=(bootstrap-*.zip)
-          if (( ${#archives[@]} == 0 )); then
-            echo "::error::No bootstrap archives found in the source artifact."
-            exit 1
+          if [[ -z "$AWS_ACCESS_KEY_ID" || -z "$AWS_SECRET_ACCESS_KEY" ]]; then
+            echo "::warning::R2 credentials are not configured; bootstrap was saved only as an Actions artifact."
+            exit 0
           fi
-          for archive in "${archives[@]}"; do
-            unzip -tq "$archive"
+          for archive in bootstrap-*.zip; do
+            arch="${archive#bootstrap-}"
+            arch="${arch%.zip}"
             sha256sum "$archive" > "$archive.sha256"
-            sha256sum -c "$archive.sha256"
+            aws s3 cp "$archive" "s3://${R2_BUCKET}/bootstrap/$arch/$archive" \
+              --endpoint-url "$R2_ENDPOINT" --region auto
+            aws s3 cp "$archive.sha256" "s3://${R2_BUCKET}/bootstrap/$arch/$archive.sha256" \
+              --endpoint-url "$R2_ENDPOINT" --region auto
           done
 
-      - name: Store verified bootstrap archives and checksums
-        uses: actions/upload-artifact@v7
-        with:
-          name: bootstrap-release-${{ github.run_id }}-${{ github.run_attempt }}
-          path: |
-            output/bootstrap-*.zip
-            output/bootstrap-*.zip.sha256
-          if-no-files-found: error
-
-      - name: Publish bootstrap to pool release
+      - name: Publish bootstrap to the Sparrow pool release
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
           gh release view pool -R "$GH_REPO" --json id >/dev/null 2>&1 \
-            || gh release create pool -R "$GH_REPO" -t "APT deb pool" --notes "rolling"
-          gh release upload pool output/bootstrap-*.zip output/bootstrap-*.zip.sha256 \
-            -R "$GH_REPO" --clobber
+            || gh release create pool -R "$GH_REPO" \
+              --title "Sparrow package pool" --notes "Rolling package and bootstrap assets"
+          for archive in bootstrap-*.zip; do
+            sha256sum "$archive" > "$archive.sha256"
+          done
+          gh release upload pool -R "$GH_REPO" --clobber \
+            bootstrap-*.zip bootstrap-*.zip.sha256

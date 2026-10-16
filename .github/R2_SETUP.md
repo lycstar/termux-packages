@@ -35,6 +35,8 @@ The single bucket is laid out as follows:
 apt/termux-main/
   dists/stable/main/binary-aarch64/Packages
   dists/stable/main/binary-aarch64/Packages.xz
+  dists/stable/Contents-aarch64
+  dists/stable/Contents-aarch64.gz
   dists/stable/main/binary-aarch64/*.deb
   dists/stable/main/binary-all/*.deb
   dists/stable/Release
@@ -44,8 +46,10 @@ bootstrap/aarch64/bootstrap-aarch64.zip.sha256
 ```
 
 Run `Packages` with the manual input `git openjdk-17` for the initial package
-set. The bootstrap workflow defaults to `aarch64` and does not add optional
-packages.
+set. The bootstrap workflow defaults to `aarch64` and follows Termux's
+`generate-bootstraps.sh`: it reads the published `Packages` index and recursively
+downloads the declared runtime dependencies. Build output files that are not in
+that dependency closure are never copied into the bootstrap.
 
 The package workflow builds dependencies from source without `-i`/`-I`. R2 is
 the publishing destination, not a prerequisite for building: the first build
@@ -58,8 +62,10 @@ Set all three variables before starting either build: `R2_PUBLIC_URL` is embedde
 in the bootstrap's APT sources. Changing it later requires rebuilding bootstrap
 and the `apt` package. Without R2 configuration, workflows only save Actions
 artifacts; these use the placeholder URL and are not ready for installation.
-Missing credentials produce a warning and leave artifacts available for download.
-These workflows do not create GitHub Releases.
+Missing credentials produce a warning and leave the Actions artifact available for
+download. Bootstrap archives are also copied to the rolling GitHub `pool` release
+because the Sparrow app uses that stable download URL; the R2 copy remains useful
+as an operator-managed mirror.
 
 Package publishing jobs queue behind one shared lock. Each job downloads old
 `.deb` files, merges new files, and regenerates the complete indexes, including
@@ -67,4 +73,7 @@ Package publishing jobs queue behind one shared lock. Each job downloads old
 first, indexes next, and `Release` last. Old versions are retained, including
 when the same package is rebuilt; no remote objects are deleted. If a custom
 domain uses Cloudflare caching, bypass caching for APT metadata (`Packages*`,
-`Contents*`, and `Release`) to avoid serving stale indexes.
+`Contents*`, and `Release`) to avoid serving stale indexes. The publisher
+converts the `Contents-*` files produced by `termux-apt-repo` into the official
+Termux layout at `dists/<distribution>/Contents-<arch>.gz`, which is the path
+used by `command-not-found`.
