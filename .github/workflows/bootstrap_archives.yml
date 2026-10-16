@@ -8,6 +8,11 @@ on:
         type: string
         required: true
         default: aarch64
+      source_run_id:
+        description: Existing bootstrap run to publish without rebuilding (leave empty to build)
+        type: string
+        required: false
+        default: ''
 
 permissions: {}
 
@@ -18,8 +23,9 @@ concurrency:
 
 jobs:
   build:
+    if: ${{ inputs.source_run_id == '' }}
     permissions:
-      contents: write
+      contents: read
     runs-on: ubuntu-26.04
     steps:
       - name: Check out repository
@@ -302,34 +308,54 @@ jobs:
           path: output/bootstrap-*.zip
           if-no-files-found: error
 
+  publish:
+    needs: build
+    if: ${{ !cancelled() && (needs.build.result == 'success' || (needs.build.result == 'skipped' && inputs.source_run_id != '')) }}
+    permissions:
+      actions: read
+      contents: write
+    runs-on: ubuntu-26.04
+    steps:
+      - name: Download bootstrap archives
+        uses: actions/download-artifact@v8
+        with:
+          name: bootstrap-archives-${{ inputs.source_run_id || github.run_id }}
+          run-id: ${{ inputs.source_run_id || github.run_id }}
+          path: output
+          github-token: ${{ github.token }}
+
+      - name: Verify archives and generate checksums
+        working-directory: output
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          archives=(bootstrap-*.zip)
+          if (( ${#archives[@]} == 0 )); then
+            echo "::error::No bootstrap archives found in the source artifact."
+            exit 1
+          fi
+          for archive in "${archives[@]}"; do
+            unzip -tq "$archive"
+            sha256sum "$archive" > "$archive.sha256"
+            sha256sum -c "$archive.sha256"
+          done
+
+      - name: Store verified bootstrap archives and checksums
+        uses: actions/upload-artifact@v7
+        with:
+          name: bootstrap-release-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            output/bootstrap-*.zip
+            output/bootstrap-*.zip.sha256
+          if-no-files-found: error
+
       - name: Publish bootstrap to pool release
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          gh release view pool -R "$GH_REPO" 2>/dev/null             || gh release create pool -R "$GH_REPO" -t "APT deb pool" --notes "rolling"
-          gh release upload pool output/bootstrap-*.zip output/*.sha256             -R "$GH_REPO" --clobber
-
-      # - name: Publish bootstrap to R2
-      #   if: vars.R2_ENDPOINT != '' && vars.R2_BUCKET != ''
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-      #     AWS_DEFAULT_REGION: auto
-      #     R2_ENDPOINT: ${{ vars.R2_ENDPOINT }}
-      #     R2_BUCKET: ${{ vars.R2_BUCKET }}
-      #   run: |
-      #     if [[ -z "$AWS_ACCESS_KEY_ID" || -z "$AWS_SECRET_ACCESS_KEY" ]]; then
-      #       echo "::warning::R2 credentials are not configured; bootstrap was saved only as an Actions artifact."
-      #       exit 0
-      #     fi
-      #     for archive in output/bootstrap-*.zip; do
-      #       name="$(basename "$archive")"
-      #       arch="${name#bootstrap-}"
-      #       arch="${arch%.zip}"
-      #       sha256sum "$archive" > "${name}.sha256"
-      #       aws s3 cp "$archive" "s3://${R2_BUCKET}/bootstrap/$arch/$name" \
-      #         --endpoint-url "$R2_ENDPOINT" --region auto
-      #       aws s3 cp "${name}.sha256" "s3://${R2_BUCKET}/bootstrap/$arch/${name}.sha256" \
-      #         --endpoint-url "$R2_ENDPOINT" --region auto
-      #     done
+          gh release view pool -R "$GH_REPO" --json id >/dev/null 2>&1 \
+            || gh release create pool -R "$GH_REPO" -t "APT deb pool" --notes "rolling"
+          gh release upload pool output/bootstrap-*.zip output/bootstrap-*.zip.sha256 \
+            -R "$GH_REPO" --clobber
