@@ -1,3 +1,318 @@
+Package: abseil-cpp
+Architecture: aarch64
+Installed-Size: 9472
+Maintainer: @termux
+Version: 20260526.0
+Homepage: https://abseil.io/
+Depends: libc++
+Conflicts: libgrpc (<< 1.52.0-1)
+Description: Abseil C++ Common Libraries
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/abseil-cpp_20260526.0_aarch64.deb
+Size: 1198932
+MD5Sum: 7e104c7f20b796e4ad77a31b5df335b6
+SHA1: 951f79736bb9867087677691b4a0c9beafbfb2e1
+SHA256: d1a926d0c3b06cf817082c157b45d3b83d38fe5ecfb65ba655e5546ca9a9f75f
+SHA512: 0db3e8ee3d9c39b2d99efd699571de5addd575d2535067415a58c46146884a61c92e38e41473b4e146e3843193c0ebe10f422c0db97cc65a2dac0810ffdf38a3
+
+Package: android-tools
+Architecture: aarch64
+Installed-Size: 16720
+Maintainer: @termux
+Version: 37.0.0p1-1
+Homepage: https://developer.android.com/
+Depends: abseil-cpp, brotli, fmt, libc++, liblz4, libprotobuf, pcre2, zlib, zstd
+Description: Android platform tools
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/android-tools_37.0.0p1-1_aarch64.deb
+Size: 2374384
+MD5Sum: 1689e3671d22d472b8ac54803aab3eb6
+SHA1: 5740dc9b6cd7596effff51f0e699bb1d05b437bb
+SHA256: bdd558943919d4219684c00165a3c1dcecc7866f929f6caf3d2b93c28537d79d
+SHA512: e510f06f2c671e6e8cbcb1e944f85a45dbf9a8bf4b4acbf3097f6125d15de1f99411a0f028bdd85324b0413136fcb199436128276545b00c1b830868a78ab7a6
+
+Package: brotli
+Architecture: aarch64
+Installed-Size: 1052
+Maintainer: @termux
+Version: 1.2.0
+Homepage: https://github.com/google/brotli
+Breaks: brotli-dev
+Replaces: brotli-dev
+Description: lossless compression algorithm and format (command line utility)
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/brotli_1.2.0_aarch64.deb
+Size: 341352
+MD5Sum: 4d5f1d780c40ec2c7028636313db36a1
+SHA1: ef4b1e206fbb4e538a60ba68f9faa1dddf39605c
+SHA256: 9dffc0d48c625cba776608d15c138df343ac2c1b781dacc976b1cf0a1ec1f925
+SHA512: 8771c2b5c147dbc0a10b2ab25dfb0625cb2b841936f5d6bf5092d3d1072636c891e47f53af08863b7501b73e1c601f08e8132763141e6b2cd1f0e008ed29a0bf
+
+Package: fmt
+Architecture: aarch64
+Installed-Size: 824
+Maintainer: @termux
+Version: 1:11.2.0-1
+Homepage: https://fmt.dev/latest/index.html
+Depends: libc++
+Description: Open-source formatting library for C++
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/fmt_1.11.2.0-1_aarch64.deb
+Size: 168700
+MD5Sum: 3d1a5068bae6412c94a9044caa71ee35
+SHA1: d970dd76e1af0f39fbd086b373dc7d9cd6b53a79
+SHA256: e4e9fda363f4fe6e0d1f630f6bf48ab8503604593d74a64d98c41e1131f95d65
+SHA512: 5b24f630aa1cb2c42b6958a538f2409fb6f08f1deaf0bf7f57283a20c23e39f54076e1720eec76f89596ee01c8f7630549756039721feca3c1db8da5f633a8b2
+
+Package: googletest
+Architecture: aarch64
+Installed-Size: 1940
+Maintainer: @termux
+Version: 1.18.0
+Homepage: https://github.com/google/googletest
+Depends: libc++
+Conflicts: libgtest
+Replaces: libgtest
+Description: Google C++ testing framework
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/googletest_1.18.0_aarch64.deb
+Size: 356928
+MD5Sum: 938492883dab9bdd3b8a4e3e816b8f4d
+SHA1: 595894d465fe7aea7255e0049a65ed6ec078745f
+SHA256: 40a5d805319aa599ecbb2eb8794ebc3d4ef4a8664d82210397b9d6cf02c2d3b3
+SHA512: fcf7e2a8fd7f20cfde7c3e466be40d10073840f06996a0c0e42d63e567c6af5352f5599b8023ef667f1cc7c54932137751f8b1e4c970e66b1853828cb9e75d23
+
+Package: libc++
+Architecture: aarch64
+Installed-Size: 1432
+Maintainer: @termux
+Version: 30
+Homepage: https://libcxx.llvm.org/
+Essential: yes
+Description: C++ Standard Library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libc++_30_aarch64.deb
+Size: 341524
+MD5Sum: 838b102eefb81bf0ce627be9a70d6b12
+SHA1: 2fe58cf4c6e0e206c0df5d846e2a70a9ff7717b1
+SHA256: 7c6b219942b78a2500022e617260fe1999c89150ca19b496798f630bca1c6e80
+SHA512: 83fdc56ea512467da0e0c26e4c1fcc581f094cc3ba81f51ed8f53337f04bb76378eafc9db7f79981369a4684fc8adebcc7f2ea4ebeb1b8c4e816ce4d708cd87e
+
+Package: liblz4
+Architecture: aarch64
+Installed-Size: 340
+Maintainer: @termux
+Version: 1.10.0-1
+Homepage: https://lz4.github.io/lz4/
+Breaks: liblz4-dev
+Replaces: liblz4-dev
+Description: Fast LZ compression algorithm library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/liblz4_1.10.0-1_aarch64.deb
+Size: 86404
+MD5Sum: f92d076ee2f140bab84b034d3653d64a
+SHA1: fecb9ad263d8e878e6f4ca09a4cf804bf5c83ca1
+SHA256: 81e34a09e90e228d3cba430c3dfd5859150135de154fbdbf83b33f0ee47af7d5
+SHA512: aababc13a4a1b9bb3c004c9149a3c47233cd80812031664bfc0d7be38d51b01c007c18307bfd35fcd6f0fcb4d0f22412a870c28348530214df29a215368b09d9
+
+Package: liblzma-static
+Architecture: aarch64
+Installed-Size: 360
+Maintainer: @termux
+Version: 5.8.4
+Homepage: https://tukaani.org/xz/
+Depends: liblzma (= 5.8.4)
+Description: Static libraries for liblzma
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/liblzma-static_5.8.4_aarch64.deb
+Size: 89912
+MD5Sum: 74fc56a05bd87fe0c44bd7b3d7a6ecf2
+SHA1: 6c581d5eb621d472adc79655cd62735de141fde8
+SHA256: 1eb9801079bbf7f72b023bd48c599df0de538373590dc5df4d276e44d4aecc6b
+SHA512: 5df7efe5829ef2b55541f134bb09d63dbbe55b091ffe47ec617b94dc3fbee993ce47e56a061b7f9327ec9f8f5de25592b7835458ccab3c3ed41825d8b65996ea
+
+Package: liblzma
+Architecture: aarch64
+Installed-Size: 872
+Maintainer: @termux
+Version: 5.8.4
+Homepage: https://tukaani.org/xz/
+Breaks: liblzma-dev
+Essential: yes
+Replaces: liblzma-dev
+Description: XZ-format compression library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/liblzma_5.8.4_aarch64.deb
+Size: 194744
+MD5Sum: 894bab16cac0258304741121eddf0ded
+SHA1: 7b553881c270e854f4fd75a17c94fa944cc37835
+SHA256: c6c5a18297de6dd9ef40c0f7a0492d35f77a1f9c89321de47e0aad965c2e4f84
+SHA512: 2471e857aea52430c7ca25f362b01827ca11aa0746f91c252c14d91f1ecdf160c6f23f46ac7560b354a3065e83086c8914a4be056190dbc35e4a997f723235ee
+
+Package: libprotobuf
+Architecture: aarch64
+Installed-Size: 9528
+Maintainer: @termux
+Version: 2:36.2
+Homepage: https://github.com/protocolbuffers/protobuf
+Breaks: libprotobuf-dev, protobuf-dev, protobuf-static, libutf8-range
+Depends: abseil-cpp, libc++, zlib
+Conflicts: protobuf-static
+Replaces: libprotobuf-dev, protobuf-dev, protobuf-static, libutf8-range
+Description: Protocol buffers C++ library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libprotobuf_2.36.2_aarch64.deb
+Size: 1433936
+MD5Sum: 9e1820a7ff1c5a55aa9ba43c921db86e
+SHA1: becc5c3bf4c40d27e90f0f0e746b695c24321868
+SHA256: 2195c8b1f5d69f379edd88780a61eabb582d0eea263f8ffb3fc0b57b755970f6
+SHA512: 37325f759478a2a7c4f5d762273e716e626e3d3173873461a1dab006bb82e4949b6d3224f21c920ecc627a2c06550834e655f0a73d1c7ae53c3cb58e6f077bbd
+
+Package: lz4
+Architecture: aarch64
+Installed-Size: 284
+Maintainer: @termux
+Version: 1.10.0-1
+Homepage: https://lz4.github.io/lz4/
+Depends: liblz4 (= 1.10.0-1)
+Description: Fast LZ compression algorithm tool
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/lz4_1.10.0-1_aarch64.deb
+Size: 92404
+MD5Sum: f847f35355884e616de165e0889fdec9
+SHA1: e27c03bb08105677791289c0dea8d302d9ec7fcb
+SHA256: 122cca8c19d72110f9ce953010d09b91ba7cdfcccf07f8952b7c30e794ea1427
+SHA512: 6b22fb0b282e5102b9edfdaacf1cd71969cf5553889823d6ad213dabeab750214e0cd2dc14e446950485706d6773bdc0a2b2ab1f64cf41828bc723867fc07c09
+
+Package: pcre2-static
+Architecture: aarch64
+Installed-Size: 1836
+Maintainer: @termux
+Version: 10.49
+Homepage: https://pcre2project.github.io/pcre2/
+Depends: pcre2 (= 10.49)
+Description: Static libraries for pcre2
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/pcre2-static_10.49_aarch64.deb
+Size: 378820
+MD5Sum: 957c58ae43acff1777a5698defba3cc8
+SHA1: 1b71b1154fbfd0f165c6b65111cb906f9eac2b0f
+SHA256: 3a56a17281f3d4999cd470da269b3d5f8f497a0555ddb2a238045a9a77fd747f
+SHA512: 228dd2979b1a1cfcfbccacdf14a06ad47e8888bd32f59911ecba46eceda3d9c7e71946f533e71a56dd9dddda09a88df2dd1774622d8e4814be00ced2c4948fc0
+
+Package: pcre2
+Architecture: aarch64
+Installed-Size: 4432
+Maintainer: @termux
+Version: 10.49
+Homepage: https://pcre2project.github.io/pcre2/
+Breaks: pcre2-dev
+Replaces: pcre2-dev
+Description: Perl 5 compatible regular expression library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/pcre2_10.49_aarch64.deb
+Size: 1001296
+MD5Sum: ee4900da04918d1d9e3ddeaff8f6af1c
+SHA1: d2d42990f7c028ec4d2caf73f08f927c6f287a62
+SHA256: be3983ef279e07bfdaa85645945b920ff13d42661da4f79e1c4505f1c350ee23
+SHA512: d84f7adc5b87079ff143c6ea997543c175c8f8583fa73afce66c1ddf63aea3065bfb2d1ccc4778021cf927789c4f16d64d1a4eaba7009e62a5930e3286870ce2
+
+Package: pcre2grep
+Architecture: aarch64
+Installed-Size: 104
+Maintainer: @termux
+Version: 10.49
+Homepage: https://pcre2project.github.io/pcre2/
+Depends: pcre2 (= 10.49)
+Description: A grep with Perl-compatible regular expressions
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/pcre2grep_10.49_aarch64.deb
+Size: 34332
+MD5Sum: 2db8b40c43c9832490d7235a116effd3
+SHA1: 91eadda65e37a27976d10b875d2aa977c49bb822
+SHA256: 2c6923969d9339d00953dc07168bc3d6c98d0d032b003eba9e2b2ff94029e28a
+SHA512: 33733bbfc5c00f569bfa5ae18ed21a04c1bde61bc7b6991000e327845e05a3794b7c7787d12b08bea4407d815a337b79658afcd5b04cab271356d50ab7837f8b
+
+Package: protobuf
+Architecture: aarch64
+Installed-Size: 6040
+Maintainer: @termux
+Version: 2:36.2
+Homepage: https://github.com/protocolbuffers/protobuf
+Depends: libprotobuf (= 2:36.2)
+Description: Compiler for protocol buffer definition files
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/protobuf_2.36.2_aarch64.deb
+Size: 1217196
+MD5Sum: 471c9b8e7af91bfbdde52186ce542189
+SHA1: 553e0af0fd624ac544b34aa24eeec619336246b9
+SHA256: e087d732b5f440678679c9f891172548f8a78ad3325581b34a11a96807608f3c
+SHA512: 6e1ad8215701d6ced4e575e74ab295606537d20ed44ef4fd137ec2d34b60375f3291aa65beac8717cf2a0e91861f1545986dc2f00b6027b141045ef1d7bc7c10
+
+Package: pzstd
+Architecture: aarch64
+Installed-Size: 156
+Maintainer: @termux
+Version: 1.5.7-1
+Homepage: https://github.com/facebook/zstd
+Depends: libc++, zstd (= 1.5.7-1)
+Description: A Pigz-like tool for Zstandard
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/pzstd_1.5.7-1_aarch64.deb
+Size: 42184
+MD5Sum: 0e528b34ed650da1ffc2d2a6fd6a43d3
+SHA1: a613427847a232c82bedc1568e91aa59c7a9e5ef
+SHA256: 08c3d7399355ac6242c4ddb390e897d5ad9e3a369dfe53661c262cab74404a03
+SHA512: fe743740d42e4c4158a96fef6f1b0bfaf99a11145b080b25161c2bd23b8a2032ce4be08958cb20e24b4770ee97db1e9371505ebc3716f51a9ce6e5ff28286e08
+
+Package: xz-utils
+Architecture: aarch64
+Installed-Size: 228
+Maintainer: @termux
+Version: 5.8.4
+Homepage: https://tukaani.org/xz/
+Essential: yes
+Depends: liblzma (= 5.8.4)
+Description: XZ-format compression tools
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/xz-utils_5.8.4_aarch64.deb
+Size: 71396
+MD5Sum: e4ef3489d74fb71c30ad06ba69cf59b7
+SHA1: c987c0f05520aeee640cb3f11f4aff2d3d41bfb1
+SHA256: 05d010ae3dd2fee825158917321c1270494719ed060e096b2f2ab9756e2522e9
+SHA512: 216d09aa0acf3af8b28f585b64fc25d68c2a754abbd6afb1ff66818f7d98fb986135dc233da830105c88010e1c524142a6c66384558c3290bdf23e803d1e8007
+
+Package: zlib-static
+Architecture: aarch64
+Installed-Size: 140
+Maintainer: @termux
+Version: 1.3.2
+Homepage: https://www.zlib.net/
+Depends: zlib (= 1.3.2)
+Description: Static libraries for zlib
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/zlib-static_1.3.2_aarch64.deb
+Size: 35572
+MD5Sum: c53618de37a59b3b5aafaa8d66372929
+SHA1: c6a8a96e9b97d514fc0541a4602e60e13ebb979a
+SHA256: d58c50e026588ab37a917081cb54143af3e47075bc117a6b8590db8c2665c557
+SHA512: 9ddb0e625cf7e91d91f5c90e224f76be1cb6ed66debf1c68bef58ba81d3a63b65317be8f06d67897d79d830117f09ff8d04a247a94ed74c2036ca27139f9b228
+
+Package: zlib
+Architecture: aarch64
+Installed-Size: 264
+Maintainer: @termux
+Version: 1.3.2
+Homepage: https://www.zlib.net/
+Breaks: ndk-sysroot (<< 19b-3), zlib-dev
+Replaces: ndk-sysroot (<< 19b-3), zlib-dev
+Description: Compression library implementing the deflate compression method found in gzip and PKZIP
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/zlib_1.3.2_aarch64.deb
+Size: 63060
+MD5Sum: e7bf677b77badc36a89cc8d5cee3f61e
+SHA1: 2ff84f0dd2617ce622674744b3964454730f99f9
+SHA256: c9e8d2ce926969a1ae01a9bb58afc8abc20a8d76ee6f2c82341d4a9d9be4c196
+SHA512: 84e364a4a74e2db1826d4501416a2e7c95968556e5b568f80b8bb7e93a66f81b65fbac2b16d01e69dec0fbe3a97590d76f02580c03f5746997ac3fc5c63071f5
+
+Package: zstd
+Architecture: aarch64
+Installed-Size: 1312
+Maintainer: @termux
+Version: 1.5.7-1
+Homepage: https://github.com/facebook/zstd
+Breaks: zstd-dev
+Depends: liblzma, zlib
+Replaces: zstd-dev
+Description: Zstandard compression
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/zstd_1.5.7-1_aarch64.deb
+Size: 361252
+MD5Sum: 7a14a250e744b452dc47e70176592f3b
+SHA1: 1a424065a2cabd2d57dd82dd53de174b9a69b1ce
+SHA256: ca372bf28478f1e02bd86dccee12f28f59c5846a88c80536d6f45f28bdaeb073
+SHA512: 7d37ba4bceccf73d573bb2b66032ba6e33fe56eda76dc82a296846e0292cbd8a4dbcd6b7b3a74c46b029d32a32150c8429f89571015a692ab7f3dcda11ee5581
+
 Package: ca-certificates-java
 Architecture: all
 Installed-Size: 184
