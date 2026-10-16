@@ -33,7 +33,7 @@ jobs:
       - name: Restore verified source cache
         uses: actions/cache/restore@v4
         with:
-          path: .source-cache
+          path: output/.source-cache
           key: source-archives-v1-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             source-archives-v1-
@@ -43,11 +43,8 @@ jobs:
       # mkdir fails with Permission denied and the cache is never populated.
       - name: Prepare workspace for the builder container
         run: |
-          mkdir -p .source-cache output
-          # checkout 目录属于 runner 用户, 容器内 builder 直接写仓库根会
-          # Permission denied(zip 落地/.source-cache mktemp 均栽在这里)
-          sudo chmod -R a+rwX .
-          ./scripts/run-docker.sh sh -c 'id; ls -ld /home/builder/termux-packages /home/builder/termux-packages/.source-cache'
+          # 产物目录: AppArmor 只允许容器写 output/**, 缓存和 zip 都放这里
+          mkdir -p output/.source-cache
 
       - name: Configure package repository URL
         id: configure
@@ -285,7 +282,7 @@ jobs:
         env:
           ARCHITECTURES: ${{ inputs.architectures }}
           TERMUX_DOCKER_EXEC_EXTRA_ARGS: >-
-            --env TERMUX_SOURCE_CACHE_DIR=/home/builder/termux-packages/.source-cache
+            --env TERMUX_SOURCE_CACHE_DIR=/home/builder/termux-packages/output/.source-cache
             --env TERMUX_SOURCE_MIRRORS=${{ steps.configure.outputs.mirror-url }}
         run: |
           args=(--architectures "$ARCHITECTURES")
@@ -295,14 +292,14 @@ jobs:
         if: ${{ always() && !cancelled() }}
         uses: actions/cache/save@v4
         with:
-          path: .source-cache
+          path: output/.source-cache
           key: source-archives-v1-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Store bootstrap archives
         uses: actions/upload-artifact@v7
         with:
           name: bootstrap-archives-${{ github.run_id }}
-          path: bootstrap-*.zip
+          path: output/bootstrap-*.zip
           if-no-files-found: error
 
       - name: Publish bootstrap to R2
@@ -318,8 +315,8 @@ jobs:
             echo "::warning::R2 credentials are not configured; bootstrap was saved only as an Actions artifact."
             exit 0
           fi
-          for archive in bootstrap-*.zip; do
-            arch="${archive#bootstrap-}"
+          for archive in output/bootstrap-*.zip; do
+            arch="${archive#output/bootstrap-}"
             arch="${arch%.zip}"
             sha256sum "$archive" > "$archive.sha256"
             aws s3 cp "$archive" "s3://${R2_BUCKET}/bootstrap/$arch/$archive" \
