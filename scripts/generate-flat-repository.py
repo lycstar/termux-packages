@@ -5,6 +5,8 @@ import gzip
 import hashlib
 import json
 import lzma
+from datetime import datetime, timezone
+from email.utils import format_datetime
 from pathlib import Path
 import sys
 from urllib.parse import unquote, urlsplit
@@ -49,6 +51,7 @@ def generate(repository, output, assets_file=None):
              "Packages.xz": lzma.compress(payload)}
     architectures = sorted({key[2] for key in entries})
     release = ["Origin: Sparrow", "Label: Sparrow toolchain packages",
+               "Date: " + format_datetime(datetime.now(timezone.utc), usegmt=True),
                "Architectures: " + " ".join(architectures), "Description: Sparrow flat APT repository"]
     for algorithm, label in (("sha256", "SHA256"), ("sha512", "SHA512")):
         release.append(label + ":")
