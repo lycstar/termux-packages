@@ -488,6 +488,14 @@ main() {
 		add_termux_bootstrap_second_stage_files "$package_arch"
 
 		# Create bootstrap archive.
+		# 官方源整体移除: 官方包为 com.termux 前缀编译, 装进自建前缀即污染。
+		# 自家源(GitHub Pages, [trusted=yes])内置于 bootstrap, 开箱即用。
+		if [ -d "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/etc/apt" ]; then
+			rm -f "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/etc/apt/sources.list"
+			find "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/etc/apt/sources.list.d" -type f -delete 2>/dev/null || true
+			echo 'deb [trusted=yes] https://lycstar.github.io/termux-packages stable main' \
+				> "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/etc/apt/sources.list.d/sparrow.list"
+		fi
 		create_bootstrap_archive "$TERMUX_ARCH" || return $?
 
 	done
