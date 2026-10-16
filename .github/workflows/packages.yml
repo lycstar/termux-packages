@@ -351,6 +351,8 @@ jobs:
         R2_BUCKET: ${{ vars.R2_BUCKET }}
         MIRROR_URL: ${{ steps.configure.outputs.mirror-url }}
       run: |
+        python3 -m pip install --disable-pip-version-check --user awscli
+        export PATH="$HOME/.local/bin:$PATH"
         sha=87ca18392c10822a133b738118505f7d04e0b31ba1122bf5d32911311cb2dc7e
         if [[ "$(curl -sS -o /dev/null -w '%{http_code}' "$MIRROR_URL/sha256/$sha")" != 200 ]]; then
           tmp="$(mktemp)"
