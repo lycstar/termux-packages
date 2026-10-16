@@ -243,7 +243,7 @@ jobs:
           skip_building=true
         elif [[ "${#packages[@]}" -gt 0 ]]; then
           set +e
-          DRY_RUN_OUTPUT=$(./scripts/bin/build-package-dry-run-simulation.sh -I -C -a "${{ matrix.target_arch }}" "${packages[@]}" 2>&1)
+          DRY_RUN_OUTPUT=$(./scripts/bin/build-package-dry-run-simulation.sh -C -a "${{ matrix.target_arch }}" "${packages[@]}" 2>&1)
           DRY_RUN_RC=$?
           set -e
           echo "$DRY_RUN_OUTPUT"
@@ -357,7 +357,7 @@ jobs:
         echo "packages: ${packages[*]}"
 
         if [[ "${#packages[@]}" -gt 0 ]]; then
-          ./scripts/run-docker.sh -d ./build-package.sh -I -C -a "${{ matrix.target_arch }}" "${packages[@]}"
+          ./scripts/run-docker.sh -d ./build-package.sh -C -a "${{ matrix.target_arch }}" "${packages[@]}"
         fi
 
     - name: Save verified source cache even after build failure
