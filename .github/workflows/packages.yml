@@ -426,11 +426,14 @@ jobs:
     - name: Clone repository
       uses: actions/checkout@v7
     - name: Configure package repository URL
+      id: configure
       env:
         R2_PUBLIC_URL: ${{ vars.R2_PUBLIC_URL }}
       run: |
+        mirror_url=""
         if [[ -n "$R2_PUBLIC_URL" ]]; then
           base="${R2_PUBLIC_URL%/}"
+          mirror_url="$base/apt/termux-mirror"
           jq --arg main "$base/apt/termux-main" \
             --arg root "$base/apt/termux-root" \
             --arg x11 "$base/apt/termux-x11" \
