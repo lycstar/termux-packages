@@ -1,3 +1,18 @@
+Package: bash-completion
+Architecture: all
+Installed-Size: 2724
+Maintainer: Joshua Kahn <tom@termux.dev>
+Version: 2.18.0
+Homepage: https://github.com/scop/bash-completion
+Depends: bash
+Description: Programmable completion for the bash shell
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/bash-completion_2.18.0_all.deb
+Size: 194540
+MD5Sum: a5f770442fda00ca71865f9bac6a8bda
+SHA1: d7d56b222c1868c28b010a589afc7bf3acde9e40
+SHA256: ae6994e0ff82bb696054474e74fff54a9fb136a3ca6408891cb39a9a40df9302
+SHA512: f2b6fefd082f6d328d04e8b51e20d58978afd4265db195250a7894fa0da63676c9607a7caa7bc1c7a5ea9ba8808f24cdd638254e512ca12b853e25a692950216
+
 Package: ca-certificates-java
 Architecture: all
 Installed-Size: 184
@@ -7,11 +22,11 @@ Homepage: https://curl.se/docs/caextract.html
 Depends: ca-certificates (= 1:2026.09.25)
 Description: Common CA certificates (java keystore format)
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ca-certificates-java_1.2026.09.25_all.deb
-Size: 96196
-MD5Sum: 8caab0c67dc3ab42cf8a363de5102f3c
-SHA1: a542eaabb973731af1ab164977f6dc1c42d67678
-SHA256: a7f75908d907482a932a0ea2d9a33379a81298247fc3e8bf094ece3461ac98b2
-SHA512: 9f6a77f650c8994f212162f3507d94cd8c58f422cb9105b5620cd3fd346f5eb02ab15fd6468f90e1ff2791408d3a24f221daa89e6dabf6644101fa2b31e9418b
+Size: 96184
+MD5Sum: a659b5c546a006d66dcd60a3ebe7c2a5
+SHA1: acf5161569fef67c49c004e2631122efd5328dba
+SHA256: 03813c9033075e87ecbcffdad34911e6c96148ca0165c88fd49119ba258275da
+SHA512: 383f2c64869ed4b215f8cf69867ecafbe6fa74f09835e2624421737a996856b67d9d5c29d4c12224f2f59a7885fa387e6ad99993912d0cf8405b32c2798acb3f
 
 Package: ca-certificates
 Architecture: all
@@ -26,4 +41,188 @@ MD5Sum: a6adf3a11be7cc937a48302a5139f5c9
 SHA1: e36e1e3e11d154071a694346e1e1ad604e9201af
 SHA256: cfb9108837b8b00a184f9f66b32110c970ab9e878a887adac3d03fe45f9527f1
 SHA512: 9be650491f3b25ae65adb821158394148714b0dab7b446d5da00b36587bb48ed7dc0ea57887a2b0dc3d5912a9bfe73f997987100066c299a848ad55b55455fe1
+
+Package: git-svn
+Architecture: all
+Installed-Size: 320
+Maintainer: Joshua Kahn <tom@termux.dev>
+Version: 2.56.0
+Homepage: https://git-scm.com/
+Depends: subversion-perl, git (= 2.56.0)
+Description: Convert between Git and Subversion repositories
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/git-svn_2.56.0_all.deb
+Size: 75532
+MD5Sum: ac8f60a138c898aa36b0ac81ddb9b712
+SHA1: 996a0459a63d71cb55ba20b2e42cdd15c88afbab
+SHA256: 0df71c2afcb1271bc18f29542570f6b2cb3b604f40a852dd0d45d9805a26c5b3
+SHA512: 0a9004886afd13f62b05c401a0a3f1edc09fc931e4973d10edfe70f807f6b87f96feb1990ec1a3d0e97d841434ba6bdcbaf63cec3c57b7e0f2f9928d371c9785
+
+Package: glib-cross
+Architecture: all
+Installed-Size: 84080
+Maintainer: @termux
+Version: 2.90.1
+Homepage: https://developer.gnome.org/glib/
+Depends: glib (= 2.90.1)
+Description: glib for host (NOT for Termux)
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/glib-cross_2.90.1_all.deb
+Size: 13325808
+MD5Sum: d62b174a84ee159679d94a064cbac99d
+SHA1: 9133d3dc91d7feba7dd74c6e48feccba4f68ea82
+SHA256: bed179811c771186aacd7c7df41de1d936de9397fd71ee1aa5b7c6c0c0f365e7
+SHA512: 1ea11fe0571ad24f4da7b2ceb27a85e7b72ea44a3c3adedf3d0b6acf4f5213183e7a3207b22542d6a5d3d26da1683f83bfaec08a2f217c214c00139016d6a98b
+
+Package: openjdk-17-source
+Architecture: all
+Installed-Size: 50792
+Maintainer: @termux
+Version: 17.0.20-1
+Homepage: https://openjdk.java.net
+Description: Source files for openjdk-17
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/openjdk-17-source_17.0.20-1_all.deb
+Size: 47118548
+MD5Sum: 87469394775530e17357508fe1d6f261
+SHA1: bfca90db94fd53ab3fe3e16bb277c525a5c9313c
+SHA256: 3aa5899d1b7c45b4c67c8e9fa4ce6ea32d35bb24c5088ad93e2061a8fec9c27e
+SHA512: 588f8e76dcba49621c520b18ca12119444e2bbee138cd5343b4fe175ab95efe86bd5be2dc1b06227551ae00d83370cd69797bf8412a897b2c1b1b868ada67369
+
+Package: python-ensurepip-wheels
+Architecture: all
+Installed-Size: 1812
+Maintainer: Yaksh Bariya <thunder-coding@termux.dev>
+Version: 3.14.6-1
+Homepage: https://python.org/
+Depends: python (= 3.14.6-1)
+Breaks: python (<< 3.11.1-3)
+Replaces: python (<< 3.11.1-3)
+Description: Wheels for Python ensurepip
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/python-ensurepip-wheels_3.14.6-1_all.deb
+Size: 1740164
+MD5Sum: 4641fa54a665dc4445927df86e210ba0
+SHA1: 836a37f241085ceed173ae8fc4f73afce0c556df
+SHA256: 6cb2552203a38abe87bc10531f5e95d218afbca314d2afda79d0eb4cba61db32
+SHA512: b4033fe49e0f0d1d5035b1e2faab2f9ccf32270f6329ff0f5eb6fcc4fb24199365425148971b9833f4551b80abb9253baf7fb1c7a02abc310e2a25056aed9751
+
+Package: python-xcbgen
+Architecture: all
+Installed-Size: 132
+Maintainer: @termux
+Version: 1.17.0-3
+Homepage: https://xcb.freedesktop.org/
+Depends: xcb-proto (= 1.17.0-3)
+Breaks: xcb-proto (<< 1.15.2)
+Recommends: python
+Replaces: xcb-proto (<< 1.15.2)
+Description: The xcbgen Python module
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/python-xcbgen_1.17.0-3_all.deb
+Size: 15204
+MD5Sum: c606322ac85f6b98a67dca8804ca98db
+SHA1: 591cf3f81037927958c3480bbdbc74c361bb8dc7
+SHA256: b84e27bc89ec532e62dea8951cfeac435dc616821626f9b6cad0d9e7a28f7e97
+SHA512: cd2682b628346a377075285457aae4f45f35337b7d229d1b04a3ec6b5897b9ab55ac721e30224788d2231807bccc59a5cb91710a3df65ceec08d45ad8deecf40
+
+Package: termux-am
+Architecture: all
+Installed-Size: 620
+Maintainer: Michal Bednarski @michalbednarski
+Version: 0.8.1
+Homepage: https://github.com/termux/TermuxAm
+Conflicts: termux-tools (<< 0.51)
+Description: Android Oreo-compatible am command reimplementation
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/termux-am_0.8.1_all.deb
+Size: 575848
+MD5Sum: b77afb6f6250d15420c023ee22ee4787
+SHA1: d68e40b82290c5544c79fcabcb43871095cad40d
+SHA256: f591f171d802516d570554120907ccb0cfc9b0123b1cf86b94720e7dc3a70d0b
+SHA512: c21533327d994ff128aa85903917b8b5952d48106002c120d21378abe0238a3fdf50ad738e339c0079f6b627c1284bb938eed2c246bef679d5a2f353d56fa6aa
+
+Package: ttf-dejavu
+Architecture: all
+Installed-Size: 10108
+Maintainer: @termux
+Version: 2.37-8
+Homepage: https://dejavu-fonts.github.io/
+Description: Font family based on the Bitstream Vera Fonts with a wider range of characters
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ttf-dejavu_2.37-8_all.deb
+Size: 2460364
+MD5Sum: 8f2d4da56e407b70527edc795b4c760b
+SHA1: 28a3ee503c85ee42e4eb80316d9d8b2e7d4504c2
+SHA256: 9d0513c7fe05d162c353242b272c2a71b99ba5ad29b59784d1bf28a762abadf5
+SHA512: 28f3f4edabc2e736af71c130fda43e8b0cbd11dd92776e2910e6a6549d506f096dab2594f09c1d07c160ca811d7c161c7a67b45b575704a4f02c2373fc4b70ea
+
+Package: update-info-dir
+Architecture: all
+Installed-Size: 48
+Maintainer: @termux
+Version: 7.3
+Homepage: https://www.gnu.org/software/texinfo/
+Depends: texinfo (= 7.3)
+Description: Update or create index file from all installed info files in directory
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/update-info-dir_7.3_all.deb
+Size: 2496
+MD5Sum: efa37b278daf541e2bbf2ae8cbb289bc
+SHA1: f99b2af96a00f153a6899bf890545d8268183721
+SHA256: 7cd01a3e602a2748e21309ae538533500380d909de2be15a72f2ecea0add6d29
+SHA512: d6b3b7c0d7126bbcef655f7a6f8e19c3c230f5cd48476af5fca6753656f798a09aa9b56f41e36798362188228d1e824646e0d913290e70d324c90ab58809f4be
+
+Package: xcb-proto
+Architecture: all
+Installed-Size: 812
+Maintainer: @termux
+Version: 1.17.0-3
+Homepage: https://xcb.freedesktop.org/
+Conflicts: xcbproto
+Replaces: xcbproto
+Description: XML-XCB protocol descriptions
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/xcb-proto_1.17.0-3_all.deb
+Size: 78628
+MD5Sum: 2f7d0329e6e8c4676e914eeaa9776291
+SHA1: 5d8f0f3b2dbdaa796a5f1d8b07afda21b8240404
+SHA256: 4f12adba958245a5df9834a4daf9069bd47d00afdbe257ffb48db2a02e8034ba
+SHA512: 16f6080a7c61972b5199dfda3a4deeca02745361f43326ec2704e37ecbf729ee250b744b9611b3d27572910e7d1bd021be8ec39228d05426170c59aae183f606
+
+Package: xorg-util-macros
+Architecture: all
+Installed-Size: 144
+Maintainer: @termux
+Version: 1.20.2
+Homepage: https://xorg.freedesktop.org/
+Description: X.Org Autotools macros
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/xorg-util-macros_1.20.2_all.deb
+Size: 21956
+MD5Sum: 8a49c4f645991fc955a873f71898d207
+SHA1: 052740e4402ca439678d937c59371d0571c45336
+SHA256: a020d00aa0ad6e639efd809472eaa08e1a7174bdab8ec58817192bbd6393d57a
+SHA512: 637f44bbd9d24e5c56eae15ed111e78082aeec75add152b1faa2d8c010538ac8aeb3fe84383d39af237ad6992242d8ff56ff60ea7a0101d35ffabf82087a0aa6
+
+Package: xorgproto
+Architecture: all
+Installed-Size: 2296
+Maintainer: @termux
+Version: 2026.1
+Homepage: https://xorg.freedesktop.org/
+Depends: xorg-util-macros
+Conflicts: x11-proto
+Replaces: x11-proto
+Description: X.Org X11 Protocol headers
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/xorgproto_2026.1_all.deb
+Size: 249816
+MD5Sum: 23b32438fcb6488159a2d8d6a28cc8ce
+SHA1: e22001dfd38ce3eb68381c88441de5077a3d5c0b
+SHA256: 2206330f2b6431c5fd4c36869e64aa2f1373d16d1859cb50623740091d362bed
+SHA512: c2bebb234291e707cb4ac6f0b52c88f2be4bf8d2b4662b0cebe27013a771f21f933b6f8bbd4f68869754ba8acd86d196d38bf3f165a402df80ac9e8e8b47ec96
+
+Package: xtrans
+Architecture: all
+Installed-Size: 296
+Maintainer: @termux
+Version: 1.6.0
+Homepage: https://xorg.freedesktop.org/
+Description: X transport library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/xtrans_1.6.0_all.deb
+Size: 39872
+MD5Sum: 46df6b2b4d95f019c2416e65b7abeb97
+SHA1: 49a494e3c628ded527e451eb53617f0fdc8026e2
+SHA256: 667ad614ea7bad751b9e1dd98dfb1403c7519fe00d8c011ea21850999c7ef11e
+SHA512: 3e7a60fee72b3b9fa49f99c0c66b3a1da90c518f51df9d476c5dbeeb1246d3dd686c2728c6f8037c3075af7d10cc6eb34adaf0eca8f343ed8725f156891619e4
 

@@ -1,6 +1,6 @@
 Package: abseil-cpp
 Architecture: aarch64
-Installed-Size: 9472
+Installed-Size: 9480
 Maintainer: @termux
 Version: 20260526.0
 Homepage: https://abseil.io/
@@ -8,11 +8,11 @@ Depends: libc++
 Conflicts: libgrpc (<< 1.52.0-1)
 Description: Abseil C++ Common Libraries
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/abseil-cpp_20260526.0_aarch64.deb
-Size: 1198932
-MD5Sum: 7e104c7f20b796e4ad77a31b5df335b6
-SHA1: 951f79736bb9867087677691b4a0c9beafbfb2e1
-SHA256: d1a926d0c3b06cf817082c157b45d3b83d38fe5ecfb65ba655e5546ca9a9f75f
-SHA512: 0db3e8ee3d9c39b2d99efd699571de5addd575d2535067415a58c46146884a61c92e38e41473b4e146e3843193c0ebe10f422c0db97cc65a2dac0810ffdf38a3
+Size: 1198496
+MD5Sum: 6a9b05d148dae7ee9fe7dde2a3edd3f8
+SHA1: c89066704770e2e35cc0d80442c24655e784a839
+SHA256: 19fb0014dfe865fac9240ed70f6d6bfe9212e4e761c30c966996409350ce8df4
+SHA512: 2f0939cb520342e6592fba63cda22b7cc5591f3932adb8a865f799ca49874b1716d4708cd89e1f0e4a9215f677e26731705bd026346cdbb28a926a03ccb50d74
 
 Package: alsa-lib
 Architecture: aarch64
@@ -23,11 +23,11 @@ Homepage: https://www.alsa-project.org
 Depends: libandroid-sysv-semaphore, libandroid-shmem
 Description: The Advanced Linux Sound Architecture (ALSA) - library
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/alsa-lib_1.2.16.1_aarch64.deb
-Size: 450852
-MD5Sum: fb21f3997d860e97b484092c18997bdc
-SHA1: ead7eb8500a988688c58ff072ebc5b73942017c0
-SHA256: 6493bec8a17e99e72535ee66fba9561a33aacb2cc59e006608d1e2bb7e72693d
-SHA512: 36abdddc2f261f43a6846b05ace51668c19a4653e769bd24485e66618ea62eab3a4cdad42c137982550a494abf82fa748c70bd007a7568207371ab291f2ba13b
+Size: 450464
+MD5Sum: 359fa50e835bb935783fa5fa22814ca6
+SHA1: c465fe6a0a6bb0e06d1d06dbbaad437f3a5ccb2e
+SHA256: 2b808172f803b7f770677c0eb49cbad77dfec91d3d286c42e7c001436433eb92
+SHA512: c325c9b82ac2eb1b5be0722012f30ea1f4fb63b5ebc554214a6661dd853814b1c9130f7032eb41ca5ba45db86576916c88aad909e7653578a8b8b62cc359b26f
 
 Package: alsa-plugins
 Architecture: aarch64
@@ -38,11 +38,142 @@ Homepage: https://www.alsa-project.org
 Depends: libandroid-sysv-semaphore, libandroid-shmem, alsa-lib, pulseaudio
 Description: The Advanced Linux Sound Architecture (ALSA) - plugins
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/alsa-plugins_1.2.12-1_aarch64.deb
-Size: 25468
-MD5Sum: 55392aeaa43650b1d505a6cd0bce2369
-SHA1: 9e885830bf1e23dabe594624c04a89daa9559694
-SHA256: 70f48facaaf968840d68494e25d84db9a026357353c9d423f8f937b080baebb1
-SHA512: d59961dad5fe9617d77b1d60a96d19ff7913be218f910e7c1369409ccadbadbe3221378ce6a5a4a9cc26a3528d9a4ef288fbd4d8859f1168dd60ce98d78ab4e7
+Size: 25428
+MD5Sum: defb41c4808b8ef4e9accd6045a356f9
+SHA1: 2117855515dac030ced3ef0f107c8f058a9fc52d
+SHA256: 3864023f6487e2d8b35a7aa02c146604931f45b7ddcc22025079c3acaafbacdc
+SHA512: 209a31def10beaa892841d53130099e57bd0e991d8720e683b471f54163ac632e893934c54e78a98d436c5c6953c31c16cab85184efa6b9eded2c3d96b54964b
+
+Package: apr-static
+Architecture: aarch64
+Installed-Size: 424
+Maintainer: @termux
+Version: 1.7.6-2
+Homepage: https://apr.apache.org/
+Depends: apr (= 1.7.6-2)
+Description: Static libraries for apr
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/apr-static_1.7.6-2_aarch64.deb
+Size: 83660
+MD5Sum: 019173c41d48a631d8b8e0193c0c29d7
+SHA1: 2de1f912ecaeac9893af17ba7b12efd5fdb2a94f
+SHA256: f8a26f667f2d5bd8151c0e28222e5f3b3571f009fc8033b7244a7d93e4672e6d
+SHA512: 281db4c82aa0aa6a7807c489eb94b2d1a65453861d182c6c55ca1e628f9db5cbe9cd0ceda3f3e5dcb90b099ddfc7f7cf08539a266bdf9d3b7af5b5e52c727e17
+
+Package: apr-util-static
+Architecture: aarch64
+Installed-Size: 324
+Maintainer: @termux
+Version: 1.6.5
+Homepage: https://apr.apache.org/
+Depends: apr-util (= 1.6.5)
+Description: Static libraries for apr-util
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/apr-util-static_1.6.5_aarch64.deb
+Size: 69396
+MD5Sum: dd11bf89060f059a3f890fec51f8b579
+SHA1: 5e60b9bfec1988481d98b36e103036d1777bfef7
+SHA256: c077bfa6e10d6466b00ddbe12c053d83f8d8526e8ade698573a5c86f0a6bc3ba
+SHA512: bf71d36dd1245c725cd342186375d62b50fefca66f6e82fe018d6d6607e60ab20299082edfee067def3c20a7f50e0178bff3d52fc906100c6f2d7e83ea097aaa
+
+Package: apr-util
+Architecture: aarch64
+Installed-Size: 588
+Maintainer: @termux
+Version: 1.6.5
+Homepage: https://apr.apache.org/
+Breaks: apr-util-dev
+Depends: apr, libcrypt, libexpat, libiconv, libuuid
+Replaces: apr-util-dev
+Description: Apache Portable Runtime Utility Library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/apr-util_1.6.5_aarch64.deb
+Size: 112284
+MD5Sum: 25807092ec5441043fa9462884690e43
+SHA1: 9f2ed6108bb71cd9bb9b36ef61885663708a7cf7
+SHA256: b22f761c48b38aec181ecd967f9f7accf8883675ec9609b15345b71bad460473
+SHA512: a3836414cdff41cb33a26f76ec39040776457be573df6d65b872f0abaa47902eb9660390a028038c91ded3543a8728a2b5e7a6d7b74474a8d24423794becf272
+
+Package: apr
+Architecture: aarch64
+Installed-Size: 1268
+Maintainer: @termux
+Version: 1.7.6-2
+Homepage: https://apr.apache.org/
+Breaks: apr-dev
+Depends: libuuid
+Replaces: apr-dev
+Description: Apache Portable Runtime Library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/apr_1.7.6-2_aarch64.deb
+Size: 237488
+MD5Sum: 313f6e970c74a7c5c0b4ec6bf475b085
+SHA1: 5acef896a61410507a58c4f068be9e80e88c0811
+SHA256: dc3ef478954a019308337ba70934e3c8424c280fd02449071adfe18e249f2e53
+SHA512: 5efac6e8ab0929077a9738be54adc854e9e74028265182f6494523a5b78c8a8eb96410c195398d7307823e196476246bd7fdc6a0e015a6f0f9874035be4f2a84
+
+Package: attr-static
+Architecture: aarch64
+Installed-Size: 60
+Maintainer: @termux
+Version: 2.6.0
+Homepage: http://savannah.nongnu.org/projects/attr/
+Depends: attr (= 2.6.0)
+Description: Static libraries for attr
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/attr-static_2.6.0_aarch64.deb
+Size: 7000
+MD5Sum: bd9590c77cd196c10dc46fdefd4b4cd5
+SHA1: 1dc772806b87b454a149e2fbfa6b58c5e13b0b0e
+SHA256: bbb40cdc8ffaa887376ac1ece95dc9fdb1936366224c2b900b42ad3dad0e42be
+SHA512: aa35edef1025d30044bf81fc49b40a37d6a090c95c99bf09084660cea8280b854f53389e12eb93141f9bf73c822c8683267672f050c43d9c4379dcbd80bea5bd
+
+Package: attr
+Architecture: aarch64
+Installed-Size: 264
+Maintainer: @termux
+Version: 2.6.0
+Homepage: http://savannah.nongnu.org/projects/attr/
+Breaks: attr-dev
+Replaces: attr-dev
+Description: Utilities for manipulating filesystem extended attributes
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/attr_2.6.0_aarch64.deb
+Size: 56352
+MD5Sum: 315e3d4ce240d1c9ded5849409bd17bf
+SHA1: 853b182f12ab4f40bc91721b69c18132c4418343
+SHA256: af05f990635798cc9851d5ea6e387905f3909ceee0d4c739b521f23c3ee6ae18
+SHA512: ae7c0c150e0c68a75a3d2dcd9f3d7299dacbf7ce9bb3a2ad7fccdaa438eb994bb62322c5fa5034ddce45e677c0accd16ee74b1d9589a095be44b5f44fcd48d08
+
+Package: bash
+Architecture: aarch64
+Installed-Size: 4736
+Maintainer: Joshua Kahn <tom@termux.dev>
+Version: 5.3.20
+Homepage: https://www.gnu.org/software/bash/
+Breaks: bash-dev
+Depends: libandroid-support, libiconv, readline (>= 8.3), termux-tools
+Essential: yes
+Recommends: command-not-found, bash-completion
+Replaces: bash-dev
+Description: A sh-compatible shell that incorporates useful features from the Korn shell (ksh) and C shell (csh)
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/bash_5.3.20_aarch64.deb
+Size: 956136
+MD5Sum: b122cd160459e8ba2080b8eff92d8b8d
+SHA1: 79ece01ee3f4d3d1243eac69abce9a0d74e29721
+SHA256: b8f07b5f0528f1aa759844b7a13c56a6f8276aa1223c05e24ec22bdb88cba27b
+SHA512: 60ab88c6e83d61c4a44ad462a96417093d46a69e415061573c9ff9ecbaec359bde78fc6f55c9f336dc42795417239da194dacc84e82ca88f8a15c46515fdee4e
+
+Package: blk-utils
+Architecture: aarch64
+Installed-Size: 932
+Maintainer: @termux
+Version: 2.42.4
+Homepage: https://en.wikipedia.org/wiki/Util-linux
+Depends: libblkid, libmount, libsmartcols, libuuid
+Breaks: util-linux (<< 2.38.1-1)
+Replaces: util-linux (<< 2.38.1-1)
+Description: Utilities for handling block device attributes
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/blk-utils_2.42.4_aarch64.deb
+Size: 184660
+MD5Sum: f12da9333caf4141f4ed36b88802516c
+SHA1: da2919f151812516f8d6aba43fdfc968e4e568a5
+SHA256: d16c18d2c63f5b89c486b54fa969c80bcf082019f803e6e1bbcf7b0a107a76d9
+SHA512: a3fbb1fd3985f271fa0243157348ab40fbc365a85d53400c98766d32574cec18bd488cdecc618836cbafdaa0f2d8ec8e6687e81f40b4e50cc5e3f4af055aaee2
 
 Package: brotli
 Architecture: aarch64
@@ -54,11 +185,136 @@ Breaks: brotli-dev
 Replaces: brotli-dev
 Description: lossless compression algorithm and format (command line utility)
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/brotli_1.2.0_aarch64.deb
-Size: 341352
-MD5Sum: 4d5f1d780c40ec2c7028636313db36a1
-SHA1: ef4b1e206fbb4e538a60ba68f9faa1dddf39605c
-SHA256: 9dffc0d48c625cba776608d15c138df343ac2c1b781dacc976b1cf0a1ec1f925
-SHA512: 8771c2b5c147dbc0a10b2ab25dfb0625cb2b841936f5d6bf5092d3d1072636c891e47f53af08863b7501b73e1c601f08e8132763141e6b2cd1f0e008ed29a0bf
+Size: 340908
+MD5Sum: d19d1e8c27799acb7fad652cdc23a734
+SHA1: 275c23dd8b873d4e372f1b1b2b46e6d5ff0e0393
+SHA256: cc4e98fcb08069c606a7c41af3a1eb881ae2ee7fd8481923490638ffdc111e2d
+SHA512: ae63ddfe5875be0a58f45f4422e84b7a5de497d17b497865b334d623e8b6a50ac8d5a41888301ac419a3b8fbd615098e75b8f52273795f2f3b5c98a7d9e1598d
+
+Package: bzip2
+Architecture: aarch64
+Installed-Size: 124
+Maintainer: @termux
+Version: 1.0.8-8
+Homepage: http://www.bzip.org/
+Essential: yes
+Depends: libbz2 (= 1.0.8-8)
+Description: Tools for working with bzip2 compression
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/bzip2_1.0.8-8_aarch64.deb
+Size: 26364
+MD5Sum: 5528f0316e78cad280eeec173e64a916
+SHA1: 5445ccf1a3a453fb07c7515b00957100b7533f38
+SHA256: b35d674009313e85ac9b3cb1ef145ddbd6c52a281b55380796875c58d80822f3
+SHA512: 91b87c5189f2edb9c120eca4859df3566b76a3cb1594339b1c3b75d884d6586e0a26bb1f7ee39efffa2e2050a7730251f1c32772086a2325412c4c5d6c29c36f
+
+Package: check-static
+Architecture: aarch64
+Installed-Size: 124
+Maintainer: @termux
+Version: 0.15.2-3
+Homepage: https://libcheck.github.io/check
+Depends: check (= 0.15.2-3)
+Description: Static libraries for check
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/check-static_0.15.2-3_aarch64.deb
+Size: 22168
+MD5Sum: be3508f8b3058d3771ee53cb38bb8641
+SHA1: c31f18d945f9127444787e0d5c3da1aade3512a1
+SHA256: 889240fb7bf3b701ddbaa1ca662f3f72631ee87db6278922600f31ca53839f3b
+SHA512: 4cf6128c163f785eb3634a40a541aa339f52683da4d2f302b65fac6688706180fadcf3648fdacacc96163a9e814f5d03fa97c742bbcfa468ba5ef3d4f88cb77a
+
+Package: check
+Architecture: aarch64
+Installed-Size: 560
+Maintainer: @termux
+Version: 0.15.2-3
+Homepage: https://libcheck.github.io/check
+Depends: libtool, pkg-config, texinfo
+Description: A unit testing framework for C
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/check_0.15.2-3_aarch64.deb
+Size: 97516
+MD5Sum: ad4380f5842727947cc0120bcbfb31ad
+SHA1: c30234088498ae6824c7b78978e4c9d7ee88cbeb
+SHA256: ade1ffafc850d99f1efa04812947badca11acabe2ba5e96804e7007cf79004be
+SHA512: 382fa01228cbe340d687d787e42cd78ec42fc02a77746ccfcf5688822f0623d999f09921a0a3a9c3a0cc87d5f72fee9c840230d78c541887cd517507a61fbd07
+
+Package: coreutils
+Architecture: aarch64
+Installed-Size: 2860
+Maintainer: @termux
+Version: 9.12
+Homepage: https://www.gnu.org/software/coreutils/
+Breaks: chroot, busybox (<< 1.30.1-4)
+Depends: libandroid-selinux, libandroid-support, libgmp, libiconv, openssl (>= 1:3.5.0-1)
+Essential: yes
+Replaces: chroot, busybox (<< 1.30.1-4)
+Description: Basic file, shell and text manipulation utilities from the GNU project
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/coreutils_9.12_aarch64.deb
+Size: 825980
+MD5Sum: 476d795286471da180ae256b3084cbf7
+SHA1: 2b88fc0a250b99d7a0a949b0b164b840496ddf48
+SHA256: 1c51ddb671de1ad16fa8fe2b44fed8cd2961f832205fc5d0f75682d6ac6c7445
+SHA512: 7c3c19a0361e03df57e323efd07fcbced5f3dc177a454458a76cd2337d25918b73eeff0707ca680798adce83db8aafe3df51bd52444b27792c8ccc34d9d233ac
+
+Package: cups-static
+Architecture: aarch64
+Installed-Size: 4156
+Maintainer: @termux
+Version: 2.4.20
+Homepage: https://www.cups.org/
+Depends: cups (= 2.4.20)
+Description: Static libraries for cups
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/cups-static_2.4.20_aarch64.deb
+Size: 731056
+MD5Sum: ddb7747701ee09043c960c9378b82bd9
+SHA1: 5653a9afd5308d388a4c7ad3aa16384b73d41526
+SHA256: 968315032bddbc50077a2bc7f19134cace23d7a3ce1527ddc6875029250ac33c
+SHA512: 291bf03589f3403523227a78d51d7370ea2458abd115541518267aa2e3aca869c03c32952ae372df35b049fa3bbd4d7fde80d4a0ce0df338935af264bb6481f9
+
+Package: cups
+Architecture: aarch64
+Installed-Size: 11876
+Maintainer: @termux
+Version: 2.4.20
+Homepage: https://www.cups.org/
+Depends: libc++, libcrypt, libgnutls, libiconv, zlib
+Description: Common UNIX Printing System
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/cups_2.4.20_aarch64.deb
+Size: 5162556
+MD5Sum: 645536e5235566f56524d26ef743fe31
+SHA1: cd4650c98f5e85be519b7ea7ccb032b2c50a3c96
+SHA256: 437cb103d53bda0095450a1e426369e62c0deaf4337ed66f4421b24518e1d59a
+SHA512: b6f35519ec149f2d7de9272c1a5598d4e433990f552626c3b9ad2095795dbfeda006e61e636274de9b558b501f5d4a3206e64325e0ca6219023b9411a28aa0d9
+
+Package: curl
+Architecture: aarch64
+Installed-Size: 428
+Maintainer: @termux
+Version: 8.23.0
+Homepage: https://curl.se/
+Essential: yes
+Depends: libcurl (= 8.23.0)
+Description: Command line tool for transferring data with URL syntax
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/curl_8.23.0_aarch64.deb
+Size: 245744
+MD5Sum: e9aa2173768c691f737599754eee86fa
+SHA1: 24ee4be37d9734c9c166e18ce6c4aba22eb121fa
+SHA256: 01904061a81af5ccf3419f15fdf9011f92ab19559691ce60cac8f1153f93c6d3
+SHA512: 8a359eec34422e1ad75d839ca224b98b8b7d15f355b61359b8a347f1b26737ce4371b2c3e35e04da3e311c523827e6eb249ef4d9dd86b6900ebf9522b89e582f
+
+Package: dash
+Architecture: aarch64
+Installed-Size: 192
+Maintainer: @termux
+Version: 0.5.13.5
+Homepage: http://gondor.apana.org.au/~herbert/dash/
+Essential: yes
+Description: Small POSIX-compliant implementation of /bin/sh
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/dash_0.5.13.5_aarch64.deb
+Size: 70672
+MD5Sum: d274880be7f1091d8eac987b17b8e81c
+SHA1: 7ebdde6a131f3ad928c34ceebca39c7a44cf4410
+SHA256: d299d541b90f360b7cabf63fdac17e9d8c5392e2816cfe3270024212789c63ab
+SHA512: 847e6cf79e5da8490c0916139008a121684cc3e5d58a5f93dd140d93cd8b600b8ae1baad3ab4b2398a3277b14f17f6b746346a4571b12c1501d4fe8997f85855
 
 Package: db
 Architecture: aarch64
@@ -75,6 +331,132 @@ SHA1: c98c1e089360ac8aec5531da2a6eeb2b35764aab
 SHA256: 9ee266388e7ceec5d78254856fa8630047d308ae58a2a056985ec0e161c30978
 SHA512: 53e6021dfea7aac32c18ad215d0511aaacdda36cdc5c062c8d3739e49efb52effb445de81733112ab3846dce3b3588f82390dabb2a37bbfddbed9c14c1fce617
 
+Package: dbus
+Architecture: aarch64
+Installed-Size: 1740
+Maintainer: @termux
+Version: 1.16.2-3
+Homepage: https://dbus.freedesktop.org
+Breaks: dbus-dev
+Depends: libexpat, libx11
+Replaces: dbus-dev
+Description: Freedesktop.org message bus system
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/dbus_1.16.2-3_aarch64.deb
+Size: 429224
+MD5Sum: d7678af5d5bac09c61e3d239e10d682d
+SHA1: e4e5d55a2201d0ca468bbd3d3fe00e7faf9de2f1
+SHA256: a5b7de10db7934d3fedb4dace98c3ccb24bce154baf8815c2f6ef19603aa90dc
+SHA512: 95749972e5d55a316504c313478340c98a4c746d9c4b47dc4aa7bd3bc7d6e76454341af7d510f41e8048d52f61bc9466555eeb13f4abd4ea15abb771fdc2069f
+
+Package: dialog-static
+Architecture: aarch64
+Installed-Size: 448
+Maintainer: @termux
+Version: 1.3-20260721-0
+Homepage: https://invisible-island.net/dialog/
+Depends: dialog (= 1.3-20260721-0)
+Description: Static libraries for dialog
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/dialog-static_1.3-20260721-0_aarch64.deb
+Size: 93360
+MD5Sum: fa26beaea06d975f2a15ad59a97e904a
+SHA1: 8d1bfc03836fa3c4df1099554be618c0b0811f00
+SHA256: 6d1aa34f46bb7304fc50c5ca8e878159db62032445c216ffa82c01cc2df6d7aa
+SHA512: 53f4681b62f4bcd6d5296d098f803a7734d4ece35382851e3d5f5430816214663f462a5578f38176fe26f0c307a0592e42b76361e5a7f7fbd8108aad6f24c4b4
+
+Package: dialog
+Architecture: aarch64
+Installed-Size: 276
+Maintainer: @termux
+Version: 1.3-20260721-0
+Homepage: https://invisible-island.net/dialog/
+Depends: libandroid-support, ncurses
+Description: Application used in shell scripts which displays text user interface widgets
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/dialog_1.3-20260721-0_aarch64.deb
+Size: 100504
+MD5Sum: 2a5090212868a94306e05474102e266d
+SHA1: 313418bbee37f7240ca2680f9b817c5383fef835
+SHA256: 6f697ad0dfd87467900d3f3959438b896991af41e8c4076d2ce039550fe45a41
+SHA512: a94934bdd316c45c1212702c521ff381f6c3dc61a94ff19c128af6e955eac7d4b0ea7203ace23d7dedc3829bd09d2074a07342ec3224867fd752f823db8499d7
+
+Package: diffutils
+Architecture: aarch64
+Installed-Size: 668
+Maintainer: Joshua Kahn <tom@termux.dev>
+Version: 3.12-2
+Homepage: https://www.gnu.org/software/diffutils/
+Depends: libiconv
+Essential: yes
+Description: Programs (cmp, diff, diff3 and sdiff) related to finding differences between files
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/diffutils_3.12-2_aarch64.deb
+Size: 163068
+MD5Sum: c73ebd76f45d8031aecd05e029ce3e44
+SHA1: 78ed810a43976e43ddb4ff517bd8960863299618
+SHA256: 9b18c0fd8869dc665f3812de9ac5683987b3467033ac61ab3c8797b185eb2c07
+SHA512: 73f8f7ad7d270ad049cdeaf9a2da9929b53934f454f8a5a16f1c098f98e6b106d6546ab9cad551bee4505f208740fe8447bc680d2a603096dda924b508f5b92c
+
+Package: fdisk
+Architecture: aarch64
+Installed-Size: 476
+Maintainer: @termux
+Version: 2.42.4
+Homepage: https://en.wikipedia.org/wiki/Util-linux
+Depends: libfdisk, libmount, ncurses, readline, libsmartcols
+Description: Utilities to manipulate disk partition tables
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/fdisk_2.42.4_aarch64.deb
+Size: 117176
+MD5Sum: 7a24fe27e920e4dd6fc8223cd8b90151
+SHA1: 16acd5b75df3344c366c380d3497a3719b6fe2aa
+SHA256: 76fa3f303daca0aff8109619ec7ce68795a1bde3776b31c547721c318bda8d9d
+SHA512: b4a9d9c753b6990447c1b312e67110f952871bdb0a7ec16f8ef71971a35fee52edae5620aaebfe3036553cf962b6e7437f58332865bb2c6e3a4974b5c9144589
+
+Package: file
+Architecture: aarch64
+Installed-Size: 76
+Maintainer: @termux
+Version: 5.48-3
+Homepage: https://darwinsys.com/file/
+Depends: libmagic (= 5.48-3)
+Breaks: file-dev
+Replaces: file-dev
+Description: Command-line tool that tells you in words what kind of data a file contains
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/file_5.48-3_aarch64.deb
+Size: 17600
+MD5Sum: 23b8ee30de33a83d3f820b06011566c0
+SHA1: f3784f9e0b0b3a68b44ad9472734dcdc111dc2d2
+SHA256: ed9883a13dc0d579b276c2b3d281c710dbcee140ec510c9b05284283dc78afcd
+SHA512: eb51d0fd3a063bf1c283a7b03f626f6aab3c37b718d1295345bc15f73c7467c0649d7b19a7fa82927ad685031b9a769a7189c47e5cb9de3254f8811a59fc11ca
+
+Package: findutils
+Architecture: aarch64
+Installed-Size: 968
+Maintainer: @termux
+Version: 4.11.0
+Homepage: https://www.gnu.org/software/findutils/
+Depends: libandroid-support
+Essential: yes
+Description: Utilities to find files meeting specified criteria and perform various actions on the files which are found
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/findutils_4.11.0_aarch64.deb
+Size: 261520
+MD5Sum: c6edff54b767042e0107a8d00fe3a3cb
+SHA1: 0a516dbbdc1d13ab0b6232c8b123ef56c2d19cd5
+SHA256: 459230b81430a036035d6e21e0d08df926c2f840f4ff7d24ab7bf0be67ef7a6f
+SHA512: 4e4c99e0076397d3d4af7cf5adc2098eaf347b1bc35fdb1a85dbdc4aca35f1a73fe3e7019afdac6ab674be7f1b54e11255a08601f146dbe9d99a292bf39a2c02
+
+Package: flac
+Architecture: aarch64
+Installed-Size: 328
+Maintainer: @termux
+Version: 1.5.0-1
+Homepage: https://xiph.org/flac/
+Depends: libflac (= 1.5.0-1)
+Description: FLAC (Free Lossless Audio Codec) command-line tool
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/flac_1.5.0-1_aarch64.deb
+Size: 104688
+MD5Sum: b3f60d1cc3cf76c47512c5f76f4eedcb
+SHA1: 76d5156ff9c22c4949ecf3f3802ac7dda37428b4
+SHA256: 06064c24821b60c600e8ddeb857a6916fac26b15ad8892a0f07321b16514fa50
+SHA512: edfbca505c6ea796a2ea01fb99271d949bdcc366a1f1024733d45473eb83baff8c1d2512f2f66ff1eb04b8d2790460cc0824d4bb9e158fbc2868a6ef23dd513c
+
 Package: fmt
 Architecture: aarch64
 Installed-Size: 824
@@ -89,6 +471,276 @@ MD5Sum: 3d1a5068bae6412c94a9044caa71ee35
 SHA1: d970dd76e1af0f39fbd086b373dc7d9cd6b53a79
 SHA256: e4e9fda363f4fe6e0d1f630f6bf48ab8503604593d74a64d98c41e1131f95d65
 SHA512: 5b24f630aa1cb2c42b6958a538f2409fb6f08f1deaf0bf7f57283a20c23e39f54076e1720eec76f89596ee01c8f7630549756039721feca3c1db8da5f633a8b2
+
+Package: fontconfig-static
+Architecture: aarch64
+Installed-Size: 688
+Maintainer: @termux
+Version: 2.18.3
+Homepage: https://www.freedesktop.org/wiki/Software/fontconfig/
+Depends: fontconfig (= 2.18.3)
+Description: Static libraries for fontconfig
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/fontconfig-static_2.18.3_aarch64.deb
+Size: 135688
+MD5Sum: 919b37508f629a9114ec2fe0a0c13b8d
+SHA1: 384ae3d51a84f5dceb8fc9f68ecee4c6e6705c1a
+SHA256: a6ebc8dbdc9641c608ccc42d6c291f652e3cd51f1658520285b5f75df4d643a1
+SHA512: 834cddac3730269c5ec66e716b2de5dbae2bd2f388262e58be2adb98bddd7c874f2b774c438cccb735a2ad4a9dbbdb7a53d8f7aaa276c4f0b49ca9e942a17acd
+
+Package: fontconfig-utils
+Architecture: aarch64
+Installed-Size: 136
+Maintainer: @termux
+Version: 2.18.3
+Homepage: https://www.freedesktop.org/wiki/Software/fontconfig/
+Depends: fontconfig (= 2.18.3)
+Description: Fontconfig binaries
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/fontconfig-utils_2.18.3_aarch64.deb
+Size: 14616
+MD5Sum: 5a5a3dc25f05120e778ca708cc691ecd
+SHA1: 4bc17b4e7a69c2b4d35e88f624dc0f9117abd093
+SHA256: 892f9b3d328569db9bf7e531cb48a34e3b66d2800643ded0502f187fea2fdcbd
+SHA512: b69db55077aa399618896ce025de0023d1d434020f8df818a2d6435539ef2586c4613acabbf1e3c6c016ba2d793ab818024b9299f6d540a142de8f32169cde42
+
+Package: fontconfig
+Architecture: aarch64
+Installed-Size: 888
+Maintainer: @termux
+Version: 2.18.3
+Homepage: https://www.freedesktop.org/wiki/Software/fontconfig/
+Breaks: fontconfig-dev
+Depends: freetype, libexpat, ttf-dejavu
+Replaces: fontconfig-dev
+Description: Library for configuring and customizing font access
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/fontconfig_2.18.3_aarch64.deb
+Size: 140660
+MD5Sum: 06f7d960a926425fc8d5090c91e1f1eb
+SHA1: fce093c433137a6ceb854a3d25de160956708a14
+SHA256: 666605cb858ed5ef3c9834e51d3367857875562471692731d38e3e783f7b414e
+SHA512: 482605d3227573f1ada8cca2bc773b51babf3f385aae3353d624f375b8bc5808e7de1fe3ec7d160bff0efeb3c4d0c3d17300178ed4992a92840879ff65685035
+
+Package: freetype-static
+Architecture: aarch64
+Installed-Size: 1004
+Maintainer: @termux
+Version: 2.15.0
+Homepage: https://www.freetype.org
+Depends: freetype (= 2.15.0)
+Description: Static libraries for freetype
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/freetype-static_2.15.0_aarch64.deb
+Size: 312240
+MD5Sum: 0f68bc756839f3087f74a225e6408c30
+SHA1: c31bcd7d72512b0419d95c546cdf0bebfb2b02ad
+SHA256: d2e898c6f05677dc5f10e1b0c72ffbb12fa3a531d340c4dc0509f11d34f10c82
+SHA512: 8912e537a36e18a457d86d67fc932378d7faf8e288f040d2017a454809598894f49747a7fde3a83e4d51dc17c23471709ad5af26e99c8ebbdb91fe533e323faf
+
+Package: freetype
+Architecture: aarch64
+Installed-Size: 1728
+Maintainer: @termux
+Version: 2.15.0
+Homepage: https://www.freetype.org
+Breaks: freetype-dev
+Depends: brotli, libbz2, libpng, zlib
+Replaces: freetype-dev
+Description: Software font engine capable of producing high-quality output
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/freetype_2.15.0_aarch64.deb
+Size: 421912
+MD5Sum: 105c03eb749bb1e6c1fc06812eb024f5
+SHA1: ac1c1934d70bfe06232e35e061c64e6594d412be
+SHA256: 4196a059957912f894a41f1374060ec84bd0894db24c857cf7921415bc6f61a8
+SHA512: 5fbef576616a808e4b522ebed4dd8096a4e0a3a869958420e929db12135a1e81404c06f28d346fadcb509188a3fe2d197bf0c1501e89a8bfb819cefc37429988
+
+Package: gawk-static
+Architecture: aarch64
+Installed-Size: 172
+Maintainer: @termux
+Version: 5.4.1
+Homepage: https://www.gnu.org/software/gawk/
+Depends: gawk (= 5.4.1)
+Description: Static libraries for gawk
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/gawk-static_5.4.1_aarch64.deb
+Size: 25788
+MD5Sum: 9db2bde9e3f67880c921eb9cbe7dcd13
+SHA1: fda2aee421bc9d299282b6fb096db75c922e2fb3
+SHA256: 2a77c51a42c9687a8fa4069d806048b2c92022be2ffdd179132102c69643d5e5
+SHA512: 50559b064cf8869faa296e7ee7bc47cc0696a08e197ef828179b55f74da5138031ff90e25b92ea3274fe2684f1bda5377b02f5b25bc4f0e3d1dd6d851ab00a6a
+
+Package: gawk
+Architecture: aarch64
+Installed-Size: 3848
+Maintainer: @termux
+Version: 5.4.1
+Homepage: https://www.gnu.org/software/gawk/
+Breaks: gawk-dev
+Depends: libandroid-support, libgmp, libmpfr, readline
+Essential: yes
+Replaces: gawk-dev
+Description: Programming language designed for text processing
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/gawk_5.4.1_aarch64.deb
+Size: 928168
+MD5Sum: a37b529ce205ed95766a251d3c3584e9
+SHA1: fdec046833c37c61a0b97e65755367b96c1e9e3f
+SHA256: 768e388a757009722ee7e630944e7d0c2ef26ea92f1884f1aeeee01fbe549df4
+SHA512: aee3327fba55471f2f11bfd6b7733d4546a184554451a154e4360a10cb2b843726c5243289d982b50aea04a063fc87b5e6878878cede312a05a4e6895412d079
+
+Package: gdbm-static
+Architecture: aarch64
+Installed-Size: 188
+Maintainer: @termux
+Version: 1.26-1
+Homepage: https://www.gnu.org.ua/software/gdbm/
+Depends: gdbm (= 1.26-1)
+Description: Static libraries for gdbm
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/gdbm-static_1.26-1_aarch64.deb
+Size: 32020
+MD5Sum: b58c6acd8379f981128c4856d8e76de1
+SHA1: cf36da8dc2a00136310c8db13b1b2f3c63482a35
+SHA256: 0a5e4bc478177e7b55b5ca52db6fae1af8ba3c2835be9606b840ce15aa7764d0
+SHA512: 98dd51c4c203e44e5533ca6156b86aa37b2b39ba7484af7eb5a43b9d09666456bb81407a49e3c94c0253f7edd91458ea0ec58ed51758d8240dbe0e594a635ad7
+
+Package: gdbm
+Architecture: aarch64
+Installed-Size: 584
+Maintainer: @termux
+Version: 1.26-1
+Homepage: https://www.gnu.org.ua/software/gdbm/
+Breaks: gdbm-dev
+Depends: readline
+Replaces: gdbm-dev
+Description: Library of database functions that use extensible hashing
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/gdbm_1.26-1_aarch64.deb
+Size: 150336
+MD5Sum: eab5e642b7cc149258d2253e8dfa8727
+SHA1: b89d5f8513673f4d3caba35c9584dcb6e59fc08e
+SHA256: 78d0f12c892ae4da4d328a6143348950ffa5c0a1ee045fa3a7ad508b199e4ca9
+SHA512: 43343f1a7954200c3f79f4658c483ac00ea10dae0694646c01a9617dd1ecf474c06c1b1f39edb81e0ae20d92d7686333ebb54d42982eb3918de65d306be44a6d
+
+Package: giflib-static
+Architecture: aarch64
+Installed-Size: 84
+Maintainer: @termux
+Version: 6.1.3
+Homepage: https://giflib.sourceforge.net/
+Depends: giflib (= 6.1.3)
+Description: Static libraries for giflib
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/giflib-static_6.1.3_aarch64.deb
+Size: 17212
+MD5Sum: 5623a9eec72b4b2cbf721d2ccbb04b1c
+SHA1: c26a0858bd16316b8114e51611f15bb964eceb25
+SHA256: 303543db1a874048dd13d4fb944c79e50efc25d208f116ba92b65c94862fb6e8
+SHA512: 0523983515f658ce392eaee330e158d317da672f46b2336cc85b727a7ebcce20855acc70236bb9d98817079b2a6ebbde8b346e8cd5551e5b770004c5a288daa2
+
+Package: giflib-utils
+Architecture: aarch64
+Installed-Size: 264
+Maintainer: @termux
+Version: 6.1.3
+Homepage: https://giflib.sourceforge.net/
+Depends: giflib (= 6.1.3)
+Conflicts: giflib (<< 5.1.4-4)
+Description: A set of utilities that comes with giflib package
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/giflib-utils_6.1.3_aarch64.deb
+Size: 45524
+MD5Sum: 6d8031cd937d7f93b52fbe8b5c29d2a8
+SHA1: dafee4d2069c481dc868950fd64cd74cc7847591
+SHA256: 92d37552dc76e82a7d8ccb9787bffe2819643ad8a7fec46784303be9212ea909
+SHA512: 902b84aac52f9e42b89b12380a066aefdb9eec1c6b32aeee15a380f8f59ec39b3738d6c6d78c494b61a07d126263d3e7d1d3d1ca7093294cc68d0e68f495ef1f
+
+Package: giflib
+Architecture: aarch64
+Installed-Size: 252
+Maintainer: @termux
+Version: 6.1.3
+Homepage: https://giflib.sourceforge.net/
+Breaks: giflib-dev
+Replaces: giflib-dev
+Description: A library for reading and writing gif images
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/giflib_6.1.3_aarch64.deb
+Size: 43876
+MD5Sum: a44848f6bf1f90a210d54685dddb3edd
+SHA1: 7f92e61cbd6d267942187779570eeb4a8d6aabde
+SHA256: 71a3dffd3f7aa7ba7f1cf66ef3aaf77e6c546ad0124ce4617375c9e16267c757
+SHA512: da0ee91d0260edcce114f7975f34b01f89818fc57a64724497258e04c268e0b4f17fb7bcffcd5202871d6a77ffa672d878ec099aea889277d925fd63d6c2758c
+
+Package: git-gitk
+Architecture: aarch64
+Installed-Size: 988
+Maintainer: Joshua Kahn <tom@termux.dev>
+Version: 2.56.0
+Homepage: https://git-scm.com/
+Depends: tk, git (= 2.56.0)
+Description: Git repository browser
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/git-gitk_2.56.0_aarch64.deb
+Size: 145548
+MD5Sum: 1db1dd939373adb5ebfcd5ac45a375c8
+SHA1: 2433d930f95e7b568c2add9838dfce7e19c35c29
+SHA256: 21747d2a2277452845520a7d67a08eda45721fc648db4cec107851d39d921e02
+SHA512: c780505653341fae7f84423e08bcc10aba7217d2874a7ce453943564f92c41f3447d5262f2f4c3eaeed315b22b6fbf039d77122df4f398d85ff115ca6e7b013d
+
+Package: git-gui
+Architecture: aarch64
+Installed-Size: 1564
+Maintainer: Joshua Kahn <tom@termux.dev>
+Version: 2.56.0
+Homepage: https://git-scm.com/
+Depends: tk, git (= 2.56.0)
+Description: A graphical interface to Git
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/git-gui_2.56.0_aarch64.deb
+Size: 215544
+MD5Sum: 181f434e0a0332af26b3d2bc3889f2db
+SHA1: b0080cebc1a421aa3c17980bc1de02685b3842b9
+SHA256: 08847aa13ec2070b2bbe692c912d624236903af57f23cd63c38cc79492b22688
+SHA512: bb99307f93f33a13b6564f49070034e2bbc9b3946dc7463c2ee9eec257dc62c8b9fd17910ce87bf4df528d661b58ab16c10feb5c6288bdde1584f2d990451e6a
+
+Package: git
+Architecture: aarch64
+Installed-Size: 25076
+Maintainer: Joshua Kahn <tom@termux.dev>
+Version: 2.56.0
+Homepage: https://git-scm.com/
+Depends: libcurl, libexpat, libiconv, less, openssl, pcre2, zlib
+Recommends: openssh
+Suggests: perl
+Description: Fast, scalable, distributed revision control system
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/git_2.56.0_aarch64.deb
+Size: 4561348
+MD5Sum: 1660054f4c5c808986658462be1efc73
+SHA1: 7ef232ee990ca3e60692b4940b575482d2662e81
+SHA256: 519b8a538649d34d9d6d1c0a839b59c1f658bbf4654151e2863925899fa1ff20
+SHA512: 4ed4fcc796637e56aa92479f21ac035ce49a643269037bc7f0bee70a7946925d5c88b2b57d0b6b6c656558abb43851b1ff316af110f8de00f798aad91a148cd4
+
+Package: glib
+Architecture: aarch64
+Installed-Size: 20952
+Maintainer: @termux
+Version: 2.90.1
+Homepage: https://developer.gnome.org/glib/
+Breaks: glib-dev, glib-bin
+Depends: libandroid-support, libffi, libiconv, pcre2, resolv-conf, zlib, python
+Replaces: glib-dev, glib-bin
+Description: Library providing core building blocks for libraries and applications written in C
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/glib_2.90.1_aarch64.deb
+Size: 2573280
+MD5Sum: 0d3f204c7f0ac74855c7b4dce0a777c0
+SHA1: d616edc00e157c30e6e6d23a570a5e1fdb083953
+SHA256: 30f0ba2d71c572a902e5509ff371c6f700fd0522ac82d5c71be9ab778926956a
+SHA512: c517bf531067e29cb29c26303494df6461f745256077eb685054bdad5dfdd6ececbf12285b10fa17d2cd139e0d08c1d68283c9ae7f0dbe26462cf4599c1dc202
+
+Package: gnutls
+Architecture: aarch64
+Installed-Size: 1156
+Maintainer: @termux
+Version: 3.8.13-1
+Homepage: https://www.gnutls.org/
+Depends: libgnutls (= 3.8.13-1)
+Description: Commandline utilities for interfacing with the gnutls library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/gnutls_3.8.13-1_aarch64.deb
+Size: 185360
+MD5Sum: 16b4bb089552f17e28fc76afa116c85b
+SHA1: b65b3b1dc894ea1e28ed6e777b984950df40b6ab
+SHA256: 3c4b62d9fa05328c4bf72464d466c358dbc8ca5032cb86edf9e0299c861b8a76
+SHA512: 97b9f0a743808b625f8f2cee19ab5fde0c552b1f5c8039a0355ba5fe1176461a7bc180b3c90a011b1251ae023872738f63fa8f44010c2c4879693052fe8e84e1
 
 Package: googletest
 Architecture: aarch64
@@ -106,6 +758,52 @@ MD5Sum: 938492883dab9bdd3b8a4e3e816b8f4d
 SHA1: 595894d465fe7aea7255e0049a65ed6ec078745f
 SHA256: 40a5d805319aa599ecbb2eb8794ebc3d4ef4a8664d82210397b9d6cf02c2d3b3
 SHA512: fcf7e2a8fd7f20cfde7c3e466be40d10073840f06996a0c0e42d63e567c6af5352f5599b8023ef667f1cc7c54932137751f8b1e4c970e66b1853828cb9e75d23
+
+Package: grep
+Architecture: aarch64
+Installed-Size: 456
+Maintainer: Joshua Kahn <tom@termux.dev>
+Version: 3.12-3
+Homepage: https://www.gnu.org/software/grep/
+Depends: libandroid-support, pcre2
+Essential: yes
+Description: Command which searches one or more input files for lines containing a match to a specified pattern
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/grep_3.12-3_aarch64.deb
+Size: 128452
+MD5Sum: 00fb78fe40c4ed7b81e286a850b14a35
+SHA1: d138c41ca991b9915931e7fc943eb0c2ffad6267
+SHA256: 48873c8fb483819e7e6bea7da67e291093de7f9a30de6f3a2537d2d8f9228dd4
+SHA512: 922c7a42f36ac84fd9a7816cdc71679fee965395b056d268eff2b20bc7f4b538c10db7cf358d11fe18443b1985f9302c49bf52b690372a7e7e413513c3ab11fe
+
+Package: gzip
+Architecture: aarch64
+Installed-Size: 300
+Maintainer: @termux
+Version: 1.15
+Homepage: https://www.gnu.org/software/gzip/
+Essential: yes
+Description: Standard GNU file compression utilities
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/gzip_1.15_aarch64.deb
+Size: 75760
+MD5Sum: 9279061f400a92e7a93b6cf54f9733b2
+SHA1: 882b20f7c76617003ade7649d07edd2b06f00197
+SHA256: 364b8086c3b4cef7a225bad1c988e006bb8d967c4312eacdaa9b0ede9952cdff
+SHA512: f25d4da1f9f8970bc04dac639a2b021f1cce2cd4f7e7aa4a1f282e202606d310a7f24f38a6264f7a03648855aaea299d4a39d5e2b94f74f9e3a1286f1242e0c7
+
+Package: iconv
+Architecture: aarch64
+Installed-Size: 60
+Maintainer: @termux
+Version: 1.19
+Homepage: https://www.gnu.org/software/libiconv/
+Depends: libiconv (= 1.19)
+Description: Utility converting between different character encodings
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/iconv_1.19_aarch64.deb
+Size: 10220
+MD5Sum: a330475e2cc95a6fd009b7bb1a23a77e
+SHA1: 19c703e099b4d06a1b4e378ad7c2a2232f795a72
+SHA256: 7fba8a34b63268fbc9893eb89ef1c2529bca971f7924675db6380090309e24a4
+SHA512: c77257295d8df055cdce60e1a7fb1d5b2af384a2dfa8ac08e8c591eecb3772a0b0c90d2ba68f7db8d46ee9d052ae8a52dd144be7a2780635aec7ef5998af25e4
 
 Package: jq-static
 Architecture: aarch64
@@ -156,6 +854,21 @@ SHA1: 711964aaaf70cf50103fd6d57adedb6e1d21e5b9
 SHA256: d519da76dc71a235ee221f0ba9a95ba845ad7ad64fed6ff08021b0ad550a6ec0
 SHA512: 61c6b7bfd27cf6c84836c490598f530b5c0fc3d0d71e11cf3288724f9ce2d27df46668332d5564d287a0fa9be473a3ff292564db8c62ca5dfc2da8947f4e6866
 
+Package: lame
+Architecture: aarch64
+Installed-Size: 632
+Maintainer: @termux
+Version: 4.0-1
+Homepage: https://lame.sourceforge.io/
+Depends: ncurses, libmp3lame (= 4.0-1)
+Description: High quality MPEG Audio Layer III (MP3) encoder - frontend
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/lame_4.0-1_aarch64.deb
+Size: 178868
+MD5Sum: 02c23161b90a6c2c4c530c014bfd226c
+SHA1: fd18c9c8c9b2215c117879868c15bfdb8247d0f3
+SHA256: 861576247a8ff2cebbade0e14a6b48bc9845de179edee63fac24e2067c611b11
+SHA512: 4d77ca5a4caeeda844afbe89962fcd30ba85ce634e73ae3f06e20c40f8dc5520ddaa97cd5166ea04d2cb26089bbf1e224adefd3c2ee7740d4b2a33cd590a7a17
+
 Package: ldns-static
 Architecture: aarch64
 Installed-Size: 692
@@ -188,6 +901,84 @@ SHA1: 63027f2051f377424978fc5fdefa140791c72015
 SHA256: 48cdd6a67ee4d9a051d5e8b4a1740fa42ebffd9d8c2fbe11c80c0e47ba457fac
 SHA512: ff4150c2890656c7785e8a90f9e08ba69cebaaa1d048643c52670199fe4f03e7a35096c9d082df0f7a504b3db24c650deb782655f9f03a1d8a349f44dfd4cd99
 
+Package: less
+Architecture: aarch64
+Installed-Size: 420
+Maintainer: Joshua Kahn <tom@termux.dev>
+Version: 710
+Homepage: https://www.greenwoodsoftware.com/less/
+Depends: ncurses, pcre2
+Essential: yes
+Replaces: lazyread
+Description: Terminal pager program used to view the contents of a text file one screen at a time
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/less_710_aarch64.deb
+Size: 143508
+MD5Sum: 979b34c2f0ccd0f4f0b3f0d4c2c85947
+SHA1: 46984d1e69f69ca172ccc4a47147986f062c701b
+SHA256: 00c753ca1d0c1d09ea685767bdf17db67138e3a29a6bf345e56d21ec83fcf707
+SHA512: 7c9ceb23b275dfa2fd4315fa3a2b5daad7d6190dfa7553f370f577ffc32783e94487898a6122d90df62dd85e333c9385f4adab085f200ec78961915fe928b2e2
+
+Package: libacl-static
+Architecture: aarch64
+Installed-Size: 164
+Maintainer: @termux
+Version: 2.4.0
+Homepage: http://savannah.nongnu.org/projects/acl
+Depends: libacl (= 2.4.0)
+Description: Static libraries for libacl
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libacl-static_2.4.0_aarch64.deb
+Size: 20176
+MD5Sum: 8368a04047630473c9da001387b49072
+SHA1: 6c5bd6d16082a99a25f60f1b5ffba94775e66027
+SHA256: f4cb8e7142f798ccdb216074aa3343c37865b6166caeaf56f2391043dac40ffa
+SHA512: f609ce8bae19c65a224058a30dd3276cf34b3faf117c47a916ea4f99c1196cef1accd85d2d877783f2c0f837556592e92b6a3c7635c0d45eaae384a428faa031
+
+Package: libacl
+Architecture: aarch64
+Installed-Size: 468
+Maintainer: @termux
+Version: 2.4.0
+Homepage: http://savannah.nongnu.org/projects/acl
+Depends: attr
+Description: Access control list shared library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libacl_2.4.0_aarch64.deb
+Size: 123660
+MD5Sum: 28165a4ae162ad0fd54e856922b4f6c3
+SHA1: fd441586ad1cbb96208fe1698253037e2921c00a
+SHA256: e32d70e64ea10fc98d9049c37ba6db643359737a86fa8d0b1acb9a292ce9453f
+SHA512: 3b387c756ca7667f30cddd9afc90685e1ba611add8c21b6bc91f8c8a6748806764e1ebde836ae9382d8e4eaf030939436c8b68bcd36a388a34d85fed8d291103
+
+Package: libandroid-execinfo-static
+Architecture: aarch64
+Installed-Size: 36
+Maintainer: @termux
+Version: 0.1-3
+Homepage: https://man7.org/linux/man-pages/man3/backtrace.3.html
+Depends: libandroid-execinfo (= 0.1-3)
+Description: Static libraries for libandroid-execinfo
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-execinfo-static_0.1-3_aarch64.deb
+Size: 2404
+MD5Sum: 32deabaaf5495b3cbbc7b6d11dbfa1ff
+SHA1: 193d4ef438884f90b8fec4342e9f7faaeabca0e8
+SHA256: 1d8e442c952be8281cf250ed1edbc8ea009d7a36e64e98cc9572fb7022fb17dc
+SHA512: 3c3ffcc6ce875d3c01443c4223a505598992c1ca0360e2211576f421eaa4f4cd1fb67d7a009980e5e2065c04543adf7fb55e4dc317d421c7c391dea8fbeee385
+
+Package: libandroid-execinfo
+Architecture: aarch64
+Installed-Size: 88
+Maintainer: @termux
+Version: 0.1-3
+Homepage: https://man7.org/linux/man-pages/man3/backtrace.3.html
+Conflicts: libexecinfo
+Provides: libexecinfo
+Description: Shared library for the backtrace system function
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-execinfo_0.1-3_aarch64.deb
+Size: 15280
+MD5Sum: faecee4767b7d233bc82c4ef378a6892
+SHA1: 13d2867e0cf4a79594e6974332f0f04a37b37664
+SHA256: 5dd37c529dea91ba6e8fe6672009700dd3bce9d5ed7415ef5b90db10e2bee4d9
+SHA512: 263acdef25f42f0d80cd7f459c5627b3d2fd4a9fd3203dc5ae2a65a25590889c3c7aa316cc163e1f92052849534a57e1f50561a126dd179370a2add4b246165e
+
 Package: libandroid-glob-static
 Architecture: aarch64
 Installed-Size: 40
@@ -219,6 +1010,127 @@ SHA1: 65a8647d9e302e9091f56546a36620bb32b00fad
 SHA256: 41190607ba9373d629898d87c2c64b8f7dd2a74153a2afe6e201a21050c573a6
 SHA512: c317b6cbe554de82fd9e2b013646daadfd1284e431d670d571da1de910a040fe7b26088fa62fd7db1d7552853c8c92f3e431339aff683782b21d0acd9c5fe6a4
 
+Package: libandroid-posix-semaphore-static
+Architecture: aarch64
+Installed-Size: 36
+Maintainer: @termux
+Version: 0.1-4
+Homepage: https://man7.org/linux/man-pages/man7/sem_overview.7.html
+Depends: libandroid-posix-semaphore (= 0.1-4)
+Description: Static libraries for libandroid-posix-semaphore
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-posix-semaphore-static_0.1-4_aarch64.deb
+Size: 2884
+MD5Sum: e07f20d8306a9c23251e64ead43d1f24
+SHA1: 0b2362ae9d23a6c078f7aaea034869ebcc7e29dc
+SHA256: 01cc38a1eeb94d9ffd0f20a5af477d4d1f6b59c04556b40229d407e87658a30f
+SHA512: db7b3704b1dc354b8fa2e6280a31399066b6fcadeaa905877af686dd83137cf1800065d782f71f602aef41b12d5158247ba56f946026233dd352014718826295
+
+Package: libandroid-posix-semaphore
+Architecture: aarch64
+Installed-Size: 52
+Maintainer: @termux
+Version: 0.1-4
+Homepage: https://man7.org/linux/man-pages/man7/sem_overview.7.html
+Description: Shared library for the posix semaphore system function
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-posix-semaphore_0.1-4_aarch64.deb
+Size: 4172
+MD5Sum: 844e0e80c7b2c9ef9cb066df006d55be
+SHA1: 21ed0c8aec5c0a3d0d690d33f1766e3034a7ec9a
+SHA256: 0cae8dfbbe89a73ca804c3d62cfc25d0624760dc53deb244fb99895cf340d62d
+SHA512: 5dffdc9b974a0bb3181eba4846fc5549a4ecb387f440730d023cdf53410f1897208d101db7bc825b52961a3c7d6167a7ac96118b7cfeafa84570c2febf6891ed
+
+Package: libandroid-selinux
+Architecture: aarch64
+Installed-Size: 308
+Maintainer: @termux
+Version: 14.0.0.11-1
+Homepage: https://selinuxproject.org
+Depends: pcre2
+Description: Android fork of libselinux, an SELinux userland library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-selinux_14.0.0.11-1_aarch64.deb
+Size: 59324
+MD5Sum: 1cef78bcc4adc671c3871181c5285582
+SHA1: 15924ea9b094d1d2f22fc87bfbe3fdc6fe4e4dd4
+SHA256: d767e9ca553414b63c3747e2fa68aa529d979f5d82488db14d016617ff9110d0
+SHA512: 4a88e250999e95a337b02f669ac96d415f62d632db8f22f7e7f280c70d69e0c259436b4e64ad5352d120f361b3d543d9a91732c4e85497207857a4024b913b54
+
+Package: libandroid-shmem-static
+Architecture: aarch64
+Installed-Size: 48
+Maintainer: @termux
+Version: 0.7
+Homepage: https://github.com/termux/libandroid-shmem
+Depends: libandroid-shmem (= 0.7)
+Description: Static libraries for libandroid-shmem
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-shmem-static_0.7_aarch64.deb
+Size: 6060
+MD5Sum: ffffc66d8c391ded62c5adf00f597041
+SHA1: f4edcbb7975ca6102fc0eab62d8ed4447b31ee71
+SHA256: f2e4e66453838f9042bc4540014e7da5db75bee49284e6664bbf4c01be783ff4
+SHA512: 6117124758c05a588b8451d58d470a762f40d119554ea408a46a31e2e53e4a88f2d0b8c35412e7f4fc100a4124b0247f378f9e0a7a760d2e76ef087a2061af43
+
+Package: libandroid-shmem
+Architecture: aarch64
+Installed-Size: 72
+Maintainer: @termux
+Version: 0.7
+Homepage: https://github.com/termux/libandroid-shmem
+Breaks: libandroid-shmem-dev
+Replaces: libandroid-shmem-dev
+Description: System V shared memory emulation on Android using ashmem
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-shmem_0.7_aarch64.deb
+Size: 7272
+MD5Sum: 59bd0789cb314159d584ad3c327ab23e
+SHA1: c35311b70ad4eb1520ed89e9fe5b054864739529
+SHA256: cbe6088ba88de8ed600fbe60bdc4212eca0721a501a2535774cc1e14a69aa778
+SHA512: de3161e9971fffc6c16f1c2f5c5cde240377740b519d408be60729aea09431d91980a608bad77a2016272a7d74613d31dabb9973be4e1eb37185d6490d0a928e
+
+Package: libandroid-spawn-static
+Architecture: aarch64
+Installed-Size: 44
+Maintainer: @termux
+Version: 0.3
+Homepage: https://man7.org/linux/man-pages/man3/posix_spawn.3.html
+Depends: libandroid-spawn (= 0.3)
+Description: Static libraries for libandroid-spawn
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-spawn-static_0.3_aarch64.deb
+Size: 4044
+MD5Sum: 10ccd1fbd0440d54b7d8252c3cfc80ee
+SHA1: a489a2b94a2879e66e54626626c50545eb67639d
+SHA256: 9663a3db54e5f5ec22de798a427e50be50a76b46a389134b389f2aed72fbab7c
+SHA512: 1c381d547931fee38ebb0286dec2c28c1b91122f7215a5e29a14f38068d0bc50442957ab5b8816a91760a96771a1099ffc09b79df88def1c63e6ac68fbe6121d
+
+Package: libandroid-spawn
+Architecture: aarch64
+Installed-Size: 96
+Maintainer: @termux
+Version: 0.3
+Homepage: https://man7.org/linux/man-pages/man3/posix_spawn.3.html
+Depends: libc++
+Description: Shared library for the posix_spawn system function
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-spawn_0.3_aarch64.deb
+Size: 16164
+MD5Sum: b106324c8758faf3c28a9c98701f86de
+SHA1: 97c21e531e00623ff4a30ccbc39ad5c9f34690a1
+SHA256: baa466d9c232e0daca7d28725c3322af0d3358928935c28ec57b04759373f643
+SHA512: f99b184fa5128a27ed1a111a4990cba00b17efa107202fcd551599de6b5da21c3ffe5f29d1bf0c336dcb8da82bb208758fd84de33a4500928f740832e9c9effb
+
+Package: libandroid-stub
+Architecture: aarch64
+Installed-Size: 168
+Maintainer: @termux
+Version: 30-2
+Homepage: https://android.googlesource.com/platform/frameworks/base/+/main/native/android
+Conflicts: libandroid
+Replaces: libandroid
+Description: Stub libandroid.so for non-Android certified environment
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-stub_30-2_aarch64.deb
+Size: 26788
+MD5Sum: f0eaa0630958ccba819ecc8b868c0213
+SHA1: bdac8471d7914727e70fbda5837098d555df61d1
+SHA256: 42bce9af5bdf49ce14d00055219a226d6f3b9a0c7356128cedb98dc58861ef1c
+SHA512: e923f56bacb7ad8442751e31e9af69015283b7317e106d92b78ac4ed2686698cfbce8ab72dd229b300b200968a98ee96c9047327388e249630f1367412afbda4
+
 Package: libandroid-support-static
 Architecture: aarch64
 Installed-Size: 72
@@ -249,6 +1161,98 @@ SHA1: 38a668ae2a9fb08b0368e68184a9838ad0c224cd
 SHA256: 5b3f42a0206b6490cf42220bfa896dc8d2361b3c5ee0e0ddb09183f6ce63ac9d
 SHA512: c38a396f6c9f5175a319f8a9ec22014abd3f1311f8e4be0232d531a606c6c508d13d3d7c1da81027b6a425176a0bbc557bbe2cde11b81ca8842987e5e8e7dcf3
 
+Package: libandroid-sysv-semaphore-static
+Architecture: aarch64
+Installed-Size: 32
+Maintainer: @termux
+Version: 0.1-1
+Homepage: https://android.googlesource.com/platform/bionic/+/refs/heads/master/libc/bionic/sys_sem.cpp
+Depends: libandroid-sysv-semaphore (= 0.1-1)
+Description: Static libraries for libandroid-sysv-semaphore
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-sysv-semaphore-static_0.1-1_aarch64.deb
+Size: 1716
+MD5Sum: 7b43ac3f32dd02b334e63d60dcb61483
+SHA1: e3d7dbfe58e1fe386c70f835e4e304702e0264b3
+SHA256: 2e3b5142fe3ab56ac47280c9f411e6f7258551c44e04c5c85f3a244d14653495
+SHA512: 8e404f980c9a6ac0ac666215722d7bbf78cb298fe232dc2e8e64d3c4708e87066d5b747146e9802b71140c0eba7913a096631f323207632180f47aba882bfd92
+
+Package: libandroid-sysv-semaphore
+Architecture: aarch64
+Installed-Size: 64
+Maintainer: @termux
+Version: 0.1-1
+Homepage: https://android.googlesource.com/platform/bionic/+/refs/heads/master/libc/bionic/sys_sem.cpp
+Description: A shared library providing System V semaphores
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-sysv-semaphore_0.1-1_aarch64.deb
+Size: 3660
+MD5Sum: a62886a4d8f9e11123d59bc7b6b41a60
+SHA1: 962166d20d0243af01c5a85bf8166d55a135a2ee
+SHA256: f54495e32841291a09645388fad07347db30f699b340904677cd1aec266823e8
+SHA512: b23bd7281f3e7d204a66887c5cf9372c61482510c662089d6e65caea21db79aa29a90ef9da26b37e07b19efcd1676a3db9579a4d645b471176a32f0527aa763f
+
+Package: libandroid-utimes-static
+Architecture: aarch64
+Installed-Size: 32
+Maintainer: @termux
+Version: 0.4
+Homepage: https://github.com/termux/libandroid-utimes
+Depends: libandroid-utimes (= 0.4)
+Description: Static libraries for libandroid-utimes
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-utimes-static_0.4_aarch64.deb
+Size: 1700
+MD5Sum: 68f33168f505e7a56a2089d9f6c69b45
+SHA1: 73881fb461ccff177d1fd7226ad732dfe7ab95c0
+SHA256: b508540ab4c3e012eb95e1558d73490095d8a1cdefafa9f4375229adfdd542c8
+SHA512: 6eb30766e9f21044858e7ecf66c942c1a78ce8a2dfca4f7a77b497b2ce5f1ffccd7ff926ad8aa0dac7ac153858534744d8d11bfbd17a5c4e4d01cfaa0eefb719
+
+Package: libandroid-utimes
+Architecture: aarch64
+Installed-Size: 52
+Maintainer: @termux
+Version: 0.4
+Homepage: https://github.com/termux/libandroid-utimes
+Description: futimes, futimesat and lutimes from bionic
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-utimes_0.4_aarch64.deb
+Size: 3180
+MD5Sum: 5963c50cd83b98c90ae6a1b76900eb0a
+SHA1: 1df66213acb91313b173ad311782e6d6720beb7b
+SHA256: 92497c65e5cc825f340d26c8e7af1bf3786498ec87acaadbeb8e633df439a4f6
+SHA512: 1acc503f8750f51ac5516d9913e3f36246ff776116c43a02e7c9d502d2ae4456f5be95aa3330d3d4581b5297f313ad299e6a2d929d6fd31c48c0d2211aba277e
+
+Package: libblkid
+Architecture: aarch64
+Installed-Size: 412
+Maintainer: @termux
+Version: 2.42.4
+Homepage: https://en.wikipedia.org/wiki/Util-linux
+Depends: libandroid-posix-semaphore
+Breaks: util-linux (<< 2.38.1-1)
+Replaces: util-linux (<< 2.38.1-1)
+Description: Block device identification library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libblkid_2.42.4_aarch64.deb
+Size: 128808
+MD5Sum: 42a5a1dcc83239b7ff1472b2dcb50e12
+SHA1: caf62cf0ab9f27fd1f3b6e15246aca80b463af98
+SHA256: 6e89690e586347b1b6e9f921ff18ddc337625cc10ad481855aa06f2ae82b59a3
+SHA512: c5bfb4ee8ca8f167f8c66243595b3320a4a4da914df1a118dbb81f21bba9f40efd086e4737a6f74fc5863ceb285338c74ea46d2ca553fb38e86f743eba6e3f2c
+
+Package: libbz2
+Architecture: aarch64
+Installed-Size: 108
+Maintainer: @termux
+Version: 1.0.8-8
+Homepage: http://www.bzip.org/
+Breaks: libbz2-dev
+Essential: yes
+Replaces: libbz2-dev
+Description: BZ2 format compression library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libbz2_1.0.8-8_aarch64.deb
+Size: 26152
+MD5Sum: d78f5574f3fcfeafe0439cb687aeb46c
+SHA1: 679be336066519e455aca60a888ad67359939800
+SHA256: 60f8b83d5ee50ee72918f0fcc227400fe4c85997efb0a6f997a74f0cdf1c91b4
+SHA512: 825e0800434ee657880deeb4630b8b1a8d8da5ce382440299ff6b4638643db866e2d960e84a3b670332f6711227b20cedf82e302f21c5f7d8dd16b73387a3360
+
 Package: libc++
 Architecture: aarch64
 Installed-Size: 1432
@@ -263,6 +1267,86 @@ MD5Sum: 2c2f5ae45e06316a504196db8259fdb9
 SHA1: b3f3b153f4d6580f2cc1a807b8ed94b7298531c9
 SHA256: a561d803588061ea7d8ec125e278ef767cff1301ae6c441160c11ef87f638713
 SHA512: 0fa7bac4f1912389eeee8ffc31787b0048331a583483155cc418536771bac18b700c03a6313e6597415574ef975a63f58a4604b4d7498aeee490375708902552
+
+Package: libcap-ng-static
+Architecture: aarch64
+Installed-Size: 72
+Maintainer: @termux
+Version: 2:0.9.6
+Homepage: https://people.redhat.com/sgrubb/libcap-ng/
+Depends: libcap-ng (= 2:0.9.6)
+Description: Static libraries for libcap-ng
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libcap-ng-static_2.0.9.6_aarch64.deb
+Size: 9948
+MD5Sum: e2526c1c6950046ba721dba6cf48b71f
+SHA1: a656e1bcbcdb96148659f36a55663946fcff8294
+SHA256: a526a0c6c4b401a4068ec4af600a1c0212dd3214c2c23f12848f189d07436ee4
+SHA512: a53cd40bbd12d1daa8d0df364a410d90091ff4e0f6cd1f787e72b9810f743c461dff706fd91fdfa337190a9bbebb3501cf8b2f65f61ecae363370b27710f583c
+
+Package: libcap-ng
+Architecture: aarch64
+Installed-Size: 316
+Maintainer: @termux
+Version: 2:0.9.6
+Homepage: https://people.redhat.com/sgrubb/libcap-ng/
+Description: Library making programming with POSIX capabilities easier than traditional libcap
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libcap-ng_2.0.9.6_aarch64.deb
+Size: 57684
+MD5Sum: 64b05b90a20622a32ab7ad80c3dd900f
+SHA1: 283c207b229ecd1b0eab7669e7c572bc0c97dcc4
+SHA256: 9b046cc1e7806724b4f84550436716b1b488bf3f051c5c700e64599fff5dde15
+SHA512: 6131804ef9cfff0e9f2e1da58d0b3f2b34bd607eb11986791418c9dae49aba4fee5f3023c78894b5a141281d8919ff9c56e56191142e172a523c1ea04da5f3eb
+
+Package: libcrypt
+Architecture: aarch64
+Installed-Size: 72
+Maintainer: @termux
+Version: 0.2-6
+Homepage: http://michael.dipperstein.com/crypt/
+Breaks: libcrypt-dev
+Depends: openssl
+Replaces: libcrypt-dev
+Description: A crypt(3) implementation
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libcrypt_0.2-6_aarch64.deb
+Size: 8872
+MD5Sum: b39ee90bf07ff85dabb03d347d39a896
+SHA1: 8cefd9f36e0bdc45cc0dea330ed62ad3a4866514
+SHA256: 0eb5bd23c3be594abead0da8fe9d5324c3b79bfe4a355b8cb1a32e1b117a6f4e
+SHA512: 681923d657481f5b540ddc4ffa2d5f5d1d9c70db210369c8fd5bd9591124a08d59671b8a56b7cf33d8d10a52dff1f8cc26e228fb2c9d088ac76146efc67f0b93
+
+Package: libcurl-static
+Architecture: aarch64
+Installed-Size: 2088
+Maintainer: @termux
+Version: 8.23.0
+Homepage: https://curl.se/
+Depends: libcurl (= 8.23.0)
+Description: Static libraries for libcurl
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libcurl-static_8.23.0_aarch64.deb
+Size: 434864
+MD5Sum: 176766f899c63d3038a59d61bf12e702
+SHA1: b2b6fa2df5a5d20b6538d60498f6470317616916
+SHA256: 589bd68058571900868dfd9ccb13d7f903bcee68205acb22097bd7787a3119f3
+SHA512: 25d9738252675c757c777cad3b744e82e7832b75154a0356a319c28036801f3ce74b0a5a8835ef77ea6982f09d117400749d3f14ea23576d1db5550919abe00e
+
+Package: libcurl
+Architecture: aarch64
+Installed-Size: 3556
+Maintainer: @termux
+Version: 8.23.0
+Homepage: https://curl.se/
+Breaks: libcurl-dev
+Depends: libnghttp2, libnghttp3, libngtcp2, libssh2, openssl (>= 1:3.2.1-1), zlib
+Essential: yes
+Conflicts: apt (<< 1.4.8-8)
+Replaces: libcurl-dev
+Description: Easy-to-use client-side URL transfer library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libcurl_8.23.0_aarch64.deb
+Size: 1043328
+MD5Sum: 434d192280c5e49d69e32bd6bf60a70c
+SHA1: af14337153eb6c12ad6d3d3b123137479d6efd10
+SHA256: 78240b80d1b7d96c1b3e8d9d930a3975032ca76de772b7be5afd40eff9163a00
+SHA512: 5ff4cc3ddf705f642eb478e0cf3913eb3a8489fa937c95dad70003e6589cd79c5da1827756571a5a82019c6e1696e3361e1cad90c39f02d5df0b15dd3722197b
 
 Package: libdb-static
 Architecture: aarch64
@@ -328,6 +1412,334 @@ SHA1: cbc7ab499a5a57246fdbce02a2ae70153d4ac63b
 SHA256: 68f55306e1609912d76c4e82c37bfaf4700c791494f547f23da4e99c8f5cefce
 SHA512: b6b0099ffc0c8fbc4d10dd5dc37d4f20c7cda6044496f06b3802eff66cf7f0f00570add6c58cc473651958f3680b796b0c1d12ba357fd92a1dfe55d7f0a3e343
 
+Package: libevent
+Architecture: aarch64
+Installed-Size: 1168
+Maintainer: @termux
+Version: 2.1.13
+Homepage: https://libevent.org/
+Breaks: libevent-dev
+Replaces: libevent-dev
+Description: Library that provides asynchronous event notification
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libevent_2.1.13_aarch64.deb
+Size: 202576
+MD5Sum: 89165519eba33a3e1ac18e9ab6b16660
+SHA1: f909bac3ec1207e0e07f23818f1e43be10f6c848
+SHA256: 9b54c83aaeee46fcb23fbe48199f85634c3d4fc5678eb62965d82032b235c165
+SHA512: a7e9a8b47d618e4a76550b04014a6e224b0846e024d88ce955f04c28c006ffa14b9eaa995dc82029f5b47df8c95085e6163b4a1b30e6c450128aac4765a5f894
+
+Package: libexpat-static
+Architecture: aarch64
+Installed-Size: 264
+Maintainer: @termux
+Version: 2.9.0
+Homepage: https://libexpat.github.io/
+Depends: libexpat (= 2.9.0)
+Description: Static libraries for libexpat
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libexpat-static_2.9.0_aarch64.deb
+Size: 60988
+MD5Sum: 551dbffda668ee0302b53078582fcff8
+SHA1: 9ef008e6e6322343217127935fa6423dec5c3e60
+SHA256: 3ffe3556c79cae60efa7965b47016d8c4b437d956ea067791fb10fc3dd414ec8
+SHA512: aee5f10666aaaeb5858e68e2af1e43246d09d5b924e8427c1f235becdfeebb6244ec7050cf350e39b7c794cc26c5df564660c85d3f6e97b0bd6df2afd008b7b1
+
+Package: libexpat
+Architecture: aarch64
+Installed-Size: 416
+Maintainer: @termux
+Version: 2.9.0
+Homepage: https://libexpat.github.io/
+Breaks: libexpat-dev
+Replaces: libexpat-dev
+Description: XML parsing C library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libexpat_2.9.0_aarch64.deb
+Size: 100328
+MD5Sum: 0d3e7192c4975e1500f00a8a6937c2c9
+SHA1: 5f9e060297bf095e15b7fdff782ab73129125dec
+SHA256: 5dd5f2da5baf4ade44ad122aa75a4980284cf7ac272b439ba14d2e7dfeff42dd
+SHA512: 15722fddc2ef85bd5576d7270519cdbf889603119b22260316e25353e9c7a5130ed3be6157942128db34fb48114004682d81557c65dccd7d75d91e38709d3d94
+
+Package: libfdisk
+Architecture: aarch64
+Installed-Size: 508
+Maintainer: @termux
+Version: 2.42.4
+Homepage: https://en.wikipedia.org/wiki/Util-linux
+Depends: libblkid, libuuid
+Description: Library for manipulating disk partition tables
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libfdisk_2.42.4_aarch64.deb
+Size: 160184
+MD5Sum: 0d7a47cb911a58d2108424951969c46e
+SHA1: 96bebfe90bd9601adf6107819817276ff82e4cac
+SHA256: ce6d18dfce2add072caa506e62a69925dd824391472a2404fd5b647c01eedd99
+SHA512: 78395d4db7cda21aa468d630e471bbcf9e8cb94ce3004d58325c8c7e399897cd186335b0ee4687f85e28cbd12f9373736135616103cba25ac042f1f30706d7eb
+
+Package: libffi-static
+Architecture: aarch64
+Installed-Size: 144
+Maintainer: @termux
+Version: 3.8.0
+Homepage: https://sourceware.org/libffi/
+Depends: libffi (= 3.8.0)
+Description: Static libraries for libffi
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libffi-static_3.8.0_aarch64.deb
+Size: 19588
+MD5Sum: 282597c1fead8d1ae1c167c11a127471
+SHA1: 664b01d083b68c94cbb672cee07f4f6fe07d98a7
+SHA256: 8415dbf048d81be34344c3a3a33306896184063b04b4bb49f936e89fef508f66
+SHA512: 1788b23b1dcb0aacb835e11e86fd1acc32eb245c9d37a0928288f143d71b3e7f92fb725d6315dab77f2a4dde3d8879feb9ce31f92618627a7a428cd91bcd60d7
+
+Package: libffi
+Architecture: aarch64
+Installed-Size: 240
+Maintainer: @termux
+Version: 3.8.0
+Homepage: https://sourceware.org/libffi/
+Breaks: libffi-dev
+Replaces: libffi-dev
+Description: Library providing a portable, high level programming interface to various calling conventions
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libffi_3.8.0_aarch64.deb
+Size: 37712
+MD5Sum: 4a51557598bf04d8f35272f1b26996c9
+SHA1: 80aec8acb0aecc997fd8afee912a7799c65d6e7c
+SHA256: a5d6c673094d8baa8aac2a9ad91143a332acb2c4fadd6568dde843b044f4d1a7
+SHA512: 8a75abb5fe08c86d13d195a64c17f1802d9016ff7c9e11555e79468fa27be7beec008d6e560f3680be93e8a486ddc2519c50c82b900627185c7613658215dc1f
+
+Package: libflac-static
+Architecture: aarch64
+Installed-Size: 548
+Maintainer: @termux
+Version: 1.5.0-1
+Homepage: https://xiph.org/flac/
+Depends: libflac (= 1.5.0-1)
+Description: Static libraries for libflac
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libflac-static_1.5.0-1_aarch64.deb
+Size: 110388
+MD5Sum: 4b892cb496483df47c2b7c50976b88f6
+SHA1: 2c106a7cbac04d138a2a574372928d909c8f23b9
+SHA256: 0b3c57f826fb88b8d2b9965e5c46dc0bbcf0344a76a7d2ced40088236ec7f629
+SHA512: 93d3ec3bba49b049eedddfc4b6f277f03d7e343a9c4ef17433eba05ec47cdfd8529144ec035f5aa24c94e4e53cf546219fc534aa11256e97cd906e965245efd1
+
+Package: libflac
+Architecture: aarch64
+Installed-Size: 1044
+Maintainer: @termux
+Version: 1.5.0-1
+Homepage: https://xiph.org/flac/
+Breaks: libflac-dev
+Depends: libc++, libogg
+Replaces: libflac-dev
+Description: FLAC (Free Lossless Audio Codec) library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libflac_1.5.0-1_aarch64.deb
+Size: 203248
+MD5Sum: 7a76ca657b4756ac48e3d941cec3bd00
+SHA1: e2b4c5ae52e72f96976db7fa9c222da9e6b19f98
+SHA256: 0c55bf7cbefc396ebe85b3b1375566aabf5432bfc2ff1ac6044ab7c5709edbdd
+SHA512: 76c312d957211a6cd560ac2c8657771e71401b8dc88a76ca473900cd4e2343f4bca402d5cc503f8cc973e7a55b7773a02add6adce522bca2bc0a850281d0357b
+
+Package: libgmp-static
+Architecture: aarch64
+Installed-Size: 1276
+Maintainer: @termux
+Version: 6.3.0-2
+Homepage: https://gmplib.org/
+Depends: libgmp (= 6.3.0-2)
+Description: Static libraries for libgmp
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libgmp-static_6.3.0-2_aarch64.deb
+Size: 226808
+MD5Sum: 491a661548b30488c1e963679b8642d0
+SHA1: 7df6fff82dc7b283fbfcf499c3e55b367c2cc2bc
+SHA256: 0135c68e5933082e7de1623c73f2d42473001fe2a272de30515379a3537d37ab
+SHA512: 68deb54ab9bbd510a3609e04bde83997e6c65541ff44527cc0e67827e12b78b29a0c8fe5eb094f5ce89297d4759a95c11571ed0bfff91255b1835106b36d3b56
+
+Package: libgmp
+Architecture: aarch64
+Installed-Size: 1240
+Maintainer: @termux
+Version: 6.3.0-2
+Homepage: https://gmplib.org/
+Breaks: libgmp-dev
+Depends: libc++
+Replaces: libgmp-dev
+Description: Library for arbitrary precision arithmetic
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libgmp_6.3.0-2_aarch64.deb
+Size: 328944
+MD5Sum: 5891c867a1f7ca63007040f43f974ffe
+SHA1: 2e069e795e2276de0532f3bef092389cf6d9180c
+SHA256: 28bcce26f089562a2833880e6734a43ab7e77e1eb8b0ec097e8c71a0af76a50d
+SHA512: 484269e76687df50a4b7401ec7171e4437d738f3b28934e2bf29caf6cf8d4281c580cd832ebfda7d01bc1187ca2e62c3d8f227c81b5613f7e5df7cc701146c90
+
+Package: libgnutls-static
+Architecture: aarch64
+Installed-Size: 4128
+Maintainer: @termux
+Version: 3.8.13-1
+Homepage: https://www.gnutls.org/
+Depends: libgnutls (= 3.8.13-1)
+Description: Static libraries for libgnutls
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libgnutls-static_3.8.13-1_aarch64.deb
+Size: 840184
+MD5Sum: 829d71681aa92f099765bfd10c228fcc
+SHA1: f3b9e18cc59a525679456eca400c4fb8912d7535
+SHA256: 819a81abf60031451ff7eca258467a2068e35c76f36238884251dbad7fb88ec2
+SHA512: 1d67ed4508193736303fa623ad1be0b5a797902ae93f4b1d6a699213ff39635669203da96b7f7a9e6124afd0faf4c0c2bfd649022f6c7bc942b641e2367a3068
+
+Package: libgnutls
+Architecture: aarch64
+Installed-Size: 2664
+Maintainer: @termux
+Version: 3.8.13-1
+Homepage: https://www.gnutls.org/
+Breaks: libgnutls-dev
+Depends: libc++, libgmp, libnettle, ca-certificates, libidn2, libtasn1, libunbound, libunistring, p11-kit, zlib
+Replaces: libgnutls-dev
+Description: Secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libgnutls_3.8.13-1_aarch64.deb
+Size: 777664
+MD5Sum: c916e54cf94c3d15a706924779be836c
+SHA1: 275c2db6845f369040665a23b246dcf6c81e4717
+SHA256: 7c5d676d83fe3e2becca03b6b6865163dddb049c038f9a64e56f77409fa5e890
+SHA512: a4178f5b1dfb299b2ce3534230582942604e366a123ad6937c03a9f65361b7a8f38e748180aec622b4fcf1a6abf6a1ae8e837f15eaf7936e2d88bc50e7e093da
+
+Package: libice
+Architecture: aarch64
+Installed-Size: 436
+Maintainer: @termux
+Version: 1.1.2-1
+Homepage: https://xorg.freedesktop.org/
+Description: X11 Inter-Client Exchange library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libice_1.1.2-1_aarch64.deb
+Size: 68796
+MD5Sum: 5d8465c163500086e94d62dd95cdd123
+SHA1: ffdcc7968394d5cf18a31c1116a0a2134084af9d
+SHA256: b71d75a72785748110ca7b6ae61072b0485f9366dcb300f8f672822999494147
+SHA512: e6fd204b4570b5c144251f3032535a75376e16d1f1c95ec1a4daad4cfae55745e5c6b247a90d3f0fe6a3ad1798a05c728c0b1ec4ebf589d869c6ad29f8e592e2
+
+Package: libiconv-static
+Architecture: aarch64
+Installed-Size: 1228
+Maintainer: @termux
+Version: 1.19
+Homepage: https://www.gnu.org/software/libiconv/
+Depends: libiconv (= 1.19)
+Description: Static libraries for libiconv
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libiconv-static_1.19_aarch64.deb
+Size: 558008
+MD5Sum: 3e99e8dde7094138c2cb768593daea02
+SHA1: 0489b5258f430478514b9ba30909d02055fcfc6d
+SHA256: 92b30a58e97514fb25179331b1aa3543ef4ae18847008a2d12df4b69aa554f33
+SHA512: c61506109247f8203d09343b4afb31c1f518b69f490aa9f2690f3592757c786bc553824d19b16deb702145d7e1cd8ec9f4e5f2c639c2f854c1a6ebc7b38b5698
+
+Package: libiconv
+Architecture: aarch64
+Installed-Size: 1220
+Maintainer: @termux
+Version: 1.19
+Homepage: https://www.gnu.org/software/libiconv/
+Breaks: libandroid-support (<= 24), libiconv-dev, libandroid-support-dev
+Replaces: libandroid-support (<= 24), libiconv-dev, libandroid-support-dev
+Description: An implementation of iconv()
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libiconv_1.19_aarch64.deb
+Size: 563664
+MD5Sum: 19a8279e598e330d495de1d8e3c6e69c
+SHA1: 8e898fc16e9837700f485794bef32d22ee9cb46d
+SHA256: 1f2513e434edb9cd7a40f86c0f7081d20eb5cd09b658615c1e3dd529ab359725
+SHA512: 514a309665ab49b9ac7c90d5e1953f10f22f9b52fce9f88fed887e01bcf75917efcd40f507d9e9d601045b60538aee6792bf6872f59f935808d9f9daed16956b
+
+Package: libidn2-static
+Architecture: aarch64
+Installed-Size: 296
+Maintainer: @termux
+Version: 2.3.8-1
+Homepage: https://www.gnu.org/software/libidn/#libidn2
+Depends: libidn2 (= 2.3.8-1)
+Description: Static libraries for libidn2
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libidn2-static_2.3.8-1_aarch64.deb
+Size: 73108
+MD5Sum: ca201414e932f4bb1e9474e76a92a758
+SHA1: 018d42e236f242061cc710314b5bb6e23793c180
+SHA256: 0aa0a533ef11dc6e93d94a1dbab603372d4df649dde96d9ec55be5a5355a59d5
+SHA512: 04a893126fdf822712de705459648d730d7d508679d129578e1bcf66eeb7e244e62ce35e6ee47edddb2a93da36603887f69751c1cfb94b906b97339005457b31
+
+Package: libidn2
+Architecture: aarch64
+Installed-Size: 428
+Maintainer: @termux
+Version: 2.3.8-1
+Homepage: https://www.gnu.org/software/libidn/#libidn2
+Breaks: libidn2-dev
+Depends: libandroid-support, libiconv, libunistring
+Replaces: libidn2-dev
+Description: Free software implementation of IDNA2008, Punycode and TR46
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libidn2_2.3.8-1_aarch64.deb
+Size: 104964
+MD5Sum: e7726f64dd0e9ea1faf7b812e45ae511
+SHA1: d1d4958cfab62c343d07329fc31175eafd5cef41
+SHA256: 227a6b77976c668f14fe23cfeab992fbe5c6f5f8a4ab94bffad16d318e170b31
+SHA512: 64ca4d016272ecb3a06dea0ce717ede3b2229666d6ef649f4f1d624d38f9406d433e1486e2c2a1fd1c9304580946e68ab33f590b6e126218e79678e35f061707
+
+Package: libjpeg-turbo-progs
+Architecture: aarch64
+Installed-Size: 636
+Maintainer: @termux
+Version: 3.2.0
+Homepage: https://libjpeg-turbo.virtualgl.org
+Depends: libjpeg-turbo (= 3.2.0)
+Description: Programs for manipulating JPEG files
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libjpeg-turbo-progs_3.2.0_aarch64.deb
+Size: 165768
+MD5Sum: f3494a9ecdb87e23ff4b0a369112e1a9
+SHA1: 02c13f4144df9a2469fd1d982e8e54094fb703dd
+SHA256: da675dfd15ffc8924e26fa7d7f253c5d8a62f2f9e440b9c50ca8775734ef8733
+SHA512: 36edc7c523135a4a9beb860c41c442b8f58faffd30f7ff8e41583b26f6b76dcf95bbd58beaba68f0bafb98f9a1eb2b1682baecd1a28f829022732260093770c3
+
+Package: libjpeg-turbo-static
+Architecture: aarch64
+Installed-Size: 2400
+Maintainer: @termux
+Version: 3.2.0
+Homepage: https://libjpeg-turbo.virtualgl.org
+Depends: libjpeg-turbo (= 3.2.0)
+Description: Static libraries for libjpeg-turbo
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libjpeg-turbo-static_3.2.0_aarch64.deb
+Size: 339880
+MD5Sum: 658529a352f3fe075739570f306e159b
+SHA1: a6fa104af6ae6ac2316f7cb5005d039d1da5bdb1
+SHA256: 34fc718e58555e5e8ec8a375e65af4f3f23798061d7b335c57a8518f5b30df59
+SHA512: a4073c31d3a7c052844c15023b35e56acf0883dfcd6659418afa5302da011bedadad5709a6ca63ccc583a8c4c149a82c1895e485e1c14d7184f677a37245471a
+
+Package: libjpeg-turbo
+Architecture: aarch64
+Installed-Size: 2300
+Maintainer: @termux
+Version: 3.2.0
+Homepage: https://libjpeg-turbo.virtualgl.org
+Breaks: libjpeg-turbo-dev
+Replaces: libjpeg-turbo-dev
+Description: Library for reading and writing JPEG image files
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libjpeg-turbo_3.2.0_aarch64.deb
+Size: 452948
+MD5Sum: b53bdfdde10c2f560b8bae28530d5d87
+SHA1: ffa11b323b9e45147063b9183429466170efef6a
+SHA256: b5147b324759f762c7b252dd723cad2f2f0a7439b82a8c0eb1732357b7a29480
+SHA512: 75d3b516add52a7171de7cf61902671cc990493435d624ba5ec53fb78a0518e2f63b8e58f43cdbdd471129b6f5b63f9f8d4c4ba587e2ae53bab95fb685b68a61
+
+Package: libltdl
+Architecture: aarch64
+Installed-Size: 96
+Maintainer: @termux
+Version: 2.6.2
+Homepage: https://www.gnu.org/software/libtool/
+Breaks: libtool (<< 2.4.7-2)
+Replaces: libtool (<< 2.4.7-2)
+Description: Library for dlopening libraries
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libltdl_2.6.2_aarch64.deb
+Size: 18068
+MD5Sum: 204cc32b98b0287e8b3f762c58633c18
+SHA1: 1c9bc8a3e59cb0aa472a4030a046920997e814c3
+SHA256: 1f5339cc9c83979308e54e92cad18c589d7e42dca92c89289240b94ce35bf060
+SHA512: 00ba76ac4cd31f41626e45f4f61a75034782eca62c00ed92f27fbd9ce3a79e1d2899f7802e57d47ac9b8ea5aa91e936f3002277ad8d0e7ec0816f825726f2504
+
 Package: liblz4
 Architecture: aarch64
 Installed-Size: 340
@@ -338,11 +1750,11 @@ Breaks: liblz4-dev
 Replaces: liblz4-dev
 Description: Fast LZ compression algorithm library
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/liblz4_1.10.0-1_aarch64.deb
-Size: 86404
-MD5Sum: f92d076ee2f140bab84b034d3653d64a
-SHA1: fecb9ad263d8e878e6f4ca09a4cf804bf5c83ca1
-SHA256: 81e34a09e90e228d3cba430c3dfd5859150135de154fbdbf83b33f0ee47af7d5
-SHA512: aababc13a4a1b9bb3c004c9149a3c47233cd80812031664bfc0d7be38d51b01c007c18307bfd35fcd6f0fcb4d0f22412a870c28348530214df29a215368b09d9
+Size: 86484
+MD5Sum: 88ca627f701215d036d01f05ab50cd09
+SHA1: 049aaf794eb93a84400b7cd36f9f71147aa470e8
+SHA256: d9d02f8dc4e046c7a2e92d540ca9ef5a68cce519b8b2e6af087f8fb2ec29e7e6
+SHA512: b1ed9a45ce8460beeaa633a76200c4b3776f656e293efbff084e66c8f979503f63295af1de31e29b21cca580856d056eaecb76178829cdf469781c92ec942250
 
 Package: liblzma-static
 Architecture: aarch64
@@ -353,11 +1765,11 @@ Homepage: https://tukaani.org/xz/
 Depends: liblzma (= 5.8.4)
 Description: Static libraries for liblzma
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/liblzma-static_5.8.4_aarch64.deb
-Size: 89912
-MD5Sum: 74fc56a05bd87fe0c44bd7b3d7a6ecf2
-SHA1: 6c581d5eb621d472adc79655cd62735de141fde8
-SHA256: 1eb9801079bbf7f72b023bd48c599df0de538373590dc5df4d276e44d4aecc6b
-SHA512: 5df7efe5829ef2b55541f134bb09d63dbbe55b091ffe47ec617b94dc3fbee993ce47e56a061b7f9327ec9f8f5de25592b7835458ccab3c3ed41825d8b65996ea
+Size: 89960
+MD5Sum: f4ce6b1726f79b37c4b21c433c4390d6
+SHA1: db0803bde2a04af85aa539ea0e04cb59dbc10b5e
+SHA256: 7f40713c9c15badd7b2a803c3415f0668064147ad474b32e633fa55c6334dda1
+SHA512: e756db9a6fa7e8bb6d45f370f2cabaa194043ec31e3814ade632305bea1204947cbbb71ad69b8d4ff4ab9364a48a704bf9c482b89ca4a47480d974a8510a6c3b
 
 Package: liblzma
 Architecture: aarch64
@@ -370,11 +1782,370 @@ Essential: yes
 Replaces: liblzma-dev
 Description: XZ-format compression library
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/liblzma_5.8.4_aarch64.deb
-Size: 194744
-MD5Sum: 894bab16cac0258304741121eddf0ded
-SHA1: 7b553881c270e854f4fd75a17c94fa944cc37835
-SHA256: c6c5a18297de6dd9ef40c0f7a0492d35f77a1f9c89321de47e0aad965c2e4f84
-SHA512: 2471e857aea52430c7ca25f362b01827ca11aa0746f91c252c14d91f1ecdf160c6f23f46ac7560b354a3065e83086c8914a4be056190dbc35e4a997f723235ee
+Size: 194772
+MD5Sum: 3aa6da0615674313efd30ebe450af804
+SHA1: 28e929276bc647bbd6fb2f56207fd38f25b79016
+SHA256: 6f58cf7784e5c2c14864cdffd30c2cc6d7182355272101b1adf5fb83097d917d
+SHA512: 694b7ce350766160b9132f81b7a919bdffde541417c8fe7b3bd3d4a20519d685220799a1be973b7d81e645acd3807e00ffd974b7b27177ec82eed47f82f1c073
+
+Package: libmagic-static
+Architecture: aarch64
+Installed-Size: 284
+Maintainer: @termux
+Version: 5.48-3
+Homepage: https://darwinsys.com/file/
+Depends: libmagic (= 5.48-3)
+Description: Static libraries for libmagic
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libmagic-static_5.48-3_aarch64.deb
+Size: 69032
+MD5Sum: 2fb18b9b3e493adc07a922c20ece47ae
+SHA1: ca0919e96c55b3e559a1c7e37da8e09004a7d5db
+SHA256: 2cfc0bcaa75d1aaa655159e1a57897484ef93e0d51dc3417b5a9bedc9bea2cce
+SHA512: 9945ffb8bf32549be0a3037bfa99f82a07e2fef0cc28ba15f2b7cd0095a4e24ce33a527ac05f7e604a4b610b48faccb4c8ebbc2af7cb480747acf6ce0df20c9d
+
+Package: libmagic
+Architecture: aarch64
+Installed-Size: 10776
+Maintainer: @termux
+Version: 5.48-3
+Homepage: https://darwinsys.com/file/
+Breaks: file (<< 5.48-2)
+Depends: zlib
+Replaces: file (<< 5.48-2)
+Description: File type identification library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libmagic_5.48-3_aarch64.deb
+Size: 396236
+MD5Sum: cb41293af751a8321208161938b2c493
+SHA1: ff376593f4097c0aa8f752804a1c88a5f6e69b2e
+SHA256: f90fde162007df89419c0b22a02f4d9784dfdea5187f189dc1f12217bcd6cba7
+SHA512: 7dbb5be3203e5b93a0108d3e72c3a12e4c1ba9f0148ededcae1d74831e1b15089cbb60b632655bf00f8ccb8fba18ffe2d3b579628e92ab87239f2a272f9b5800
+
+Package: libmount
+Architecture: aarch64
+Installed-Size: 504
+Maintainer: @termux
+Version: 2.42.4
+Homepage: https://en.wikipedia.org/wiki/Util-linux
+Depends: libblkid, libsmartcols
+Description: Library for (un)mounting filesystems
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libmount_2.42.4_aarch64.deb
+Size: 158748
+MD5Sum: 9b9c34cdf89902ab360c44afc351d8e9
+SHA1: 83057e0e24a24b16a0ed2972e02f727bcb6ff2ef
+SHA256: d79339289f3f3a01d93bdd11de814597bbb47828b25e985254acf9ee93752141
+SHA512: 5abf20caa1a44a022f0396b3051d9a3ba8054d594e90a0d8a35d7746b4bf4ad989076e963f5c42a9de90b6834d0ecccd56d0926adb36f13b4c51d83ea73be090
+
+Package: libmp3lame-static
+Architecture: aarch64
+Installed-Size: 352
+Maintainer: @termux
+Version: 4.0-1
+Homepage: https://lame.sourceforge.io/
+Depends: libmp3lame (= 4.0-1)
+Description: Static libraries for libmp3lame
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libmp3lame-static_4.0-1_aarch64.deb
+Size: 100480
+MD5Sum: f50e2fa769474a15267c2a9116ea698d
+SHA1: 129fe6568b74f580980e487db8a410ec78d97698
+SHA256: 03824e1d23a14caace90b052cd4553d0d32ab91b382ca4a8852ee3afb971a34c
+SHA512: 56370d492ab2e65bc54f27db18f61330cd81a886f7fa084daf6014e5c7553b90b68fdab3d07d013de0150c78ab09f4f71cb9e98799472d0c9c560450e2f7f05d
+
+Package: libmp3lame
+Architecture: aarch64
+Installed-Size: 304
+Maintainer: @termux
+Version: 4.0-1
+Homepage: https://lame.sourceforge.io/
+Breaks: libmp3lame-dev
+Depends: libiconv, libmpg123
+Replaces: libmp3lame-dev
+Description: High quality MPEG Audio Layer III (MP3) encoder
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libmp3lame_4.0-1_aarch64.deb
+Size: 98596
+MD5Sum: cc156ac75e3c5a3e3441c02a4f6f2788
+SHA1: fefbe5574b28786f35e4b5a5bf5341ab32dd8f56
+SHA256: 550763b00222642e34ec0a49e9bada746e7c061629969fe5b30d22ba96ead0a2
+SHA512: c14257447879871b8a503aa77b469c64d40afa6b47fa0a22f6ca88620ba39efd106d8ed65fb0258da18abd115d110ad30fe59da6a0340fdb92e15a57696ff0eb
+
+Package: libmpfr-static
+Architecture: aarch64
+Installed-Size: 1120
+Maintainer: @termux
+Version: 4.2.2
+Homepage: https://www.mpfr.org/
+Depends: libmpfr (= 4.2.2)
+Description: Static libraries for libmpfr
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libmpfr-static_4.2.2_aarch64.deb
+Size: 208180
+MD5Sum: 5218024f2919c344a306ea3c8888bbff
+SHA1: 701d6387f64b355b66cfcf9533a00afa3986d3c7
+SHA256: 5474ad48dcf8aca5e959c72b64a37c0cdeaeb496915efd4ab12b18d2748ccf6f
+SHA512: f45048c103ce75a28058ab9fc0d3fde550d8fa6fbbc21676b89e6076955ce2aa9d4b3541b2c78974d5c00f2c86369997963e24f0b30a58dfd46d918906c38ab4
+
+Package: libmpfr
+Architecture: aarch64
+Installed-Size: 1004
+Maintainer: @termux
+Version: 4.2.2
+Homepage: https://www.mpfr.org/
+Breaks: libmpfr-dev
+Depends: libgmp
+Replaces: libmpfr-dev
+Description: C library for multiple-precision floating-point computations with correct rounding
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libmpfr_4.2.2_aarch64.deb
+Size: 273608
+MD5Sum: 2ac3415d439255966d02eedc22f9e678
+SHA1: f2a7387feb9074bfda78f895034c7c7e7ed98168
+SHA256: dd9be175c13fa6e17f12f703376410d8bfabc7b9bd0bedf9caf1d1fbf0dd3854
+SHA512: 7b07d63b89ede160e7a32fefac594cfa0b8f4e6978f98b2b97df11d7f8a65d6cef4da9e81060195753d219858083e4b37403041192634004916362797daa28f8
+
+Package: libmpg123-static
+Architecture: aarch64
+Installed-Size: 616
+Maintainer: @termux
+Version: 1.33.7
+Homepage: https://mpg123.org/
+Depends: libmpg123 (= 1.33.7)
+Description: Static libraries for libmpg123
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libmpg123-static_1.33.7_aarch64.deb
+Size: 151212
+MD5Sum: c7379dda8b712ab23c97f475c13da80e
+SHA1: 5a07e7fbae6fe28a639f5167fcc8fdda0151ac5e
+SHA256: faea4ef601a34a800cce7d902a31a684b97a389f513ff9fd2948af4b1ad74014
+SHA512: fbbaeb832b8b850987c5aceaaac6b8c2ee63dfca4c8ac9aa36fb0067b88dc03ddf2ba3231ea32f89a5c93c82b95472ac024d231ba9b826f7bfe22f4996bc28f5
+
+Package: libmpg123
+Architecture: aarch64
+Installed-Size: 616
+Maintainer: @termux
+Version: 1.33.7
+Homepage: https://mpg123.org/
+Breaks: mpg123 (<< 1.33.1-1)
+Replaces: mpg123 (<< 1.33.1-1)
+Description: Fast console MPEG Audio Player and decoder library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libmpg123_1.33.7_aarch64.deb
+Size: 174812
+MD5Sum: 1242cbe396785285989c0e0d79b0c9f4
+SHA1: 793762e90b07e4454b68c8725209e0f1389c1762
+SHA256: 1caf732d0cda592e5dad45fadcaa83aeefb46fc206e768ae78b58ae08af6a83d
+SHA512: d581fc46b374526308412baa38f24fd311d967b14f7a16d41d784e7271e047473a3b4039c46bf7a3c533a35bea125ef360224a9ec56225eb0eb2b7f96ed493b7
+
+Package: libnettle-static
+Architecture: aarch64
+Installed-Size: 3832
+Maintainer: @termux
+Version: 4.0+really3.10.2
+Homepage: https://www.lysator.liu.se/~nisse/nettle/
+Depends: libnettle (= 4.0+really3.10.2)
+Description: Static libraries for libnettle
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libnettle-static_4.0+really3.10.2_aarch64.deb
+Size: 683412
+MD5Sum: ad57dc514194a42fdf6602993da0386c
+SHA1: c52709df372fc7b013fa94bed642c5264c3552ad
+SHA256: 65ed5c8c2de3be1084b6884138d12942972f6fcad811d59a4d948caaf642469d
+SHA512: 6e209c3e596443b4612b1100e1df55354c2d6c7db170d0f1ab92fcd54553c9612c1a2c32b14539bba55bfb2093812e292f8ed3a7064d160c3b75f7fdcfc58c84
+
+Package: libnettle
+Architecture: aarch64
+Installed-Size: 1420
+Maintainer: @termux
+Version: 4.0+really3.10.2
+Homepage: https://www.lysator.liu.se/~nisse/nettle/
+Breaks: libnettle-dev
+Depends: libgmp
+Replaces: libnettle-dev
+Description: Cryptographic library that is designed to fit easily in more or less any context
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libnettle_4.0+really3.10.2_aarch64.deb
+Size: 407120
+MD5Sum: a3aef3e2b6e63ce5b7634e764db1cc48
+SHA1: 1e25eb0b67be284321275625c47b16a9ad57ad91
+SHA256: fd91672085c92886ba219d4d4b84238d6accf6f67bf0c697a23f36b2cccebf2b
+SHA512: ca59922ff80899104f677df7612824e819c54b4678f889bbc203e74e948a85a2ad58d14d3b94393693d59b254ced13f12ace20e033ea15d140f048953cedf83c
+
+Package: libnghttp2-static
+Architecture: aarch64
+Installed-Size: 324
+Maintainer: @termux
+Version: 1.70.0
+Homepage: https://nghttp2.org/
+Depends: libnghttp2 (= 1.70.0)
+Description: Static libraries for libnghttp2
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libnghttp2-static_1.70.0_aarch64.deb
+Size: 64232
+MD5Sum: 4400d5f7965d28d2343ca2e1829d74af
+SHA1: 5d55427829d1250a502a2d7afc2effb92206c660
+SHA256: f9c24612625030103f4d6f9304bc056e16eb1af6dfab216c3a928353199acdf1
+SHA512: b5f51bd3695ba976c66d7c0d8eaf53f82a367af358c8b553ab77084c1c3737e4f2c908836b959759b9c9d62003f1dc053f6f9cc98e5fd3d64aa8c06b62c94f3b
+
+Package: libnghttp2
+Architecture: aarch64
+Installed-Size: 520
+Maintainer: @termux
+Version: 1.70.0
+Homepage: https://nghttp2.org/
+Breaks: libnghttp2-dev
+Replaces: libnghttp2-dev
+Description: nghttp HTTP 2.0 library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libnghttp2_1.70.0_aarch64.deb
+Size: 95928
+MD5Sum: 2d33238c01d32863eb47787edbf40c86
+SHA1: 6ec648e239602427fb128df140d955c24c5b6e19
+SHA256: a4be66110f3795dbbc3f53a0330ce0ca07529842ac7f2736960d507ddec33c35
+SHA512: 372534a96ec95dca4594ae2d414ef0edc131a295da6a9acf37dd139b811acede157c99eb94ee8b7d42212fcf71467dcd617f17afba144094f381e82873774b62
+
+Package: libnghttp3-static
+Architecture: aarch64
+Installed-Size: 336
+Maintainer: @termux
+Version: 1.18.0
+Homepage: https://nghttp2.org/nghttp3/
+Depends: libnghttp3 (= 1.18.0)
+Description: Static libraries for libnghttp3
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libnghttp3-static_1.18.0_aarch64.deb
+Size: 63916
+MD5Sum: 22e37cc354fe2ead983c2f76d27a8e70
+SHA1: 17195387f58a03a641a8ac5a61d98a594f8e49c2
+SHA256: 30e11c2e2fba92e9a0aba84c65f0bbaaadbb7e8c2e978c0103808d6c6b1bccab
+SHA512: b9f0c421556999e7ce3c700a8eaee8d06d15e838b1203db3b49e31aed83b0710cc13c0387c4cfaa03f6247804a43a0cd2f81b7743104fd2785545d78fe62f4b6
+
+Package: libnghttp3
+Architecture: aarch64
+Installed-Size: 348
+Maintainer: @termux
+Version: 1.18.0
+Homepage: https://nghttp2.org/nghttp3/
+Essential: yes
+Description: HTTP/3 library written in C
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libnghttp3_1.18.0_aarch64.deb
+Size: 69772
+MD5Sum: ef888b0b21a004fd251cd89564c5398d
+SHA1: 8a51e9044c419f5e080be71a8cb5973ef1f7e23a
+SHA256: 9ab50df1cd51079fba050f734884dd7edccfd10bdb1094587e38c960a99ccd01
+SHA512: 2af38c725dfeaf2ed09a2fa9513ff6ca7b6517fe5f9ffc8f89a8e2e5efece874bf6995c45c8c8705fe24f8481a76245ee1f6586ebec76f2313bdff4444413320
+
+Package: libngtcp2-static
+Architecture: aarch64
+Installed-Size: 852
+Maintainer: @termux
+Version: 1.25.0
+Homepage: https://github.com/ngtcp2/ngtcp2
+Depends: libngtcp2 (= 1.25.0)
+Description: Static libraries for libngtcp2
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libngtcp2-static_1.25.0_aarch64.deb
+Size: 154676
+MD5Sum: 0b9d2a3d07198eb30c52447fa5f55f4c
+SHA1: 8a3c11695d814a5070d281032262c94a0f2b7584
+SHA256: e1d7b12f67fe0b923f3b6871861cac53d74fee53c27bca714d26353df4d30581
+SHA512: 44f0e884ecb55b5cffa70d0ed66501e98bfce3f62cca9c0b6ddcd0b4bd351a44cf02c54b59efd21e5db4c76e2b22caff622d153762de44c9c8c4052cb15e4e83
+
+Package: libngtcp2
+Architecture: aarch64
+Installed-Size: 792
+Maintainer: @termux
+Version: 1.25.0
+Homepage: https://github.com/ngtcp2/ngtcp2
+Depends: openssl
+Description: Implementation of IETF QUIC protocol
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libngtcp2_1.25.0_aarch64.deb
+Size: 174208
+MD5Sum: da6a3690ff00fc3e2d43ea83ea2bff34
+SHA1: 09a0e5c17b8c93c891c7542ea6166e34be391e8a
+SHA256: c9cf6870aa1d04bde3b96580a6f7447906e87eb8caee9eda92336bca177af9fd
+SHA512: 8489e08e358c7b2fd1be708519110ded709c915812272babfd4130fbcc9bbd20dbbb9543b97ed93caf17c577402786c81ce3475a5a7ec6afebcd1963b685b265
+
+Package: libogg-static
+Architecture: aarch64
+Installed-Size: 64
+Maintainer: @termux
+Version: 1.3.6-1
+Homepage: https://xiph.org/ogg/
+Depends: libogg (= 1.3.6-1)
+Description: Static libraries for libogg
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libogg-static_1.3.6-1_aarch64.deb
+Size: 16620
+MD5Sum: 1c5c4b7fe889452fa6847b3fb8295f58
+SHA1: 138e1b3dd0392071f19ec1d16cbd013906f3b50c
+SHA256: d64aa8ee6615d31635f1623ce9e72e24f7f9a4804031b1ef7a4b256ac73d3f40
+SHA512: a7e8d259d26621301276331942ee642bd496af2b381a486c44f96bf7b00cd79bc555db858011bb2bc16293108abbc5de327b8a2284505da59a24595559fd7838
+
+Package: libogg
+Architecture: aarch64
+Installed-Size: 684
+Maintainer: @termux
+Version: 1.3.6-1
+Homepage: https://xiph.org/ogg/
+Breaks: libogg-dev
+Replaces: libogg-dev
+Description: Library for working with the Ogg multimedia container format
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libogg_1.3.6-1_aarch64.deb
+Size: 188680
+MD5Sum: a3966c644bd29c576c9eb987b6c2a13a
+SHA1: a7f9f23a48ddc7fc7e6970127eb5256634c3d95b
+SHA256: e9dfb5c006cb3cdb402697a5f1146f3db729102cda68c8520def8000cd44fbc1
+SHA512: fcdead7d1146f640da92b42c9f07cb5d7582bd9d1050629e222cfd7281c5816b6037f1acc50dbb99e484d017aa7364d866dee03586938194db599e7b6c089aea
+
+Package: libopus-static
+Architecture: aarch64
+Installed-Size: 684
+Maintainer: @termux
+Version: 1.6.1
+Homepage: https://www.opus-codec.org/
+Depends: libopus (= 1.6.1)
+Description: Static libraries for libopus
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libopus-static_1.6.1_aarch64.deb
+Size: 202040
+MD5Sum: f6945c224b2487cfd5feb154b3d82833
+SHA1: 48d75c8af7e32902ef17cbb3a768ba1e7305aaf3
+SHA256: 51e47994e9865cbbef7b17e54716916f55e9361bd2b93607e268dde9197e47a1
+SHA512: 26a66f505ed3460df734109131d19300b4bd99c032882ca1b84d64a279e7ea05fd550897e9c95e184097d5e41043395f81cab82fda7f85f20dc4917b07f088d5
+
+Package: libopus
+Architecture: aarch64
+Installed-Size: 568
+Maintainer: @termux
+Version: 1.6.1
+Homepage: https://www.opus-codec.org/
+Breaks: libopus-dev
+Replaces: libopus-dev
+Description: Reference implementation of the Opus codec
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libopus_1.6.1_aarch64.deb
+Size: 191560
+MD5Sum: 85db3c12f1674a250e6ddda6fe947357
+SHA1: 634367070ed9685898a5ee745d1af28feee7fe0f
+SHA256: d6672f666a56bb996676661daaf812569be09473474fe1aa114e1a2d5624e471
+SHA512: f06fba45a6d0f8a0d9f70ff8dc3de3a04c4665be94a40ecb694ec88a4d920ec9edf429ac79683577584e392fa7395a25377c0505bd9194c55c172fea3e25da05
+
+Package: libpng-static
+Architecture: aarch64
+Installed-Size: 336
+Maintainer: @termux
+Version: 1.6.59
+Homepage: http://www.libpng.org/pub/png/libpng.html
+Depends: libpng (= 1.6.59)
+Description: Static libraries for libpng
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libpng-static_1.6.59_aarch64.deb
+Size: 87076
+MD5Sum: bed2525e0cd8a86b35faeae617ded260
+SHA1: 56bc925e1483b1d9783ae83df273bb62a98b5caa
+SHA256: 1bfcf5fcbfbe12cc1abfcd82b22f03b768161cc75d9e9295416cb0b6d9210625
+SHA512: 7b0ea3be6c0eb5c77ee07937c0eb75d323137e47c630efa6bccea48baaef34a26fdb17511ecc714f4bc895638b5555cd287374cc5f4cd6cac78abd5656badd5c
+
+Package: libpng
+Architecture: aarch64
+Installed-Size: 524
+Maintainer: @termux
+Version: 1.6.59
+Homepage: http://www.libpng.org/pub/png/libpng.html
+Breaks: libpng-dev
+Depends: zlib
+Replaces: libpng-dev
+Description: Official PNG reference library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libpng_1.6.59_aarch64.deb
+Size: 195960
+MD5Sum: d7b6288dbc8168ada60ef014ddd9a96f
+SHA1: 86493247a832378e28d2fae77d53b07d5cf285f7
+SHA256: 07e5678c9289d1f4d4e655fb14f52f08a72f7f720d79be962e1fd4c9361375b9
+SHA512: 616a3f1e4a0425ad27f7a4b24b2116fee531e84dd58316f86f17262508c602caa5456c1f6bc4738e1afddf7ef7f7ed70784c1229f741685b6ce317ab5cfd568a
 
 Package: libprotobuf
 Architecture: aarch64
@@ -409,6 +2180,793 @@ SHA1: 7015dc25b0990772a09556e975afdb28f39d5399
 SHA256: ad22ed233cd50f32e5bbb6b141e6beff86342b807800520c997821dbcd160657
 SHA512: def4acc8e590d9f4009b9f3f502e80269c8e1cb45ba25373a34fb7133b67343257d7b96467945a413d26ddc3aeecd26ad04c4cf4045e2be9e66d4dde8e40936e
 
+Package: libsm
+Architecture: aarch64
+Installed-Size: 336
+Maintainer: @termux
+Version: 1.2.6-1
+Homepage: https://xorg.freedesktop.org/
+Depends: libice, libuuid
+Description: X11 Session Management library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libsm_1.2.6-1_aarch64.deb
+Size: 41260
+MD5Sum: 3a4d69cf3f311244725cc22bd459465d
+SHA1: 660f8142c0c277fff617ed85cee89117c40589fb
+SHA256: 5be03a63ce90e68b9d07b840114602d9d6e07b06f2e4ce012381b80fea7b99e3
+SHA512: 36e3ef07ca338a2b715fa30762d38810436dc35ce9e9ab1e952cbc27e3a296672daaa76bb8f9846f1f6dbb7ffcdb031cdf160cb09b8870dc043be485bf0cc753
+
+Package: libsmartcols
+Architecture: aarch64
+Installed-Size: 336
+Maintainer: @termux
+Version: 2.42.4
+Homepage: https://en.wikipedia.org/wiki/Util-linux
+Depends: libandroid-posix-semaphore
+Breaks: util-linux (<< 2.38.1-1)
+Replaces: util-linux (<< 2.38.1-1)
+Description: Library for smart adaptive formatting of tabular data
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libsmartcols_2.42.4_aarch64.deb
+Size: 103956
+MD5Sum: be0e233369516c7f240d65ec7ff8cce8
+SHA1: b3afef6bdd643a45827f103212a69a12bffa33d3
+SHA256: 2265c896d168cd2321e273d171deed7c927d7916de5f5a3145813a6e856c6298
+SHA512: 91093fc5d329a2c92755fe011ee4d3eccd42a6bd0b9a9c759e835fd7bf56a7f22b688948457b6fda247b45a2c3a14e651c13ac3f8ea9f993707af8d1ee7c4980
+
+Package: libsndfile-static
+Architecture: aarch64
+Installed-Size: 904
+Maintainer: @termux
+Version: 1.2.2-3
+Homepage: http://www.mega-nerd.com/libsndfile
+Depends: libsndfile (= 1.2.2-3)
+Description: Static libraries for libsndfile
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libsndfile-static_1.2.2-3_aarch64.deb
+Size: 194340
+MD5Sum: fc54dcce69eb4fb439ebafb7e4de00e1
+SHA1: 17ac80072b0583d2795d1492c76182074fe7905f
+SHA256: b3ad4ef9fa90dc14efb6fbf760355f2f19206c1ece46258a5ee3915a1ff608f3
+SHA512: bb1a1bbd122a443388e99387242cdd29f809947bf689f68dd0804a41936c4e5363a827efb396ab9e6ab87efb34376a54109fddd4f64ad19f0ea04a3f3bac0d0d
+
+Package: libsndfile
+Architecture: aarch64
+Installed-Size: 744
+Maintainer: @termux
+Version: 1.2.2-3
+Homepage: http://www.mega-nerd.com/libsndfile
+Breaks: libsndfile-dev
+Depends: libflac, libmp3lame, libmpg123, libogg, libopus, libvorbis
+Replaces: libsndfile-dev
+Description: Library for reading/writing audio files
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libsndfile_1.2.2-3_aarch64.deb
+Size: 222728
+MD5Sum: 3e4e2033326d8a4debcb3b112db5defe
+SHA1: fda85a86fc9d6f018e83c77da8496811336b59db
+SHA256: e835350452afef177ed82480bd0e474cdd4a4b4ddf4ad50c4a849a5a0a28947d
+SHA512: 0b6328bcacb506dc8db36fbe2ed5b01b0736c7f6e5e76ba65172e61fe1e08348e76b8869ff5015b46617eaa9a218b527ed5e542d0a717975e2f6ae201a4f9734
+
+Package: libsoxr
+Architecture: aarch64
+Installed-Size: 1108
+Maintainer: @termux
+Version: 0.1.3-8
+Homepage: https://sourceforge.net/projects/soxr/
+Breaks: libsoxr-dev
+Replaces: libsoxr-dev
+Description: High quality, one-dimensional sample-rate conversion library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libsoxr_0.1.3-8_aarch64.deb
+Size: 289452
+MD5Sum: 0bd4b42fb56466afc31cf5eb9f2deac4
+SHA1: cef6e46068ed44d7545b0995c779a553a91a27d5
+SHA256: 9e5831b19e716aef5d09e5da589176a19eae07ee4a09dddb3ecb78935f685e83
+SHA512: c20ba5e3657682d8d3ad3ecf4e9afffcfb525b1fb0e4d506d3df35a2494c1e6e6d411aad09e926a16f96f4ff45f3268ee522ba3d7a38b4a2cf19b18c137bf92d
+
+Package: libsqlite-static
+Architecture: aarch64
+Installed-Size: 1780
+Maintainer: @termux
+Version: 3.54.0
+Homepage: https://www.sqlite.org
+Depends: libsqlite (= 3.54.0)
+Description: Static libraries for libsqlite
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libsqlite-static_3.54.0_aarch64.deb
+Size: 581640
+MD5Sum: 1774c42d7fe5f83850c1daf289293698
+SHA1: e0986be2a2af333346a5506f5ee17b6724573f2c
+SHA256: 8733887b474e258f10448279338989f2bf3d72f4c55e122cde7d4563a0433b15
+SHA512: 9982ccf53e83268bc4dde9645e2dc3294a0ab4ff5baa8e12fae99722ebad2fd8456584073f4e33b93e2d287a91c01b01b8b91f60c91cd6a3d83f63a913488a11
+
+Package: libsqlite-tcl
+Architecture: aarch64
+Installed-Size: 1300
+Maintainer: @termux
+Version: 3.54.0
+Homepage: https://www.sqlite.org
+Depends: tcl, libsqlite (= 3.54.0)
+Breaks: sqlcipher (<< 4.4.2-1), tcl (<< 8.6.10-4)
+Description: tcl bindings for SQLite
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libsqlite-tcl_3.54.0_aarch64.deb
+Size: 558520
+MD5Sum: 3e8dc6ff6acd35fbb09988adf7269075
+SHA1: 2f27146f686ff82c48ccc87469b92ec9e2106ff8
+SHA256: ccee0d5b5f3e546a618ea85e4b90161b74715e5a218e4a02513df5e587404fd8
+SHA512: 3cfc467b640a5721cb7de324fbde87b8e89c939ff40f7c89ae32d7dc2a037b4f90cd86fa98e2744cdc9afec941cdd76b2f3fc4c9d7f047d4312b69db665913b5
+
+Package: libsqlite
+Architecture: aarch64
+Installed-Size: 3236
+Maintainer: @termux
+Version: 3.54.0
+Homepage: https://www.sqlite.org
+Breaks: libsqlite-dev
+Depends: zlib
+Replaces: libsqlite-dev
+Description: Library implementing a self-contained and transactional SQL database engine
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libsqlite_3.54.0_aarch64.deb
+Size: 769456
+MD5Sum: 2202fe7544d43dd6c8dfd86e1f9d69c0
+SHA1: dec4eccf7b44387cd4a75602a7887492ad0ca795
+SHA256: 34aa30c0a26fd5d72360ff347cb992eb81ede0704817bc79c9789403bfc31884
+SHA512: cd5a2d312283095cee6482d40a2edf9bd49ebf9b77a42a8b3208b40ea999d308492696036aa1b16382a39c1fe6710477a9f6546fbf12741b00a6cfb2f2192ed4
+
+Package: libssh2-static
+Architecture: aarch64
+Installed-Size: 488
+Maintainer: @termux
+Version: 1.11.1-2
+Homepage: https://www.libssh2.org
+Depends: libssh2 (= 1.11.1-2)
+Description: Static libraries for libssh2
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libssh2-static_1.11.1-2_aarch64.deb
+Size: 111776
+MD5Sum: e3f62a6f3a55fb28835824b5e2cc50c7
+SHA1: a6b992a6d3642d0183c3f649860ccba9a3533fa7
+SHA256: cdda134e76fd6354966606aac33f0afc8b9189649192b5d25643f458419c3bd9
+SHA512: a643180ca1b6dda2d4e1a31e986f7e2ad0038bb1f3da9ed6448b8292e1d0282701215d29da45c2fe49bf39aea1356db214673fdfd1e7aedd0109d41918620721
+
+Package: libssh2
+Architecture: aarch64
+Installed-Size: 1152
+Maintainer: @termux
+Version: 1.11.1-2
+Homepage: https://www.libssh2.org
+Breaks: libssh2-dev
+Depends: openssl, zlib
+Replaces: libssh2-dev
+Description: Client-side library implementing the SSH2 protocol
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libssh2_1.11.1-2_aarch64.deb
+Size: 219396
+MD5Sum: 2b520489f6459de0e62258a08e7c8d74
+SHA1: 10f5c1cd86b3f75ac1852e20c77bbedf1c249b08
+SHA256: ccb6702f2a3177ba6aa1ca6637214cc0ddbd2f108642823118e48db664e29797
+SHA512: 097f75fa6adb276c584882c5927cb71d135d80b49dd2a32cc6150fe48486094e2f4071298203756a6222e43d5b167b2a5ce2fa74cbfe93cfbc792053fb088328
+
+Package: libtasn1-static
+Architecture: aarch64
+Installed-Size: 148
+Maintainer: @termux
+Version: 4.21.0
+Homepage: https://www.gnu.org/software/libtasn1/
+Depends: libtasn1 (= 4.21.0)
+Description: Static libraries for libtasn1
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libtasn1-static_4.21.0_aarch64.deb
+Size: 32480
+MD5Sum: ebef51e07a53bf09775ad5285bf1c7ec
+SHA1: a1ca20241c08de86dfa28778f01bf69fee52e15c
+SHA256: 64192ecf5b21e1c4ff59febb8949d5e770e5cec0955bb92c23c0c23b8db41382
+SHA512: 925dca744e3bf83855f9622373b3e73ac18f509db76d97eefab19a9c904bac6286e05daa2beb804c0ee1f26837a7a9055b816a8af9e0a6b91e8e33d7143fc806
+
+Package: libtasn1
+Architecture: aarch64
+Installed-Size: 472
+Maintainer: @termux
+Version: 4.21.0
+Homepage: https://www.gnu.org/software/libtasn1/
+Description: This is GNU Libtasn1, a small ASN.1 library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libtasn1_4.21.0_aarch64.deb
+Size: 101404
+MD5Sum: 55a438877ec6337765fdc52f5e156509
+SHA1: c630719b07772aa5aff41de81dd0600a51d74682
+SHA256: 21d96e3f30eeb7ca876db355a6780e6a6b52756fe08296110d1b9d17393cc962
+SHA512: d66f512ede9930335fbe879f70162386e7df79c2511bc88274f9977fc0e4ca2752e45e252105b7c2f47323f174352477d99605dd0b4792e71af90334c3d11388
+
+Package: libtiff-static
+Architecture: aarch64
+Installed-Size: 880
+Maintainer: @termux
+Version: 4.7.2
+Homepage: http://www.simplesystems.org/libtiff/
+Depends: libtiff (= 4.7.2)
+Description: Static libraries for libtiff
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libtiff-static_4.7.2_aarch64.deb
+Size: 174308
+MD5Sum: d523f985d7e3289a70b930285ae9e853
+SHA1: 1ee67ab266f9af7165940cd955b61c97d8483b6e
+SHA256: 055ef4ad6a269603105a865719038e8d534bb20e2e46b256634cd697377f9250
+SHA512: 260cc398778bdf76f7d4400092f3c57400e2ee9932c39de49fad7ac9c8ff248b27a1fef439ea22e51bb5b6d270d956d40e786f40767f45f54bb428e4b495f7ba
+
+Package: libtiff-utils
+Architecture: aarch64
+Installed-Size: 860
+Maintainer: @termux
+Version: 4.7.2
+Homepage: http://www.simplesystems.org/libtiff/
+Depends: libtiff (= 4.7.2)
+Description: Tools for working with tiff files
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libtiff-utils_4.7.2_aarch64.deb
+Size: 270932
+MD5Sum: b231263ccf772e38da397f6bc6a5f763
+SHA1: 68c8f84d006459ec677762f2662ee84c4e4ebc30
+SHA256: 46b0ba2936d27d86ec19926e1cf35def5c6882015cffd8ed0331554dca66db9c
+SHA512: 41f4a96dc78ee19cf4407855ee87f426e84477d95126e4edcdab6062f0518563ce6deb223ba7c1902605eeaa48eccf2cccf3087752f3c463650faaf9de36c90c
+
+Package: libtiff
+Architecture: aarch64
+Installed-Size: 6644
+Maintainer: @termux
+Version: 4.7.2
+Homepage: http://www.simplesystems.org/libtiff/
+Breaks: libtiff-dev
+Depends: libc++, libjpeg-turbo, liblzma, zlib, zstd
+Replaces: libtiff-dev
+Description: Support for the Tag Image File Format (TIFF) for storing image data
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libtiff_4.7.2_aarch64.deb
+Size: 871276
+MD5Sum: 34293a8524e68b294a16b1db2f60948a
+SHA1: a962059fbf92b0571e6776dfc2adbda0493aa26e
+SHA256: 3c06393940e6832b61b4f11b69a1e17b697c2ea713b9941810104445a33ab998
+SHA512: e1ec82e49254b37c63b8c68040453df60d24cca3924678ec6d85d8b8bf0a83341778eb8509c63e959a5940070c56627c8839afabf17d2844dbe99a128a59534d
+
+Package: libtool
+Architecture: aarch64
+Installed-Size: 2872
+Maintainer: @termux
+Version: 2.6.2
+Homepage: https://www.gnu.org/software/libtool/
+Depends: bash, grep, sed, libltdl
+Conflicts: libtool-dev, libtool-static
+Replaces: libtool-dev, libtool-static
+Description: Generic library support script hiding the complexity of using shared libraries behind a consistent, portable interface
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libtool_2.6.2_aarch64.deb
+Size: 401672
+MD5Sum: 3e16c5643ed031ac14e194f3eb687e19
+SHA1: 23e8912b36472193780a20cbffd1e33c2f5682a8
+SHA256: b0e89a6110c5966535b1e60fdc013c97f437a40ffe63586e8ed903e3ffb61245
+SHA512: 1cda4b35bc5ee4568f846d2398729015d0ebf49a83fdb3601852e4c968fa2d648a0cfbfdd09ba7bcead5eaef0d95301d6f5d8e8719cdc389c27cd109409ba592
+
+Package: libunbound-static
+Architecture: aarch64
+Installed-Size: 2100
+Maintainer: @termux
+Version: 1.26.1
+Homepage: https://unbound.net/
+Depends: libunbound (= 1.26.1)
+Description: Static libraries for libunbound
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libunbound-static_1.26.1_aarch64.deb
+Size: 466116
+MD5Sum: ccb99c4584f474275eb994efa6a0b9f7
+SHA1: d84c803550efb292a1dc0ac6e2bfa1aefab49555
+SHA256: 88ceefd61e211ab1b9fa9f6caf0f6d988e776dc3e3c86539ec69a823834b3f49
+SHA512: e8868f583afccdb6daed803560e6c6a7c42d8474bfb5b3caa880fef2e2107f4a12cbbdf27e6590b88cc89c311b0977534a942b81f00037082b1fad1933a29d75
+
+Package: libunbound
+Architecture: aarch64
+Installed-Size: 1264
+Maintainer: @termux
+Version: 1.26.1
+Homepage: https://unbound.net/
+Breaks: unbound (<< 1.17.1-1)
+Depends: libevent, libnghttp2, libngtcp2, openssl, resolv-conf
+Replaces: unbound (<< 1.17.1-1)
+Description: A validating, recursive, caching DNS resolver
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libunbound_1.26.1_aarch64.deb
+Size: 387672
+MD5Sum: 03cdc384cf3037c62d97fcb3597709fc
+SHA1: 8ed246950b2226b30e029aebf5e3b9706f49efc8
+SHA256: 18796d016b68ad1b9cff2b382079d229012f98bcf10d6c5c7917ded8dd6c6e80
+SHA512: bdb4ccb5ef99011d2943913f296b1482cdfeb79a1cfe1231f0dd6f675e0f2a6403cf0ccae4af84ff1d6437b602e3586ee376b2927107471a599dec90716fffc2
+
+Package: libunistring-static
+Architecture: aarch64
+Installed-Size: 3024
+Maintainer: @termux
+Version: 1.4.2
+Homepage: https://www.gnu.org/software/libunistring/
+Depends: libunistring (= 1.4.2)
+Description: Static libraries for libunistring
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libunistring-static_1.4.2_aarch64.deb
+Size: 470324
+MD5Sum: 591be733f1eec5bddca6a569b70d5595
+SHA1: 47b6f74ad358da5daadd500f50c3f26bc56e753b
+SHA256: d314b5a9964cb4ac1e88eacbf13b5dad550a90eb063d0a13a4037789c41388bc
+SHA512: bd5d2d0277b3169ae5c3a3e0d8efe610ceb6814ed3b0a1f84aa4925d7d98b9780c7f82993486a09d7627363cf167c67f73dbbc4ad72cbda484eda868c528373c
+
+Package: libunistring
+Architecture: aarch64
+Installed-Size: 3276
+Maintainer: @termux
+Version: 1.4.2
+Homepage: https://www.gnu.org/software/libunistring/
+Breaks: libunistring-dev
+Depends: libandroid-support, libiconv
+Replaces: libunistring-dev
+Description: Library providing functions for manipulating Unicode strings
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libunistring_1.4.2_aarch64.deb
+Size: 550972
+MD5Sum: 23d18ed9c66c8f943931ad46cbed0760
+SHA1: 91ae959abbbffcfe5c3da35d10112a9234df962a
+SHA256: 429b25a148cc1cf3a72c2565d43f54c1b0d60e41fabb909307191164b90ccfb4
+SHA512: 5db179bc174a24035454a781b3f9f8b01c48f767018c2aa4df94ec22d7d9c4ce11547b70e3548efa37e995969ab2ac2b5f5d2678ad009c0366ef87ce1301c32b
+
+Package: libuuid
+Architecture: aarch64
+Installed-Size: 84
+Maintainer: @termux
+Version: 2.42.4
+Homepage: https://en.wikipedia.org/wiki/Util-linux
+Depends: libandroid-posix-semaphore
+Breaks: libuuid-dev
+Replaces: libuuid-dev
+Description: Library for handling universally unique identifiers
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libuuid_2.42.4_aarch64.deb
+Size: 15516
+MD5Sum: 7f1decee516e53fec891bdd6469c72e6
+SHA1: 3710347034757e762f97cc4016580e13144f5dfe
+SHA256: 5f45277bd42b04e9c74599ef5e54f96adb44bb669ab233bd3a71721709ddc7cc
+SHA512: ed769c26317659eddaed690e02c46627526ad9ecec09944edba2a5e9d9c46e1ba742c9c16dd98d1c6e845b381ed89938bfdb9961ef8b7cf72c23375ba74eb64f
+
+Package: libvorbis-static
+Architecture: aarch64
+Installed-Size: 1020
+Maintainer: @termux
+Version: 1.3.7-4
+Homepage: https://xiph.org/vorbis/
+Depends: libvorbis (= 1.3.7-4)
+Description: Static libraries for libvorbis
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libvorbis-static_1.3.7-4_aarch64.deb
+Size: 157024
+MD5Sum: 1577ea7bcb70ea5a649015d60c943981
+SHA1: 77dc9dbb1ff1d415a2412f56e83aad188e153ad3
+SHA256: ddfab30840804ddd8eb03cc74702959b9dfa80b1b5ba4aa07c79921611d7eee1
+SHA512: 216a31182c484c606ea78702cf85a0f59d220602bdb56aa2a37799d9536bb91c67e0e2f8b5c9f8f52627f41518f124ff2c112f8dccc4fe4bf5e172bb3d4101ab
+
+Package: libvorbis
+Architecture: aarch64
+Installed-Size: 1772
+Maintainer: @termux
+Version: 1.3.7-4
+Homepage: https://xiph.org/vorbis/
+Breaks: libvorbis-dev
+Depends: libogg
+Replaces: libvorbis-dev
+Description: Library for using the Ogg Vorbis compressed audio format
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libvorbis_1.3.7-4_aarch64.deb
+Size: 262512
+MD5Sum: 394c370b732061864dc2997dff56fdd0
+SHA1: 322602e9d5a9a1b973e8da54d5383394616874cc
+SHA256: 54fee41a8e5591a00035ab0fe21fb1836dab39952cc2f68e18f9e409e04f6d20
+SHA512: 55fe7f91b8a73477af7f4e23c882d4c8a3e4459d4f16bc3c99e618e89e374da87620912d1081f945375661cc48cf6da84c1971aaaf3a827adb0c16593c68f8c7
+
+Package: libwebrtc-audio-processing
+Architecture: aarch64
+Installed-Size: 1544
+Maintainer: @termux
+Version: 1.3-5
+Homepage: https://www.freedesktop.org/software/pulseaudio/webrtc-audio-processing/
+Depends: libc++, abseil-cpp
+Description: A library containing the AudioProcessing module from the WebRTC project
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libwebrtc-audio-processing_1.3-5_aarch64.deb
+Size: 408780
+MD5Sum: 682384717e8c0a94ddcda1fc728ef28c
+SHA1: cf59be640565a5a3a3afde1e31ef0407fc1773cd
+SHA256: d7e3cca90665eafb3ebe963a8971bbc332d195dfd80679e39aebf4b74914d635
+SHA512: cd5945489cd8afac9bf6751a5ecf82bcd548b6e42e1063e7291ac2f0b4188f2fbd1d02bc50743bfa78df745764a1f2fab8e8c05b33def9991cbd233307630417
+
+Package: libx11-static
+Architecture: aarch64
+Installed-Size: 2136
+Maintainer: @termux
+Version: 1.8.13-1
+Homepage: https://xorg.freedesktop.org/
+Depends: libx11 (= 1.8.13-1)
+Description: Static libraries for libx11
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libx11-static_1.8.13-1_aarch64.deb
+Size: 567716
+MD5Sum: 8506a87d295710205253d9e6f123df2c
+SHA1: 9b8595963718f774f782b22d5091761c65e2d511
+SHA256: 1a75f1ec42af8021d18beb776e2a1d3d6eafd947ad0176a67a21cb3c29539f7f
+SHA512: 4492610b2a3633a693b2c385f44b2e08dc1750bf390d3c84ba2575568d7f458cf86d2121eb98372890ca2eb7fa0514226d8fb3880287fd57b02bb6bded067e17
+
+Package: libx11
+Architecture: aarch64
+Installed-Size: 13704
+Maintainer: @termux
+Version: 1.8.13-1
+Homepage: https://xorg.freedesktop.org/
+Depends: libandroid-support, libxcb, xorgproto
+Recommends: xorg-xauth
+Description: X11 client-side library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libx11_1.8.13-1_aarch64.deb
+Size: 1909228
+MD5Sum: 62edce27480cc4035974ac9c22d4b3ad
+SHA1: eb5af22db203ff1b6a0188ae7b0d0c41c7f5939a
+SHA256: e9bb3075a3d2aad0ae1b694b17a4da69e9c22b3595ebbf1544c1857e18276a71
+SHA512: 20f45da49e2a66f48aaac875c3e3d2f72938a417f98d83be4219ad81d26fcc506f7f1e05c4dfc88986633484f591b0c7e455918eeced0bc159fd78ea3edd6c99
+
+Package: libxau
+Architecture: aarch64
+Installed-Size: 128
+Maintainer: @termux
+Version: 1.0.12-2
+Homepage: https://xorg.freedesktop.org/
+Description: X11 authorisation library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxau_1.0.12-2_aarch64.deb
+Size: 9228
+MD5Sum: 1d26f4998d98cb1e292e998dca926ac5
+SHA1: 599b6fdea166416ea9482e87398f90be7eed6522
+SHA256: f9971c7c27fd54c68ace86cc747097591d8e493fa1308e93a78f3cf58feea0ed
+SHA512: 34eb1d004677ecb830b2f3b92d0a2bb8a664c5cf2d9ba424b59b58edfd2e73ded11b8d64e05c32919f4f41bb13036f29b315191cd9e7b19835641172caeffc9e
+
+Package: libxcb-static
+Architecture: aarch64
+Installed-Size: 1340
+Maintainer: @termux
+Version: 1.17.0-1
+Homepage: https://xcb.freedesktop.org/
+Depends: libxcb (= 1.17.0-1)
+Description: Static libraries for libxcb
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxcb-static_1.17.0-1_aarch64.deb
+Size: 161792
+MD5Sum: 5a1d98fbcb2632600f65e45c9860387c
+SHA1: 92e5606d00166e9f8afcf8efc53fe49fbb0f9bab
+SHA256: 92e77057e3085dc4a64a2c8bb65d61284eadb856e94a8e8114a1139920526ff2
+SHA512: 952784ca90413a84b6f5156861920112a1c83798eca21495c3ebb7f604eafdc4478820db0ed47786abfdcddb714a898086d605aa73734d788029dfa2c276d452
+
+Package: libxcb
+Architecture: aarch64
+Installed-Size: 12772
+Maintainer: @termux
+Version: 1.17.0-1
+Homepage: https://xcb.freedesktop.org/
+Depends: libxau, libxdmcp
+Recommends: xorg-xauth
+Description: X11 client-side library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxcb_1.17.0-1_aarch64.deb
+Size: 918620
+MD5Sum: 1457e238fd7c84f0be2d2a37ab28a148
+SHA1: 917e8eb6cfb49167c8d61f730184e8185ca11653
+SHA256: 9dd4b4427471330cce4ad756355f6bb6f2eb8f3333c98f685b4df6c4ef87abe5
+SHA512: cb175c618e3d7cfdd2a4fd16dbcd9d2c0bec3696ed67baacbe379584093bc37d39a31b04279405e4deb5a4a75dbea3abbd98d4a3df33407ac7e25ecdfa075a4d
+
+Package: libxdmcp-static
+Architecture: aarch64
+Installed-Size: 60
+Maintainer: @termux
+Version: 1.1.5-2
+Homepage: https://xorg.freedesktop.org/
+Depends: libxdmcp (= 1.1.5-2)
+Description: Static libraries for libxdmcp
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxdmcp-static_1.1.5-2_aarch64.deb
+Size: 7940
+MD5Sum: 562f65bea709ac39312e15d4b1889317
+SHA1: 91355ac1aaa1ab71fdf16984b522dbed7f902b50
+SHA256: 74020630bdc7d5c9852eabf5be5723ead72c091dcb4bb7b4ebcc5afd6849af83
+SHA512: 15f3725999312966e34bfe910a6feb9a4d894166f5761711f85faf1a0a7e9a548c3a7bded155e18ee91d62d8c33f6edf6066191126c561c4d33fa20955689d4e
+
+Package: libxdmcp
+Architecture: aarch64
+Installed-Size: 196
+Maintainer: @termux
+Version: 1.1.5-2
+Homepage: https://xorg.freedesktop.org/
+Description: X11 Display Manager Control Protocol library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxdmcp_1.1.5-2_aarch64.deb
+Size: 24468
+MD5Sum: b1410f273d898c6b385813f4cdfba669
+SHA1: ed1c509e7754fd77f8f0173466f850f79c3db948
+SHA256: d8323794c0e5645a94eece33c583ae218b7a3a7029ca2a79f0b3e83c5d2bdc92
+SHA512: 9ef19c521347bbf13b4d0f5743247af7af16ad49f21aa81fba799be6c780d5845ebef48cf6ade07ef64034cea8fed3ac1225887e4a3b44008669d27ab11bbb9f
+
+Package: libxext-static
+Architecture: aarch64
+Installed-Size: 156
+Maintainer: @termux
+Version: 1.3.7
+Homepage: https://xorg.freedesktop.org/
+Depends: libxext (= 1.3.7)
+Description: Static libraries for libxext
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxext-static_1.3.7_aarch64.deb
+Size: 25924
+MD5Sum: 8aafd5a005c3d42bf3979d48c6dfbbd5
+SHA1: a10a550ace4bc5a920ea3a5579894277dce2beb9
+SHA256: c45fc562025c9df478435d2b421abe0b246d54c69b36743f16e54ae6882a3857
+SHA512: 4c41316e813787f294c88a09db18ab3109ea0acbceea201a9fec3b51330ce1cd272ffae4862d7646a250e394330015e04c49b4a66fec717f0f8756e43462d478
+
+Package: libxext
+Architecture: aarch64
+Installed-Size: 616
+Maintainer: @termux
+Version: 1.3.7
+Homepage: https://xorg.freedesktop.org/
+Depends: libx11
+Description: X11 miscellaneous extensions library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxext_1.3.7_aarch64.deb
+Size: 98172
+MD5Sum: e66d1075d43925919117cdc7d816144c
+SHA1: bf5165803c9f60bcf4cead971b8d17ff442dafe2
+SHA256: 03a4c5021e8de6fc9535873063c22ebd79258902f98fac58660a6bd3c920f903
+SHA512: 8e641e1960d13220a4eb0abaa95c1c5f0461287ee85a8afafeb5aa48cc8ca09e7f91c818f52f5f27a146ee679d4c3c83d047e873981baf7ea51eec3400113e21
+
+Package: libxfixes-static
+Architecture: aarch64
+Installed-Size: 64
+Maintainer: @termux
+Version: 6.0.2
+Homepage: https://xorg.freedesktop.org/
+Depends: libxfixes (= 6.0.2)
+Description: Static libraries for libxfixes
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxfixes-static_6.0.2_aarch64.deb
+Size: 7936
+MD5Sum: 53ddfac75337988d18406db7bf726601
+SHA1: d1a8b77955621be4f1cc73b1af2107c0c9bb1e5c
+SHA256: 83d471ae5d6b93934cc5deb1be650e1c9f412dbe61fff27005e39146f3fcea67
+SHA512: 2124ae3c478efe3739ca904ee10350ec269aa4ca33824b4c37e7b621756452d0bf10575b978373d2144a91b468d0abd949a625c7795e70752694dab6c9aef473
+
+Package: libxfixes
+Architecture: aarch64
+Installed-Size: 108
+Maintainer: @termux
+Version: 6.0.2
+Homepage: https://xorg.freedesktop.org/
+Depends: libx11
+Description: X11 miscellaneous 'fixes' extension library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxfixes_6.0.2_aarch64.deb
+Size: 11644
+MD5Sum: d61e70fb9a6c31a08fd447228b707f61
+SHA1: aedd9c87848f236c0e811c80fb168b88ebe980cc
+SHA256: 05d92a9907bc3eaa4839335b6add4e5f936ae2a5b98442ca63dd9695caa17d28
+SHA512: 915440fca107b3e2c3dc15c150a34c4f138d1c398144bcf112b8a1e83a8fa633a7129489e90b377ae445afa685a1706afd682a93113a18455b2dad7a13c9d554
+
+Package: libxft-static
+Architecture: aarch64
+Installed-Size: 164
+Maintainer: @termux
+Version: 2.3.9-1
+Homepage: https://xorg.freedesktop.org/
+Depends: libxft (= 2.3.9-1)
+Description: Static libraries for libxft
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxft-static_2.3.9-1_aarch64.deb
+Size: 36484
+MD5Sum: 848bc8c95a30962dc41cfce7af5cc8b6
+SHA1: 9676c118e38e9d8a466e3dc9131ec364e971375a
+SHA256: 85dc83bb2f86139f75482a29bba20a55fbd5dc0dfb176d7ce5ef0c62fb2594b8
+SHA512: 7569c185de5a2ffb03610d5d65938f68dc1d932c2da880df0a1d8235c853ee659b4851bf0e1f1aa8ec58d3b73c515acf3a48e73cc56b813f85b6ec4a044e5045
+
+Package: libxft
+Architecture: aarch64
+Installed-Size: 496
+Maintainer: @termux
+Version: 2.3.9-1
+Homepage: https://xorg.freedesktop.org/
+Depends: fontconfig, freetype, libx11, libxrender
+Description: FreeType-based font drawing library for X
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxft_2.3.9-1_aarch64.deb
+Size: 48068
+MD5Sum: c9a39e8063df5f127218f1eb0a396103
+SHA1: 040224248dded93427fdabcf26b7ad3ff3d7accd
+SHA256: 8f4fef0486238f7b712cce1adfcb8543e7b0fc07328ce9a22cecc408c0fb4567
+SHA512: fefcec913033553b4e5f1939fe8f14c96e0851ed053e17c2fc4e38a141b8f162db2b4f722a1b8e7762fcf0aece2cdb1de3ecc3e9be4b147cb8ed9c5428e2de9c
+
+Package: libxi-static
+Architecture: aarch64
+Installed-Size: 184
+Maintainer: @termux
+Version: 1.8.3
+Homepage: https://xorg.freedesktop.org/
+Depends: libxi (= 1.8.3)
+Description: Static libraries for libxi
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxi-static_1.8.3_aarch64.deb
+Size: 27044
+MD5Sum: 64008cbd8d48411e5d7bb318985c485a
+SHA1: 3f167bbc1a3e5e89feffd14e4b5c79b484a5a362
+SHA256: 9cc82296bdd55df55060a2753ff8443af50c3ad5415bd284fafcbb5a4f973e7e
+SHA512: e358676859d682024ad9182e3ef76f6da101a4f8deb9b3c505156814e75e1f2de65bf3b6dd1c7ddc1308149a96eda3574a854c04784241b216f5e12ef359ae2d
+
+Package: libxi
+Architecture: aarch64
+Installed-Size: 788
+Maintainer: @termux
+Version: 1.8.3
+Homepage: https://xorg.freedesktop.org/
+Depends: libx11, libxext
+Description: X11 Input extension library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxi_1.8.3_aarch64.deb
+Size: 141584
+MD5Sum: a59e19c9609b8ec745452e3f76f0879e
+SHA1: 77bbabbc6e468150d2bfd2e32c9ed057be664190
+SHA256: 34496f4ed57c9c3f7dc26c3d86640a0ac50dd8bccb9665999af1e90229ba328e
+SHA512: c5ad103805be54121236fe970251056fe32d1e34c9cedbbf023362ee5dc816ba930782123649a6f8015432298f3b52043b7f90129a9b2c892231c3a30ddef007
+
+Package: libxrandr-static
+Architecture: aarch64
+Installed-Size: 100
+Maintainer: @termux
+Version: 1.5.5
+Homepage: https://xorg.freedesktop.org/
+Depends: libxrandr (= 1.5.5)
+Description: Static libraries for libxrandr
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxrandr-static_1.5.5_aarch64.deb
+Size: 14796
+MD5Sum: 4a5b902586830dfd97e04695396d1fef
+SHA1: e5fd937071955de476f6bce62947e6b770ddbbb8
+SHA256: 61b01716a1e93fb0096e877cd8f5ada8827930f83e1d69e9d918e238d9db4485
+SHA512: e7602f83c40af3adfcb18adc0965a7432834a0b4f7cb1b340691a0b372cc2ec4fcafe888ae63d21070f38488accf43bfdc793b4bdc5b83e21b4c4056f24b6eb4
+
+Package: libxrandr
+Architecture: aarch64
+Installed-Size: 196
+Maintainer: @termux
+Version: 1.5.5
+Homepage: https://xorg.freedesktop.org/
+Depends: libx11, libxext, libxrender
+Description: X11 RandR extension library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxrandr_1.5.5_aarch64.deb
+Size: 22320
+MD5Sum: 0ccc2ff23f10aecc61c7fae83be91853
+SHA1: 3d90a128fbd5624aeeb6c49b097331b7962a6be5
+SHA256: 80c0eeb61d2c0687c4494be798c01bc0fc1a2acf0430c00b8fd247d26cfd805d
+SHA512: 0936456747642c9f9bb1a20e13998f320b228c6f907f812180178f0d7d20e0b92fc2853e0374859a9b2aa06220919abaec921aff45dc92a3c2eaa69c5782c95e
+
+Package: libxrender
+Architecture: aarch64
+Installed-Size: 164
+Maintainer: @termux
+Version: 0.9.12-1
+Homepage: https://xorg.freedesktop.org/
+Depends: libx11
+Description: X Rendering Extension client library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxrender_0.9.12-1_aarch64.deb
+Size: 24744
+MD5Sum: 3138ae4cc936776642e0500d5b4f4f62
+SHA1: 7b96c3aa9a0c62cfaab7ffa6af965e01b4f61ed7
+SHA256: 6f20f4ba96862d2ab9c2ede0e7c5d7f088bc4cd38e45a3e6a0742bd8a8e42fd7
+SHA512: 50b06812a29a3fa5682a5c251097c502ccaf364651fa08dcc63e12382d6e4ff3e7d2a1092a3645b8bb007a0aed7490b34338cf963810b45cbd3fa2348198d3f8
+
+Package: libxss-static
+Architecture: aarch64
+Installed-Size: 44
+Maintainer: @termux
+Version: 1.2.5
+Homepage: https://xorg.freedesktop.org/
+Depends: libxss (= 1.2.5)
+Description: Static libraries for libxss
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxss-static_1.2.5_aarch64.deb
+Size: 4412
+MD5Sum: 3544623ab33123179272bbf7f66f1858
+SHA1: c487595d19b7514ad904f30cb7f60a3b5b5f82d8
+SHA256: 7fd09f0f7eb2fbdc95585c47e7cbb5294233e693819d29150a90591745260fb6
+SHA512: 4adf9d51115b4dd20c08339e40d5fccd6675826b74dfab31c2038961738bd8a10cb9fc6df398156d4628a03e25b46f1affa3c52382719f8021717aa1960ab4a7
+
+Package: libxss
+Architecture: aarch64
+Installed-Size: 144
+Maintainer: @termux
+Version: 1.2.5
+Homepage: https://xorg.freedesktop.org/
+Depends: libx11, libxau, libxcb, libxdmcp, libxext
+Description: X11 Screen Saver extension library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxss_1.2.5_aarch64.deb
+Size: 12060
+MD5Sum: a800292092aa4b96d6f6d9359c0319a8
+SHA1: 718bb3a46ef681cfe3e30991bb2bb3ee61674d84
+SHA256: 76f95531a32a94451fc82a2bc10dda5b3ae62ea1465b638d631d412cdb26993b
+SHA512: bfbdb68753cd415b62633409008f164a17d2929c5ecdff4cac2edda579e508a16ed5bc4dd806164339166c48724527727065e1b0f69d208fb58474dd7dba8d40
+
+Package: libxt-static
+Architecture: aarch64
+Installed-Size: 696
+Maintainer: @termux
+Version: 1.3.1-1
+Homepage: https://xorg.freedesktop.org/
+Depends: libxt (= 1.3.1-1)
+Description: Static libraries for libxt
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxt-static_1.3.1-1_aarch64.deb
+Size: 150084
+MD5Sum: 01fc02640864db5eefa77a739377ba3f
+SHA1: 6f34d323c1a0e2c51bec21760baca619ee263605
+SHA256: 0ab72fc70dbbbd0b6f9370c3d899b8bd44e00db7dd0ba089ef13f3d85db75556
+SHA512: a29c2a4801928522c55d16b1a8b4ae914e3eb1b569201ccabd425bbd28f8d19330bca38e6f329e5ad7dc49d496b6ace00b448c141807710ac42b47a56e8cd758
+
+Package: libxt
+Architecture: aarch64
+Installed-Size: 3124
+Maintainer: @termux
+Version: 1.3.1-1
+Homepage: https://xorg.freedesktop.org/
+Depends: libice, libsm, libx11
+Description: X11 toolkit intrinsics library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxt_1.3.1-1_aarch64.deb
+Size: 483884
+MD5Sum: 7993cd9fbb107d5ee2530aba658f2d1e
+SHA1: 1813690df00ee32740325214564166c9debd155b
+SHA256: 55781cf506cda4ca431c7eeb8cd684fa454b5942bda3f828a4eadaf931d3aff0
+SHA512: 23126659bcbef9faa943bb14b57639048fca2d072840aac94dafbd194dc268df0515b13f9569d1fca45c3fb13a57e34042c1982fe9fd17ce397b7ccc41728723
+
+Package: libxtst-static
+Architecture: aarch64
+Installed-Size: 60
+Maintainer: @termux
+Version: 1.2.5-1
+Homepage: https://xorg.freedesktop.org/
+Depends: libxtst (= 1.2.5-1)
+Description: Static libraries for libxtst
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxtst-static_1.2.5-1_aarch64.deb
+Size: 8668
+MD5Sum: 08ffd445ba2b881225b9cf15fe9d46b4
+SHA1: c959b22a370d8d440ee481b818108a6bcbe95009
+SHA256: 09128470cba72bff9cb9d3e6924c728adf4c8f8fc87e16140ae28a6aeba20a23
+SHA512: aa53b7d3a3eb6299b4cc938e576f8914cd41f2924d157ea470272ae14e9339a67346ba629887c004def813eec3f556431097a81cebd8510d937e56e09e82b182
+
+Package: libxtst
+Architecture: aarch64
+Installed-Size: 232
+Maintainer: @termux
+Version: 1.2.5-1
+Homepage: https://xorg.freedesktop.org/
+Depends: libx11, libxext, libxi
+Description: Xlib-based library for XTEST & RECORD extensions
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libxtst_1.2.5-1_aarch64.deb
+Size: 25764
+MD5Sum: e56c704b4d0e2ac4251db96ebf57647e
+SHA1: 01b82402e00c2ea357127ab7c4fcaeaa5b8577a4
+SHA256: efdf183533556b577be8ce49232f060ccc715f7dfd3ebf75e66dfe6b5cd94037
+SHA512: 8f3100e61916abfc9b01b32722fa357d23cbba3e8254f1539852e789d402f90f5a74c44235293afa0e5de3c60f527ed83929f7b0aece641d74f99548e4b86e52
+
+Package: littlecms-static
+Architecture: aarch64
+Installed-Size: 652
+Maintainer: @termux
+Version: 2.19.1
+Homepage: http://www.littlecms.com/
+Depends: littlecms (= 2.19.1)
+Description: Static libraries for littlecms
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/littlecms-static_2.19.1_aarch64.deb
+Size: 146412
+MD5Sum: 10f63ab97051787bc31dad147d123ff2
+SHA1: 23d3738b08d1efeee6587a2828344bc44e3311cf
+SHA256: 16b0e85d75a0ae25bee9d510f202853bbfea11971b2a4dd8d28a21d668158dbe
+SHA512: 4a4ca42a2d6cf9c790834e74b6ca1521d8d494f2a43daf2290c87d20258175e669ad8fcdbdb55adc588d2969865b90bb909b95849184e5ce3e5a08045e443292
+
+Package: littlecms-utils
+Architecture: aarch64
+Installed-Size: 180
+Maintainer: @termux
+Version: 2.19.1
+Homepage: http://www.littlecms.com/
+Depends: libjpeg-turbo, libtiff, littlecms (= 2.19.1)
+Description: Color management utilities
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/littlecms-utils_2.19.1_aarch64.deb
+Size: 35464
+MD5Sum: 71c9bb20f761cac1cf17ae9a08b433af
+SHA1: 187907e49ccf2f69c5b7bb158dea57c1b433db2c
+SHA256: 1f99cb5957a2d7cabf7aac7d315999ba4486bfe1c874376cda400b96264cce58
+SHA512: 06bd4669f7888a84d0b76376eddb16f3d5e26d925ecccdade65b2680edd44463a8a79aefab5102a5e128257dc1cf80c50293325b525eb63f11cbc326cf839a29
+
+Package: littlecms
+Architecture: aarch64
+Installed-Size: 540
+Maintainer: @termux
+Version: 2.19.1
+Homepage: http://www.littlecms.com/
+Breaks: littlecms-dev
+Replaces: littlecms-dev
+Description: Color management library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/littlecms_2.19.1_aarch64.deb
+Size: 143596
+MD5Sum: 98649ea9bef8241a4aaa958a8dce55f4
+SHA1: e1acc5b486f3364bba5d4b31f17fc170e75bca2a
+SHA256: ec14d960243f7dd64725b9d3f06a16707b3dad606d306af86e6029123818b8be
+SHA512: 62cb663e91247bb79cb7f011bd242b862706159139ab491e551bc8267faf9108747f430865402fa46d520ce43cbd1e852745b073508bc286802de5710f1c9b02
+
 Package: lz4
 Architecture: aarch64
 Installed-Size: 284
@@ -418,11 +2976,42 @@ Homepage: https://lz4.github.io/lz4/
 Depends: liblz4 (= 1.10.0-1)
 Description: Fast LZ compression algorithm tool
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/lz4_1.10.0-1_aarch64.deb
-Size: 92404
-MD5Sum: f847f35355884e616de165e0889fdec9
-SHA1: e27c03bb08105677791289c0dea8d302d9ec7fcb
-SHA256: 122cca8c19d72110f9ce953010d09b91ba7cdfcccf07f8952b7c30e794ea1427
-SHA512: 6b22fb0b282e5102b9edfdaacf1cd71969cf5553889823d6ad213dabeab750214e0cd2dc14e446950485706d6773bdc0a2b2ab1f64cf41828bc723867fc07c09
+Size: 92440
+MD5Sum: 53947c537e49a7358f1c58aae2b07d64
+SHA1: 5f44b6cc405bdaff906297d7847920b7f9114bc9
+SHA256: 3598bb0a4cf365f8cec6443577d6d340c0e67a71cbdd3c5ae1e13883834dbe9e
+SHA512: f3548af48b3fb8b4883ad93f2658fb9f4900570775967305cec38895aead3e8daf01e18b29cf602cf4a8df338adcf198dc904728a930fc17e8e9d999b9735263
+
+Package: mount-utils
+Architecture: aarch64
+Installed-Size: 612
+Maintainer: @termux
+Version: 2.42.4
+Homepage: https://en.wikipedia.org/wiki/Util-linux
+Depends: libblkid, libsmartcols, libmount
+Breaks: termux-tools (<= 1.34.1)
+Description: Utilities for (un)mounting filesystems
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/mount-utils_2.42.4_aarch64.deb
+Size: 152652
+MD5Sum: 85db27f5217ed731e970ee659c2364ab
+SHA1: 4cda39172f35c23fbde79f5431c881ce3d365295
+SHA256: 196bca5a92b111801e0b88d60a8f4f0d23e87cdb4170db6317f11c545a4765a5
+SHA512: 47b9f55ce56dbc160dd1a6de7f93137a8b1940735a61b48b3247e4b97d450afed496f656132e461b4f03dd5fe2a3e43e317a2cba21948d9acb90eaa84285484a
+
+Package: mpg123
+Architecture: aarch64
+Installed-Size: 344
+Maintainer: @termux
+Version: 1.33.7
+Homepage: https://mpg123.org/
+Depends: pulseaudio, libmpg123 (= 1.33.7)
+Description: Fast console MPEG Audio Player based on libmpg123
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/mpg123_1.33.7_aarch64.deb
+Size: 94724
+MD5Sum: 7dde2ccc3a98c1d97b6be2108aff1493
+SHA1: 83e0f4474a9105d9c510db5a7f8fe647cca0cf2f
+SHA256: f7cf88ec34df91470b4646232f001892ac6c0b41549e71a49df9852815f79865
+SHA512: cb44157892b8c14f6268ce9cec50911566830c5c71727f568d31789901bddeb9c524962e54160661f114aa04a44100993c586a6e78573fda284eaa9f0b70cdc4
 
 Package: ncurses-static
 Architecture: aarch64
@@ -433,11 +3022,11 @@ Homepage: https://invisible-island.net/ncurses/
 Depends: ncurses (= 6.6.20260307+really6.5.20250830)
 Description: Static libraries for ncurses
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ncurses-static_6.6.20260307+really6.5.20250830_aarch64.deb
-Size: 154036
-MD5Sum: 63991a5d19e536a990eca3c89faaa600
-SHA1: c147dedba90bf79a7f9c2d5df408786be19ee39c
-SHA256: 23cc557416d7ea0edbcbf4037942bd93525f506ea59422386f0b96d606160a8e
-SHA512: 35874d5918e6c610e00a269175cb6c7d8acf7b0f1c2474346e40a07eb481938fcc4abd417eb964fd80c718ce25b046fdbe2875d319aad613c867879af45fc5b7
+Size: 153936
+MD5Sum: 29b1004f86126dcd8a3f9c5400170b30
+SHA1: c91c917ca0c9d90429fc12adacfbf1fe8026703f
+SHA256: 28704a6aacbee36ef29c26870c6b053ba2b7f3e6558e067426961c61a1ce9777
+SHA512: 5cbf8f26ea92a621bce04a99661f8b3191a0bc62fcd52ed82bf7cf33d3a78b2085e12883ac6f5ecda6a975c43a7ac52e5ade31c075087db5945731ea9842dd37
 
 Package: ncurses-ui-libs-static
 Architecture: aarch64
@@ -448,11 +3037,11 @@ Homepage: https://invisible-island.net/ncurses/
 Depends: ncurses-ui-libs, ncurses (= 6.6.20260307+really6.5.20250830)
 Description: Static libraries for terminal user interfaces based on ncurses
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ncurses-ui-libs-static_6.6.20260307+really6.5.20250830_aarch64.deb
-Size: 39516
-MD5Sum: 16790bb40d7a1907574399fc37855c9f
-SHA1: 8cc5bf6ad317c53e158acbd41562ccbefd44803b
-SHA256: 0ab6d3ad772e18aad1bb575894da5ec516c9c558e16d4814539f0dda526017c4
-SHA512: 749199ddf341754ad532274c60096d64416c37b6707e5a65991fdf9154df07975f59a16f9cd3503fbe3f7f0f8f48672e09189970754c97837c3eebf8726b36dd
+Size: 39536
+MD5Sum: 8b2d086950459ac3a34b884d77523063
+SHA1: 82cd0e547efb4e9470edd15bb6217df7fc79fd14
+SHA256: b0e7b49689dacb4f41fe37e86b317c66e5179db969c89258e17f490dadaa90a2
+SHA512: 9a041970f5e59fed59deaf46ea22da9dcd1fc5049fdfb65501639732ac6fa5391a5cdaf404139401c67c1fc74472b362d22b623aed15fcea12fa75128b31cf05
 
 Package: ncurses-ui-libs
 Architecture: aarch64
@@ -502,6 +3091,21 @@ SHA1: b0df60c63eb269fd20a54641caefe04385ac0bad
 SHA256: 088413a14db76b684cd1979df5ae665504eed729a469d158635570dfb94551d3
 SHA512: 9fe8e37343e371e920a93115d20c5cb8f0ea9b2dc87bfa092b80611b84ad9aff9e218d44953edef480e15a94061e7b794ae7aba12c1d54fb1caec3eedddc7562
 
+Package: nettle
+Architecture: aarch64
+Installed-Size: 112
+Maintainer: @termux
+Version: 4.0+really3.10.2
+Homepage: https://www.lysator.liu.se/~nisse/nettle/
+Depends: libnettle (= 4.0+really3.10.2)
+Description: Low level cryptographic tools
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/nettle_4.0+really3.10.2_aarch64.deb
+Size: 18188
+MD5Sum: 87c4b6a4a9548063250f260003db7be3
+SHA1: 38a1fc8e602fc4fa0fb2055488090d78a96a8a77
+SHA256: 6d26b630cd086856a4d505282818acec8a94500198c3274ec19d6308d5761a82
+SHA512: 013ae1e644ea300232efc2d2200fa77349f33192c85a58bc42b91517163a71321e6684b2ea2fe4e5444a40379df5d15b2174ad229eca6a50b92e6c8b1cf5db4e
+
 Package: oniguruma-static
 Architecture: aarch64
 Installed-Size: 820
@@ -530,6 +3134,38 @@ MD5Sum: 708b31cee3f3fd54d245471a2bbc213f
 SHA1: c8d1f6b3046e8abfe084bcfd35ca009f9150cb67
 SHA256: c1ab4c94303a7448da90a9303499ee4cf7447d26206ce0e0d946b5de5dc0f2bc
 SHA512: 50dda64dfc90a7f22ae3ecbe69db353c63631247ed348b28489229db3147166bfa489cec2c1174b0ef1b14dd4f3de890ea28f2808fc56215dd47657706be085e
+
+Package: openjdk-17-x
+Architecture: aarch64
+Installed-Size: 14704
+Maintainer: @termux
+Version: 17.0.20-1
+Homepage: https://openjdk.java.net
+Depends: freetype, giflib, libandroid-shmem, libjpeg-turbo, libpng, libx11, libxext, libxi, libxrender, libxtst, openjdk-17 (= 17.0.20-1)
+Description: Portion of openjdk-17 requiring X11 functionality
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/openjdk-17-x_17.0.20-1_aarch64.deb
+Size: 12561412
+MD5Sum: 0f5cd197830f5156fb29398268955a3f
+SHA1: 25983ed00a3268b12988d1fbc5fd777a14308d5e
+SHA256: 1ff4d76bd4ca5f5ba68f4af467c13aa95cf6cce171a2ae0b755446003e71b320
+SHA512: 9753047c0dd3b4def6dffa8047075e5d92192e80cbb64cd369bf06453233c6b4fdb73c532aa43f0816f332dd3da555e9c30708eb5636066c7faf156334d193a3
+
+Package: openjdk-17
+Architecture: aarch64
+Installed-Size: 217548
+Maintainer: @termux
+Version: 17.0.20-1
+Homepage: https://openjdk.java.net
+Depends: libandroid-shmem, libandroid-spawn, libiconv, libjpeg-turbo, zlib, littlecms, alsa-plugins
+Recommends: ca-certificates-java, openjdk-17-x, resolv-conf
+Suggests: cups
+Description: Java development kit and runtime
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/openjdk-17_17.0.20-1_aarch64.deb
+Size: 96077368
+MD5Sum: 49738c6bd2c5030992b44910a789a6ce
+SHA1: 6f21ef504345e4437d97e642d6a5d44bac7bd18b
+SHA256: 1d04993a3ab8eb2e5a33a5ae1e191e0edf1acaac6a5c5f2a23cd842af5544b5e
+SHA512: c9fb1729202fcb2ea55c90813dba5209707a27abbb6f3a4164a5c98ee6e7807c7d67ef59e7987f2c328d450f8f559d1d37847e889c85437fb555952091aa4213
 
 Package: openssh-sftp-server
 Architecture: aarch64
@@ -613,6 +3249,21 @@ SHA1: 3357d3d0cd0eb2ebfc8ea385bef9c31e110d59a6
 SHA256: 3500e88ed4b78ecdb3359185852b798c15a312a85b15060217a05726a9eb5598
 SHA512: d32ae47eba4f0b53d618f9080d01a7d70561b73dcc9e60ddbe49a955d46eb31c0d58e4e606ab67045f6d03881d34100cc5db4258425c3331f3f40469870a50ba
 
+Package: p11-kit
+Architecture: aarch64
+Installed-Size: 3688
+Maintainer: @termux
+Version: 0.26.5
+Homepage: https://p11-glue.github.io/p11-glue/p11-kit.html
+Depends: libffi, libtasn1
+Description: Provides a way to load and enumerate PKCS#11 modules
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/p11-kit_0.26.5_aarch64.deb
+Size: 472744
+MD5Sum: 8bf2f8ec73b9477d5e4e4a1a0b00f865
+SHA1: d348b938780c3c8dffac75847cd30c28ee0c2005
+SHA256: 5d5acdfcef6bf3e914ff528ce57a7d837b88a5652ad98f5e0f218d26c50a2cb5
+SHA512: f2f8e4665bf58d2ac665f0d76ad299edafe6ec0058bf6ba5357f909f8abfe4f2c1304f763ee160d1c9b4b90cbc83e333d98288372b3d080f68ad179c36c7d7f2
+
 Package: pcre2-static
 Architecture: aarch64
 Installed-Size: 1836
@@ -622,11 +3273,11 @@ Homepage: https://pcre2project.github.io/pcre2/
 Depends: pcre2 (= 10.49)
 Description: Static libraries for pcre2
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/pcre2-static_10.49_aarch64.deb
-Size: 378820
-MD5Sum: 957c58ae43acff1777a5698defba3cc8
-SHA1: 1b71b1154fbfd0f165c6b65111cb906f9eac2b0f
-SHA256: 3a56a17281f3d4999cd470da269b3d5f8f497a0555ddb2a238045a9a77fd747f
-SHA512: 228dd2979b1a1cfcfbccacdf14a06ad47e8888bd32f59911ecba46eceda3d9c7e71946f533e71a56dd9dddda09a88df2dd1774622d8e4814be00ced2c4948fc0
+Size: 378680
+MD5Sum: cf4a656acfb02d0802cbfc7fbec070b7
+SHA1: d346dcbd335fbf6dc6925f3ca86fb8f916216017
+SHA256: 6223377cf4a0142ebd882d8bd73ee0b786172bad9ef8d9d8baf3dc0d412a4846
+SHA512: ddf8abfefafff08f6257484b00fd3096d13424872cc11fbdc0fa66df886ac5705f688062527e684168d05fa73c629176b457756eeaa13479832cc7c91aebc3d1
 
 Package: pcre2
 Architecture: aarch64
@@ -638,11 +3289,11 @@ Breaks: pcre2-dev
 Replaces: pcre2-dev
 Description: Perl 5 compatible regular expression library
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/pcre2_10.49_aarch64.deb
-Size: 1001296
-MD5Sum: ee4900da04918d1d9e3ddeaff8f6af1c
-SHA1: d2d42990f7c028ec4d2caf73f08f927c6f287a62
-SHA256: be3983ef279e07bfdaa85645945b920ff13d42661da4f79e1c4505f1c350ee23
-SHA512: d84f7adc5b87079ff143c6ea997543c175c8f8583fa73afce66c1ddf63aea3065bfb2d1ccc4778021cf927789c4f16d64d1a4eaba7009e62a5930e3286870ce2
+Size: 1001340
+MD5Sum: 24965c5e06abf596276fa66706cd6769
+SHA1: 043fb8b0d8dde47202a4e1ccda5310c08029130f
+SHA256: 45f678bd3c7d8b10a4e8fef9aed8b5ada59d07961db8306f0936362b5dc2c59b
+SHA512: 546ce18c44d06320f61cb0bc63e6f1bf5f1f0c4e28c4a3cad4e9a867702272f1f90bf8ed0f582f49551525dfbc78c8227f6ab3ed9254f0611857520d8b02cd8b
 
 Package: pcre2grep
 Architecture: aarch64
@@ -653,11 +3304,74 @@ Homepage: https://pcre2project.github.io/pcre2/
 Depends: pcre2 (= 10.49)
 Description: A grep with Perl-compatible regular expressions
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/pcre2grep_10.49_aarch64.deb
-Size: 34332
-MD5Sum: 2db8b40c43c9832490d7235a116effd3
-SHA1: 91eadda65e37a27976d10b875d2aa977c49bb822
-SHA256: 2c6923969d9339d00953dc07168bc3d6c98d0d032b003eba9e2b2ff94029e28a
-SHA512: 33733bbfc5c00f569bfa5ae18ed21a04c1bde61bc7b6991000e327845e05a3794b7c7787d12b08bea4407d815a337b79658afcd5b04cab271356d50ab7837f8b
+Size: 34344
+MD5Sum: c9229a2dc4a10211b4ac72eaab49f10c
+SHA1: 48d259920e026e249c0b1bfebc1dae80822b44ab
+SHA256: 3ca207f185ec049504f5ffa62c79083398ed70764b3aab38d17bb2192734be8d
+SHA512: 4a12a0d851f4020bca40aac01254be4d42abaa0b7dad647d4f5aea24ef58e7d97fd3ce2ab12219ad829302e8b280f46386857d9da705dee135bec3f00fa65c85
+
+Package: perl
+Architecture: aarch64
+Installed-Size: 69800
+Maintainer: @termux
+Version: 5.44.0
+Homepage: https://www.perl.org/
+Depends: libandroid-utimes
+Description: Capable, feature-rich programming language
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/perl_5.44.0_aarch64.deb
+Size: 15418472
+MD5Sum: 25ddad363366bca038d5943b4c387e49
+SHA1: 595cbd6e60e843dc60dc368e3be9c4609c046d12
+SHA256: efd28fbd3ddfd35e4d03f1ae90243de380aef6dcdada79d56e62fc93be3d31b8
+SHA512: 964043a4d968e102a3f32260ddfb0ff4e31f715e17db5895b54a642243f59c3dc5c7d38f9ffe1e087380785f7485fa8ff585ac43aa0ba4d8b53713c69ac3e8d7
+
+Package: pkg-config
+Architecture: aarch64
+Installed-Size: 140
+Maintainer: @termux
+Version: 0.29.2-3
+Homepage: https://www.freedesktop.org/wiki/Software/pkg-config/
+Depends: glib
+Description: Helper tool used when compiling applications and libraries
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/pkg-config_0.29.2-3_aarch64.deb
+Size: 32804
+MD5Sum: 74f1371b263d28bf69ba8050f92da291
+SHA1: 8981160bc1cb8023b12d23f55fa246970ba56ac5
+SHA256: a7dfd00e4318b5e08c14fa5271f53795c948e95d73064364505a9d197a6b9aaa
+SHA512: 2b7b8f93dc6ad52accaefe6615ef6d2becf50169ca09562b3e25864982950f3c4bfd444208e5316b0eb99b8c980195b2bdedc5767e4be76c8b16b886c8882fb3
+
+Package: procps-static
+Architecture: aarch64
+Installed-Size: 348
+Maintainer: @termux
+Version: 4.0.7-2
+Homepage: https://gitlab.com/procps-ng/procps
+Depends: procps (= 4.0.7-2)
+Description: Static libraries for procps
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/procps-static_4.0.7-2_aarch64.deb
+Size: 53560
+MD5Sum: 7755e79ba83f75e9ff861b96faa9f71b
+SHA1: e93c2ca53ae14379490ef637ae1e88efb391226e
+SHA256: 9c4e2d95dcd15480f4a16a0accb8660c863f57601a2600b5b561dc60638657ad
+SHA512: 639e0cb85ffb5e7fa6122dfb33db76b4ae695859dbf51e6894fdc7a5b6667bfa2199cb9fb302a62a106d9dc7a444eb58bbd2bf09196c6d312e7597e4346dc533
+
+Package: procps
+Architecture: aarch64
+Installed-Size: 912
+Maintainer: @termux
+Version: 4.0.7-2
+Homepage: https://gitlab.com/procps-ng/procps
+Breaks: procps-dev
+Depends: libandroid-glob, libandroid-support, ncurses
+Essential: yes
+Replaces: procps-dev
+Description: Utilities that give information about processes using the /proc filesystem
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/procps_4.0.7-2_aarch64.deb
+Size: 226616
+MD5Sum: fcb259388832d2856736f02ce32c59be
+SHA1: 0d20ab613868790c556e57c6c0e3ddafb1e4dbbe
+SHA256: a4eae570decfcf190658c23c202affdce12477898241e2e1406e5b2703f2972d
+SHA512: b3b945fed1766a2334c1dc8350f407bf806c8e1773724f04cfcee4a24f753846f3598dd49fd7673062e62a571f5d91112a2377ca95140b8786acc52208ba854e
 
 Package: protobuf
 Architecture: aarch64
@@ -674,6 +3388,122 @@ SHA1: 553e0af0fd624ac544b34aa24eeec619336246b9
 SHA256: e087d732b5f440678679c9f891172548f8a78ad3325581b34a11a96807608f3c
 SHA512: 6e1ad8215701d6ced4e575e74ab295606537d20ed44ef4fd137ec2d34b60375f3291aa65beac8717cf2a0e91861f1545986dc2f00b6027b141045ef1d7bc7c10
 
+Package: psmisc
+Architecture: aarch64
+Installed-Size: 344
+Maintainer: @termux
+Version: 23.7-1
+Homepage: https://gitlab.com/psmisc/psmisc
+Depends: ncurses
+Essential: yes
+Description: Some small useful utilities that use the proc filesystem
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/psmisc_23.7-1_aarch64.deb
+Size: 93408
+MD5Sum: 775de6b5b633d956d4f58b705cc68c64
+SHA1: f53ea60b16e3e8f3adea0aac5b777b6854a97d9b
+SHA256: ccc797087e4383d703cbb9e2f0231f05eb6c0088cd32e4a0495dd516e7538b89
+SHA512: cda619223d6eed905867ce33b3e93565e59e8171c3565c6b82b4188d1fa3921a4064485a8265635be9ff852f2d605ac625b298ac5547461bbdb2b20710e2df0e
+
+Package: pulseaudio-glib
+Architecture: aarch64
+Installed-Size: 84
+Maintainer: @termux
+Version: 17.0-4
+Homepage: https://www.freedesktop.org/wiki/Software/PulseAudio
+Depends: glib, pulseaudio (= 17.0-4)
+Description: PulseAudio GLIB mainloop component
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/pulseaudio-glib_17.0-4_aarch64.deb
+Size: 6836
+MD5Sum: ae3e732e214a68e6507725e5ae4bf2d5
+SHA1: e8ee488681f6c2c094abd24240b7e3fdfa014e55
+SHA256: 0a05fd7d1675fd59ef85ee5c9d876bcf47439e1dcb75427d286452bee0758f06
+SHA512: 7cfa40016178efd92c99bf313e3476850f3ba79cb10dfa859e196c12ebd23eecb3f7615e1e165310f4f3fd8d14bf09aaa9e50574b6eca9477e685e12c1cca35f
+
+Package: pulseaudio
+Architecture: aarch64
+Installed-Size: 4024
+Maintainer: @termux
+Version: 17.0-4
+Homepage: https://www.freedesktop.org/wiki/Software/PulseAudio
+Breaks: libpulseaudio-dev, libpulseaudio
+Depends: dbus, libandroid-stub, libandroid-execinfo, libandroid-glob, libc++, libltdl, libsndfile, libsoxr, libwebrtc-audio-processing, speexdsp
+Replaces: libpulseaudio-dev, libpulseaudio
+Description: A featureful, general-purpose sound server
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/pulseaudio_17.0-4_aarch64.deb
+Size: 848280
+MD5Sum: a70f646b3a43e866269673463941aba6
+SHA1: d1176c667ef0750ca24721c8424e07db9372f306
+SHA256: f9bf00e364cb76cd3ec7955c8e2a52e98b25f8ad94fcd4b90f10aaf6d99f71c5
+SHA512: dbe7caeb81318e198e93493b9e04ff916168fdffc678b6b1925a8ad83028754dfbe2067f0a4423dd4440a8f494a3396e973ab6bb5fb570a1b05d9482b61add42
+
+Package: python-static
+Architecture: aarch64
+Installed-Size: 51996
+Maintainer: Yaksh Bariya <thunder-coding@termux.dev>
+Version: 3.14.6-1
+Homepage: https://python.org/
+Depends: python (= 3.14.6-1)
+Description: Static libraries for python
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/python-static_3.14.6-1_aarch64.deb
+Size: 7732020
+MD5Sum: 2ee1608053eb596d495bcc2fe87da36d
+SHA1: 89bdecdbea871aec62f6b189e05d28a061144019
+SHA256: 5f96713d3e197aee835a41a1fecd1a949a0827129e402452a493e5d500f89d6f
+SHA512: d320fb0c9d929a9bfda4c6632e6e2a71174a49c22367c22b79a3a111f3d26553ff2212d34724afab3e6fa9b0264f473b0824ea7ec76729d2da0f6e0c705c630f
+
+Package: python-tkinter
+Architecture: aarch64
+Installed-Size: 2640
+Maintainer: Yaksh Bariya <thunder-coding@termux.dev>
+Version: 3.14.6-1
+Homepage: https://python.org/
+Depends: tcl, tk, python (= 3.14.6-1)
+Breaks: python (<< 3.11.1-3)
+Replaces: python (<< 3.11.1-3)
+Description: Tkinter support for Python 3
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/python-tkinter_3.14.6-1_aarch64.deb
+Size: 507212
+MD5Sum: 85cdd94e294895647ef954963c1abae6
+SHA1: 80f3603cefdffbce2da7dfa5d8f4c5cf083d9517
+SHA256: b627a2eda33be33c701ed4f9778c2344b78be45c4a29bb679936026c9c06380d
+SHA512: 819c14acb3c4231e3046e1ee4bc75c5daf55c14e67ff47073e736e9cf43e7a5d544b6e065cb0ecdc72dabfd6ccd05319818d2b2950e53ef19c143b0fca3cf8d4
+
+Package: python
+Architecture: aarch64
+Installed-Size: 26204
+Maintainer: Yaksh Bariya <thunder-coding@termux.dev>
+Version: 3.14.6-1
+Homepage: https://python.org/
+Breaks: python2 (<= 2.7.15), python-dev
+Depends: gdbm, libandroid-posix-semaphore, libandroid-support, libbz2, libcrypt, libexpat, libffi, liblzma, libsqlite, ncurses, ncurses-ui-libs, openssl, readline, zlib, zstd
+Recommends: python-ensurepip-wheels, python-pip
+Replaces: python-dev
+Provides: python3
+Suggests: python-tkinter
+Description: Python 3 programming language intended to enable clear programs
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/python_3.14.6-1_aarch64.deb
+Size: 4824284
+MD5Sum: b667468743b870b49e4c4ed84ceeac6a
+SHA1: 25efe5a5c9693fc3c9f14f4ff70f507cbef88ea7
+SHA256: dd536cf67400e4fb2e69229d19a23fde23fd00a06d0c66b70100c93bc612773c
+SHA512: b496af8aa38dac739e11198d05d5777189330a296e2798051428bf741c6947d2ef51b4058a37bbb9d69a457b8193d6ad070e3b4aef3ead4a914a4927479697c0
+
+Package: pyunbound
+Architecture: aarch64
+Installed-Size: 24
+Maintainer: @termux
+Version: 1.26.1
+Homepage: https://unbound.net/
+Depends: python, libunbound (= 1.26.1)
+Conflicts: unbound (<< 1.15.0-1)
+Description: Python bindings for Unbound
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/pyunbound_1.26.1_aarch64.deb
+Size: 800
+MD5Sum: a62a2273ba32b95faa07de9c5439ffca
+SHA1: 4962c9d5515a67634a3debd420268990ca942343
+SHA256: d778ec60fceffa5f6d24a2c5d0cd6bc60bf79a7939716db3e5a8daf60a888f49
+SHA512: 804538eeaa1da28efb77a0b7b542da2769a02b294870bc4416e9e4a60493d72af40321201c38f26020df2c294e80c074832dfbe5b0a7db5c86dc2351cd0963ec
+
 Package: pzstd
 Architecture: aarch64
 Installed-Size: 156
@@ -683,11 +3513,11 @@ Homepage: https://github.com/facebook/zstd
 Depends: libc++, zstd (= 1.5.7-1)
 Description: A Pigz-like tool for Zstandard
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/pzstd_1.5.7-1_aarch64.deb
-Size: 42184
-MD5Sum: 0e528b34ed650da1ffc2d2a6fd6a43d3
-SHA1: a613427847a232c82bedc1568e91aa59c7a9e5ef
-SHA256: 08c3d7399355ac6242c4ddb390e897d5ad9e3a369dfe53661c262cab74404a03
-SHA512: fe743740d42e4c4158a96fef6f1b0bfaf99a11145b080b25161c2bd23b8a2032ce4be08958cb20e24b4770ee97db1e9371505ebc3716f51a9ce6e5ff28286e08
+Size: 41940
+MD5Sum: 78e81a5b90649f286f3089d18c97d6a8
+SHA1: 46b53a92f51cd64c8e4f08f9cf63148861cb13d7
+SHA256: 66c7f0871c3bf0d8d4f50137980a7690c6aa72941b9fc0f4eda1ad1e7d6884ee
+SHA512: 08937bce75d99e780af9425b0d531b1f08674ad70555e38edfb5b8a8cd881f73a3dcc568b9306c2ced12d14b225e18475060b9d4cb1345e9e1a0ee6b075d7a61
 
 Package: readline-static
 Architecture: aarch64
@@ -735,6 +3565,224 @@ SHA1: d8c7debff12d6da664bd74b9dfba3fcd57e42f82
 SHA256: 04918bf8be0fcd5475302800e3b5f12b71b521179453708ba003d77ee769ccf8
 SHA512: e6af27496517ba996c5e2cc872776850a8d2d90ba63e0339f6416305058d4ab7149969ffb3b8f4db9e11bf94968fcbf349450ad948404c8a052c7b1b8e78474c
 
+Package: sed
+Architecture: aarch64
+Installed-Size: 476
+Maintainer: @termux
+Version: 4.10
+Homepage: https://www.gnu.org/software/sed/
+Essential: yes
+Description: GNU stream editor for filtering/transforming text
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/sed_4.10_aarch64.deb
+Size: 123824
+MD5Sum: 5cfc65410ff82ec234fe3393528cba6f
+SHA1: d722265ffc1e08d828162c2a3a12e01afd381c66
+SHA256: c6ace3fa43e84daa0e1b84538382c78ed932b09f6dccef1d378eff2eac63d0c4
+SHA512: 5363214cd2766704e15c00e6caebbdc11f91d1c2a7f18ecaa0e0fad732ecd63caa8b32b9d49f865bfdea3c4a97704b8cbf26d929783d58b3747b068ee9533b9e
+
+Package: serf-static
+Architecture: aarch64
+Installed-Size: 216
+Maintainer: @termux
+Version: 1.3.10-2
+Homepage: https://serf.apache.org/
+Depends: serf (= 1.3.10-2)
+Description: Static libraries for serf
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/serf-static_1.3.10-2_aarch64.deb
+Size: 39288
+MD5Sum: 25043fdfaa2bd7882ac9aeceae41d87f
+SHA1: df59b5f8d916643220db271adf86244cf5a12ddf
+SHA256: 88e92528e3f5397a40230e7b6c4722fe3eee7757ed147de8974bdf350f0371e9
+SHA512: 2c2d2be293fa989e5886b707d715b00f7098ed7b4a78589f8b58f750207efa59dffbfc763fa5c7da222cac48e687d0020bbecb4e1970fc47e53de8b2293fb4fe
+
+Package: serf
+Architecture: aarch64
+Installed-Size: 232
+Maintainer: @termux
+Version: 1.3.10-2
+Homepage: https://serf.apache.org/
+Breaks: serf-dev
+Depends: apr, apr-util, openssl, zlib
+Replaces: serf-dev
+Description: High performance C-based HTTP client library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/serf_1.3.10-2_aarch64.deb
+Size: 47800
+MD5Sum: 93683f841da5abf2134ce9af52c3f857
+SHA1: 6310ed7557e7281bdbf45fd3bf9e87e8caf66099
+SHA256: 39873f9057dfb0f7871fb6ef96bcc3f543473ca5344688a6f88fa4cf2f08e5af
+SHA512: f9b3a8b153e8eeea7649ef16a0fa5b41e273a4d8992513d70a94c3367c58bd38c2b0ee93ecb36c2776fe7cc8caf0eb65034d6696f5bffcb9881a1e9ce414222c
+
+Package: speexdsp-static
+Architecture: aarch64
+Installed-Size: 120
+Maintainer: @termux
+Version: 1.2.1-1
+Homepage: https://speex.org/
+Depends: speexdsp (= 1.2.1-1)
+Description: Static libraries for speexdsp
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/speexdsp-static_1.2.1-1_aarch64.deb
+Size: 32940
+MD5Sum: 2879cb39705384d059a468c4c3de436f
+SHA1: b21b5ed3739fbcc3d116cc496615b55dad13144c
+SHA256: a4c3a6ee1c72db045d3f3bcf1124ee66da03bcb02b2ba6c2db005a2f492d767b
+SHA512: bc5cbf98efcfb5e14e31154175d147e355a2921867f9b03f8aedaf5d64978112150b6b605e2dfb71f1075834c8c1d0a33a37ae3766748eb47714a27af40db979
+
+Package: speexdsp
+Architecture: aarch64
+Installed-Size: 168
+Maintainer: @termux
+Version: 1.2.1-1
+Homepage: https://speex.org/
+Breaks: speexdsp-dev
+Replaces: speexdsp-dev
+Description: Speex audio processing library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/speexdsp_1.2.1-1_aarch64.deb
+Size: 37452
+MD5Sum: 8d2c5a502b12308fa4cd48bed80517be
+SHA1: 04f1141d45b0483a46c0f37e64dde72d45987cad
+SHA256: 4e2b2988cfc4177f42575a51d6618693f0d54e5c3d6d7aad5607f59a920ff30a
+SHA512: b06d0a52519035d0c4108f004395c01a89e6e26711184953338c03d73c3a77313e0633de1a613487a4ade7023591e6413eba3205a2f9a2dd628147c7b41109be
+
+Package: sqlite
+Architecture: aarch64
+Installed-Size: 1592
+Maintainer: @termux
+Version: 3.54.0
+Homepage: https://www.sqlite.org
+Depends: readline, zlib
+Description: Command line shell for SQLite
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/sqlite_3.54.0_aarch64.deb
+Size: 675284
+MD5Sum: 6f46f173d2b12acb2f0036f91037e991
+SHA1: 6354e8bc1e1aa017047e231f725f28e27725fccf
+SHA256: 3b1f5c1c860cd244979106cb3c0b66dacfbc68f2813ddc73646a2c62f964f0e5
+SHA512: 76711ec5a4075840d994924ec0d9fc41ba20ee32b3ff2133a31f2950768be2cacecfc08b49c53c959d3fa6ac7031fbb8395f5c6e1d61babe16e4b3d9b66b6372
+
+Package: subversion-perl-static
+Architecture: aarch64
+Installed-Size: 92
+Maintainer: @termux
+Version: 1.15.0-1
+Homepage: https://subversion.apache.org
+Depends: subversion-perl, subversion (= 1.15.0-1)
+Description: Static libraries for subversion-perl
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/subversion-perl-static_1.15.0-1_aarch64.deb
+Size: 15924
+MD5Sum: d2979f6d5f9c0930414e62c0d0c0eb43
+SHA1: b3366c3d3f9b20bc520857b477d77a6d12db3c5a
+SHA256: 49dec5b655d488a65e708afd59a02e46d0034a9e9213cf301eeefab665a64894
+SHA512: 5b7acf3c44ae74794231de0455ab1b3de08d1107bba82e3bffc27a7a2ea3ea34348677dc17bce5a60e24ca6dd1128b5798a310915ce7179f4e25629144d77f11
+
+Package: subversion-perl
+Architecture: aarch64
+Installed-Size: 3748
+Maintainer: @termux
+Version: 1.15.0-1
+Homepage: https://subversion.apache.org
+Depends: perl, subversion (= 1.15.0-1)
+Description: Perl interface to Subversion
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/subversion-perl_1.15.0-1_aarch64.deb
+Size: 792756
+MD5Sum: 98bdd0f2c013637cf0fc910eb7ca8299
+SHA1: 7936f5344457b1e0c3d9ec49e36daa5c69394407
+SHA256: 18f9f3cc4f5d3069d25cfb465b4c65d10ec8114795cef504dad535fa38c42787
+SHA512: 3a41ebf5732afebe4e0d8c3480ffff547b27918cd0512a2f7c023f8a8db1c4253e3a3ea8736130d894a771a0d5e95e9245438ea7423a15a37a8ad295d32ff183
+
+Package: subversion-static
+Architecture: aarch64
+Installed-Size: 5764
+Maintainer: @termux
+Version: 1.15.0-1
+Homepage: https://subversion.apache.org
+Depends: subversion (= 1.15.0-1)
+Description: Static libraries for subversion
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/subversion-static_1.15.0-1_aarch64.deb
+Size: 1146568
+MD5Sum: 01082a52ead94c2118551c199381e245
+SHA1: ec5fd5c95cff9e540fdc69f4a5e448391e24015f
+SHA256: 68285ba1e4ced94b8caba93492444593b3521a7af77fdd7917b891753fece14e
+SHA512: 706007e7da94d7de802760d2be1e20e302729dee20eeaa9862e442f6c216f20b26285ea5a1ce21eb7871526053932dc82ba44518b92fda4fbdfd1920d29e537e
+
+Package: subversion
+Architecture: aarch64
+Installed-Size: 6212
+Maintainer: @termux
+Version: 1.15.0-1
+Homepage: https://subversion.apache.org
+Breaks: subversion-dev
+Depends: apr, apr-util, serf, libexpat, libsqlite, liblz4, utf8proc, zlib, libmagic
+Replaces: subversion-dev
+Description: Centralized version control system characterized by its simplicity
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/subversion_1.15.0-1_aarch64.deb
+Size: 1400908
+MD5Sum: e85c2cdcbb3fb6f248e210f8c50d3b8f
+SHA1: bf561028f41db27a9e4b9f090a3a1cc2e11821cf
+SHA256: 9f619a94e5adfab953f42dc030aa789f717def0e2d06f9e3864e9e53de9e187c
+SHA512: 4e4a2e9d62d8fd3151d8bd98df0586fc261b7609e2d391d1b3819962577d52b298d7d34badce97b8f846f3f2f216fdab229acdcf0d818ea6413aed843a784485
+
+Package: swig
+Architecture: aarch64
+Installed-Size: 7064
+Maintainer: @termux
+Version: 4.5.1
+Homepage: https://swig.org
+Depends: libc++, pcre2, zlib
+Description: Generate scripting interfaces to C/C++ code
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/swig_4.5.1_aarch64.deb
+Size: 949188
+MD5Sum: 578e847095efd3ce18ceed636d12a73d
+SHA1: 6f4c90c6f3622143c19b5bb00064de8d42f3e905
+SHA256: 7be79c44badb42295124e85283b4f17b8bdf056ff6726e5d069ceb9f13bbfa7c
+SHA512: 3452967147f0260cf261c68e3b64db51debad6312c156cf40fa97bfdad9bdaa2a19be6aa98066fb18bbc77ebf02db41b0134c5b58236051958f898083b0731e8
+
+Package: tar
+Architecture: aarch64
+Installed-Size: 1268
+Maintainer: @termux
+Version: 1.35-3
+Homepage: https://www.gnu.org/software/tar/
+Depends: libacl, libandroid-glob, libandroid-selinux, libiconv
+Essential: yes
+Description: GNU tar for manipulating tar archives
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/tar_1.35-3_aarch64.deb
+Size: 345552
+MD5Sum: a7cde4435282c9280989027b56778b7c
+SHA1: 9b29853a1181bf2d66d03dfa47955e200ceb1414
+SHA256: 2deb2c3caab8ee7a45613348fcca60c894387ef3fb157c2c9f1f0e07f4422c2e
+SHA512: 2619309107f7db83cc02be0c3979f050131f906d85d44d0d96e4f28cc90f4b01819d8b0583869d53cd38873d9211ef1c997de45cf1067f4f3fd0ed215c895353
+
+Package: tcl
+Architecture: aarch64
+Installed-Size: 7736
+Maintainer: @termux
+Version: 8.6.16
+Homepage: https://www.tcl.tk/
+Breaks: tcl-dev, tcl-static
+Depends: zlib
+Replaces: tcl-dev, tcl-static
+Description: Powerful but easy to learn dynamic programming language
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/tcl_8.6.16_aarch64.deb
+Size: 2261500
+MD5Sum: 56bb1da6569a85e05152c455b7097e2f
+SHA1: 0e4b6197f87121619b3503c6eb477c71f73128cd
+SHA256: cfbb5c0816330593d7767eff99bb8a049b29977b4620e0a00991771e02e785aa
+SHA512: bcf7f734bacbfbe709278f179c6e8b938479b1045ab7df3e2a490f5fc0041a313fe9b869e17198daf1730c61bb844579b53e1137354643260ace2a9747a460be
+
+Package: termux-am-socket
+Architecture: aarch64
+Installed-Size: 88
+Maintainer: @termux
+Version: 1.5.0-1
+Homepage: https://github.com/termux/termux-am-socket
+Depends: libc++
+Description: A faster version of am with less features that only works while Termux is running
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/termux-am-socket_1.5.0-1_aarch64.deb
+Size: 16404
+MD5Sum: 90e7460192b51ed5ed2ed497b5aabfa0
+SHA1: 702c282d9996afafa98abff030315614fc507e26
+SHA256: 5d83d9d30b67f7ac54c54f899aa43fee3c0bd4d11cb1e3fc1a32720f8ea9e237
+SHA512: e5927a49f59dcc6ec0e64996eb1f20382ba2a920bd959f1056925c65b6bd1cefcbc63af3a41d2c2ead33055d5d7acaefff5c1c2ca7899a849db60e9e41b59674
+
 Package: termux-auth
 Architecture: aarch64
 Installed-Size: 80
@@ -752,6 +3800,211 @@ SHA1: a9667876876ce2b623598540f2075fce47f69e04
 SHA256: 723ab1c1e7a11043df129fc4ba6bb7dfee1f190295ae807b96fd7f28b64409b7
 SHA512: 74ee3a58252b70ff929dec0dd90a2a6ff47d4bb20fada925e2d590d1bcc1702cc94be58aebc6c3ef52b0ee65fad58a8199afa20c3cff3bcfc377c71f3e8cc318
 
+Package: termux-core-static
+Architecture: aarch64
+Installed-Size: 136
+Maintainer: @termux
+Version: 0.4.0-1
+Homepage: https://github.com/termux/termux-core-package
+Depends: termux-core (= 0.4.0-1)
+Description: Static libraries for termux-core
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/termux-core-static_0.4.0-1_aarch64.deb
+Size: 20104
+MD5Sum: 292f3e18174d8f098b878d5047b2fe07
+SHA1: 8516afa218eddb9d60bfde3958bca3c660429bda
+SHA256: f5206c386dc7eb62a6cf7cf3e35205a9f59d58e18f2d6285b00c0bcf6c2e5e42
+SHA512: 168626b976bc4014bec14d85da58e8e940e23c0b8d7dce95175a0e8cd681063cb74055ffc4e9bc1611080b00a81d13dff33019c42db7b2e0528b8aa7995d10c6
+
+Package: termux-core
+Architecture: aarch64
+Installed-Size: 1952
+Maintainer: @termux
+Version: 0.4.0-1
+Homepage: https://github.com/termux/termux-core-package
+Essential: yes
+Description: Utils and libraries for Termux core
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/termux-core_0.4.0-1_aarch64.deb
+Size: 199312
+MD5Sum: 4124e664cfd9545934454e4d0f736c36
+SHA1: 71cd932b7a03559f57c47401e089fb1ea95232dc
+SHA256: 4c55b5325a2a77f696f66b9cc47693b3620908323ff7441bf6dc717e68b0181b
+SHA512: c3fea9ce786ad0a2b1107754f3dab6a7083012b4e8e8824e34b7099729b7fd9531384682c348b1e635c7be964a1cb6e52b8a7423c43fcecf58e3838e1ca06b7c
+
+Package: termux-exec-static
+Architecture: aarch64
+Installed-Size: 76
+Maintainer: @termux
+Version: 1:2.5.0-1
+Homepage: https://github.com/termux/termux-exec-package
+Depends: termux-exec (= 1:2.5.0-1)
+Description: Static libraries for termux-exec
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/termux-exec-static_1.2.5.0-1_aarch64.deb
+Size: 10568
+MD5Sum: d3fa6f239375db159156f5b2d7fd3031
+SHA1: 0dce8bf899bbc4a4beb7cc902cca5090e0e07e19
+SHA256: 56cf91c299d517b92957543cea7c0f2ff997ab276682a821b66cbeadfbb64e81
+SHA512: 075d4228677cae7beb6e46bc260daed0fdf04c1ce033c65a7e45af974a47a62846474f4be0489121922cbaef18d49deafb3d3e7562065e664f1c9927fbb98842
+
+Package: termux-exec
+Architecture: aarch64
+Installed-Size: 2092
+Maintainer: @termux
+Version: 1:2.5.0-1
+Homepage: https://github.com/termux/termux-exec-package
+Essential: yes
+Description: Utils and libraries for Termux exec including a LD_PRELOAD shared library for proper functioning of the Termux execution environment
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/termux-exec_1.2.5.0-1_aarch64.deb
+Size: 287348
+MD5Sum: 17308f2702db0738c98b8decdad49dce
+SHA1: 1a9ce618e1b24fbf4c2d847ffdfcff7535aced58
+SHA256: 708cac2a8c78fb90eb759a598b9021172a009b793e023dfcec6aae577316cec0
+SHA512: 51227093b175f78c11115a9e99584e9010c0ad2aa0fdbee3f59f89ecdfe72b4c69464731aec643706addd15180e2cee9eea4ec441ee732595c45f3c05c034472
+
+Package: termux-tools
+Architecture: aarch64
+Installed-Size: 552
+Maintainer: @termux
+Version: 1.46.0+really1.45.0-1
+Homepage: https://termux.dev/
+Breaks: termux-keyring (<< 1.9)
+Depends: bzip2, coreutils, curl, dash, diffutils, findutils, gawk, grep, gzip, less, procps, psmisc, sed, tar, termux-am (>= 0.8.0), termux-am-socket (>= 1.5.0), termux-core, termux-exec, util-linux, xz-utils, dialog
+Essential: yes
+Conflicts: procps (<< 3.3.15-2)
+Recommends: ed, dos2unix, inetutils, net-tools, patch, unzip
+Suggests: termux-api
+Description: Basic system tools for Termux
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/termux-tools_1.46.0+really1.45.0-1_aarch64.deb
+Size: 33688
+MD5Sum: 0cf3cc2fcfec5ff91526a5ad29951bd5
+SHA1: b219faaa7d31177b647098e45a995c43e801cddd
+SHA256: e40c9a1ab226bfbb2f589630b5e47f1111049681f5eed2ce94428e8b4d1f945f
+SHA512: 3f9aa6a546ed20df22fc1ff85605b1aa79c01e6efc3f3d2090af7f194b2930b5b125d164108a62263466adfc5810f0e01eedb140a87c35f3d7a0d33b054a4b89
+
+Package: texinfo
+Architecture: aarch64
+Installed-Size: 11024
+Maintainer: @termux
+Version: 7.3
+Homepage: https://www.gnu.org/software/texinfo/
+Depends: gawk, libiconv, ncurses, perl
+Recommends: update-info-dir
+Description: Documentation system for on-line information and printed output
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/texinfo_7.3_aarch64.deb
+Size: 1212980
+MD5Sum: e66634b1d37814611e20c1ff6859979c
+SHA1: 56c4c4c9b4f5df022b803fdddc5baf50487aa8f0
+SHA256: 15fb6fbea4f26f8aa205c506d78ee0c2eb0d54e4d750c0ef2b5f596714f8525e
+SHA512: 8575896a996127b38edff568736e0fd40f0841c67a8fadf45d686156f9cdc2e96f356c6a14826741bd85ac58d160668d562590c9646ea59bbb307741fad76e39
+
+Package: tk
+Architecture: aarch64
+Installed-Size: 5572
+Maintainer: @termux
+Version: 8.6.14-1
+Homepage: https://tcl.sourceforge.net/
+Depends: fontconfig, libx11, libxft, libxss, tcl
+Description: A windowing toolkit for use with tcl
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/tk_8.6.14-1_aarch64.deb
+Size: 1755120
+MD5Sum: deb8a738901723f7315fea4663135e44
+SHA1: 3c222ce568baf2548bec3232394e11fb3fcf3ea5
+SHA256: 4a24466f6a2c63be4f4e4371731ab640d663a8ce7ff95577ac1cbc06e42ab749
+SHA512: 3e3245cca657f62a40326251e204ff95d154747d72ba5862e0f6d15fed5b49a70536851a39cb0e0221f914a74cfd8956a52b56c34f661303a258856ebee46ffb
+
+Package: unbound
+Architecture: aarch64
+Installed-Size: 3520
+Maintainer: @termux
+Version: 1.26.1
+Homepage: https://unbound.net/
+Depends: libexpat, libunbound (= 1.26.1)
+Description: Unbound command-line tools
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/unbound_1.26.1_aarch64.deb
+Size: 659508
+MD5Sum: eda30964a053130da976ce874a4c314f
+SHA1: b17ab16b075ecf6f8d943125f86a6bd92af5221b
+SHA256: 66fea8925170c037965923ca1ed4cb73529ee25474cf2265d8c3b908067964b3
+SHA512: b8d35d3cf6df288c988af2cd9d48c371740ce9e42ccf33b092bee88ad96166fee8f3fe36df92109b891e9cc438319e28cb8c8e85ea0be403884d3379ec920d45
+
+Package: utf8proc-static
+Architecture: aarch64
+Installed-Size: 380
+Maintainer: @termux
+Version: 2.12.0
+Homepage: https://github.com/JuliaLang/utf8proc
+Depends: utf8proc (= 2.12.0)
+Description: Static libraries for utf8proc
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/utf8proc-static_2.12.0_aarch64.deb
+Size: 49476
+MD5Sum: 10b76c8ee8d9c481d3d9e538d8e1cf58
+SHA1: 18a27c4d674084adb1774585d99721f0af195ca0
+SHA256: 8405a16622d2b7cef087f3d5e7a77a2c8c81e1d3c5086d362f7536a74d449caf
+SHA512: ae390acdfdbd7ebe8936128fb970b2e3a399f11280046666fd680d7f81433b0229892061c394e84f1b2be363ab056896b09f92611a6bbfeff53cba77e1c0fb94
+
+Package: utf8proc
+Architecture: aarch64
+Installed-Size: 448
+Maintainer: @termux
+Version: 2.12.0
+Homepage: https://github.com/JuliaLang/utf8proc
+Breaks: utf8proc-dev
+Replaces: utf8proc-dev
+Description: Library for processing UTF-8 Unicode data
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/utf8proc_2.12.0_aarch64.deb
+Size: 60872
+MD5Sum: 09d73f37625d16886e06475b24883369
+SHA1: ccdeebcedf086ba05df7f5c3d3dbe671fb503e32
+SHA256: 9c5bc3401f418b2f6b95ad9556bba52f1e5a64ad30d8ec43fcbecd5f85dd17e2
+SHA512: 1bf46b9d5d33ea1b148a52457fce93c490d4040c9afcb092c454cfa9a327aa9dd5f1545faad9ca9e6a3fd590c71f71a1e86fbfc4214c8662e696e371a191b820
+
+Package: util-linux-static
+Architecture: aarch64
+Installed-Size: 3300
+Maintainer: @termux
+Version: 2.42.4
+Homepage: https://en.wikipedia.org/wiki/Util-linux
+Depends: util-linux (= 2.42.4)
+Description: Static libraries for util-linux
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/util-linux-static_2.42.4_aarch64.deb
+Size: 439072
+MD5Sum: c4770f230f1f21a05c0380bb472fbb56
+SHA1: 0d52952d3a066bb7f475bcdf26b5b3395d496b5b
+SHA256: 4ce6d042080c9beea21699ee67884357e5d25fbb3f5af7d2fab6c0c11381a307
+SHA512: 236afcff6c743f895660cf894071f98fee572e6eda2fcba3cf2efdfdc927176d27caef248237fa607bb5b64ac5d17faacfc1f5bd71493eec611d23c3b1344755
+
+Package: util-linux
+Architecture: aarch64
+Installed-Size: 4556
+Maintainer: @termux
+Version: 2.42.4
+Homepage: https://en.wikipedia.org/wiki/Util-linux
+Breaks: util-linux-dev
+Depends: libandroid-glob, libandroid-posix-semaphore, libcap-ng, libsmartcols, ncurses, zlib
+Essential: yes
+Replaces: util-linux-dev
+Description: Miscellaneous system utilities
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/util-linux_2.42.4_aarch64.deb
+Size: 778624
+MD5Sum: ccd5ef2503edcc0ce4213c991d1367dd
+SHA1: 3d94b2073272d406594ecd113241f6396e76b6f5
+SHA256: 8999c46e5cfc0ee0f707f7a278a962af7e740aa1176605d47eb84cab0375617c
+SHA512: 8a4a30fc405e184d710da378c8fb54a490e7e40d0721fc286c055985fb337df9e7cf7ac9400e8fc39c3b339ef48d3343fef69786e4fc983d679988c4d67be8f2
+
+Package: uuid-utils
+Architecture: aarch64
+Installed-Size: 236
+Maintainer: @termux
+Version: 2.42.4
+Homepage: https://en.wikipedia.org/wiki/Util-linux
+Depends: libsmartcols, libuuid
+Description: Utilities for handling universally unique identifiers
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/uuid-utils_2.42.4_aarch64.deb
+Size: 41808
+MD5Sum: 3adf9fde6af8e5e1937b61974d80ddd2
+SHA1: 889dbb0e2277a73fa56ac6cebe150973397ac151
+SHA256: 3aafd7de8beea4834db127c6f7f016ef7e06f1893e2741922e60d0ff537bae94
+SHA512: 6b2a2bc1ce21c6aeb5ae0bde8efdddbcdac54354511ff4490411c4e865b9ed1805bcec3ed486c96d21468dc8108c99ff7738fc8afd19e0983f3f03467ee87393
+
 Package: xz-utils
 Architecture: aarch64
 Installed-Size: 228
@@ -762,11 +4015,11 @@ Essential: yes
 Depends: liblzma (= 5.8.4)
 Description: XZ-format compression tools
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/xz-utils_5.8.4_aarch64.deb
-Size: 71396
-MD5Sum: e4ef3489d74fb71c30ad06ba69cf59b7
-SHA1: c987c0f05520aeee640cb3f11f4aff2d3d41bfb1
-SHA256: 05d010ae3dd2fee825158917321c1270494719ed060e096b2f2ab9756e2522e9
-SHA512: 216d09aa0acf3af8b28f585b64fc25d68c2a754abbd6afb1ff66818f7d98fb986135dc233da830105c88010e1c524142a6c66384558c3290bdf23e803d1e8007
+Size: 71364
+MD5Sum: 0c83768f40b09985dac711bea14800e1
+SHA1: df91393f53cef40f37cd111b44f9ea5ede7cbe4c
+SHA256: 405b586f10bae1ddabf97903284d078df80ee318bd36e9f861694e92bb02e39e
+SHA512: 312c85911271fbb570ab0e74175e018d602be2df19f5f99ca6edc9c93a130d12275a11b577ee89300c632aa9e935bd39c061839ae650b1e6efd3f4d58249f538
 
 Package: zlib-static
 Architecture: aarch64
@@ -810,11 +4063,26 @@ Depends: liblzma, zlib
 Replaces: zstd-dev
 Description: Zstandard compression
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/zstd_1.5.7-1_aarch64.deb
-Size: 361252
-MD5Sum: 7a14a250e744b452dc47e70176592f3b
-SHA1: 1a424065a2cabd2d57dd82dd53de174b9a69b1ce
-SHA256: ca372bf28478f1e02bd86dccee12f28f59c5846a88c80536d6f45f28bdaeb073
-SHA512: 7d37ba4bceccf73d573bb2b66032ba6e33fe56eda76dc82a296846e0292cbd8a4dbcd6b7b3a74c46b029d32a32150c8429f89571015a692ab7f3dcda11ee5581
+Size: 361088
+MD5Sum: 5e8602d1ad8b978ba6c5405cf45ac6fc
+SHA1: 80cae5fa0fb2c2a654fd2074f6bf441834abc8fc
+SHA256: e4220325d1d2d770512204fd6e2c3816fa5fee726dfd90d788434aa9a30540ea
+SHA512: bbf68cfeff5e90f6e4c7e3d9da638f5a808d5a2e30c4a4df6a4ded3e07f5b21564c97c36910575006b44778c30f3968e2834a1ba1ac67b815363bada6701dbce
+
+Package: bash-completion
+Architecture: all
+Installed-Size: 2724
+Maintainer: Joshua Kahn <tom@termux.dev>
+Version: 2.18.0
+Homepage: https://github.com/scop/bash-completion
+Depends: bash
+Description: Programmable completion for the bash shell
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/bash-completion_2.18.0_all.deb
+Size: 194540
+MD5Sum: a5f770442fda00ca71865f9bac6a8bda
+SHA1: d7d56b222c1868c28b010a589afc7bf3acde9e40
+SHA256: ae6994e0ff82bb696054474e74fff54a9fb136a3ca6408891cb39a9a40df9302
+SHA512: f2b6fefd082f6d328d04e8b51e20d58978afd4265db195250a7894fa0da63676c9607a7caa7bc1c7a5ea9ba8808f24cdd638254e512ca12b853e25a692950216
 
 Package: ca-certificates-java
 Architecture: all
@@ -825,11 +4093,11 @@ Homepage: https://curl.se/docs/caextract.html
 Depends: ca-certificates (= 1:2026.09.25)
 Description: Common CA certificates (java keystore format)
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ca-certificates-java_1.2026.09.25_all.deb
-Size: 96196
-MD5Sum: 8caab0c67dc3ab42cf8a363de5102f3c
-SHA1: a542eaabb973731af1ab164977f6dc1c42d67678
-SHA256: a7f75908d907482a932a0ea2d9a33379a81298247fc3e8bf094ece3461ac98b2
-SHA512: 9f6a77f650c8994f212162f3507d94cd8c58f422cb9105b5620cd3fd346f5eb02ab15fd6468f90e1ff2791408d3a24f221daa89e6dabf6644101fa2b31e9418b
+Size: 96184
+MD5Sum: a659b5c546a006d66dcd60a3ebe7c2a5
+SHA1: acf5161569fef67c49c004e2631122efd5328dba
+SHA256: 03813c9033075e87ecbcffdad34911e6c96148ca0165c88fd49119ba258275da
+SHA512: 383f2c64869ed4b215f8cf69867ecafbe6fa74f09835e2624421737a996856b67d9d5c29d4c12224f2f59a7885fa387e6ad99993912d0cf8405b32c2798acb3f
 
 Package: ca-certificates
 Architecture: all
@@ -844,4 +4112,188 @@ MD5Sum: a6adf3a11be7cc937a48302a5139f5c9
 SHA1: e36e1e3e11d154071a694346e1e1ad604e9201af
 SHA256: cfb9108837b8b00a184f9f66b32110c970ab9e878a887adac3d03fe45f9527f1
 SHA512: 9be650491f3b25ae65adb821158394148714b0dab7b446d5da00b36587bb48ed7dc0ea57887a2b0dc3d5912a9bfe73f997987100066c299a848ad55b55455fe1
+
+Package: git-svn
+Architecture: all
+Installed-Size: 320
+Maintainer: Joshua Kahn <tom@termux.dev>
+Version: 2.56.0
+Homepage: https://git-scm.com/
+Depends: subversion-perl, git (= 2.56.0)
+Description: Convert between Git and Subversion repositories
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/git-svn_2.56.0_all.deb
+Size: 75532
+MD5Sum: ac8f60a138c898aa36b0ac81ddb9b712
+SHA1: 996a0459a63d71cb55ba20b2e42cdd15c88afbab
+SHA256: 0df71c2afcb1271bc18f29542570f6b2cb3b604f40a852dd0d45d9805a26c5b3
+SHA512: 0a9004886afd13f62b05c401a0a3f1edc09fc931e4973d10edfe70f807f6b87f96feb1990ec1a3d0e97d841434ba6bdcbaf63cec3c57b7e0f2f9928d371c9785
+
+Package: glib-cross
+Architecture: all
+Installed-Size: 84080
+Maintainer: @termux
+Version: 2.90.1
+Homepage: https://developer.gnome.org/glib/
+Depends: glib (= 2.90.1)
+Description: glib for host (NOT for Termux)
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/glib-cross_2.90.1_all.deb
+Size: 13325808
+MD5Sum: d62b174a84ee159679d94a064cbac99d
+SHA1: 9133d3dc91d7feba7dd74c6e48feccba4f68ea82
+SHA256: bed179811c771186aacd7c7df41de1d936de9397fd71ee1aa5b7c6c0c0f365e7
+SHA512: 1ea11fe0571ad24f4da7b2ceb27a85e7b72ea44a3c3adedf3d0b6acf4f5213183e7a3207b22542d6a5d3d26da1683f83bfaec08a2f217c214c00139016d6a98b
+
+Package: openjdk-17-source
+Architecture: all
+Installed-Size: 50792
+Maintainer: @termux
+Version: 17.0.20-1
+Homepage: https://openjdk.java.net
+Description: Source files for openjdk-17
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/openjdk-17-source_17.0.20-1_all.deb
+Size: 47118548
+MD5Sum: 87469394775530e17357508fe1d6f261
+SHA1: bfca90db94fd53ab3fe3e16bb277c525a5c9313c
+SHA256: 3aa5899d1b7c45b4c67c8e9fa4ce6ea32d35bb24c5088ad93e2061a8fec9c27e
+SHA512: 588f8e76dcba49621c520b18ca12119444e2bbee138cd5343b4fe175ab95efe86bd5be2dc1b06227551ae00d83370cd69797bf8412a897b2c1b1b868ada67369
+
+Package: python-ensurepip-wheels
+Architecture: all
+Installed-Size: 1812
+Maintainer: Yaksh Bariya <thunder-coding@termux.dev>
+Version: 3.14.6-1
+Homepage: https://python.org/
+Depends: python (= 3.14.6-1)
+Breaks: python (<< 3.11.1-3)
+Replaces: python (<< 3.11.1-3)
+Description: Wheels for Python ensurepip
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/python-ensurepip-wheels_3.14.6-1_all.deb
+Size: 1740164
+MD5Sum: 4641fa54a665dc4445927df86e210ba0
+SHA1: 836a37f241085ceed173ae8fc4f73afce0c556df
+SHA256: 6cb2552203a38abe87bc10531f5e95d218afbca314d2afda79d0eb4cba61db32
+SHA512: b4033fe49e0f0d1d5035b1e2faab2f9ccf32270f6329ff0f5eb6fcc4fb24199365425148971b9833f4551b80abb9253baf7fb1c7a02abc310e2a25056aed9751
+
+Package: python-xcbgen
+Architecture: all
+Installed-Size: 132
+Maintainer: @termux
+Version: 1.17.0-3
+Homepage: https://xcb.freedesktop.org/
+Depends: xcb-proto (= 1.17.0-3)
+Breaks: xcb-proto (<< 1.15.2)
+Recommends: python
+Replaces: xcb-proto (<< 1.15.2)
+Description: The xcbgen Python module
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/python-xcbgen_1.17.0-3_all.deb
+Size: 15204
+MD5Sum: c606322ac85f6b98a67dca8804ca98db
+SHA1: 591cf3f81037927958c3480bbdbc74c361bb8dc7
+SHA256: b84e27bc89ec532e62dea8951cfeac435dc616821626f9b6cad0d9e7a28f7e97
+SHA512: cd2682b628346a377075285457aae4f45f35337b7d229d1b04a3ec6b5897b9ab55ac721e30224788d2231807bccc59a5cb91710a3df65ceec08d45ad8deecf40
+
+Package: termux-am
+Architecture: all
+Installed-Size: 620
+Maintainer: Michal Bednarski @michalbednarski
+Version: 0.8.1
+Homepage: https://github.com/termux/TermuxAm
+Conflicts: termux-tools (<< 0.51)
+Description: Android Oreo-compatible am command reimplementation
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/termux-am_0.8.1_all.deb
+Size: 575848
+MD5Sum: b77afb6f6250d15420c023ee22ee4787
+SHA1: d68e40b82290c5544c79fcabcb43871095cad40d
+SHA256: f591f171d802516d570554120907ccb0cfc9b0123b1cf86b94720e7dc3a70d0b
+SHA512: c21533327d994ff128aa85903917b8b5952d48106002c120d21378abe0238a3fdf50ad738e339c0079f6b627c1284bb938eed2c246bef679d5a2f353d56fa6aa
+
+Package: ttf-dejavu
+Architecture: all
+Installed-Size: 10108
+Maintainer: @termux
+Version: 2.37-8
+Homepage: https://dejavu-fonts.github.io/
+Description: Font family based on the Bitstream Vera Fonts with a wider range of characters
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ttf-dejavu_2.37-8_all.deb
+Size: 2460364
+MD5Sum: 8f2d4da56e407b70527edc795b4c760b
+SHA1: 28a3ee503c85ee42e4eb80316d9d8b2e7d4504c2
+SHA256: 9d0513c7fe05d162c353242b272c2a71b99ba5ad29b59784d1bf28a762abadf5
+SHA512: 28f3f4edabc2e736af71c130fda43e8b0cbd11dd92776e2910e6a6549d506f096dab2594f09c1d07c160ca811d7c161c7a67b45b575704a4f02c2373fc4b70ea
+
+Package: update-info-dir
+Architecture: all
+Installed-Size: 48
+Maintainer: @termux
+Version: 7.3
+Homepage: https://www.gnu.org/software/texinfo/
+Depends: texinfo (= 7.3)
+Description: Update or create index file from all installed info files in directory
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/update-info-dir_7.3_all.deb
+Size: 2496
+MD5Sum: efa37b278daf541e2bbf2ae8cbb289bc
+SHA1: f99b2af96a00f153a6899bf890545d8268183721
+SHA256: 7cd01a3e602a2748e21309ae538533500380d909de2be15a72f2ecea0add6d29
+SHA512: d6b3b7c0d7126bbcef655f7a6f8e19c3c230f5cd48476af5fca6753656f798a09aa9b56f41e36798362188228d1e824646e0d913290e70d324c90ab58809f4be
+
+Package: xcb-proto
+Architecture: all
+Installed-Size: 812
+Maintainer: @termux
+Version: 1.17.0-3
+Homepage: https://xcb.freedesktop.org/
+Conflicts: xcbproto
+Replaces: xcbproto
+Description: XML-XCB protocol descriptions
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/xcb-proto_1.17.0-3_all.deb
+Size: 78628
+MD5Sum: 2f7d0329e6e8c4676e914eeaa9776291
+SHA1: 5d8f0f3b2dbdaa796a5f1d8b07afda21b8240404
+SHA256: 4f12adba958245a5df9834a4daf9069bd47d00afdbe257ffb48db2a02e8034ba
+SHA512: 16f6080a7c61972b5199dfda3a4deeca02745361f43326ec2704e37ecbf729ee250b744b9611b3d27572910e7d1bd021be8ec39228d05426170c59aae183f606
+
+Package: xorg-util-macros
+Architecture: all
+Installed-Size: 144
+Maintainer: @termux
+Version: 1.20.2
+Homepage: https://xorg.freedesktop.org/
+Description: X.Org Autotools macros
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/xorg-util-macros_1.20.2_all.deb
+Size: 21956
+MD5Sum: 8a49c4f645991fc955a873f71898d207
+SHA1: 052740e4402ca439678d937c59371d0571c45336
+SHA256: a020d00aa0ad6e639efd809472eaa08e1a7174bdab8ec58817192bbd6393d57a
+SHA512: 637f44bbd9d24e5c56eae15ed111e78082aeec75add152b1faa2d8c010538ac8aeb3fe84383d39af237ad6992242d8ff56ff60ea7a0101d35ffabf82087a0aa6
+
+Package: xorgproto
+Architecture: all
+Installed-Size: 2296
+Maintainer: @termux
+Version: 2026.1
+Homepage: https://xorg.freedesktop.org/
+Depends: xorg-util-macros
+Conflicts: x11-proto
+Replaces: x11-proto
+Description: X.Org X11 Protocol headers
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/xorgproto_2026.1_all.deb
+Size: 249816
+MD5Sum: 23b32438fcb6488159a2d8d6a28cc8ce
+SHA1: e22001dfd38ce3eb68381c88441de5077a3d5c0b
+SHA256: 2206330f2b6431c5fd4c36869e64aa2f1373d16d1859cb50623740091d362bed
+SHA512: c2bebb234291e707cb4ac6f0b52c88f2be4bf8d2b4662b0cebe27013a771f21f933b6f8bbd4f68869754ba8acd86d196d38bf3f165a402df80ac9e8e8b47ec96
+
+Package: xtrans
+Architecture: all
+Installed-Size: 296
+Maintainer: @termux
+Version: 1.6.0
+Homepage: https://xorg.freedesktop.org/
+Description: X transport library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/xtrans_1.6.0_all.deb
+Size: 39872
+MD5Sum: 46df6b2b4d95f019c2416e65b7abeb97
+SHA1: 49a494e3c628ded527e451eb53617f0fdc8026e2
+SHA256: 667ad614ea7bad751b9e1dd98dfb1403c7519fe00d8c011ea21850999c7ef11e
+SHA512: 3e7a60fee72b3b9fa49f99c0c66b3a1da90c518f51df9d476c5dbeeb1246d3dd686c2728c6f8037c3075af7d10cc6eb34adaf0eca8f343ed8725f156891619e4
 
