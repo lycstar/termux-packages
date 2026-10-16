@@ -14,20 +14,35 @@ SHA1: 951f79736bb9867087677691b4a0c9beafbfb2e1
 SHA256: d1a926d0c3b06cf817082c157b45d3b83d38fe5ecfb65ba655e5546ca9a9f75f
 SHA512: 0db3e8ee3d9c39b2d99efd699571de5addd575d2535067415a58c46146884a61c92e38e41473b4e146e3843193c0ebe10f422c0db97cc65a2dac0810ffdf38a3
 
-Package: android-tools
+Package: alsa-lib
 Architecture: aarch64
-Installed-Size: 16720
+Installed-Size: 2296
 Maintainer: @termux
-Version: 37.0.0p1-1
-Homepage: https://developer.android.com/
-Depends: abseil-cpp, brotli, fmt, libc++, liblz4, libprotobuf, pcre2, zlib, zstd
-Description: Android platform tools
-Filename: https://github.com/lycstar/termux-packages/releases/download/pool/android-tools_37.0.0p1-1_aarch64.deb
-Size: 2374384
-MD5Sum: 1689e3671d22d472b8ac54803aab3eb6
-SHA1: 5740dc9b6cd7596effff51f0e699bb1d05b437bb
-SHA256: bdd558943919d4219684c00165a3c1dcecc7866f929f6caf3d2b93c28537d79d
-SHA512: e510f06f2c671e6e8cbcb1e944f85a45dbf9a8bf4b4acbf3097f6125d15de1f99411a0f028bdd85324b0413136fcb199436128276545b00c1b830868a78ab7a6
+Version: 1.2.16.1
+Homepage: https://www.alsa-project.org
+Depends: libandroid-sysv-semaphore, libandroid-shmem
+Description: The Advanced Linux Sound Architecture (ALSA) - library
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/alsa-lib_1.2.16.1_aarch64.deb
+Size: 450852
+MD5Sum: fb21f3997d860e97b484092c18997bdc
+SHA1: ead7eb8500a988688c58ff072ebc5b73942017c0
+SHA256: 6493bec8a17e99e72535ee66fba9561a33aacb2cc59e006608d1e2bb7e72693d
+SHA512: 36abdddc2f261f43a6846b05ace51668c19a4653e769bd24485e66618ea62eab3a4cdad42c137982550a494abf82fa748c70bd007a7568207371ab291f2ba13b
+
+Package: alsa-plugins
+Architecture: aarch64
+Installed-Size: 268
+Maintainer: @termux
+Version: 1.2.12-1
+Homepage: https://www.alsa-project.org
+Depends: libandroid-sysv-semaphore, libandroid-shmem, alsa-lib, pulseaudio
+Description: The Advanced Linux Sound Architecture (ALSA) - plugins
+Filename: https://github.com/lycstar/termux-packages/releases/download/pool/alsa-plugins_1.2.12-1_aarch64.deb
+Size: 25468
+MD5Sum: 55392aeaa43650b1d505a6cd0bce2369
+SHA1: 9e885830bf1e23dabe594624c04a89daa9559694
+SHA256: 70f48facaaf968840d68494e25d84db9a026357353c9d423f8f937b080baebb1
+SHA512: d59961dad5fe9617d77b1d60a96d19ff7913be218f910e7c1369409ccadbadbe3221378ce6a5a4a9cc26a3528d9a4ef288fbd4d8859f1168dd60ce98d78ab4e7
 
 Package: brotli
 Architecture: aarch64
@@ -54,11 +69,11 @@ Homepage: https://www.oracle.com/database/berkeley-db
 Depends: libdb (= 18.1.40-6)
 Description: The Berkeley DB embedded database system
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/db_18.1.40-6_aarch64.deb
-Size: 40068
-MD5Sum: 4ded32c491ebf7e29391cb031f084c58
-SHA1: ca19211aada0b22c2f24e9933dca3a4f48f81faf
-SHA256: 0a0b63801cb1f768b6d3eb6bac8cd3bedf2ce80bbcaa82432e54bbf7f05a52ff
-SHA512: 14ead70c6c3f261ffbec4ccc280a723743327d0dd41b419a82f524cdb46c7f342465a36671e2aea7fc38f3f6cdeca302b0d2ae813792e998c183eb24273bca9d
+Size: 40044
+MD5Sum: 2de7eaa1d7c678045d4bc919ea31881b
+SHA1: c98c1e089360ac8aec5531da2a6eeb2b35764aab
+SHA256: 9ee266388e7ceec5d78254856fa8630047d308ae58a2a056985ec0e161c30978
+SHA512: 53e6021dfea7aac32c18ad215d0511aaacdda36cdc5c062c8d3739e49efb52effb445de81733112ab3846dce3b3588f82390dabb2a37bbfddbed9c14c1fce617
 
 Package: fmt
 Architecture: aarch64
@@ -101,11 +116,11 @@ Homepage: https://jqlang.org/
 Depends: jq (= 1.8.2)
 Description: Static libraries for jq
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/jq-static_1.8.2_aarch64.deb
-Size: 141664
-MD5Sum: 6f52e5596bc4e72f6888c8cf52d0bed6
-SHA1: d04fb2643db6586c814f75a59767eedfdb66e59d
-SHA256: c26506bd07ef1bb4117b32643edee2fc3ca8f6331add3e617e0115434459d6d6
-SHA512: a0d45df316b553494f29275e2f38e5d0d2cc0ecad2488ee41c5f813c37a3aeacc68ebb0e716dcb22f76ea85abf70d19f7710ef1aab0a970afa29093f70edf749
+Size: 141836
+MD5Sum: 52dec4671862290f6b1aead9a57ac9af
+SHA1: 0deb91387d929baff5e376e4ed0b4e2856e47668
+SHA256: ca2198a5864b0bee932c3b07e985552c8bb6085a74684a4f5b8830c33076fa3c
+SHA512: d036d16cd4b570d9e0b6341b0acddb6d9c779220863512a67abe86cef99096ff01b27db4fef25a9df71bf2357dabcb74ed85983c0004a1f92c7871eeee63a0b0
 
 Package: jq
 Architecture: aarch64
@@ -118,11 +133,11 @@ Depends: oniguruma
 Replaces: jq-dev
 Description: Command-line JSON processor
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/jq_1.8.2_aarch64.deb
-Size: 184592
-MD5Sum: d63d0da663235c4c40561a498275b77f
-SHA1: f8a375273498410e71bc6ce3b1a5a22567719bc2
-SHA256: fc720bb35b511b0f958417d6caf66718b25c795e99d37bdf73256f7416262689
-SHA512: e56f563c65f81c5a4fc3eed7519a67f3a11536d35db7a438b6d4c592e4060ceea734b6f5618702b19f34611fbc43760fd5bb65b015703c60c660b9658ecb7513
+Size: 184680
+MD5Sum: 200f14bb46acef8fce9f5837f048e1a0
+SHA1: 17bb0b65502b3fdb7a4a1afec88019e0e526c0fc
+SHA256: 2914cce990f0d2a053d91c0bee2d1d1bb92b5e6e8e06aa76560f657749e882b4
+SHA512: 930fa6e7831657b8ae9bc2128606b9e426579c5fee2f8630ab3b0bfa51cc6959ae019ecf6074256bbb3da2c98ac9c560a88a02220cd6d4835a9cc67abcd37fbb
 
 Package: krb5
 Architecture: aarch64
@@ -135,11 +150,11 @@ Depends: libandroid-support, libandroid-glob, libresolv-wrapper, readline, opens
 Replaces: krb5-dev
 Description: The Kerberos network authentication system
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/krb5_1.22.2_aarch64.deb
-Size: 901156
-MD5Sum: d950e2aeec8cc173f5be3da8d356ae9d
-SHA1: 3a1038bc461cb823e3dfcf16af7f541011f37cea
-SHA256: 59d0180142482814871ec4b1e4e419c210ffe4a8f925f8d77e8dd08b2f76ec9c
-SHA512: 53d02004e4b6b9c013deee34e1d77555a9785f38ce0572778dd47162ac0cbc370445ed16166ad1a7b7096e4a33221ab58490313adbd8fa7a815feb03e507aa6a
+Size: 901712
+MD5Sum: d3aa789b18b4c71ebe33765c93463da7
+SHA1: 711964aaaf70cf50103fd6d57adedb6e1d21e5b9
+SHA256: d519da76dc71a235ee221f0ba9a95ba845ad7ad64fed6ff08021b0ad550a6ec0
+SHA512: 61c6b7bfd27cf6c84836c490598f530b5c0fc3d0d71e11cf3288724f9ce2d27df46668332d5564d287a0fa9be473a3ff292564db8c62ca5dfc2da8947f4e6866
 
 Package: ldns-static
 Architecture: aarch64
@@ -150,11 +165,11 @@ Homepage: https://www.nlnetlabs.nl/projects/ldns/
 Depends: ldns (= 1.9.2)
 Description: Static libraries for ldns
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ldns-static_1.9.2_aarch64.deb
-Size: 134684
-MD5Sum: 995bc457e3a9b09e398745f0f1968591
-SHA1: 2d0ed987675f50468bc334bcc5c9eb74a1460fbb
-SHA256: e24eece80c03d6920c6b223f059daf6941916dd3b4ca3183adea556939d9fbf2
-SHA512: 3f9de2191e679fa31121e5722136ceb416c1b7b1d6b9ea1063de0a5a2920c3afee7c2561703f6f4cdc7e5f1e2f012191fa562f0b731930d9883ee7e9381e01a9
+Size: 134688
+MD5Sum: 7b39017d7508055921b1ffd0eecd2d91
+SHA1: e8fecb904c8abefa5c8b9d5cbda4d9d3d87ae8a3
+SHA256: 9632ebffb7a060fbb79fe40c47f652ac0c99852cb09025605bb5959728933451
+SHA512: d959a722eb94bddbe9677b6cb6a7b9f2e279a2b8b72e44ab7e6a9d760261cdef27c61f43ab57823a6a54ad188e134088f780da837fdde1d73a156d5a93eac8e6
 
 Package: ldns
 Architecture: aarch64
@@ -167,11 +182,11 @@ Depends: openssl, resolv-conf
 Replaces: ldns-dev
 Description: Library for simplifying DNS programming and supporting recent and experimental RFCs
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ldns_1.9.2_aarch64.deb
-Size: 304844
-MD5Sum: 99bced6a6d533504f85cccc32aa36327
-SHA1: 300b63e3303587b771a1edba621fb88f84bde52d
-SHA256: c82bc0a6c4117dd203c0f48cf5e428a817fb23948189965b6e9a2caa4cb1073e
-SHA512: b596cb13544d83fa7ebb801d76f7182178f2ca5564884c074bf5d3d91417b10009ff1e87583f79b5708ee2f3d968fa66a6ccf3861c244181eabd70383687c128
+Size: 304904
+MD5Sum: 084831830433f22625dfdd274afe6bb9
+SHA1: 63027f2051f377424978fc5fdefa140791c72015
+SHA256: 48cdd6a67ee4d9a051d5e8b4a1740fa42ebffd9d8c2fbe11c80c0e47ba457fac
+SHA512: ff4150c2890656c7785e8a90f9e08ba69cebaaa1d048643c52670199fe4f03e7a35096c9d082df0f7a504b3db24c650deb782655f9f03a1d8a349f44dfd4cd99
 
 Package: libandroid-glob-static
 Architecture: aarch64
@@ -182,11 +197,11 @@ Homepage: https://man7.org/linux/man-pages/man3/glob.3.html
 Depends: libandroid-glob (= 0.6-3)
 Description: Static libraries for libandroid-glob
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-glob-static_0.6-3_aarch64.deb
-Size: 4636
-MD5Sum: d57a3d0a092917b3ef8ce66e028e7356
-SHA1: de47cc06c066f7ace102637ff096ab80f4be8d8c
-SHA256: 76a6c158dabdfea517bdad2196b0b18ffae7ecaa5b766e0f11eb9ea77526ea66
-SHA512: ed174036ce588b40963a6a12622b640cb98617b22a3d18d42c2bab4dec9be2b97deee67500a03158f99c85453102218fc0d7e736040f79ce55c1484f4342d201
+Size: 4628
+MD5Sum: 5d6cf79f30dd4929227420a5616e7eb0
+SHA1: 7642889f0a7728bebb07d0010e1d0e8bd28c1972
+SHA256: 574589808a7ff1e0efeb7f2800c9bff0b1030c6353f1d7e16fd4cef2efa2801c
+SHA512: 8bc36382598d2b85156e1091cc89ea9a6d05122fd28570862f3fc5863070aa34e5dc0ad748a121b2323ae4af347051e4d48c482f5f93e2e75152f1109b0a2e96
 
 Package: libandroid-glob
 Architecture: aarch64
@@ -198,11 +213,11 @@ Breaks: libandroid-glob-dev
 Replaces: libandroid-glob-dev
 Description: Shared library for the glob(3) system function
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-glob_0.6-3_aarch64.deb
-Size: 7080
-MD5Sum: 707955d47836e3e39acb128e2888a399
-SHA1: 56d23eaa254756a54f00c80ba62748eab94f1021
-SHA256: 3e261f2d546b6f5c4cd11e53cc3e5ebf3b48cb442309c1a32334508fe96281b8
-SHA512: 72d51ee72b06005c9578a667dd7313abcf6213d26659757e83bd8e51002c969843d524ec2936357b4b689dc5c1f10e49cedfc442a8b8c5267d5d0752e0dca767
+Size: 7084
+MD5Sum: dab009ab581ec172bd666df76d08841e
+SHA1: 65a8647d9e302e9091f56546a36620bb32b00fad
+SHA256: 41190607ba9373d629898d87c2c64b8f7dd2a74153a2afe6e201a21050c573a6
+SHA512: c317b6cbe554de82fd9e2b013646daadfd1284e431d670d571da1de910a040fe7b26088fa62fd7db1d7552853c8c92f3e431339aff683782b21d0acd9c5fe6a4
 
 Package: libandroid-support-static
 Architecture: aarch64
@@ -214,10 +229,10 @@ Depends: libandroid-support (= 29-1)
 Description: Static libraries for libandroid-support
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-support-static_29-1_aarch64.deb
 Size: 8644
-MD5Sum: e25ab0a7e6c4bb30f2c986926b66a63f
-SHA1: b83c1c3fd9c99d886ded7265ba71a8439b923c70
-SHA256: 1382a987bb39ffcf842f275aed2c5c78df248ba701e3691d95c685aab6da09b6
-SHA512: 94a13ffde81f17309c06e6a1a6486749a1b07c1b98919543d253368feba38ea79ecaa047c5fb8e64d166202e4abab76814c9004d55f92ea3a6369a44bb7863c4
+MD5Sum: 196cb2991c8aedee8ee091da3e9b6b7c
+SHA1: aa4730d86fd4d666fefc2ed4e9cd246bd731302f
+SHA256: ab72f21b412ae6d89ab80ea196c89b558b36f6e193b6d0bd1d0c8b9a8def7f54
+SHA512: 09b88e38c67d38229fe35327681dd0bcb06d1d62ba5f59992da28495eeb2c55ad061a6c7a7a4a412c36e86c53704d97142cc632d8eb9c9f8b47262df7347337c
 
 Package: libandroid-support
 Architecture: aarch64
@@ -228,11 +243,11 @@ Homepage: https://github.com/termux/libandroid-support
 Essential: yes
 Description: Library extending the Android C library (Bionic) for additional multibyte, locale and math support
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libandroid-support_29-1_aarch64.deb
-Size: 10992
-MD5Sum: 7748c4f5f93b9692a656a829306511d4
-SHA1: 9f3a0672b938fb3ed14b7aaa5d7492e4e50a4b1a
-SHA256: 575326176fbbecb115e571a189eee2902a9c4b2966d7b20fb61932cdc8dac4fe
-SHA512: aa647728c8850e19cf3c8b7772b1c2337305adbdbadc2a4f7074f85f140a53aae600b96a8e09524060d80c4ec5655cac27f0ae97d6d44298cc9600c659f305a5
+Size: 10996
+MD5Sum: 6c8f3f743b45587784ff6ae7930d7f04
+SHA1: 38a668ae2a9fb08b0368e68184a9838ad0c224cd
+SHA256: 5b3f42a0206b6490cf42220bfa896dc8d2361b3c5ee0e0ddb09183f6ce63ac9d
+SHA512: c38a396f6c9f5175a319f8a9ec22014abd3f1311f8e4be0232d531a606c6c508d13d3d7c1da81027b6a425176a0bbc557bbe2cde11b81ca8842987e5e8e7dcf3
 
 Package: libc++
 Architecture: aarch64
@@ -243,11 +258,11 @@ Homepage: https://libcxx.llvm.org/
 Essential: yes
 Description: C++ Standard Library
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libc++_30_aarch64.deb
-Size: 341524
-MD5Sum: 838b102eefb81bf0ce627be9a70d6b12
-SHA1: 2fe58cf4c6e0e206c0df5d846e2a70a9ff7717b1
-SHA256: 7c6b219942b78a2500022e617260fe1999c89150ca19b496798f630bca1c6e80
-SHA512: 83fdc56ea512467da0e0c26e4c1fcc581f094cc3ba81f51ed8f53337f04bb76378eafc9db7f79981369a4684fc8adebcc7f2ea4ebeb1b8c4e816ce4d708cd87e
+Size: 341816
+MD5Sum: 2c2f5ae45e06316a504196db8259fdb9
+SHA1: b3f3b153f4d6580f2cc1a807b8ed94b7298531c9
+SHA256: a561d803588061ea7d8ec125e278ef767cff1301ae6c441160c11ef87f638713
+SHA512: 0fa7bac4f1912389eeee8ffc31787b0048331a583483155cc418536771bac18b700c03a6313e6597415574ef975a63f58a4604b4d7498aeee490375708902552
 
 Package: libdb-static
 Architecture: aarch64
@@ -258,11 +273,11 @@ Homepage: https://www.oracle.com/database/berkeley-db
 Depends: libdb (= 18.1.40-6)
 Description: Static libraries for libdb
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libdb-static_18.1.40-6_aarch64.deb
-Size: 482852
-MD5Sum: 0c72c435617fe95b86a2161e945b2c29
-SHA1: 98c1258f6ac46e75e1187f28cbb2103595c07990
-SHA256: 658153339fd8470919a8eb7443e941c9cc22a1bed8cfd73656b0699045f9da15
-SHA512: b49f9aa03686491008683bf97261c58d3524058f753431d0a0482b7a915ea716764567035637275122228795ddf75fbaf75f4c9ed12cc974dd3d76e9621a20b6
+Size: 483068
+MD5Sum: 99546132b0552ae4678a82319600323d
+SHA1: 29bedf49b3132314fdcbd67370ec53a95eef1333
+SHA256: 4eddd22f4ee8be04b57868c5e75f551dd562089a408547921e6b99861a679fec
+SHA512: 6be57fc50ac57f3b7c2cde50dce88f685476003b8c45606027e0e375783210efb040b21a1bfd544e2c349676c17d13db495d0fcf46a5c6e7548fa522de7a6df6
 
 Package: libdb
 Architecture: aarch64
@@ -275,11 +290,11 @@ Depends: libc++
 Replaces: libdb-dev
 Description: The Berkeley DB embedded database system (library)
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libdb_18.1.40-6_aarch64.deb
-Size: 498764
-MD5Sum: 1fd4646649caee45a896454ede511eea
-SHA1: e27df21f66fd52ceadca43c88162583eeec6f281
-SHA256: 2f4e488d7c5afa3bcbbd8ca15e52545ffed6eba42a44d6b7360885119346302d
-SHA512: 4984cd471265de8f5a1bf9ee903cfc973f0a4839f68408b5efbeceb2e703e3f77e047d2f9fb3a86a5edcc9d61e6e164842d10e34663303dc868ac031dd73d7f2
+Size: 498112
+MD5Sum: dccad28eb636e5cf330501cbe385f543
+SHA1: a9adf7bd083bcb51c7ce1cc77a7f401096375433
+SHA256: 09acd01f9be2110134e61dd9ea9c8b09be1a19f6478994ef062c897fc33fd29f
+SHA512: 01bfe48ff245cd28893fe71a8d988af736713d083412c374d7f48b0c43e2d49719d7bc8c222f117613be5201ac8f64ea3265e6ec09ae832676e780cd6065362c
 
 Package: libedit-static
 Architecture: aarch64
@@ -290,11 +305,11 @@ Homepage: https://thrysoee.dk/editline/
 Depends: libedit (= 20260512-3.1-0)
 Description: Static libraries for libedit
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libedit-static_20260512-3.1-0_aarch64.deb
-Size: 77312
-MD5Sum: 53a435c43e29d02ce583fac90da3b21d
-SHA1: f18ba97199c83162644d10162ecb2791a237a9fb
-SHA256: 8aeeab20cf1b59682510dc81531c79697f511093f196adafc9ad13a12676fad3
-SHA512: 98ca9aee9584e9552ffd056cc41c3429505f5f6377cb14a64a00ca20bc01cd92d4c5559ee5242815ee1087c7cfab495c26d34c0618857d79bddccac1e32b16c4
+Size: 77364
+MD5Sum: 20926666284fd675831f13b53adff714
+SHA1: 873beaf9c2794395ff51dbef26cc68e604c952fd
+SHA256: b27716ddb96d86a9b8b6647ede7e55b38d17dc643d0448287889bb95d976bf87
+SHA512: 1bc229d972ea56893d74b1dc3aea08d280b7f321799e66debb1476a80daf88fab6f4a64f516b8b6e8b5d070320238957f0c80294c4f3825726fbc604f0e4b0d1
 
 Package: libedit
 Architecture: aarch64
@@ -307,11 +322,11 @@ Depends: ncurses
 Replaces: libedit-dev
 Description: Library providing line editing, history, and tokenization functions
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libedit_20260512-3.1-0_aarch64.deb
-Size: 87796
-MD5Sum: 2810faa35fb779f72ed8c8f1e663651c
-SHA1: 6bc0bdb7a6cfa7d1ecd29916108baf8a5b09a349
-SHA256: 6083b405fcb9da0f16e90c872791b4821e38e620e72e77ee5758ccf085b57892
-SHA512: 2690046d31b2ca615bf364187d3eb8c3d3fc9bf237f69ad5f1d87bd7ae88ef353dbdb4a880c4b35c2596922d9a49d0a39e236a71c1ab345e275906bd8559adfd
+Size: 87784
+MD5Sum: 6e0bcbfbaf4eebaaa91c9f86e5c23c35
+SHA1: cbc7ab499a5a57246fdbce02a2ae70153d4ac63b
+SHA256: 68f55306e1609912d76c4e82c37bfaf4700c791494f547f23da4e99c8f5cefce
+SHA512: b6b0099ffc0c8fbc4d10dd5dc37d4f20c7cda6044496f06b3802eff66cf7f0f00570add6c58cc473651958f3680b796b0c1d12ba357fd92a1dfe55d7f0a3e343
 
 Package: liblz4
 Architecture: aarch64
@@ -388,11 +403,11 @@ Homepage: https://cwrap.org/resolv_wrapper.html
 Depends: resolv-conf
 Description: A wrapper for DNS name resolving or DNS faking
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/libresolv-wrapper_1.1.8_aarch64.deb
-Size: 11284
-MD5Sum: b022eba492740519fb3b4db0b86576e0
-SHA1: 27543c03a39e0bdb3d350b1038fd136414506ef5
-SHA256: c16f58c458a9e68d573e2a94be8c61806babd5ea8e383fa15821ccbc7d47e84b
-SHA512: cacc1ebaf193c58c26f17d457d0ca02d701e1b3156e40cc52160aaf15d5a4ed3828bc804fd5c59b46e0ada59dc629de3722ab5babbc637428244f637360886f7
+Size: 11276
+MD5Sum: f2c9c3024e7facf238a11d33619c75ce
+SHA1: 7015dc25b0990772a09556e975afdb28f39d5399
+SHA256: ad22ed233cd50f32e5bbb6b141e6beff86342b807800520c997821dbcd160657
+SHA512: def4acc8e590d9f4009b9f3f502e80269c8e1cb45ba25373a34fb7133b67343257d7b96467945a413d26ddc3aeecd26ad04c4cf4045e2be9e66d4dde8e40936e
 
 Package: lz4
 Architecture: aarch64
@@ -418,11 +433,11 @@ Homepage: https://invisible-island.net/ncurses/
 Depends: ncurses (= 6.6.20260307+really6.5.20250830)
 Description: Static libraries for ncurses
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ncurses-static_6.6.20260307+really6.5.20250830_aarch64.deb
-Size: 154080
-MD5Sum: 022fd489ae0dc7d32235447597bd6812
-SHA1: 7e2ddfab308cd09f3abe08d59ee968975ce76c4b
-SHA256: eca4aa765e610708a3148ae0d9898c02cb9e57a5089ced1877e3d1e5e613e920
-SHA512: dc043c4e050fdbf03253adee4a61cdfe96ca9a790fd2398b24ba3fad336c426c552b9905db7eb07929d3765eea3f062105eadbf5902e7942633b1120751fe90e
+Size: 154036
+MD5Sum: 63991a5d19e536a990eca3c89faaa600
+SHA1: c147dedba90bf79a7f9c2d5df408786be19ee39c
+SHA256: 23cc557416d7ea0edbcbf4037942bd93525f506ea59422386f0b96d606160a8e
+SHA512: 35874d5918e6c610e00a269175cb6c7d8acf7b0f1c2474346e40a07eb481938fcc4abd417eb964fd80c718ce25b046fdbe2875d319aad613c867879af45fc5b7
 
 Package: ncurses-ui-libs-static
 Architecture: aarch64
@@ -433,11 +448,11 @@ Homepage: https://invisible-island.net/ncurses/
 Depends: ncurses-ui-libs, ncurses (= 6.6.20260307+really6.5.20250830)
 Description: Static libraries for terminal user interfaces based on ncurses
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ncurses-ui-libs-static_6.6.20260307+really6.5.20250830_aarch64.deb
-Size: 39528
-MD5Sum: 12b01ed4aeb4c8c6afd4698bd18cc54d
-SHA1: a2185ec610d92ff2a3e894dc5acf83ce15693235
-SHA256: 483a458db0067c38057591deb90897351ef2873e9dcc5d5cc6df9011c9db8a2d
-SHA512: a69fcc92921e6768ee9f3317034569dee94d1a6b197f468068232e295a4ea45186c8cc7229171b0fcf8c5df395f32850c8e67d22d1860d752f88dc45af05fa30
+Size: 39516
+MD5Sum: 16790bb40d7a1907574399fc37855c9f
+SHA1: 8cc5bf6ad317c53e158acbd41562ccbefd44803b
+SHA256: 0ab6d3ad772e18aad1bb575894da5ec516c9c558e16d4814539f0dda526017c4
+SHA512: 749199ddf341754ad532274c60096d64416c37b6707e5a65991fdf9154df07975f59a16f9cd3503fbe3f7f0f8f48672e09189970754c97837c3eebf8726b36dd
 
 Package: ncurses-ui-libs
 Architecture: aarch64
@@ -450,11 +465,11 @@ Breaks: ncurses (<< 6.4)
 Replaces: ncurses (<< 6.4)
 Description: Libraries for terminal user interfaces based on ncurses
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ncurses-ui-libs_6.6.20260307+really6.5.20250830_aarch64.deb
-Size: 33032
-MD5Sum: e2b2f2dda8e6d0d00444a0a023648b94
-SHA1: 80b8b00113a0e10d9d4ea41efa7dd8dfb2d69adf
-SHA256: 5f7ca49755530acd023fcd664c7a0dfab107b3a40dbb242cc55a182726d505cb
-SHA512: 54e40acaa700de2d3785247b08871aa0689e067a1ab44eb4660850c559ca600c62b6e28aa7366d88af2d331d84519b35dea1048ef6a655a870a553598b33b987
+Size: 33016
+MD5Sum: fdc87538d8e56e275accaab3bc282b25
+SHA1: e12898990d005a6008dbea2efd28310dffec9f8c
+SHA256: e2e64e40a1e4394ec5c957284229e04ee40adad346c18b83509a2951020d8ba4
+SHA512: 4dff3a61d255d48e03080725b4f2043689494989e7330eb81fbba2a14949d00ccdc18138db020aa24922de9118f4ee8c21d15f57b50c3ae85ca487a17c69380f
 
 Package: ncurses-utils
 Architecture: aarch64
@@ -465,11 +480,11 @@ Homepage: https://invisible-island.net/ncurses/
 Depends: ncurses (= 6.6.20260307+really6.5.20250830)
 Description: Tools for working with terminals
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ncurses-utils_6.6.20260307+really6.5.20250830_aarch64.deb
-Size: 89068
-MD5Sum: 555c8cc3c1df182496556c117a5ea706
-SHA1: ecd5e06c44b15bf70f4244a283135a1e16d88e09
-SHA256: 5fb0d9fd14ec2ed7ba4b3c0fef1d682bd6bade4927c2d334df2c66df7db107f1
-SHA512: 466844e25b6a72f1449a1cd5ed709196cf5978fedb9fd321026f936a8017e5df6a094172d02a140c5b5bfbb01343257fe3fa4c6fe9915126897912f76820738b
+Size: 89116
+MD5Sum: dbc81617b78a19540d1290b6671cc38f
+SHA1: 471265f5c8903b91dc94c8c21bf9f289b3907ef0
+SHA256: 9dab6e8948f5bc79d3c529ee475b6e812bab6e01578b885be6e561c0bcd30a45
+SHA512: 021ab902898f1df2a98b9a1e94ae3e84a9af9412a63f1b919bb4228f4dd24946c041293a0b312b20f3e2239a4998bce0aab80933fedf12b7930ae3878e66daac
 
 Package: ncurses
 Architecture: aarch64
@@ -481,11 +496,11 @@ Breaks: ncurses-dev, ncurses-utils (<< 6.1.20190511-4)
 Replaces: ncurses-dev, ncurses-utils (<< 6.1.20190511-4)
 Description: Library for text-based user interfaces in a terminal-independent manner
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ncurses_6.6.20260307+really6.5.20250830_aarch64.deb
-Size: 557944
-MD5Sum: 967246104ec8e8b1079a1d399bd5d5a5
-SHA1: 13cc26f3011e7f2dfbb97fe2fae3588c76564f59
-SHA256: 6327f3be182ee3335d5afbe9eb0e1ea55d46b2ba58d052b3b3f3b095fabb2d8b
-SHA512: 1291045dad155f35da80b64a989e8aba4b53b254c02119468fb7b09c7d5dabca9d43e137f0b962719d3dcd7ad2f8c19cd0b64210bc157aeff60ae8b465e7c21a
+Size: 558060
+MD5Sum: 9217462d4ec0e8672bde0ecdb8b77713
+SHA1: b0df60c63eb269fd20a54641caefe04385ac0bad
+SHA256: 088413a14db76b684cd1979df5ae665504eed729a469d158635570dfb94551d3
+SHA512: 9fe8e37343e371e920a93115d20c5cb8f0ea9b2dc87bfa092b80611b84ad9aff9e218d44953edef480e15a94061e7b794ae7aba12c1d54fb1caec3eedddc7562
 
 Package: oniguruma-static
 Architecture: aarch64
@@ -496,11 +511,11 @@ Homepage: https://github.com/kkos/oniguruma
 Depends: oniguruma (= 6.9.10-1)
 Description: Static libraries for oniguruma
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/oniguruma-static_6.9.10-1_aarch64.deb
-Size: 143596
-MD5Sum: bfecc1e5cde3153789fb778aa86c66fb
-SHA1: e8678fc4c1ad262e962c77d1868f28a383757bfc
-SHA256: 3981286bb0f8609a322d42d87d89fbf0f668dea2bd70ce0946a98487e8abae58
-SHA512: 1a2d6773df4f707f56085da4eb4d4b8b27ef966908210c5deaf9e06822b07352561d65220f23a9d2310b85c17e4395fb63aad626d4478eedbeab4d3a8f2d8fda
+Size: 143780
+MD5Sum: c07cc494d6c0dc8f0a3da58dbb60807d
+SHA1: fb69cee02145ec2e9d073a71016f60ca74b3b610
+SHA256: 39e56f67812b3c39c368ade86b04808941e0792c7c814e9291e7ad1e8036ab7d
+SHA512: 2f87c16e8a9d8c16a8e39f5c0a2e204176495d772bc454bf6b2f87d5095fb0495121d6e4bf9a477f8073ba9bd11d33eb6f5d276e92bc5f67763fb1ac6b8ff172
 
 Package: oniguruma
 Architecture: aarch64
@@ -510,11 +525,11 @@ Version: 6.9.10-1
 Homepage: https://github.com/kkos/oniguruma
 Description: Regular expressions library
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/oniguruma_6.9.10-1_aarch64.deb
-Size: 136884
-MD5Sum: 911588cdc750c5479abae25dda84e9a9
-SHA1: deb3c1047bf89ffcdbd6b0e343b1bd3b240dfd27
-SHA256: 2ee01f4b953db54183f857de4747f9902bb5c6abdc83f9c79b7e7ca5ee38db0f
-SHA512: a19bf9bb36be3971f58aa076396fd65b329523cc13c4283b2e194bf97a807320f966be15212dedf31920f287fcb15e481893713d611e696a28032d550744848a
+Size: 136580
+MD5Sum: 708b31cee3f3fd54d245471a2bbc213f
+SHA1: c8d1f6b3046e8abfe084bcfd35ca009f9150cb67
+SHA256: c1ab4c94303a7448da90a9303499ee4cf7447d26206ce0e0d946b5de5dc0f2bc
+SHA512: 50dda64dfc90a7f22ae3ecbe69db353c63631247ed348b28489229db3147166bfa489cec2c1174b0ef1b14dd4f3de890ea28f2808fc56215dd47657706be085e
 
 Package: openssh-sftp-server
 Architecture: aarch64
@@ -528,10 +543,10 @@ Replaces: openssh (<= 9.9p2-1)
 Description: OpenSSH SFTP server subsystem
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/openssh-sftp-server_10.6p1-2_aarch64.deb
 Size: 56700
-MD5Sum: 2fae8dbe6bdddc3b2969ecb662aec551
-SHA1: 0060365a12b58b5a78f7b1fe5be88c1dbb273b10
-SHA256: 641d3adb57bc10442c2a10e942234ac1bb33f2bf3003e3e954facebcba72daa9
-SHA512: 4a6fade0a5bf7dc03f3867f7081e8424d334cc3a5c039e8ac2c844ab25b4e7fdc1bd928c2a7af4640ba7355054061fe39ad25cd889cfcaffd5af9ef0f6aa5279
+MD5Sum: b9cdd931ec964268eb7e17d5cee929c4
+SHA1: 4bee83f362194ea861adcb2fde604a8f0783dc62
+SHA256: e79cfb1a06508ec1af78834969adb78e827150c7fda70185550108fa25c8c1b3
+SHA512: bad58daac7a1f1d8675c787a9e9321801641d336e988410cc8cece45493945d907805bfa2fe3fd6d5f213a5a0d6ecb40de18a07503a31a8f5a9801703a407347
 
 Package: openssh
 Architecture: aarch64
@@ -544,11 +559,11 @@ Conflicts: dropbear
 Suggests: termux-services
 Description: Secure shell for logging into a remote machine
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/openssh_10.6p1-2_aarch64.deb
-Size: 970060
-MD5Sum: 3cc3e8be9b15f39dc37c1d236697a317
-SHA1: 271239eddcc6cfbf5a3da2c019b1a8314f3ffdb0
-SHA256: 31a44397f9db1729e3b8b55eb5ccd3863a28c205b4496d3e57749f8bc5e47598
-SHA512: 09be499c3a21a9f4511aed2e609dd14bd61e5760486e433d44d2a4db4de0ebac62df7679a7e1870036660905df5d5a3116ff59000b72831e5dc117f3e150ac7f
+Size: 971424
+MD5Sum: 0e968bc4f22f9c5d5909c7c6ca3d5738
+SHA1: 678e0e9961c662c738dfc621e8593e943e8b5e5e
+SHA256: bcdc3af5028222a2fe4d0d22be24f3e1d03e0629abbbfbf83b559b114633572d
+SHA512: a71a83f1d06050702aa2adffcf5d0578bd6a45b36ea2aa7ac4c29ac4fa04e924b297ce0a2cfea1370aaa59c8e8e8adfa001651899f0def164fc8a692351e1ad5
 
 Package: openssl-static
 Architecture: aarch64
@@ -559,11 +574,11 @@ Homepage: https://www.openssl.org/
 Depends: openssl (= 1:3.6.5)
 Description: Static libraries for openssl
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/openssl-static_1.3.6.5_aarch64.deb
-Size: 2645072
-MD5Sum: b58bd775ca5b1cb33b6766f251c4ed23
-SHA1: 5aec8878592781ea49c8fc1c2b5a08eedf538e45
-SHA256: 8d1f7a18e5d14bb43d68b90bdc2151f2c6fed95baebd7373136719cd68a004c9
-SHA512: 5ce7bd89d6fe6b1dafdb21d4832d44cd46815c99f7d5e19c02188669b04193f38d634e8b721b717d7257636e9d3126d4048aaad62437f7f74e8b1f3a85e31ea7
+Size: 2645860
+MD5Sum: 442828201389f3923c21c7168f6b188c
+SHA1: 3a8089350e375cc650d7ca3b50e556a19b27d6ab
+SHA256: 6ae2663b98cb22e211c9492440eb847b8beedffdc755b2729ac904167bde829b
+SHA512: d5f76707d7e28f9e1ce5a07c0ae2b88ae23db24a9da58c80bdf3ba26e408f95ccc55e29b73d6e0f469d8bdceb5535f4af041e133f90bec92d6a99219d6833f64
 
 Package: openssl-tool
 Architecture: aarch64
@@ -574,11 +589,11 @@ Homepage: https://www.openssl.org/
 Depends: openssl (= 1:3.6.5)
 Description: The openssl command line cryptographic tool
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/openssl-tool_1.3.6.5_aarch64.deb
-Size: 276088
-MD5Sum: 61a10607c68cd2c78ddf7de9e3bdd878
-SHA1: cfb3a430b4a482a8001832649a180788d35390c0
-SHA256: b8203d882501404d394755815ca85fb310bae52967c496ac60d47939b51542c5
-SHA512: 0bcd7a24b0e5b443f43843f330e49408a0f3696d7d7d082c251ed5c04655f5f54eb4c2064fb93210cff2dd6f1555cbf15f010f873072517b6c7f750ecabad00f
+Size: 277508
+MD5Sum: 7e99c4e268e200c1376f520733b3db48
+SHA1: 0e2c1223dc9b302b7d2a3a757e103fee7a4b7b6d
+SHA256: 5dc25576e5d8032523db5dfe82eeaf95c6290bf97a3e7a1538340ad6117cb388
+SHA512: f23f4fa8544e94d5d4c2274f908256607fbbb8701da86f036a4900fbad441bd68c72c40c933d06fd598b630107154d09b0c58f58b5351263dfec0f00e19da1bc
 
 Package: openssl
 Architecture: aarch64
@@ -592,11 +607,11 @@ Conflicts: libcurl (<< 7.61.0-1)
 Replaces: openssl-tool (<< 1.1.1b-1), openssl-dev
 Description: Library implementing the SSL and TLS protocols as well as general purpose cryptography functions
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/openssl_1.3.6.5_aarch64.deb
-Size: 2484000
-MD5Sum: 72c378157f7d70afef1bffc44ab63fd8
-SHA1: 7ad7f05d97526d11bd80bfd4223ba2a5f0886fd9
-SHA256: 8fcecb56e50f55095be349b6407921243b8f7cf2fd5d1072b5e3ad67d1149388
-SHA512: 7bf3405dfca251932e821fed944bf0bf0e944c8f2dacf8b64405e1f0caf11bf0cc152567feb5dba8df0e6a539052c5929df8bd83dfeca0f5cf8b019dc22931a2
+Size: 2482532
+MD5Sum: dcb524ddefe7fdde3aa860fd74e9c31e
+SHA1: 3357d3d0cd0eb2ebfc8ea385bef9c31e110d59a6
+SHA256: 3500e88ed4b78ecdb3359185852b798c15a312a85b15060217a05726a9eb5598
+SHA512: d32ae47eba4f0b53d618f9080d01a7d70561b73dcc9e60ddbe49a955d46eb31c0d58e4e606ab67045f6d03881d34100cc5db4258425c3331f3f40469870a50ba
 
 Package: pcre2-static
 Architecture: aarch64
@@ -683,11 +698,11 @@ Homepage: https://tiswww.case.edu/php/chet/readline/rltop.html
 Depends: readline (= 8.3.6)
 Description: Static libraries for readline
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/readline-static_8.3.6_aarch64.deb
-Size: 125244
-MD5Sum: 90868424d905cf9dac4a742deb1c18f3
-SHA1: c9aeff29a6b9e2e2ef05e6aa9747940f5fbe0f79
-SHA256: 34169cfea6bbdb2c6339af7a5fa8561bd310a88afd1d99d1535392cfff7baa22
-SHA512: aafd47bf039fed8bfbdf1e13293581d5ae93ea51ced7970d0bd5227b3aa11bc12687bfdf48eef8f894acff82e59b63f7e3e450dec0e6d47c83c3aa229a13f8d0
+Size: 125248
+MD5Sum: f0076842fb7befd2d9334cb7abb60aa0
+SHA1: 473dcd80989dc152103305900556179e387df02a
+SHA256: 4fec5c38b1e6b0a8cf32a3fc60adfc5c947848916e8dd45d598ad5e331b4c806
+SHA512: 177410df2b655959f64738fe262c463de41d68e48b6f81f3336bad607297e49c197339be4ba0ce5c352f1d5ad3ebd52333cf1d772cd301376cc7d42c6a6157bc
 
 Package: readline
 Architecture: aarch64
@@ -700,11 +715,11 @@ Depends: libandroid-support, ncurses
 Replaces: readline-dev
 Description: Library that allow users to edit command lines as they are typed in
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/readline_8.3.6_aarch64.deb
-Size: 294408
-MD5Sum: ea4a5939b3f4f16250224a61b8fa3a23
-SHA1: 259ea5358e5327f61377121940a9ae074a8210d9
-SHA256: 24186b0f4c850c5451efcf552367895a71681b6d264ec0278a034d8fab2ab7a7
-SHA512: 06ea8e1ae2d7850a941bf18b1a651f3d141841d052e62932916541acecd109772500e3ef94a487ecbd0b6e969e958913348190f91a11354abad052323e3074be
+Size: 294160
+MD5Sum: c9f58b2df4a99a401bce8d57d985ccbb
+SHA1: 9487a0643d309498247e6ce9dbbe0805b9d55e72
+SHA256: c04255d4089eed50966c43288679b2095ec7586ff1f355a2711eb8f9f6459e7f
+SHA512: 440dc2f9c75b7f8725ebb1629cb5e36be36578bc196bcbf0b3e763911500694ed81cd405c5083a979d271a2ed85c7eac71657f04e4bb4eca9552e3c4ae3c6154
 
 Package: resolv-conf
 Architecture: aarch64
@@ -714,11 +729,11 @@ Version: 1.3
 Homepage: https://man7.org/linux/man-pages/man5/resolv.conf.5.html
 Description: Resolver configuration file
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/resolv-conf_1.3_aarch64.deb
-Size: 1028
-MD5Sum: a93c368449b13d4a48a150d3ff31c4a3
-SHA1: f57f8b871d0538c939f7ada0351bcbda690fb9a4
-SHA256: 70924bf9cbe52a978105693691fbb8c75fabadf951a80b45d0ddc5162e291db8
-SHA512: 14287dd8cc70ead345e42262b54de00075cf702704c841aa8b61bd09fc2f5aba36772fbd5549d648aea08e85f74feedc988a177f952a894d3e99e0930e0bf9f6
+Size: 1032
+MD5Sum: e80770ccd456f68b12e08d9429c7ab7e
+SHA1: d8c7debff12d6da664bd74b9dfba3fcd57e42f82
+SHA256: 04918bf8be0fcd5475302800e3b5f12b71b521179453708ba003d77ee769ccf8
+SHA512: e6af27496517ba996c5e2cc872776850a8d2d90ba63e0339f6416305058d4ab7149969ffb3b8f4db9e11bf94968fcbf349450ad948404c8a052c7b1b8e78474c
 
 Package: termux-auth
 Architecture: aarch64
@@ -731,11 +746,11 @@ Depends: openssl
 Replaces: termux-auth-dev
 Description: Password authentication library and utility for Termux
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/termux-auth_1.5.0-1_aarch64.deb
-Size: 6940
-MD5Sum: 15a5869fed10555d1073eeb4825b4b6c
-SHA1: 91998b5f21e2ec68bd09a583d3602ce763397852
-SHA256: 7bbbab8a334c8390854578f079d9f8f255c6f6c0b8b4b7b005e54a46aa887d36
-SHA512: dcc0bb1fe6ca005b01ed6fe443352d8256f285d5ef1947f556a5ad99cc3b4328edb8d78dcec762b4c3f7c86a6fab61183e2b4d5be7429b8b1fa643d1c18598b5
+Size: 6932
+MD5Sum: b1061eea355ef799bb3b5ed91a0434eb
+SHA1: a9667876876ce2b623598540f2075fce47f69e04
+SHA256: 723ab1c1e7a11043df129fc4ba6bb7dfee1f190295ae807b96fd7f28b64409b7
+SHA512: 74ee3a58252b70ff929dec0dd90a2a6ff47d4bb20fada925e2d590d1bcc1702cc94be58aebc6c3ef52b0ee65fad58a8199afa20c3cff3bcfc377c71f3e8cc318
 
 Package: xz-utils
 Architecture: aarch64
@@ -763,10 +778,10 @@ Depends: zlib (= 1.3.2)
 Description: Static libraries for zlib
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/zlib-static_1.3.2_aarch64.deb
 Size: 35572
-MD5Sum: c53618de37a59b3b5aafaa8d66372929
-SHA1: c6a8a96e9b97d514fc0541a4602e60e13ebb979a
-SHA256: d58c50e026588ab37a917081cb54143af3e47075bc117a6b8590db8c2665c557
-SHA512: 9ddb0e625cf7e91d91f5c90e224f76be1cb6ed66debf1c68bef58ba81d3a63b65317be8f06d67897d79d830117f09ff8d04a247a94ed74c2036ca27139f9b228
+MD5Sum: f229d9c1a7e1e3dc8147ba2d05656014
+SHA1: 572125b57982b8ac63465c6301b16aa85155cf5c
+SHA256: 2134a84ac2975fdbbe4bb854c3dafbfc407155ce89b580f45e3369ab3abfab67
+SHA512: 65dc638832815bcfa3734f47f04aa77f684d578e21ffd76f63bc717b7446e3c9e53793f6bf73b3a42d3b4410a9babbaa948f38cc5b1605e5b9748d101797513c
 
 Package: zlib
 Architecture: aarch64
@@ -778,11 +793,11 @@ Breaks: ndk-sysroot (<< 19b-3), zlib-dev
 Replaces: ndk-sysroot (<< 19b-3), zlib-dev
 Description: Compression library implementing the deflate compression method found in gzip and PKZIP
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/zlib_1.3.2_aarch64.deb
-Size: 63060
-MD5Sum: e7bf677b77badc36a89cc8d5cee3f61e
-SHA1: 2ff84f0dd2617ce622674744b3964454730f99f9
-SHA256: c9e8d2ce926969a1ae01a9bb58afc8abc20a8d76ee6f2c82341d4a9d9be4c196
-SHA512: 84e364a4a74e2db1826d4501416a2e7c95968556e5b568f80b8bb7e93a66f81b65fbac2b16d01e69dec0fbe3a97590d76f02580c03f5746997ac3fc5c63071f5
+Size: 63140
+MD5Sum: 8f8edb608765d8b202c32b897b94338b
+SHA1: 443c0681bfabdca27cd6f70e7f199b673d1e2a8d
+SHA256: 14e546e7d11a388841203d61cdfe3e3a3a8193351d27233c9d6d30ae33c4cdb0
+SHA512: acc565e475a4f580a85ca88042e57ba80bae65ff0d2de106a3dee6e2136347b8c4c14e7858395106852b227e75dc7fec0e266c4600d1f229ad512ae64008bb8e
 
 Package: zstd
 Architecture: aarch64
@@ -810,11 +825,11 @@ Homepage: https://curl.se/docs/caextract.html
 Depends: ca-certificates (= 1:2026.09.25)
 Description: Common CA certificates (java keystore format)
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ca-certificates-java_1.2026.09.25_all.deb
-Size: 96172
-MD5Sum: 3c5582d59b7f41949e6f6715baf6e3dc
-SHA1: 8c326a7a291ec07271c802e91b7b52006d3beb64
-SHA256: 5862614140d471430ac67b74a21076395aebc8c91fd04e36218f8d24e865c32b
-SHA512: 338af092ea50d73bca8d5a14a47975317406b7184b9407dc579821259b0a25c29d681861ec847a523ce2ef870ee92dbb8fcfe7c234320f20fd8db8a389892d5e
+Size: 96196
+MD5Sum: 8caab0c67dc3ab42cf8a363de5102f3c
+SHA1: a542eaabb973731af1ab164977f6dc1c42d67678
+SHA256: a7f75908d907482a932a0ea2d9a33379a81298247fc3e8bf094ece3461ac98b2
+SHA512: 9f6a77f650c8994f212162f3507d94cd8c58f422cb9105b5620cd3fd346f5eb02ab15fd6468f90e1ff2791408d3a24f221daa89e6dabf6644101fa2b31e9418b
 
 Package: ca-certificates
 Architecture: all
@@ -824,9 +839,9 @@ Version: 1:2026.09.25
 Homepage: https://curl.se/docs/caextract.html
 Description: Common CA certificates
 Filename: https://github.com/lycstar/termux-packages/releases/download/pool/ca-certificates_1.2026.09.25_all.deb
-Size: 105424
-MD5Sum: 6f410648405e0dcdfedd1caa9eeaa7bc
-SHA1: 03c08bfcde48dd4818c8511b48f0da1f35a40159
-SHA256: bcd394026cdc88c314f9e9aff99a6d3b8eca32e88dac2c4c02fefa4c18374909
-SHA512: 2d2d3fd8f3c8a57757772c685376cce03162c29e4e71f8dd50f95b59fe7dc7520f5698709fbdb7484df7779b3bfc33be3450020c6c76c7b29562a3137af671db
+Size: 105416
+MD5Sum: a6adf3a11be7cc937a48302a5139f5c9
+SHA1: e36e1e3e11d154071a694346e1e1ad604e9201af
+SHA256: cfb9108837b8b00a184f9f66b32110c970ab9e878a887adac3d03fe45f9527f1
+SHA512: 9be650491f3b25ae65adb821158394148714b0dab7b446d5da00b36587bb48ed7dc0ea57887a2b0dc3d5912a9bfe73f997987100066c299a848ad55b55455fe1
 
