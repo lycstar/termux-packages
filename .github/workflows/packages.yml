@@ -84,15 +84,8 @@ jobs:
         if [[ -n "$R2_PUBLIC_URL" ]]; then
           base="${R2_PUBLIC_URL%/}"
           mirror_url="${base%/*}/termux-mirror"
-          jq --arg main "$base/apt/termux-main" \
-            --arg root "$base/apt/termux-root" \
-            --arg x11 "$base/apt/termux-x11" \
-            '.packages.url = $main | .["root-packages"].url = $root | .["x11-packages"].url = $x11' \
-            repo.json > repo.json.tmp
-          mv repo.json.tmp repo.json
-        else
-          echo "R2_PUBLIC_URL is not configured; using the repository URL placeholder."
         fi
+        echo "Using signed upstream APT repositories for build dependencies."
 
     - name: Gather build summary
       id: build-info
