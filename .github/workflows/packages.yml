@@ -495,6 +495,31 @@ jobs:
         pattern: debs-aarch64-*
         path: artifacts
         merge-multiple: true
+    - name: Generate and publish cumulative APT repository to R2
+      if: vars.R2_ENDPOINT != '' && vars.R2_BUCKET != ''
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: auto
+        R2_ENDPOINT: ${{ vars.R2_ENDPOINT }}
+        R2_BUCKET: ${{ vars.R2_BUCKET }}
+        R2_APT_PREFIX: apt/termux-main
+      run: |
+        if [[ -z "$AWS_ACCESS_KEY_ID" || -z "$AWS_SECRET_ACCESS_KEY" ]]; then
+          echo "::warning::R2 credentials are not configured; skipping canonical APT publication."
+        else
+          mkdir -p new-debs
+          while IFS= read -r -d '' archive; do
+            tar -xf "$archive" -C new-debs
+          done < <(find artifacts -type f -name '*.tar' -print0)
+          VENV="$RUNNER_TEMP/termux-apt-repo-venv-r2"
+          python3 -m venv "$VENV"
+          "$VENV/bin/pip" install --disable-pip-version-check termux-apt-repo==0.5
+          export PATH="$VENV/bin:$PATH"
+          python3 -m unittest discover -s scripts/tests -p 'test_r2_repository.py' -v
+          ./scripts/publish-r2-repository.sh new-debs/debs
+        fi
+
     # - name: Generate and publish cumulative APT repository
     #   if: vars.R2_ENDPOINT != '' && vars.R2_BUCKET != ''
     #   env:
