@@ -18,6 +18,9 @@ termux_source_mirrors() {
 	done
 
 	case "$url" in
+		https://salsa.debian.org/apt-team/apt/-/archive/*)
+			printf '%s\n' "https://github.com/lycstar/termux-packages/releases/download/pool/$filename"
+			;;
 		# GitHub release assets intermittently serve HTTP 500 from CI. The
 		# proxies forward the original URL verbatim and the downloader still
 		# verifies every candidate against the recipe checksum.
