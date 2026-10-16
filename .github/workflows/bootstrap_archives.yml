@@ -1,69 +1,86 @@
-name: Build bootstrap archives
+name: Generate bootstrap archives (android-7)
 
 on:
+  schedule:
+    - cron: "0 0 * * 0"
   workflow_dispatch:
     inputs:
       architectures:
         description: Comma-separated architectures to build
         type: string
-        required: true
+        required: false
         default: aarch64
 
-permissions: {}
+permissions: {} # none
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
-  queue: max
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
 
 jobs:
   build:
     permissions:
-      contents: write
-    runs-on: ubuntu-26.04
+      contents: read # actions/upload-artifact doesn't need contents: write
+    runs-on: ubuntu-slim
+    strategy:
+      matrix:
+        arch: [aarch64]
     steps:
-      - name: Check out repository
+      - name: Git clone
         uses: actions/checkout@v7
-
-      - name: Check source downloader
-        run: |
-          bash -n scripts/generate-bootstraps.sh
-
-      - name: Configure package repository URL
-        id: configure
+      - name: Create bootstrap archive
         env:
           R2_PUBLIC_URL: ${{ vars.R2_PUBLIC_URL }}
+          ARCHITECTURES: ${{ inputs.architectures || matrix.arch }}
         run: |
+          repository="${R2_PUBLIC_URL%/}/apt/termux-main"
           if [[ -z "$R2_PUBLIC_URL" ]]; then
-            echo "::error::Set R2_PUBLIC_URL before generating the bootstrap."
-            exit 1
+            repository="https://packages-cf.termux.dev/apt/termux-main"
           fi
-          echo "repository=${R2_PUBLIC_URL%/}/apt/termux-main" >> "$GITHUB_OUTPUT"
-
-      - name: Generate bootstrap archives from the published package repository
-        id: generate
-        env:
-          ARCHITECTURES: ${{ inputs.architectures }}
-          REPOSITORY: ${{ steps.configure.outputs.repository }}
-        run: |
-          for arch in ${ARCHITECTURES//,/ }; do
-            curl --fail --location --silent --show-error --max-time 30 \
-              --output /dev/null \
-              "$REPOSITORY/dists/stable/main/binary-${arch}/Packages" \
-              || { echo "::error::Sparrow APT index is missing for ${arch}: $REPOSITORY"; exit 1; }
-          done
           ./scripts/generate-bootstraps.sh \
             --architectures "$ARCHITECTURES" \
-            --repository "$REPOSITORY"
-
-      - name: Store bootstrap archives
+            --repository "$repository"
+      - name: Store artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: bootstrap-archives-${{ github.run_id }}
-          path: bootstrap-*.zip
-          if-no-files-found: error
-
-      - name: Publish bootstrap to R2
+          name: bootstrap-archives-${{ github.run_id }}-${{ matrix.arch }}
+          path: "bootstrap-*.zip"
+  publish:
+    permissions:
+      contents: write # for git push
+    needs: build
+    runs-on: ubuntu-slim
+    steps:
+      - name: Git clone
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Fetch bootstrap archives
+        uses: actions/download-artifact@v8
+        with:
+          merge-multiple: true
+          path: ./
+      - name: Create new tag
+        id: get_tag
+        run: |
+          new_tag="bootstrap-$(date "+%Y.%m.%d")"
+          existing_tag_revision=$(git tag | grep "$new_tag" | sort -r | head -n 1 | cut -d- -f3 | cut -dr -f2)
+          if [ -n "$existing_tag_revision" ]; then
+            tag_rev=$((existing_tag_revision + 1))
+          else
+            tag_rev=1
+          fi
+          new_tag="${new_tag}-r${tag_rev}+apt.android-7"
+          echo "tag_name=$new_tag" >> $GITHUB_OUTPUT
+      - name: Publish bootstrap zips to GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create ${{ steps.get_tag.outputs.tag_name }} --title "Bootstrap archives for Termux application (apt.android-7)"
+          for file in *.zip; do
+            gh release upload ${{ steps.get_tag.outputs.tag_name }} "$file"
+          done
+      - name: Mirror bootstrap zips to R2
         if: vars.R2_ENDPOINT != '' && vars.R2_BUCKET != ''
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
@@ -72,30 +89,12 @@ jobs:
           R2_ENDPOINT: ${{ vars.R2_ENDPOINT }}
           R2_BUCKET: ${{ vars.R2_BUCKET }}
         run: |
-          if [[ -z "$AWS_ACCESS_KEY_ID" || -z "$AWS_SECRET_ACCESS_KEY" ]]; then
-            echo "::warning::R2 credentials are not configured; bootstrap was saved only as an Actions artifact."
-            exit 0
-          fi
-          for archive in bootstrap-*.zip; do
-            arch="${archive#bootstrap-}"
+          for file in *.zip; do
+            arch="${file#bootstrap-}"
             arch="${arch%.zip}"
-            sha256sum "$archive" > "$archive.sha256"
-            aws s3 cp "$archive" "s3://${R2_BUCKET}/bootstrap/$arch/$archive" \
+            sha256sum "$file" > "$file.sha256"
+            aws s3 cp "$file" "s3://${R2_BUCKET}/bootstrap/${arch}/${file}" \
               --endpoint-url "$R2_ENDPOINT" --region auto
-            aws s3 cp "$archive.sha256" "s3://${R2_BUCKET}/bootstrap/$arch/$archive.sha256" \
+            aws s3 cp "$file.sha256" "s3://${R2_BUCKET}/bootstrap/${arch}/${file}.sha256" \
               --endpoint-url "$R2_ENDPOINT" --region auto
           done
-
-      - name: Publish bootstrap to the Sparrow pool release
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
-        run: |
-          gh release view pool -R "$GH_REPO" --json id >/dev/null 2>&1 \
-            || gh release create pool -R "$GH_REPO" \
-              --title "Sparrow package pool" --notes "Rolling package and bootstrap assets"
-          for archive in bootstrap-*.zip; do
-            sha256sum "$archive" > "$archive.sha256"
-          done
-          gh release upload pool -R "$GH_REPO" --clobber \
-            bootstrap-*.zip bootstrap-*.zip.sha256

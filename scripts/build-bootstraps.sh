@@ -246,8 +246,7 @@ create_bootstrap_archive() {
 		zip -r9 "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" ./*
 	)
 
-	# 落到 output/(CI 的 AppArmor 只允许写 /home/builder/termux-packages/output/**)
-	mv -f "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" "$TERMUX_BUILT_DEBS_DIRECTORY/"
+	mv -f "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" "$TERMUX_PACKAGES_DIRECTORY/"
 
 	echo "[*] Finished successfully (${1})."
 
@@ -430,11 +429,10 @@ main() {
 
 		# Core utilities.
 		PACKAGES+=("bash") # Used by `termux-bootstrap-second-stage.sh`
-		PACKAGES+=("libbz2") # Also produces the essential bzip2 subpackage.
-		# command-not-found 不进 bootstrap: 它为配置中的每个仓库生成数据库,
-		# 需要 x11/root 仓也发布 Contents-<arch>.gz(自建源暂无), 且其 C++
-		# 硬编码包含各仓头文件。今后源补齐 Contents 后可随时加回。
-		if ${BOOTSTRAP_ANDROID10_COMPATIBLE}; then
+		PACKAGES+=("bzip2")
+		if ! ${BOOTSTRAP_ANDROID10_COMPATIBLE}; then
+			PACKAGES+=("command-not-found")
+		else
 			PACKAGES+=("proot")
 		fi
 		PACKAGES+=("coreutils")

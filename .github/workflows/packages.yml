@@ -19,8 +19,7 @@ on:
     inputs:
       packages:
         description: "A space-separated names of packages selected for rebuilding"
-        required: false
-        default: "git openjdk-17"
+        required: true
       free-space:
         description: "Free space even if not building large package (useful when building a large number of packages)"
         type: boolean
@@ -41,7 +40,7 @@ jobs:
     runs-on: ubuntu-26.04
     strategy:
       matrix:
-        target_arch: [aarch64]
+        target_arch: [aarch64, arm, i686, x86_64]
       fail-fast: false
     steps:
     - name: Clone repository
@@ -250,7 +249,7 @@ jobs:
           skip_building=true
         elif [[ "${#packages[@]}" -gt 0 ]]; then
           set +e
-          DRY_RUN_OUTPUT=$(./scripts/bin/build-package-dry-run-simulation.sh -C -a "${{ matrix.target_arch }}" "${packages[@]}" 2>&1)
+          DRY_RUN_OUTPUT=$(./scripts/bin/build-package-dry-run-simulation.sh -I -C -a "${{ matrix.target_arch }}" "${packages[@]}" 2>&1)
           DRY_RUN_RC=$?
           set -e
           echo "$DRY_RUN_OUTPUT"
@@ -364,9 +363,7 @@ jobs:
         echo "packages: ${packages[*]}"
 
         if [[ "${#packages[@]}" -gt 0 ]]; then
-          # Build dependencies from source. R2 is the output repository and may
-          # be empty; -i/-I would require its metadata and detached GPG signatures.
-          ./scripts/run-docker.sh -d ./build-package.sh -C -a "${{ matrix.target_arch }}" "${packages[@]}"
+          ./scripts/run-docker.sh -d ./build-package.sh -I -C -a "${{ matrix.target_arch }}" "${packages[@]}"
         fi
 
     - name: Save verified source cache even after build failure
@@ -390,12 +387,6 @@ jobs:
           test -f ./deleted_${repo}_packages.txt && mv ./deleted_${repo}_packages.txt ./debs/
 
         done
-
-        # Keep every package produced by this run, including dependencies that
-        # were built locally because they were not already in the custom repo.
-        if [ -d "output" ]; then
-          find output -type f -name "*.deb" -print0 | xargs -0r mv -t debs/
-        fi
 
         # Files containing certain symbols (e.g. ":") will cause failure in actions/upload-artifact.
         # Archiving *.deb files in a tarball to avoid issues with uploading.
